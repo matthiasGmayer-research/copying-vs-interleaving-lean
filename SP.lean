@@ -14,6 +14,7 @@ import SP.CstarSCParams
 import SP.CstarSCProgram
 import SP.CstarSCStructure
 import SP.CstarSCThm
+import SP.CstarText.ConfRev.Statement
 import SP.CstarText.Intro.Statement
 import SP.CstarText.Intro.Steps.S01_CorCstarLower
 import SP.CstarText.Intro.Steps.S02_CorCstarAlphabet
