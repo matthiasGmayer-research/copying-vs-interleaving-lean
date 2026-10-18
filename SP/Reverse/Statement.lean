@@ -689,7 +689,6 @@ private theorem arcCover_all (m : ℕ) (hm : 3 ≤ m) :
       omega
 
 /-- `ARC(x_m) ≤ 2m+1` for `m ≥ 3`. -/
-@[kb "cstarpaper-lem-rev-arc"]
 theorem arc_le (m : ℕ) (hm : 3 ≤ m) : SP.ARC (xm m) ≤ 2 * m + 1 := by
   have hS : SP.IsARS (xm m) arcLset (arcPhi m hm) := by
     unfold SP.IsARS
@@ -739,7 +738,6 @@ private theorem arc_pos (x : List Bool) (hx : 0 < x.length) : 1 ≤ SP.ARC x := 
 
 /-- `ZLC(x_m) ≥ B / (8(2m+1))` as a real inequality, `B = 2^m`, for `m ≥ 3`
 (ZLC ranges over zipline programs of every arity `d ≥ 2`, as in `SP.Program.IsZLP`). -/
-@[kb "cstarpaper-lem-rev-zlc"]
 theorem zlc_ge (m : ℕ) (hm : 3 ≤ m) :
     (2 : ℝ) ^ m / (8 * (2 * m + 1)) ≤ (SP.ZLC (xm m) : ℝ) := by
   obtain ⟨T, hT⟩ : ∃ T : ℕ, 8 * T = 2 ^ m := by
@@ -769,7 +767,6 @@ theorem zlc_ge (m : ℕ) (hm : 3 ≤ m) :
   nlinarith
 
 /-- `ZLC/ARC = Ω(n / log³ n)` along the family, `n = |x_m| = m·2^m`. -/
-@[kb "cstarpaper-prop-reverse" (part := "the ratio along x_m")]
 theorem ratio :
     ∃ C : ℝ, 0 < C ∧ ∀ m : ℕ, 3 ≤ m →
       C * ((xm m).length : ℝ) / (SP.log2 ((xm m).length : ℝ)) ^ 3 ≤

@@ -230,7 +230,7 @@ theorem thm_lower (a : ℝ) (ha : a < 1 / 4) :
 
 /-- Corollary "c* = 1/4", first sentence: `1/4` is the least admissible exponent
 (so `c* = 1/4` and it is admissible). -/
-@[kb "cstarpaper-cor-cstar"]
+@[kb "cstarpaper-cor-cstar" (part := "uniform variant over all finite alphabets (the statement before fix5); other proof")]
 theorem cor_cstar : IsLeast {c : ℝ | AdmissibleO c} (1 / 4 : ℝ) := by
   refine ⟨admissible_quarter, fun c hc => ?_⟩
   obtain ⟨C, hC⟩ := hc
@@ -239,7 +239,7 @@ theorem cor_cstar : IsLeast {c : ℝ | AdmissibleO c} (1 / 4 : ℝ) := by
 
 /-- Corollary "c* = 1/4", second sentence: the same holds over every fixed finite alphabet with at
 least two letters. -/
-@[kb "cstarpaper-cor-cstar" (part := "fixed alphabet")]
+@[kb "cstarpaper-cor-cstar" (part := "fixed alphabet: the statement, other proof")]
 theorem cor_cstar_fixed_alphabet (α : Type) [Fintype α] [Nonempty α] (h : ∃ a b : α, a ≠ b) :
     IsLeast {c : ℝ | AdmissibleOAlpha α c} (1 / 4 : ℝ) := by
   refine ⟨⟨2 ^ (5 / 4 : ℝ), fun x hx => SP.CstarConst.arc_le_const x hx⟩, fun c hc => ?_⟩

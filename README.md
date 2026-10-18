@@ -1,20 +1,32 @@
-# Lean 4 formalisation for "Copying along arithmetic progressions cannot simulate interleaving: a tight n^{1/4} gap"
+# Lean 4 formalisation for "Copying along arithmetic progressions cannot simulate interleaving: the optimal exponent is 1/4"
 
-Machine-checked proofs (Lean 4 + Mathlib, no axioms beyond `propext`, `Classical.choice`, `Quot.sound`) of the main
-results of the paper by Matthias G. Mayer:
+Machine-checked proofs (Lean 4 + Mathlib; the only axioms are `propext`, `Classical.choice` and `Quot.sound`) for the
+paper by Matthias G. Mayer. Every definition, numbered statement and proof step of the paper has a Lean declaration;
+the formalisation along the paper's text is the namespace `SP.CstarText` (one directory per part of the paper). The
+correspondence between the paper and the Lean declarations is Appendix B (Table 2) of the paper.
+
+Main results (the paper's route):
 
 | Paper | Lean |
 |---|---|
-| Theorem 1.1: ARC(x) ≤ 2^{5/4} n^{1/4} ZLC(x) | `SP.CstarConst.arc_le_const` |
-| Theorem 1.2: for every a < 1/4 infinitely many binary words with ARC(x) ≥ n^a ZLC(x) | `SP.CstarPaper.thm_lower` |
-| Corollary 1.3: the optimal exponent is 1/4 (also over every fixed alphabet with ≥ 2 letters) | `SP.CstarPaper.cor_cstar`, `cor_cstar_fixed_alphabet` |
-| Remark (the constant cannot go below 2^{-1/4}) | `SP.CstarPaper.rem_constant` |
-| Proposition 1.5 (the reverse comparison) | `SP.ReverseUpper.zlc_le_arc`, `SP.Reverse.arc_le`, `zlc_ge`, `ratio` |
+| Theorem 1.1: ARC(x) ≤ 2^{5/4} n^{1/4} ZLC(x) | `SP.CstarText.UpperBound.thm_upper_paper` |
+| Theorem 1.2: for every a < 1/4, infinitely many binary words with ARC(x) ≥ n^a ZLC(x) | `SP.CstarText.SCFinal.thm_lower` |
+| Corollary 1.3: the least exponent is 1/4 | `SP.CstarText.IntroRev.cor_cstar` |
+| Corollary 1.4: synchronous versus general programs | `SP.CstarText.Sentences.cor_szlc_text` |
+| Proposition 1.5: the reverse comparison | `SP.CstarText.ReverseZ.prop_reverse` |
+| Remark 2.1: a grammar for z_m with at most log² n rules, and ZLC(z_m) ≥ n/(16 log n) | `SP.CstarText.RemMeasures.rem_measures_grammar`, `rem_measures_zlc` |
+| The scale bound (§4) and the relay words (§6) | `SP.CstarText.UpperBound.thm_scale`, `SP.CstarText.RefereeRev.thm_sc_rev` |
 
-The definitions (arithmetic repetition systems, ARC, zipline programs, ZLC, occurrences) are in `SP/Setting.lean`.
-The formal proof of Theorem 1.2 follows the paper's critical-position method with a fixed-depth variant of its
-construction; a formalisation that follows the paper's text step by step is in progress and will be added here.
+Cited results: Kosoy's Prop. 4.9 (ARC ≤ sZLC), used in the proof of Corollary 1.4, is formalised
+(`SP.CstarText.Kosoy49.kosoy_arc_le_szlc`). Her Prop. 4.7 (ARC ≤ 2(∛(2n) + 1) ZLC) and Lemma E.2, which the paper
+cites for comparison, and the results cited in Remark 2.1 (Kosoy's Prop. 4.3, Rytter's Thm. 1) are not formalised;
+where a sentence of the paper derives something from one of them, the Lean takes the cited result as a hypothesis.
 
-Build: `lake exe cache get && lake build`; `lake env lean Check.lean` prints the axioms of each result.
+An earlier formalisation of the main results by other proofs is also included (`SP.CstarConst.arc_le_const`,
+`SP.CstarPaper.thm_lower`, `SP.CstarPaper.cor_cstar`, `SP.ReverseUpper.zlc_le_arc`).
+The basic definitions (arithmetic repetition systems, ARC, zipline programs, ZLC, occurrences) are in
+`SP/Setting.lean`.
+
+Build: `lake exe cache get && lake build`; `lake env lean Check.lean` prints the axioms of the main declarations.
 Toolchain: see `lean-toolchain` (Mathlib pinned in `lake-manifest.json`).
 This repository is exported from the author's research project (`export.sh`); module names keep its `SP.` prefix.

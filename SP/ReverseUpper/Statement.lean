@@ -402,7 +402,7 @@ private theorem zlc_mul_log_le {α : Type} [Nonempty α] (x : List α) (hx : 2 �
 
 /-- There is an absolute constant `C` with `ZLC(x) ≤ C · n / log(n+1) · ARC(x)` for every word `x` of length
 `n ≥ 2` over any non-empty alphabet. -/
-@[kb "cstarpaper-prop-reverse"]
+@[kb "cstarpaper-prop-reverse" (part := "first statement: ZLC ≤ C n/ln(n+1) ARC (natural log, C = 42; other route)")]
 theorem zlc_le_arc :
     ∃ C : ℝ, 0 < C ∧ ∀ {α : Type} [Nonempty α] (x : List α), 2 ≤ x.length →
       (ZLC x : ℝ) ≤ C * x.length / Real.log (x.length + 1) * ARC x := by
