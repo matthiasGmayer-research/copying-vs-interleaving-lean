@@ -43,6 +43,7 @@ import SP.CstarText.Prelim.Steps.S04_Sync
 import SP.CstarText.Prelim.Steps.S05_Occ
 import SP.CstarText.Prelim.Steps.S06_LemOcc
 import SP.CstarText.Prelim.Steps.S07_ExZlp
+import SP.CstarText.ReadRev.Statement
 import SP.CstarText.RefereeRev.Statement
 import SP.CstarText.RemMeasures.Defs
 import SP.CstarText.RemMeasures.Statement

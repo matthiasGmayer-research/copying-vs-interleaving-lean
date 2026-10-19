@@ -167,15 +167,17 @@ namespace SP.CstarText.IntroRev
 
 open SP
 
-/-- cor-cstar (main.typ @ 0f9bf7e, §1.1): "Let `Σ` be a finite alphabet with at least two letters. The optimal
-exponent `c` in an inequality `ARC(x) ≤ C n^c ZLC(x)` for all `n ≥ 1` and `x ∈ Σ^n`, with a constant `C`, is
-`c = 1/4`, and it is attained." The statement of `cor_cstar`, assembled from the declarations of the paper's own
-proofs: thm-upper is `UpperBound.thm_upper_paper`, thm-lower is `SCFinal.thm_lower_conf` (its second sentence, which
-the proof of cor-cstar uses), and the steps are those of `Steps/S02_CorCstar.lean`.
-Proof: "By @thm-upper, `c = 1/4` is attained with `C = 2^(5/4)`. Let `c < 1/4`, `C > 0` and `c < a < 1/4`. Call two
-letters of `Σ` `0` and `1`; then the binary words of @thm-lower are words over `Σ`, with the same `ARC` … and at most
-the same `ZLC` … . They are infinitely many, hence of unbounded length, and those with `n^(a − c) > C` violate the
-inequality, as `ZLC(x) ≥ 1`." (The words of length 0, at most one, are dropped before choosing a long one.) -/
+/-- cor-cstar (main.typ @ 32338f3, §1.1): "Let `Σ` be a finite alphabet with at least two letters. The least
+exponent `c` such that for some constant `C`, `ARC(x) ≤ C n^c ZLC(x)` for all `n ≥ 1` and `x ∈ Σ^n` is `c = 1/4`."
+(`IsLeast` of the set of exponents `c` that admit a constant: `SP.CstarPaper.AdmissibleOAlpha`.) The statement of
+`cor_cstar`, assembled from the declarations of the paper's own proofs: thm-upper is `UpperBound.thm_upper_paper`,
+thm-lower is `SCFinal.thm_lower_conf` (its second sentence, which the proof of cor-cstar uses), and the steps are
+those of `Steps/S02_CorCstar.lean`.
+Proof: "By @thm-upper, the inequality holds with `c = 1/4` and `C = 2^(5/4)`. Let `c < 1/4` and `C > 0`, and fix `a`
+with `c < a < 1/4`. Without loss of generality `0, 1 ∈ Σ`; then the binary words of @thm-lower are words over `Σ`,
+with the same `ARC` … and at most the same `ZLC` … . They are infinitely many, hence of unbounded length, and those
+with `n^(a − c) > C` violate the inequality, as `ZLC(x) ≥ 1`." (The words of length 0, at most one, are dropped
+before choosing a long one.) -/
 @[kb "cstarpaper-cor-cstar" (part := "the paper's statement, from the paper's proofs of thm-upper and thm-lower")]
 theorem cor_cstar_text (α : Type) [Fintype α] [Nonempty α] (h : ∃ a b : α, a ≠ b) :
     IsLeast {c : ℝ | SP.CstarPaper.AdmissibleOAlpha α c} (1 / 4 : ℝ) := by

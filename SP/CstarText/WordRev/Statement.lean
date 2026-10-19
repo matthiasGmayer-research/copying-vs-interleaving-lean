@@ -30,8 +30,8 @@ theorem covers_iff_coversText (e : ArithInterval × ArithInterval) (h : e.1.len 
 
 /-- rem-constant (main.typ, block `rem-constant`), last sentence: "So `2^(5/4)` is optimal up to a factor `2^(3/2)`":
 over every alphabet with a letter, every constant `C` in an inequality `ARC(x) ≤ C n^(1/4) ZLC(x)` for all words
-(`n ≥ 1`) has `2^(5/4) ≤ 2^(3/2) C`, while `C = 2^(5/4)` works (thm-upper, paper route). -/
-@[kb "cstarpaper-rem-constant" (part := "2^(5/4) is optimal up to a factor 2^(3/2)")]
+(`n ≥ 1`) has `2^(5/4) ≤ 2^(3/2) C`, while `C = 2^(5/4)` works (thm-upper, paper route).
+No `kb` tag since main.typ c269e84 (2026-10-19), which dropped this clause from rem-constant. -/
 theorem rem_constant_factor {α : Type} [Nonempty α] :
     (∀ C : ℝ, (∀ x : List α, 1 ≤ x.length →
         (ARC x : ℝ) ≤ C * (x.length : ℝ) ^ (1 / 4 : ℝ) * (ZLC x : ℝ)) →

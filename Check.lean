@@ -15,6 +15,8 @@ import SP
 #check @SP.CstarText.ReverseZ.prop_reverse         -- Proposition 1.5
 #check @SP.CstarText.RemMeasures.rem_measures_grammar
 #check @SP.CstarText.RemMeasures.rem_measures_zlc
+#check @SP.CstarText.ReadRev.why_quarter_length     -- §1.2: no word with ARC ≥ H ZLC is shorter than H^4/32
+#check @SP.CstarText.ReadRev.rem_constant_all       -- Remark (the constant): every valid C is ≥ 2^(-1/4)
 
 #print axioms SP.CstarText.UpperBound.thm_upper_paper
 #print axioms SP.CstarText.SCFinal.thm_lower_conf
@@ -35,7 +37,9 @@ import SP
 #print axioms SP.CstarText.ReverseZ.lem_rev_arc         -- App. E: ARC(x_n) ≤ 2m + 5
 #print axioms SP.CstarText.ReverseZ.lem_rev_zlc         -- App. E: ZLC(z_m) ≥ B/8
 #print axioms SP.CstarText.SCSlots.lem_slots            -- Slot numbers (App. C)
-#print axioms SP.CstarPaper.rem_constant                -- Remark (the constant)
+#print axioms SP.CstarPaper.rem_constant                -- Remark (the constant): the computation for aa
+#print axioms SP.CstarText.ReadRev.rem_constant_all     -- Remark (the constant), first sentence
+#print axioms SP.CstarText.ReadRev.why_quarter_length   -- §1.2 "Why 1/4": the length H^4/32
 -- The earlier formalisation by other proofs:
 #print axioms SP.CstarConst.arc_le_const
 #print axioms SP.CstarPaper.thm_lower
