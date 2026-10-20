@@ -615,6 +615,7 @@ theorem step_final_a_gadgets (k : ℕ) (hk : 2 ≤ k) (hdiv : 8 ∣ SCParams.B k
 /-- main.typ 1320–1321: "the parents `Σ_h a_h ≤ W · 2M/X^k ≤ (2^(k+1)/e)C`". Context (frozen facts): def-slopes (the
 type of `h` is a type of `s_h`: `α_i(h) ∈ [X, 2X)`, so `Ψ_h ≥ X^k`; `s_h = Ψ_h a_h`); the slopes lie in `[M, 2M)`
 and `H ≤ W` (def-slopes); the previous bound `C ≥ MBe/(8(2X)^k)`; `8 ∣ B`. -/
+@[kb "cstarpaper-s-lem-sc-final-edges" (part := "SCFinal.step_final_a_parents")]
 theorem step_final_a_parents (k : ℕ) (hk : 2 ≤ k) (hdiv : 8 ∣ SCParams.B k ∧ 4 ∣ SCParams.e k)
     (htype : ∀ h < SCParams.H k, SCParams.IsType k (SCParams.s k h) (SCParams.typeOf k h))
     (hsa : ∀ h < SCParams.H k, SCParams.s k h = SCParams.Ψ k h * SCParams.a k h)

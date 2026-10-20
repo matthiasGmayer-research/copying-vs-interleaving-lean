@@ -421,6 +421,7 @@ theorem step_param_e_dvd (k : ℕ) (hk : 2 ≤ k) : 4 ∣ SCParams.e k := by
   exact Dvd.dvd.mul_right (Dvd.dvd.mul_left (dvd_pow_self 4 (by omega)) 128) _
 
 /-- The five bridges from def-params as one tuple (glue, proved from the atomic bridges above). -/
+@[kb "cstarpaper-def-params" (part := "SCFinal.step_params_basic")]
 theorem step_params_basic (k : ℕ) (hk : 2 ≤ k) :
     2 ≤ SCParams.u k ∧ 2 ≤ SCParams.X k ∧ 8 ≤ SCParams.B k ∧ 8 ∣ SCParams.B k ∧ 4 ∣ SCParams.e k :=
   ⟨step_param_u_ge k hk, step_param_X_ge k hk, step_param_B_ge k hk, step_param_B_dvd k hk,

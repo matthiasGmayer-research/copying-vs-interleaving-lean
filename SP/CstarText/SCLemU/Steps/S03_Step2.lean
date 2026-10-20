@@ -445,6 +445,7 @@ private theorem single_block_sum (D : Parents) (u : ℕ) (lam : ℝ) (L : ℕ) (
 vertex, `f_v(λ) = Π_c (1 + w(c)(f_c(λ) − 1))` over its real children `c`, as a set below `v` is a family
 of sets below its children, and `c` is on a path exactly when its set is not empty." (Given that each
 vertex other than the root is a real child of exactly one vertex, preamble.) -/
+@[kb "cstarpaper-st-u-moment" (part := "SCLemU.step_2_recursion")]
 theorem step_2_recursion (D : Parents) (hD : D.Facts) (u : ℕ)
     (hpar : ∀ y : Node D.H, IsTreeNode D y → y ≠ .root →
       IsInner D (above D y) ∧ y ∈ kids D (above D y) ∧

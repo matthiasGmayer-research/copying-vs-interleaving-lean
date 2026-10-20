@@ -1259,6 +1259,7 @@ take `j_y` given distinct slots of `y` is `1/(a_y (a_y − 1) ⋯ (a_y − j_y +
 real children (the root or a free vertex), a set `C` of its real children and distinct slots `s c` of
 `y` (`s c < a_y`), the probability that every `c ∈ C` takes slot `s c` is `1/(a_y)_(|C|)` (falling
 factorial). -/
+@[kb "cstarpaper-s-lem-u-otherwise" (part := "SCLemU.step_1_marginal")]
 theorem step_1_marginal (D : Parents) (hD : D.Facts) :
     ∀ y : Node D.H, IsInner D y → ∀ C : Finset (Node D.H), C ⊆ kids D y →
       ∀ s : Node D.H → ℕ, Set.InjOn s ↑C → (∀ c ∈ C, s c < arityN D y) →
@@ -1271,6 +1272,7 @@ theorem step_1_marginal (D : Parents) (hD : D.Facts) :
 
 /-- main.typ 1228, proof of lem-u, step 1: "`1/(a_y (a_y − 1) ⋯ (a_y − j_y + 1)) ≤ (a_y − u)^(−j_y)`"
 (for `j_y ≤ u < a_y`). -/
+@[kb "cstarpaper-s-lem-u-otherwise" (part := "SCLemU.step_1_falling")]
 theorem step_1_falling :
     ∀ a j u : ℕ, j ≤ u → u < a → (1 : ℝ) / (a.descFactorial j : ℝ) ≤ (((a : ℝ) - u)⁻¹) ^ j := by
   intro a j u hju hua

@@ -8,7 +8,7 @@ import SP.CstarText.IntroRev.Steps.S02_CorCstar
 
 `papers/cstar/draft/main.typ` @ 5d5c8f5 (fix6; the blocks changed in fix5), lines 206–240:
 * the sentence "Kosoy's bound implies an inequality of the form `ARC(x) ≤ C n^c ZLC(x)` … with `c = 1/3` and
-  `C = 2∛2 + 2`" (lines 206–207): `kosoy_form` (no label, no kb tag; Kosoy's bound is a hypothesis);
+  `C = 2∛2 + 2`" (lines 206–207): `kosoy_form` (tagged to `cstarpaper-sec-results` by the coverage audit 2026-10-20; Kosoy's bound is a hypothesis);
 * cor-cstar (lines 229–232), now ONE statement over a fixed alphabet with at least two letters, and its new short
   proof (lines 235–240): `cor_cstar`, assembled from the steps of `Steps/S02_CorCstar.lean`, with thm-upper
   (`SP.CstarConst.arc_le_const`) and thm-lower (`SP.CstarPaper.thm_lower`) cited (proved).
@@ -28,6 +28,7 @@ open SP
 Kosoy's bound (main.typ:136–139, [kosoy-ssp2, Prop. 4.7], "every `x ∈ Σ^n` satisfies
 `ARC(x) ≤ 2(∛(2n) + 1) ZLC(x)`") is the hypothesis `hK` (it is cited by the text, not proved here).
 -- convention: words of length `n ≥ 1` (at `n = 0` the form reads `ARC([]) ≤ 0`, true but not the point). -/
+@[kb "cstarpaper-sec-results" (part := "IntroRev.kosoy_form")]
 theorem kosoy_form
     (hK : ∀ {α : Type} [Nonempty α] (x : List α),
       (ARC x : ℝ) ≤ 2 * ((2 * x.length : ℝ) ^ (1 / 3 : ℝ) + 1) * ZLC x) :

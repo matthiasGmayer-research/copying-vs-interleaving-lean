@@ -34,6 +34,7 @@ private theorem step_ap_large_aux (R a b p p' : ℤ) (hR : 0 < R) (hp : 0 ≤ p)
 
 /-- main.typ 1273–1274: "With `ȳ_h := s_h(B(eh + ℓ) + κ) + c_h + γ`, which does not depend on the geometry,
 `y_h(ω) = R(ȳ_h + η_h(γ)) + π_h`." (`ybar` is a function of `k`, `h`, `ω` only.) -/
+@[kb "cstarpaper-st-ap-large" (part := "SCFinal.step_ap_large_ybar")]
 theorem step_ap_large_ybar (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k).H) (ω : Cell k) :
     point k σ h ω =
       ((paper k).R : ℤ) * (ybar k h ω + (η k σ h ω.1 : ℤ)) + ((paper k).π σ h : ℤ) := by

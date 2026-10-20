@@ -126,6 +126,7 @@ private theorem word_getElem?_of_lt (W : Labelled) (ω : W.Outcome) {k : ℕ} (h
 /-- main.typ:814–815, proof of prop-scheme, step 1 (st-scheme-cand), first part. Context: the hypotheses
 of prop-scheme. Claim: there are at most `|S| n³` candidates. (Second part, "they depend only on the
 labelling": `candidates` is defined from `W` and `S` only, with no outcome.) -/
+@[kb "cstarpaper-st-scheme-cand" (part := "Method.step_prop_scheme_1_count")]
 theorem step_prop_scheme_1_count {W : Labelled} {fix : W.RC → W.RC → Prop} {S S' : Finset ℕ} {u : ℕ}
     {ε : ℝ} (H : SchemeContext W fix S S' u ε) :
     (candidates W S u).Finite ∧ (candidates W S u).ncard ≤ S.card * W.n ^ 3 := by

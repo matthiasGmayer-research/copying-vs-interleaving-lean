@@ -150,6 +150,7 @@ theorem step_struct_b_q_range (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
 
 /-- main.typ 1108–1109, proof of (b): "So the residues `q mod a_h` are distinct" (from the two
 preceding sentences). -/
+@[kb "cstarpaper-lem-slots" (part := "SCStructure.step_struct_b_distinct")]
 theorem step_struct_b_distinct (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k).H)
     (hmono : ∀ γ ∈ Γ k, ∀ γ' ∈ Γ k, γ < γ' → q k σ h γ + 1 ≤ q k σ h γ')
     (hrange : ∀ γ ∈ Γ k, ∀ γ' ∈ Γ k, q k σ h γ' - q k σ h γ < (SCParams.a k h : ℤ)) :

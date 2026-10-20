@@ -66,6 +66,7 @@ private theorem apStep_mem_between {P : Set ℤ} {τ a b x : ℤ} (hP : IsAPStep
 /-- main.typ 1287–1289: "Let `Π` be a finite progression with `u²` points of `S` but points of `S'` of fewer than
 `u` cells. As `u² > (u − 1)(u + 1)`, some inner cell `ω = (γ, κ_0, ℓ_0)` has at least `u + 1` points in `Π`, of
 times `h_1 < h_2 < ⋯ < h_(u+1)`". Context: `S` is finite (lem-cores (a), `SCCores.S_finite`). -/
+@[kb "cstarpaper-st-ap-small" (part := "SCFinal.step_ap_small_pigeon")]
 theorem step_ap_small_pigeon (k : ℕ) (σ : (paper k).Geometry) (hSfin : (S k σ).Finite)
     (P : Set ℤ) (hcard : SCParams.u k ^ 2 ≤ {p : ℕ | p ∈ S k σ ∧ (p : ℤ) ∈ P}.ncard)
     (hfew : ¬ HasCells k σ P (SCParams.u k)) :
@@ -315,6 +316,7 @@ theorem step_ap_small_count (k : ℕ) (hk : 2 ≤ k) (hB8 : 8 ≤ SCParams.B k)
 one of these from all of them and adding `Bℓ_0 + κ_0` gives `u` distinct integers `Bℓ + κ` of the box, each
 `≡ Bℓ_0 + κ_0 (mod τ')`" — `u` distinct pairs `(κ_i, ℓ_i)` of the box `|κ − κ_0| ≤ δ_κ`, `|ℓ − ℓ_0| ≤ δ_ℓ`
 with `Bℓ_i + κ_i ≡ Bℓ_0 + κ_0 (mod τ')`. -/
+@[kb "cstarpaper-st-ap-small" (part := "SCFinal.step_ap_small_residue")]
 theorem step_ap_small_residue (k : ℕ) (hdK : dK k < SCParams.B k) (τ' : ℤ) (hτ' : 1 ≤ τ')
     (hcount : (SCParams.u k : ℤ) * τ' ≤ (((dL k + 1) * (dK k + 1) : ℕ) : ℤ)) (κ₀ ℓ₀ : ℤ) :
     ∃ κs ℓs : Fin (SCParams.u k) → ℤ, Function.Injective (fun i => (κs i, ℓs i)) ∧

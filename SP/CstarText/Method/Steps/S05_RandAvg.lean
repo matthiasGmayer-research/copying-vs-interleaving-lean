@@ -256,6 +256,7 @@ noncomputable def Eptr (f : (W.Cell → Fin W.D) → ℝ) : ℝ :=
 
 /-- main.typ:780–782, proof of lem-random, step 3, first part. Context: the hypotheses of lem-random.
 Claim: `b ≤ 2ν` (for every value `β` of the pointers). -/
+@[kb "cstarpaper-st-rand-union" (part := "Method.step_lem_random_3_bad")]
 theorem step_lem_random_3_bad (hW : W.Valid) (fix : W.RC → W.RC → Prop)
     (hfix : IsStrictTotalOrder W.RC fix) (req : Fin u → W.Requirement)
     (hreq : ∀ i : Fin u, (req i).Valid fix)

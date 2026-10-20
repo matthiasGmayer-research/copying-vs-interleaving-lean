@@ -23,6 +23,7 @@ Main results (the paper's route):
 | §1.2: no word with ARC(x) ≥ H ZLC(x) is shorter than H^4/32 (from Theorem 1.1) | `SP.CstarText.ReadRev.why_quarter_length` |
 | Lemma (properties of the relay words), the black box of §5.2 | `SP.CstarText.RelayRev.lem_relay` |
 | Remark (occurrences of two steps), its conclusion: synchronous iff all occurrences of each vertex have one step; if ARC(x) > ZLC(x), every smallest program for x has a vertex with occurrences of different steps | `SP.CstarText.ExZlpRev.sync_iff_same_step`, `SP.CstarText.ExZlpRev.gap_diff_steps` |
+| App. A, Conventions: both main theorems for ARSs whose equations have α(t) < α′(t) < n at every index (strict ARSs); the descent of a position (§3, proof of lem-structure (b)); further sentence-level claims of the coverage audit | `SP.CstarText.CoverageRev2.thm_upper_strict`, `SP.CstarText.CoverageRev2.thm_lower_strict`, `SP.CstarText.CoverageRev2.descent_spec`, `SP.CstarText.CoverageRev2.descent_passes_occ` (all of `SP/CstarText/CoverageRev2`) |
 | The scale bound (§4) and the relay words (§6) | `SP.CstarText.UpperBound.thm_scale`, `SP.CstarText.RefereeRev.thm_sc_rev` |
 
 Cited results: Kosoy's Prop. 4.9 (ARC ≤ sZLC), used in the proof of Corollary 1.4, is formalised

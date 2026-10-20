@@ -200,6 +200,7 @@ TEXT DEFECT D9 (stated with the proposed fix): the text's triples have `τ < n` 
 `SCCores.point_injective`), so a progression of step `τ ≥ n` contains at most one of them, fewer than `u ≥ 2`.
 Context (frozen facts): points of core cells are positions `< n` (lem-cores (a)); distinct
 (`SCCores.point_injective`); `u ≥ 2` (def-params). -/
+@[kb "cstarpaper-st-ap-large" (part := "SCFinal.step_ap_large_reduce")]
 theorem step_ap_large_reduce (k : ℕ) (σ : (paper k).Geometry)
     (hpt : ∀ (h : Fin (paper k).H) (ω : Cell k), IsCoreCell k ω →
       ∃ p : ℕ, point k σ h ω = (p : ℤ) ∧ p < SCStructure.n k)

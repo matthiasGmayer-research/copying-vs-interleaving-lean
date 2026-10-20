@@ -20,6 +20,9 @@ import SP
 #check @SP.CstarText.RelayRev.lem_relay              -- Lemma (properties of the relay words), §5.2
 #check @SP.CstarText.ExZlpRev.sync_iff_same_step     -- Remark (occurrences of two steps): the equivalence
 #check @SP.CstarText.ExZlpRev.gap_diff_steps         -- Remark (occurrences of two steps): the conclusion
+#check @SP.CstarText.CoverageRev2.thm_upper_strict     -- App. A Conventions: Theorem 1.1 for strict ARSs
+#check @SP.CstarText.CoverageRev2.thm_lower_strict     -- App. A Conventions: Theorem 1.2 for strict ARSs
+#check @SP.CstarText.CoverageRev2.descent_spec         -- §3, the descent of a position
 
 #print axioms SP.CstarText.UpperBound.thm_upper_paper
 #print axioms SP.CstarText.SCFinal.thm_lower_conf
@@ -46,6 +49,9 @@ import SP
 #print axioms SP.CstarText.RelayRev.lem_relay            -- Lemma (properties of the relay words), §5.2
 #print axioms SP.CstarText.ExZlpRev.sync_iff_same_step   -- Remark (occurrences of two steps): the equivalence
 #print axioms SP.CstarText.ExZlpRev.gap_diff_steps       -- Remark (occurrences of two steps): the conclusion
+#print axioms SP.CstarText.CoverageRev2.thm_upper_strict   -- App. A Conventions: Theorem 1.1 for strict ARSs
+#print axioms SP.CstarText.CoverageRev2.thm_lower_strict   -- App. A Conventions: Theorem 1.2 for strict ARSs
+#print axioms SP.CstarText.CoverageRev2.descent_spec       -- §3, the descent of a position
 -- The earlier formalisation by other proofs:
 #print axioms SP.CstarConst.arc_le_const
 #print axioms SP.CstarPaper.thm_lower

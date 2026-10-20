@@ -19,6 +19,7 @@ open SP
 
 /-- main.typ:206–207 (and its `@source` annotation). Claim: for `n ≥ 1`,
 `2(∛(2n) + 1) ≤ (2∛2 + 2) n^(1/3)` (`∛` is `Real.rpow · (1/3)`). -/
+@[kb "cstarpaper-sec-results" (part := "IntroRev.step_kosoy_form_factor")]
 theorem step_kosoy_form_factor (n : ℕ) (hn : 1 ≤ n) :
     2 * ((2 * n : ℝ) ^ (1 / 3 : ℝ) + 1) ≤
       (2 * (2 : ℝ) ^ (1 / 3 : ℝ) + 2) * (n : ℝ) ^ (1 / 3 : ℝ) := by

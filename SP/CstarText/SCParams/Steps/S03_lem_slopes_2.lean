@@ -481,6 +481,7 @@ theorem step_lem_slopes_2_5 (j ε : ℕ) (r c : Fin j → ℕ) (hr : r ∈ WeakC
 into the weak compositions of `ε` into `j²` parts".
 -- convention: a `j × j` matrix is flattened to a tuple indexed by `Fin (j ^ 2)` by any fixed
 bijection `Fin j × Fin j ≃ Fin (j ^ 2)`; the claim is the existence of the injection. -/
+@[kb "cstarpaper-s-lem-slopes-both" (part := "SCParams.step_lem_slopes_2_6")]
 theorem step_lem_slopes_2_6 (j ε : ℕ) :
     ∃ φ : (Fin j → ℕ) × (Fin j → ℕ) → (Fin (j ^ 2) → ℕ),
       Set.MapsTo φ (WeakComp ε j ×ˢ WeakComp ε j) (WeakComp ε (j ^ 2)) ∧
@@ -489,6 +490,7 @@ theorem step_lem_slopes_2_6 (j ε : ℕ) :
 
 /-- main.typ 900–903, lem-slopes step 2: the prime-power case of `d_j(s)² ≤ d_(j²)(s)` ("at a prime
 power `p^ε` … an injection into the weak compositions of `ε` into `j²` parts"). -/
+@[kb "cstarpaper-s-lem-slopes-both" (part := "SCParams.step_lem_slopes_2_7")]
 theorem step_lem_slopes_2_7 (j p ε : ℕ) (hp : p.Prime) : d j (p ^ ε) ^ 2 ≤ d (j ^ 2) (p ^ ε) := by
   exact s2_pp_sq j p ε hp
 
@@ -496,6 +498,7 @@ theorem step_lem_slopes_2_7 (j p ε : ℕ) (hp : p.Prime) : d j (p ^ ε) ^ 2 ≤
 summing `y / (f_1 ⋯ f_(j−1))` over the first `j − 1` factors".
 -- scope: stated for positive integers `y` and `j ≥ 1` (the text leaves `y` unspecified); the proof
 uses it only at `y = 2M`, `j = (k+1)²` (`step_lem_slopes_2_10`). `s ≤ y` ranges over `1 ≤ s ≤ y`. -/
+@[kb "cstarpaper-s-lem-slopes-claim2" (part := "SCParams.step_lem_slopes_2_8")]
 theorem step_lem_slopes_2_8 (j y : ℕ) (hj : 1 ≤ j) (hy : 1 ≤ y) :
     ∑ s ∈ Finset.Icc 1 y, (d j s : ℝ) ≤ (y : ℝ) * (1 + Real.log (y : ℝ)) ^ (j - 1) := by
   obtain ⟨m, rfl⟩ : ∃ m, j = m + 1 := ⟨j - 1, by omega⟩

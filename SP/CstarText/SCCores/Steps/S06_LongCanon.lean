@@ -564,6 +564,7 @@ proof of @lem-structure (@st-struct-decode)": an occurrence of `v_(γ,κ)` throu
 ZLP; (b) and `q_h(γ) ∈ ℕ` with `Ψ_h q_h(γ) = c_h + γ + η_h(γ) − ζ_h` (lem-structure); the free levels in `P_k`;
 the occurrences of `w_h` (`step_long_occ_parent`); `s_h = Ψ_h a_h` (def-slopes, frozen
 `SCParams.def_slopes_a`; added at the Codex gate, `a` being a natural-number quotient). -/
+@[kb "cstarpaper-rem-long" (part := "SCCores.step_long_formula")]
 theorem step_long_formula (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (pb : PtrBits k) (hzlp : IsZLP (Pk k σ pb))
     (hb : ∀ h : Fin (paper k).H,

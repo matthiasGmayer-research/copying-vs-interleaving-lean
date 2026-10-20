@@ -16,6 +16,15 @@ import SP.CstarSCStructure
 import SP.CstarSCThm
 import SP.CstarText.ConfRev.Statement
 import SP.CstarText.CoverageRev.Statement
+import SP.CstarText.CoverageRev2.Defs
+import SP.CstarText.CoverageRev2.Statement
+import SP.CstarText.CoverageRev2.Steps.S01_Descent
+import SP.CstarText.CoverageRev2.Steps.S02_StrictEq
+import SP.CstarText.CoverageRev2.Steps.S03_StrictConv
+import SP.CstarText.CoverageRev2.Steps.S04_StrictSplit
+import SP.CstarText.CoverageRev2.Steps.S05_StrictScale
+import SP.CstarText.CoverageRev2.Steps.S06_BoundsMeet
+import SP.CstarText.CoverageRev2.Steps.S07_Cheap
 import SP.CstarText.ExZlpRev.Statement
 import SP.CstarText.Intro.Statement
 import SP.CstarText.Intro.Steps.S01_CorCstarLower
