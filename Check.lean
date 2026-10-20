@@ -52,6 +52,8 @@ import SP
 #print axioms SP.CstarText.CoverageRev2.thm_upper_strict   -- App. A Conventions: Theorem 1.1 for strict ARSs
 #print axioms SP.CstarText.CoverageRev2.thm_lower_strict   -- App. A Conventions: Theorem 1.2 for strict ARSs
 #print axioms SP.CstarText.CoverageRev2.descent_spec       -- §3, the descent of a position
+#print axioms SP.CstarText.CoverageRev3.shift_paths        -- Lemma (all cyclic shifts): paths through the gadget
+#print axioms SP.CstarText.CoverageRev3.cut_occ            -- after Lemma (cut edges): the occurrence through the cut edge
 -- The earlier formalisation by other proofs:
 #print axioms SP.CstarConst.arc_le_const
 #print axioms SP.CstarPaper.thm_lower

@@ -25,6 +25,14 @@ import SP.CstarText.CoverageRev2.Steps.S04_StrictSplit
 import SP.CstarText.CoverageRev2.Steps.S05_StrictScale
 import SP.CstarText.CoverageRev2.Steps.S06_BoundsMeet
 import SP.CstarText.CoverageRev2.Steps.S07_Cheap
+import SP.CstarText.CoverageRev3.Defs
+import SP.CstarText.CoverageRev3.Statement
+import SP.CstarText.CoverageRev3.Steps.S01_LeastTree
+import SP.CstarText.CoverageRev3.Steps.S02_CutOcc
+import SP.CstarText.CoverageRev3.Steps.S03_ForwardEvery
+import SP.CstarText.CoverageRev3.Steps.S04_SlopesSum
+import SP.CstarText.CoverageRev3.Steps.S05_ShiftPaths
+import SP.CstarText.CoverageRev3.Steps.S06_SplitSlot
 import SP.CstarText.ExZlpRev.Statement
 import SP.CstarText.Intro.Statement
 import SP.CstarText.Intro.Steps.S01_CorCstarLower
