@@ -15,6 +15,9 @@ theorem step_inner_points (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h�
       ∃ p : ℕ, point k σ h ω = (p : ℤ) ∧ p < SCStructure.n k) ∧
     ∀ (h h' : Fin (paper k).H) (ω ω' : Cell k), IsInnerCell k ω → IsInnerCell k ω' →
       point k σ h ω = point k σ h' ω' → h = h' ∧ ω = ω' := by
-  sorry
+  refine ⟨fun h ω hω => ?_, fun h h' ω ω' hω hω' heq => ?_⟩
+  · obtain ⟨p, hp, hpn, -⟩ := SCCores.lem_cores_a_point k hk σ hσ h ω hω.1
+    exact ⟨p, hp, hpn⟩
+  · exact SCCores.point_injective k hk σ hσ h h' ω ω' hω.1 hω'.1 heq
 
 end SP.CstarText.CoverageRev4

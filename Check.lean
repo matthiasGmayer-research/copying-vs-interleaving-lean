@@ -62,6 +62,8 @@ import SP
 #print axioms SP.CstarText.CoverageRev2.descent_spec       -- §3, the descent of a position
 #print axioms SP.CstarText.CoverageRev3.shift_paths        -- Lemma (all cyclic shifts): paths through the gadget
 #print axioms SP.CstarText.CoverageRev3.cut_occ            -- after Lemma (cut edges): the occurrence through the cut edge
+#print axioms SP.CstarText.CoverageRev4.edge_layers        -- proof of Lemma (structure) (a): every edge goes down the layers
+#print axioms SP.CstarText.CoverageRev4.u_expected         -- proof of Lemma (few parents take prescribed digits): the moment chain
 -- The earlier formalisation by other proofs:
 #print axioms SP.CstarConst.arc_le_const
 #print axioms SP.CstarPaper.thm_lower

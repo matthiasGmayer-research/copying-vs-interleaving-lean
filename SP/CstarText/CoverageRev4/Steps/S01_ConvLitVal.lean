@@ -12,6 +12,14 @@ theorem step_conv_lit_val {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : L
     (hx : x <+: val P) (hn : 1 ≤ x.length) (q : Q) (j : ℕ) (a : α)
     (hj : (P.δ q)[j]? = some (.inr a)) (hF : firstPos P q j < x.length) :
     j < ell P q ∧ (value P (.inl q))[j]? = some a ∧ x[firstPos P q j]? = some a := by
-  sorry
+  have hlit := UpperConv.step_conv_lit P hP x hx hn q j a hj hF
+  obtain ⟨ρ, hρ, hρj⟩ := SP.Program.exists_firstPos P hP q j
+  have hρj' : ρ j = firstPos P q j := hρj
+  have hlt : ρ j < x.length := by rw [hρj']; exact hF
+  obtain ⟨h1, h2⟩ := (SP.lem_occurrence P hP x hx).1 q ρ j hρ hlt
+  have h3 : (value P (.inl q))[j]? = some a := by
+    rw [← h2, hρj']
+    exact hlit
+  exact ⟨h1, h3, hlit⟩
 
 end SP.CstarText.CoverageRev4

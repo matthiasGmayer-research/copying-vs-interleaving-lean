@@ -17,6 +17,6 @@ theorem step_lem_ap_raw (k : ℕ) (hk : 2 ≤ k) :
         ∃ (pos : Fin (SCParams.u k) → ℕ) (v : Fin (SCParams.u k) → SCStructure.RC k),
           (∀ i, pos i ∈ Sprime k σ ∧ (pos i : ℤ) ∈ P ∧ (LW k σ).Carries (pos i) (v i)) ∧
           ∀ i j, i ≠ j → SCStructure.cellOf k (v i) ≠ SCStructure.cellOf k (v j)) := by
-  sorry
+  exact (SP.CstarText.RelayRev.lem_relay k hk).2.2.2.1
 
 end SP.CstarText.CoverageRev4
