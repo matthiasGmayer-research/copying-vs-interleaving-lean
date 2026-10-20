@@ -45,6 +45,7 @@ import SP.CstarText.Prelim.Steps.S06_LemOcc
 import SP.CstarText.Prelim.Steps.S07_ExZlp
 import SP.CstarText.ReadRev.Statement
 import SP.CstarText.RefereeRev.Statement
+import SP.CstarText.RelayRev.Statement
 import SP.CstarText.RemMeasures.Defs
 import SP.CstarText.RemMeasures.Statement
 import SP.CstarText.Reverse.Defs

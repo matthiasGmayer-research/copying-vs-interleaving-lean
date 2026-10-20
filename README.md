@@ -21,6 +21,7 @@ Main results (the paper's route):
 | Remark 2.1: a grammar for z_m with at most log² n rules, and ZLC(z_m) ≥ n/(16 log n) | `SP.CstarText.RemMeasures.rem_measures_grammar`, `rem_measures_zlc` |
 | Remark (the constant): a constant valid for all words is at least 2^{−1/4} (the word aa) | `SP.CstarText.ReadRev.rem_constant_all`, from `SP.CstarPaper.rem_constant` |
 | §1.2: no word with ARC(x) ≥ H ZLC(x) is shorter than H^4/32 (from Theorem 1.1) | `SP.CstarText.ReadRev.why_quarter_length` |
+| Lemma (properties of the relay words), the black box of §5.2 | `SP.CstarText.RelayRev.lem_relay` |
 | The scale bound (§4) and the relay words (§6) | `SP.CstarText.UpperBound.thm_scale`, `SP.CstarText.RefereeRev.thm_sc_rev` |
 
 Cited results: Kosoy's Prop. 4.9 (ARC ≤ sZLC), used in the proof of Corollary 1.4, is formalised
