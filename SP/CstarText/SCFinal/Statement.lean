@@ -282,7 +282,6 @@ theorem thm_sc (k : ℕ) (hk : 2 ≤ k) :
 
 /-- The step of the proof of thm-lower (main.typ 1351): "@thm-sc gives, as `1 − 408 n^(−5) > 0`, a binary word
 `x_k`" — for every `k ≥ 2` some outcome (a geometry and pointers and bits) satisfies the chain of thm-sc. -/
-@[kb "cstarpaper-s-thm-sc-gives"]
 theorem sc_word_exists (k : ℕ) (hk : 2 ≤ k) :
     ∃ (σ : (paper k).Geometry) (pb : PtrBits k), (paper k).IsGeometry σ ∧ SCChain k σ pb :=
   step_jointProb_exists k (SCChain k) _
@@ -327,7 +326,6 @@ theorem thm_lower (a : ℝ) (ha : a < 1 / 4) :
 `ARC(x_k) ≥ n_k^(1/4) exp(−C (log n_k)^(2/3) (log log n_k)^(1/3)) ZLC(x_k)` (`log` to base 2).
 Structure: the factor lost (`step_loss_factor`), `k = Θ(…)` (`step_loss_k`, from lem-sc-final (b)), combined
 (`step_loss_combine`), applied to the words of thm-sc (`sc_word_exists`, `step_loss_final`). -/
-@[kb "cstarpaper-rem-loss"]
 theorem rem_loss :
     ∃ C : ℝ, 0 < C ∧ Filter.Tendsto (fun k => SCStructure.n k) Filter.atTop Filter.atTop ∧
       ∀ k : ℕ, 2 ≤ k → ∃ (σ : (paper k).Geometry) (pb : PtrBits k), (paper k).IsGeometry σ ∧

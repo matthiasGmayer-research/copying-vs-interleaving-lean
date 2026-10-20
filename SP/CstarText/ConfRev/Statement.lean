@@ -34,7 +34,6 @@ open SP.CstarText.SCStructure (PtrBits)
 /-- The first paragraph of the proof of thm-lower (main.typ @ 0f9bf7e, §6.4): "By @rem-loss, with its constant `C`,
 there is for every `k ≥ 2` a binary word `x_k` that satisfies the first inequality; its length is at least
 `X^(3(k+1)) ≥ 4` (@lem-sc-final (b)), which is unbounded in `k`, so these words are infinitely many." -/
-@[kb "cstarpaper-s-thm-lower-strong"]
 theorem step_lower_strong (C : ℝ)
     (h : ∀ k : ℕ, 2 ≤ k → ∃ (σ : (paper k).Geometry) (pb : PtrBits k), (paper k).IsGeometry σ ∧
         (SCStructure.x k σ pb).length = SCStructure.n k ∧

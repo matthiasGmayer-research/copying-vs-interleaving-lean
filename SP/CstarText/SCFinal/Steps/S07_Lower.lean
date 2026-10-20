@@ -12,7 +12,6 @@ namespace SP.CstarText.SCFinal
 
 /-- main.typ 1351: "For every `k ≥ 2` with `9/(64k + 96) ≤ 1/4 − a`" — for `a < 1/4` these are all `k` from some
 `k₀ ≥ 2` on. -/
-@[kb "cstarpaper-s-thm-sc-gives" (part := "SCFinal.step_lower_k")]
 theorem step_lower_k (a : ℝ) (ha : a < 1 / 4) :
     ∃ k₀ : ℕ, 2 ≤ k₀ ∧ ∀ k : ℕ, k₀ ≤ k → 9 / (64 * (k : ℝ) + 96) ≤ 1 / 4 - a := by
   have hδ : 0 < 1 / 4 - a := by linarith
@@ -49,7 +48,6 @@ theorem step_lower_pos (k : ℕ) (hk : 2 ≤ k) (hX : 2 ≤ SCParams.X k)
 
 /-- main.typ 1351–1352: "a binary word `x_k` with `ARC(x_k) ≥ n^a ZLC(x_k)`" — from
 `ARC ≥ n^(1/4 − 9/(64k+96)) ZLC` (thm-sc) and `a ≤ 1/4 − 9/(64k + 96)`, `n ≥ 1`. -/
-@[kb "cstarpaper-s-thm-sc-gives" (part := "SCFinal.step_lower_word")]
 theorem step_lower_word (n Z A a c : ℝ) (hn : 1 ≤ n) (hac : a ≤ c) (hZ : 0 ≤ Z)
     (h : n ^ c * Z ≤ A) : n ^ a * Z ≤ A := by
   calc n ^ a * Z ≤ n ^ c * Z := mul_le_mul_of_nonneg_right (Real.rpow_le_rpow_of_exponent_le hn hac) hZ
@@ -57,7 +55,6 @@ theorem step_lower_word (n Z A a c : ℝ) (hn : 1 ≤ n) (hac : a ≤ c) (hZ : 0
 
 /-- main.typ 1352: "Their lengths are at least `X^(3(k+1))`, unbounded in `k`" — for every `N` and `k₀` there is
 `k ≥ k₀` with `X^(3(k+1)) ≥ N` (`X ≥ 2`, def-params). -/
-@[kb "cstarpaper-s-thm-sc-lengths" (part := "SCFinal.step_lower_unbounded")]
 theorem step_lower_unbounded (hX : ∀ k : ℕ, 2 ≤ k → 2 ≤ SCParams.X k) (N k₀ : ℕ) :
     ∃ k : ℕ, k₀ ≤ k ∧ 2 ≤ k ∧ N ≤ SCParams.X k ^ (3 * (k + 1)) := by
   refine ⟨k₀ + N + 2, by omega, by omega, ?_⟩
@@ -69,7 +66,6 @@ theorem step_lower_unbounded (hX : ∀ k : ℕ, 2 ≤ k → 2 ≤ SCParams.X k) 
 -- IMPLICIT STANDARD FACT
 /-- main.typ 1352–1353: "…, unbounded in `k`; so these words are infinitely many" — a set of words that contains
 words of every length bound (unbounded lengths) is infinite. -/
-@[kb "cstarpaper-s-thm-sc-lengths"]
 theorem step_lower_infinite (T : Set (List Bool)) (h : ∀ N : ℕ, ∃ x ∈ T, N ≤ x.length) :
     T.Infinite := by
   intro hfin

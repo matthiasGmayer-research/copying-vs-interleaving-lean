@@ -358,7 +358,6 @@ theorem step_jointProb_total (k : ℕ)
 -- IMPLICIT STANDARD FACT
 /-- An event of positive joint probability has an outcome (proof of thm-lower, main.typ 1351: "@thm-sc gives,
 as `1 − 408 n^(−5) > 0`, a binary word `x_k` with …"). -/
-@[kb "cstarpaper-s-thm-sc-gives" (part := "SCFinal.step_jointProb_exists")]
 theorem step_jointProb_exists (k : ℕ) (E : (paper k).Geometry → PtrBits k → Prop) (c : ℝ) (hc : 0 < c)
     (h : c ≤ jointProb k E) :
     ∃ (σ : (paper k).Geometry) (pb : PtrBits k), (paper k).IsGeometry σ ∧ E σ pb := by

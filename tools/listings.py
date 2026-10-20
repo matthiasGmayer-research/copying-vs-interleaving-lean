@@ -55,6 +55,8 @@ SPEC = [
     ("misc", "SP.CstarText.SCStructure", SCSTRUCT, "noncomputable def x (k"),
     ("upper", "SP.CstarText.UpperBound", "CstarText/UpperBound/Statement.lean", "theorem thm_upper_paper "),
     ("lower", "SP.CstarText.SCFinal", "CstarText/ConfRev/Statement.lean", "theorem thm_lower_strong "),
+    ("lower", "SP.CstarText.EveryLength", "CstarText/EveryLength/Defs.lean", "def lossFactor "),
+    ("lower", "SP.CstarText.EveryLength", "CstarText/EveryLength/Statement.lean", "theorem thm_lower_every "),
     ("lower", "SP.CstarText.SCFinal", "CstarText/SCFinal/Statement.lean", "theorem thm_lower "),
     ("lower", "SP.CstarText.SCFinal", "CstarText/ConfRev/Statement.lean", "theorem thm_lower_conf "),
     ("lower", "SP.CstarText.SCFinal", "CstarText/SCFinal/Statement.lean", "theorem rem_loss "),

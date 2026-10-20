@@ -11,10 +11,11 @@ Main results (the paper's route):
 | Paper | Lean |
 |---|---|
 | Theorem 1.1: ARC(x) ≤ 2^{5/4} n^{1/4} ZLC(x) | `SP.CstarText.UpperBound.thm_upper_paper` |
-| Theorem 1.2, as stated (both sentences) | `SP.CstarText.SCFinal.thm_lower_conf` |
-| Theorem 1.2, first sentence: some C > 0 and infinitely many binary words, n ≥ 4, with ARC(x) ≥ n^{1/4} exp(−C (log n)^{2/3} (log log n)^{1/3}) ZLC(x) | `SP.CstarText.SCFinal.thm_lower_strong` |
-| Theorem 1.2, second sentence: for every a < 1/4, infinitely many binary words with ARC(x) ≥ n^a ZLC(x) | `SP.CstarText.SCFinal.thm_lower` |
-| Lemma (the loss), on which the first sentence rests | `SP.CstarText.SCFinal.rem_loss` |
+| Theorem 1.2, as stated (both sentences; every length) | `SP.CstarText.EveryLength.thm_lower_every` |
+| Theorem 1.2, first sentence: some C > 0 and n₀ such that for every n ≥ n₀ some binary word x of length n has ARC(x) ≥ n^{1/4} exp(−C (log n)^{2/3} (log log n)^{1/3}) ZLC(x) | `SP.CstarText.EveryLength.thm_lower_every_first` |
+| Theorem 1.2, second sentence: for every a < 1/4 and every large n, some binary word of length n with ARC(x) ≥ n^a ZLC(x) | `SP.CstarText.EveryLength.thm_lower_every_second` |
+| The proof of Theorem 1.2 (App. C.7): st-lower-prefix, st-lower-aux (the auxiliary family `SP.CstarText.EveryLength.AuxFam`, L := ⌈1024 k² log(k+2)⌉), st-lower-lengths, st-lower-assemble | `SP.CstarText.EveryLength.step_lower_prefix`, `step_lower_aux`, `step_lower_lengths`, `step_lower_assemble` |
+| Former form of Theorem 1.2 (infinitely many words; used by Corollaries 1.3, 1.4): both sentences, first, second; the loss along the relay lengths | `SP.CstarText.SCFinal.thm_lower_conf`, `thm_lower_strong`, `thm_lower`, `rem_loss` |
 | Corollary 1.3: the least exponent is 1/4 (from the two theorems above) | `SP.CstarText.IntroRev.cor_cstar_text` |
 | Corollary 1.4: synchronous versus general programs | `SP.CstarText.Sentences.cor_szlc_text` |
 | Proposition 1.5: the reverse comparison | `SP.CstarText.ReverseZ.prop_reverse` |
@@ -23,7 +24,7 @@ Main results (the paper's route):
 | §1.2: no word with ARC(x) ≥ H ZLC(x) is shorter than H^4/32 (from Theorem 1.1) | `SP.CstarText.ReadRev.why_quarter_length` |
 | Lemma (properties of the relay words), the black box of §5.2 | `SP.CstarText.RelayRev.lem_relay` |
 | Remark (occurrences of two steps), its conclusion: synchronous iff all occurrences of each vertex have one step; if ARC(x) > ZLC(x), every smallest program for x has a vertex with occurrences of different steps | `SP.CstarText.ExZlpRev.sync_iff_same_step`, `SP.CstarText.ExZlpRev.gap_diff_steps` |
-| App. A, Conventions: both main theorems for ARSs whose equations have α(t) < α′(t) < n at every index (strict ARSs); the descent of a position (§3, proof of lem-structure (b)); further sentence-level claims of the coverage audit | `SP.CstarText.CoverageRev2.thm_upper_strict`, `SP.CstarText.CoverageRev2.thm_lower_strict`, `SP.CstarText.CoverageRev2.descent_spec`, `SP.CstarText.CoverageRev2.descent_passes_occ` (all of `SP/CstarText/CoverageRev2`) |
+| App. A, Conventions: both main theorems for ARSs whose equations have α(t) < α′(t) < n at every index (strict ARSs); the descent of a position (§3, proof of lem-structure (b)); further sentence-level claims of the coverage audit | `SP.CstarText.CoverageRev2.thm_upper_strict`, `SP.CstarText.CoverageRev2.thm_lower_strict` (former form; every length: `SP.CstarText.EveryLength.thm_lower_every_strict`), `SP.CstarText.CoverageRev2.descent_spec`, `SP.CstarText.CoverageRev2.descent_passes_occ` (all of `SP/CstarText/CoverageRev2`) |
 | Sentences reworded in the style round (2026-10-20) that state more than before: the paths through the shift gadget (lem-shifts), the occurrence through the cut edge, least occurrences along tree slots, the forward-equation symbols, the slope-type sum, the literal of a letter slot | `SP.CstarText.CoverageRev3.shift_paths`, `cut_occ`, `least_tree_slot`, `forward_every`, `slopes_sum_pow`, `split_slot_literal` (all of `SP/CstarText/CoverageRev3`) |
 | The scale bound (§4) and the relay words (§6) | `SP.CstarText.UpperBound.thm_scale`, `SP.CstarText.RefereeRev.thm_sc_rev` |
 

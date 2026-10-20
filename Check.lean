@@ -5,7 +5,11 @@ import SP
 
 -- The paper's route (namespace SP.CstarText, the formalisation along the text):
 #check @SP.CstarText.UpperBound.thm_upper_paper    -- Theorem 1.1: ARC(x) ≤ 2^(5/4) n^(1/4) ZLC(x)
-#check @SP.CstarText.SCFinal.thm_lower_conf        -- Theorem 1.2, both sentences
+#check @SP.CstarText.EveryLength.thm_lower_every   -- Theorem 1.2, both sentences (every length)
+#check @SP.CstarText.EveryLength.thm_lower_every_first   -- Theorem 1.2, first sentence
+#check @SP.CstarText.EveryLength.thm_lower_every_second  -- Theorem 1.2, second sentence
+#check @SP.CstarText.EveryLength.thm_lower_every_strict  -- App. A Conventions: Theorem 1.2 (every length) for strict ARSs
+#check @SP.CstarText.SCFinal.thm_lower_conf        -- former form of Theorem 1.2 (infinitely many words), both sentences
 #check @SP.CstarText.SCFinal.thm_lower_strong      -- Theorem 1.2, first sentence (the loss explicit)
 #check @SP.CstarText.SCFinal.thm_lower             -- Theorem 1.2, second sentence (every a < 1/4)
 #check @SP.CstarText.SCFinal.rem_loss              -- Lemma (the loss)
@@ -25,6 +29,10 @@ import SP
 #check @SP.CstarText.CoverageRev2.descent_spec         -- §3, the descent of a position
 
 #print axioms SP.CstarText.UpperBound.thm_upper_paper
+#print axioms SP.CstarText.EveryLength.thm_lower_every
+#print axioms SP.CstarText.EveryLength.thm_lower_every_first
+#print axioms SP.CstarText.EveryLength.thm_lower_every_second
+#print axioms SP.CstarText.EveryLength.thm_lower_every_strict
 #print axioms SP.CstarText.SCFinal.thm_lower_conf
 #print axioms SP.CstarText.SCFinal.thm_lower_strong
 #print axioms SP.CstarText.SCFinal.thm_lower
