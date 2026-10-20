@@ -22,6 +22,7 @@ Main results (the paper's route):
 | Remark (the constant): a constant valid for all words is at least 2^{−1/4} (the word aa) | `SP.CstarText.ReadRev.rem_constant_all`, from `SP.CstarPaper.rem_constant` |
 | §1.2: no word with ARC(x) ≥ H ZLC(x) is shorter than H^4/32 (from Theorem 1.1) | `SP.CstarText.ReadRev.why_quarter_length` |
 | Lemma (properties of the relay words), the black box of §5.2 | `SP.CstarText.RelayRev.lem_relay` |
+| Remark (occurrences of two steps), its conclusion: synchronous iff all occurrences of each vertex have one step; if ARC(x) > ZLC(x), every smallest program for x has a vertex with occurrences of different steps | `SP.CstarText.ExZlpRev.sync_iff_same_step`, `SP.CstarText.ExZlpRev.gap_diff_steps` |
 | The scale bound (§4) and the relay words (§6) | `SP.CstarText.UpperBound.thm_scale`, `SP.CstarText.RefereeRev.thm_sc_rev` |
 
 Cited results: Kosoy's Prop. 4.9 (ARC ≤ sZLC), used in the proof of Corollary 1.4, is formalised

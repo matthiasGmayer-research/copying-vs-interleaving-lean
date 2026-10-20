@@ -18,6 +18,8 @@ import SP
 #check @SP.CstarText.ReadRev.why_quarter_length     -- §1.2: no word with ARC ≥ H ZLC is shorter than H^4/32
 #check @SP.CstarText.ReadRev.rem_constant_all       -- Remark (the constant): every valid C is ≥ 2^(-1/4)
 #check @SP.CstarText.RelayRev.lem_relay              -- Lemma (properties of the relay words), §5.2
+#check @SP.CstarText.ExZlpRev.sync_iff_same_step     -- Remark (occurrences of two steps): the equivalence
+#check @SP.CstarText.ExZlpRev.gap_diff_steps         -- Remark (occurrences of two steps): the conclusion
 
 #print axioms SP.CstarText.UpperBound.thm_upper_paper
 #print axioms SP.CstarText.SCFinal.thm_lower_conf
@@ -42,6 +44,8 @@ import SP
 #print axioms SP.CstarText.ReadRev.rem_constant_all     -- Remark (the constant), first sentence
 #print axioms SP.CstarText.ReadRev.why_quarter_length   -- §1.2 "Why 1/4": the length H^4/32
 #print axioms SP.CstarText.RelayRev.lem_relay            -- Lemma (properties of the relay words), §5.2
+#print axioms SP.CstarText.ExZlpRev.sync_iff_same_step   -- Remark (occurrences of two steps): the equivalence
+#print axioms SP.CstarText.ExZlpRev.gap_diff_steps       -- Remark (occurrences of two steps): the conclusion
 -- The earlier formalisation by other proofs:
 #print axioms SP.CstarConst.arc_le_const
 #print axioms SP.CstarPaper.thm_lower
