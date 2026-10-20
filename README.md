@@ -17,7 +17,7 @@ Main results (the paper's route):
 | The proof of Theorem 1.2 (App. C.7): st-lower-prefix, st-lower-aux (the auxiliary family `SP.CstarText.EveryLength.AuxFam`, L := ⌈1024 k² log(k+2)⌉), st-lower-lengths, st-lower-assemble | `SP.CstarText.EveryLength.step_lower_prefix`, `step_lower_aux`, `step_lower_lengths`, `step_lower_assemble` |
 | Former form of Theorem 1.2 (infinitely many words; used by Corollaries 1.3, 1.4): both sentences, first, second; the loss along the relay lengths | `SP.CstarText.SCFinal.thm_lower_conf`, `thm_lower_strong`, `thm_lower`, `rem_loss` |
 | Corollary 1.3: the least exponent is 1/4 (from the two theorems above) | `SP.CstarText.IntroRev.cor_cstar_text` |
-| Corollary 1.4: synchronous versus general programs | `SP.CstarText.Sentences.cor_szlc_text` |
+| Corollary 1.4: synchronous versus general programs (every large length n: some binary word of length n with sZLC(x) ≥ n^a ZLC(x), every a < 1/4) | `SP.CstarText.CorSzlcEvery.cor_szlc_every` (former form, infinitely many words: `SP.CstarText.Sentences.cor_szlc_text`) |
 | Proposition 1.5: the reverse comparison | `SP.CstarText.ReverseZ.prop_reverse` |
 | Remark 2.1: a grammar for z_m with at most log² n rules, and ZLC(z_m) ≥ n/(16 log n) | `SP.CstarText.RemMeasures.rem_measures_grammar`, `rem_measures_zlc` |
 | Remark (the constant): a constant valid for all words is at least 2^{−1/4} (the word aa) | `SP.CstarText.ReadRev.rem_constant_all`, from `SP.CstarPaper.rem_constant` |

@@ -15,6 +15,7 @@ import SP.CstarSCProgram
 import SP.CstarSCStructure
 import SP.CstarSCThm
 import SP.CstarText.ConfRev.Statement
+import SP.CstarText.CorSzlcEvery.Statement
 import SP.CstarText.CoverageRev.Statement
 import SP.CstarText.CoverageRev2.Defs
 import SP.CstarText.CoverageRev2.Statement

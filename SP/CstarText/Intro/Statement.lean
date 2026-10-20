@@ -69,7 +69,6 @@ Kosoy's Prop. 4.9 is `SP.CstarText.Kosoy49.kosoy_arc_le_szlc` (CITED (external),
 thm-lower is `SP.CstarPaper.thm_lower`.
 -- convention: as `SP.CstarPaper.thm_lower`, the words have `n = |x| ≥ 1` (a stronger statement:
 the set without this condition is a superset). -/
-@[kb "cstarpaper-cor-szlc"]
 theorem cor_szlc (a : ℝ) (ha : a < 1 / 4) :
     Set.Infinite {x : List Bool | 1 ≤ x.length ∧
       (x.length : ℝ) ^ a * (ZLC x : ℝ) ≤ (SP.CstarText.Prelim.sZLC x : ℝ)} := by

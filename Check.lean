@@ -14,7 +14,8 @@ import SP
 #check @SP.CstarText.SCFinal.thm_lower             -- Theorem 1.2, second sentence (every a < 1/4)
 #check @SP.CstarText.SCFinal.rem_loss              -- Lemma (the loss)
 #check @SP.CstarText.IntroRev.cor_cstar_text       -- Corollary 1.3, from the paper's proofs of Thms 1.1 and 1.2
-#check @SP.CstarText.Sentences.cor_szlc_text       -- Corollary 1.4
+#check @SP.CstarText.CorSzlcEvery.cor_szlc_every    -- Corollary 1.4 (every large length)
+#check @SP.CstarText.Sentences.cor_szlc_text       -- former form of Corollary 1.4 (infinitely many words)
 #check @SP.CstarText.Kosoy49.kosoy_arc_le_szlc     -- Kosoy's Prop. 4.9 (cited, used by Corollary 1.4)
 #check @SP.CstarText.ReverseZ.prop_reverse         -- Proposition 1.5
 #check @SP.CstarText.RemMeasures.rem_measures_grammar
@@ -39,6 +40,7 @@ import SP
 #print axioms SP.CstarText.SCFinal.rem_loss
 #print axioms SP.CstarText.IntroRev.cor_cstar_text
 #print axioms SP.CstarText.IntroRev.cor_cstar           -- Corollary 1.3 citing the earlier proofs of Thms 1.1, 1.2
+#print axioms SP.CstarText.CorSzlcEvery.cor_szlc_every
 #print axioms SP.CstarText.Sentences.cor_szlc_text
 #print axioms SP.CstarText.Kosoy49.kosoy_arc_le_szlc
 #print axioms SP.CstarText.ReverseZ.prop_reverse

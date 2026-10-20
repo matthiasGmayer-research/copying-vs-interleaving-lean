@@ -62,7 +62,7 @@ SPEC = [
     ("lower", "SP.CstarText.SCFinal", "CstarText/SCFinal/Statement.lean", "theorem rem_loss "),
     ("cors", "SP.CstarText.IntroRev", "CstarText/ConfRev/Statement.lean", "theorem cor_cstar_text "),
     ("cors", "SP.CstarText.IntroRev", "CstarText/IntroRev/Statement.lean", "theorem cor_cstar "),
-    ("cors", "SP.CstarText.Sentences", "CstarText/Sentences/CorSzlc.lean", "theorem cor_szlc_text "),
+    ("cors", "SP.CstarText.CorSzlcEvery", "CstarText/CorSzlcEvery/Statement.lean", "theorem cor_szlc_every "),
     ("reverse", "SP.CstarText.ReverseZ", "CstarText/ReverseZ/Statement.lean", "theorem prop_reverse "),
 ]
 
