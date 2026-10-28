@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Run the dependency-route check of tools/Deps.lean on every declaration named in the paper's Lean table (App. F.2).
+"""Run the dependency-route check of tools/Deps.lean on every declaration named in the correspondence table of README.md (formerly the paper's App. F.2).
 
-usage: tools/deps.py MAIN.typ [--lean-dir DIR]
-Reads the names in backquotes from the table `tab-lean` of MAIN.typ (relative to SP.CstarText unless they begin
+usage: tools/deps.py README.md [--lean-dir DIR]
+Reads the names in backquotes from the table `tab-lean` of README.md (or of a .typ) (relative to SP.CstarText unless they begin
 with SP.), writes a copy of tools/Deps.lean with these targets to a temporary file in DIR (default: this repository)
 and runs `lake env lean` on it in DIR. Prints one line per declaration: its route and, if it uses theorems outside
 SP.CstarText, which. Unknown names are reported by Lean as errors.
@@ -14,8 +14,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 def table_names(main):
     src = open(main, encoding="utf-8").read()
-    a = src.index("table.header([*paper*]")
-    b = src.index(")\n})", a) if ")\n})" in src[a:] else len(src)
+    if "<!-- tab-lean -->" in src:   # README.md (since 2026-10-28)
+        a = src.index("<!-- tab-lean -->")
+        b = src.index("<!-- /tab-lean -->", a)
+    else:                            # the paper's former App. F.2 (Typst table tab-lean)
+        a = src.index("table.header([*paper*]")
+        b = src.index(")\n})", a) if ")\n})" in src[a:] else len(src)
     names = []
     for row in src[a:b].splitlines():
         if row.strip().startswith("//"):

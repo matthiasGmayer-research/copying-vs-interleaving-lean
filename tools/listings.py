@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""The Lean listings of the paper's Appendix F.1, extracted from the source of this repository, and their check.
+"""The Lean listings of README.md ("The main statements in Lean"; formerly the paper's Appendix F.1), extracted from the source of this repository, and their check.
 
 usage:
   tools/listings.py                      print the listings (one block per paper listing) to stdout
   tools/listings.py --out FILE           also write them to FILE
-  tools/listings.py --check MAIN.typ     compare with the ```lean blocks of Appendix F.1 of the paper
+  tools/listings.py --check README.md    compare with the ```lean blocks of README.md (or of a .typ with <app-lean-main>)
 
 Extraction: each declaration is copied verbatim from its source file, from its first line (after the docstring and
 the attributes) to the end of the declaration header: for a theorem up to `:=` (the proof is dropped), for a
@@ -129,8 +129,10 @@ def norm(t):
 
 def paper_units(main):
     src = open(main, encoding="utf-8").read()
-    a = src.index("<app-lean-main>")
-    b = src.index("<app-lean-map>", a)
+    # README.md (since 2026-10-28) marks the section with HTML comments; the paper's former App. F used labels
+    ma, mb = ("<!-- app-lean-main -->", "<!-- app-lean-map -->") if "<!-- app-lean-main -->" in src else ("<app-lean-main>", "<app-lean-map>")
+    a = src.index(ma)
+    b = src.index(mb, a)
     units = []  # (unit, namespace in force: the last namespace comment of the block, else SP)
     for blk in re.findall(r"```lean\n(.*?)```", src[a:b], re.S):
         cur, ns = [], None

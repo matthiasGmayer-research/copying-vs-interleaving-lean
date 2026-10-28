@@ -1,7 +1,7 @@
 import SP
 -- The paper's main declarations: their statements (#check) and their axioms (#print axioms; expected for each:
 -- propext, Classical.choice, Quot.sound). Run: `lake env lean Check.lean` (after `lake build`).
--- The exact source text of the declarations listed in Appendix F.1: `python3 tools/listings.py`.
+-- The exact source text of the declarations listed in README.md ("The main statements in Lean"): `python3 tools/listings.py`.
 
 -- The paper's route (namespace SP.CstarText, the formalisation along the text):
 #check @SP.CstarText.UpperBound.thm_upper_paper    -- Theorem 1.1: ARC(x) ≤ 2^(5/4) n^(1/4) ZLC(x)
