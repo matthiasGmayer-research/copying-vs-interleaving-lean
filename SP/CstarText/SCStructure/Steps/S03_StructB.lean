@@ -35,7 +35,7 @@ private theorem mem_Gamma_iff (k γ : ℕ) :
 `c_h + γ + η_h(γ) − ζ_h` is a multiple of `Ψ_h` greater than `−Ψ_h` (as `ζ_h < Ψ_h` by @lem-free (b)),
 hence non-negative, so `q ∈ ℕ`." Context: the defining property of `η` (`step_def_sc_eta`),
 `ζ_h < Ψ_h` (lem-free (b)), `c_h ≥ 0` (`step_c_nonneg`). -/
-@[kb "cstarpaper-s-lem-structure-numerator"]
+-- kb tag retired 2026-10-28 (superseded by C1Structure/Steps/S03_StructB.lean:step_struct_b_q_nat): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-numerator"]
 theorem step_struct_b_q_nat (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h : Fin (paper k).H)
     (γ : ℕ)
     (heta : 1 ≤ η k σ h γ ∧ η k σ h γ ≤ SCParams.Ψ k h ∧
@@ -67,7 +67,7 @@ theorem step_struct_b_q_nat (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (
 `Ψ_* − Ψ_h ≥ 0`, hence by a positive multiple of `Ψ_h`: `q` grows by at least `1`" — for `γ < γ'` in `Γ`
 (multiples of `Ψ_*`), `q_h(γ) + 1 ≤ q_h(γ')`. Context: `1 ≤ η ≤ Ψ_h`, `q` exact (`step_struct_b_q_nat`),
 `1 ≤ Ψ_h ≤ Ψ_*` (`step_psi_le_psistar`). -/
-@[kb "cstarpaper-s-lem-structure-grows"]
+-- kb tag retired 2026-10-28 (superseded by C1Structure/Steps/S03_StructB.lean:step_struct_b_q_mono): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-grows"]
 theorem step_struct_b_q_mono (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h : Fin (paper k).H)
     (heta : ∀ γ : ℕ, 1 ≤ η k σ h γ ∧ η k σ h γ ≤ SCParams.Ψ k h)
     (hq : ∀ γ : ℕ,
@@ -114,7 +114,7 @@ theorem step_struct_b_q_mono (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) 
 `(s_(H−1)/4 + Ψ_h)/Ψ_h ≤ a_h/4 + 1 < a_h`, as `s_(H−1) ≤ s_h = Ψ_h a_h`" — for `γ, γ' ∈ Γ`,
 `q_h(γ') − q_h(γ) < a_h`. Context: `1 ≤ η ≤ Ψ_h`, `q` exact, `s_(H−1) ≤ s_h`, `s_h = Ψ_h a_h`,
 `a_h ≥ 2` (def-slopes). -/
-@[kb "cstarpaper-s-lem-structure-ranges"]
+-- kb tag retired 2026-10-28 (superseded by C1Structure/Steps/S03_StructB.lean:step_struct_b_q_range): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-ranges"]
 theorem step_struct_b_q_range (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h : Fin (paper k).H)
     (heta : ∀ γ : ℕ, 1 ≤ η k σ h γ ∧ η k σ h γ ≤ SCParams.Ψ k h)
     (hq : ∀ γ : ℕ,
@@ -150,7 +150,7 @@ theorem step_struct_b_q_range (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
 
 /-- main.typ 1108–1109, proof of (b): "So the residues `q mod a_h` are distinct" (from the two
 preceding sentences). -/
-@[kb "cstarpaper-lem-slots" (part := "SCStructure.step_struct_b_distinct")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-slots" (part := "SCStructure.step_struct_b_distinct")]
 theorem step_struct_b_distinct (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k).H)
     (hmono : ∀ γ ∈ Γ k, ∀ γ' ∈ Γ k, γ < γ' → q k σ h γ + 1 ≤ q k σ h γ')
     (hrange : ∀ γ ∈ Γ k, ∀ γ' ∈ Γ k, q k σ h γ' - q k σ h γ < (SCParams.a k h : ℤ)) :
@@ -176,7 +176,7 @@ theorem step_struct_b_distinct (k : ℕ) (σ : (paper k).Geometry) (h : Fin (pap
 
 /-- main.typ 1110, proof of (b): "`a_h ≥ M/(2X)^k ≥ 4`". Context: `s_h = Ψ_h a_h`, `M ≤ s_h` (the window
 lies in `[M, 2M)`), `Ψ_h ≤ Ψ_* ≤ (2X)^k` (def-slopes), `(2X)^k ≤ B/4` (lem-params (b)). -/
-@[kb "cstarpaper-s-lem-structure-claim" (part := "SCStructure.step_struct_b_a_ge")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-claim" (part := "SCStructure.step_struct_b_a_ge")]
 theorem step_struct_b_a_ge (k : ℕ) (hk : 2 ≤ k) (h : ℕ)
     (hsa : SCParams.s k h = SCParams.Ψ k h * SCParams.a k h)
     (hM : SCParams.M k ≤ SCParams.s k h)
@@ -235,7 +235,7 @@ theorem step_struct_b_a_ge (k : ℕ) (hk : 2 ≤ k) (h : ℕ)
 /-- main.typ 1109–1110, proof of (b): "`q/a_h ≤ (c_h + γ + Ψ_h)/s_h < B/8 + 1/4 + 1/a_h ≤ B/8 + 1/2` by
 (a), as `a_h ≥ … ≥ 4`" — for `γ ∈ Γ`. Context: `q` exact with `η ≤ Ψ_h` and `ζ_h ≥ 0`; (a)
 `c_h < B s_(H−1)/8`; `s_(H−1) ≤ s_h = Ψ_h a_h`; `a_h ≥ 4`. -/
-@[kb "cstarpaper-s-lem-structure-claim"]
+-- kb tag retired 2026-10-28 (superseded by C1Structure/Steps/S03_StructB.lean:step_struct_b_qa): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-claim"]
 theorem step_struct_b_qa (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h : Fin (paper k).H)
     (γ : ℕ) (hγ : γ ∈ Γ k)
     (heta : η k σ h γ ≤ SCParams.Ψ k h)
@@ -286,7 +286,7 @@ theorem step_struct_b_qa (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h :
 
 /-- main.typ 1110–1111, proof of (b): "so `⌊q/a_h⌋ + κ < B` for `κ < B/2`" (`⌊q/a_h⌋` is `q / a_h`,
 Euclidean division by `a_h > 0`). -/
-@[kb "cstarpaper-s-lem-structure-claim" (part := "SCStructure.step_struct_b_floor")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-claim" (part := "SCStructure.step_struct_b_floor")]
 theorem step_struct_b_floor (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h : Fin (paper k).H)
     (γ : ℕ) (ha : 1 ≤ SCParams.a k h)
     (hqa : (q k σ h γ : ℚ) / (SCParams.a k h : ℚ) < (SCParams.B k : ℚ) / 8 + 1 / 2) :

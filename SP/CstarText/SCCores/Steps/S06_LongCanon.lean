@@ -531,7 +531,7 @@ private theorem fml_gadget (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (p
 /-- main.typ 1131–1132 (st-struct-decode, the computation cited by rem-long; from the proof of lem-free (c),
 main.typ 1004–1005: "composing gives `p = R(Ψ_h t + ζ_h) + π_h`"): every occurrence of the parent `w_h` in
 `P_k` is `t' ↦ R(Ψ_h t' + ζ_h) + π_h`. Context: `P_k` is a ZLP, the free levels in `P_k` (def-sc). -/
-@[kb "cstarpaper-s-lem-free-descent"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-free-descent"]
 theorem step_long_occ_parent (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (pb : PtrBits k) (hzlp : IsZLP (Pk k σ pb))
     (hemb : (∀ nd : FNode, (paper k).IsNode nd → (pre k σ pb).Reach (lift k (.fl nd))) ∧
@@ -564,7 +564,7 @@ proof of @lem-structure (@st-struct-decode)": an occurrence of `v_(γ,κ)` throu
 ZLP; (b) and `q_h(γ) ∈ ℕ` with `Ψ_h q_h(γ) = c_h + γ + η_h(γ) − ζ_h` (lem-structure); the free levels in `P_k`;
 the occurrences of `w_h` (`step_long_occ_parent`); `s_h = Ψ_h a_h` (def-slopes, frozen
 `SCParams.def_slopes_a`; added at the Codex gate, `a` being a natural-number quotient). -/
-@[kb "cstarpaper-rem-long" (part := "SCCores.step_long_formula")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-rem-long" (part := "SCCores.step_long_formula")]
 theorem step_long_formula (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (pb : PtrBits k) (hzlp : IsZLP (Pk k σ pb))
     (hb : ∀ h : Fin (paper k).H,

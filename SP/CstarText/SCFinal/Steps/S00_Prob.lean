@@ -71,7 +71,7 @@ theorem step_geomProb_compl (D : Parents) (hfin : {σ : D.Geometry | D.IsGeometr
 /-- The union bound for the law of the geometry: `P(∃ i ∈ I, E_i) ≤ Σ_(i ∈ I) P(E_i)` (the set of
 geometries is finite). Used in st-ap-large (main.typ 1279–1281: "There are fewer than `n³` triples …; so
 with probability at least `1 − exp(4/3) n³ 2^(−u)`"). -/
-@[kb "cstarpaper-s-lem-ap-fewer" (part := "SCFinal.step_geomProb_union")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-fewer" (part := "SCFinal.step_geomProb_union")]
 theorem step_geomProb_union (D : Parents) (hfin : {σ : D.Geometry | D.IsGeometry σ}.Finite)
     {ι : Type} (I : Finset ι) (E : ι → D.Geometry → Prop) :
     D.geomProb (fun σ => ∃ i ∈ I, E i σ) ≤ ∑ i ∈ I, D.geomProb (E i) := by
@@ -95,7 +95,7 @@ theorem step_geomProb_union (D : Parents) (hfin : {σ : D.Geometry | D.IsGeometr
 /-- `P(N ≥ u) ≤ 𝔼 binom(N, u)` over the geometry (as `binom(N, u) ≥ 1` when `N ≥ u`, and `≥ 0`): if every
 geometry in `E` has `N ≥ u`, then `P(E) ≤ 𝔼 binom(N, u)`. Used in st-ap-large (main.typ 1278–1279: "the
 probability that `u` parents put their points of `ω` into `ν + τℤ` is at most `𝔼 binom(N_hit, u)`"). -/
-@[kb "cstarpaper-s-lem-ap-applicable" (part := "SCFinal.step_geomProb_le_geomExp_choose")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-applicable" (part := "SCFinal.step_geomProb_le_geomExp_choose")]
 theorem step_geomProb_le_geomExp_choose (D : Parents)
     (hfin : {σ : D.Geometry | D.IsGeometry σ}.Finite) (u : ℕ) (N : D.Geometry → ℕ)
     (E : D.Geometry → Prop) (hE : ∀ σ, D.IsGeometry σ → E σ → u ≤ N σ) :
@@ -420,7 +420,7 @@ theorem step_param_e_dvd (k : ℕ) (hk : 2 ≤ k) : 4 ∣ SCParams.e k := by
   exact Dvd.dvd.mul_right (Dvd.dvd.mul_left (dvd_pow_self 4 (by omega)) 128) _
 
 /-- The five bridges from def-params as one tuple (glue, proved from the atomic bridges above). -/
-@[kb "cstarpaper-def-params" (part := "SCFinal.step_params_basic")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-params" (part := "SCFinal.step_params_basic")]
 theorem step_params_basic (k : ℕ) (hk : 2 ≤ k) :
     2 ≤ SCParams.u k ∧ 2 ≤ SCParams.X k ∧ 8 ≤ SCParams.B k ∧ 8 ∣ SCParams.B k ∧ 4 ∣ SCParams.e k :=
   ⟨step_param_u_ge k hk, step_param_X_ge k hk, step_param_B_ge k hk, step_param_B_dvd k hk,

@@ -49,7 +49,7 @@ theorem def_sc_eta (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h : Fin (
   step_def_sc_eta k hk σ h γ
 
 /-- def-sc (main.typ 1041–1053), implicit: every child named in def-sc is a vertex of the list. -/
-@[kb "cstarpaper-def-sc" (part := "the children are vertices (implicit)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "the children are vertices (implicit)")]
 theorem def_sc_closed (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : PtrBits k) (v : Vtx)
     (hv : IsVertex k v) (w : Vtx) (hw : (.inl w : Vtx ⊕ Bool) ∈ rawδ k σ ω v) : IsVertex k w :=
   step_def_sc_closed k hk σ ω v hv w hw
@@ -58,26 +58,26 @@ theorem def_sc_closed (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : P
 
 /-- Proof of lem-structure (a) (main.typ 1097–1099): the program as built (before the deletion) is
 finite and acyclic ("So the graph is acyclic"). -/
-@[kb "cstarpaper-lem-structure" (part := "a: the program as built is finite and acyclic (proof)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "a: the program as built is finite and acyclic (proof)")]
 theorem lem_structure_a_pre (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : PtrBits k) :
     SCGadgets.IsFiniteAcyclic (pre k σ ω) :=
   step_struct_a_acyclic k hk σ ω (fun v hv w hw => step_def_sc_closed k hk σ ω v hv w hw)
 
 /-- def-sc (main.typ 1045–1046): "so that `val(Z^(J−1))` has length `2^J ≥ n`" (in the program as built). -/
-@[kb "cstarpaper-def-sc" (part := "val(Z^(J−1)) has length 2^J ≥ n")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "val(Z^(J−1)) has length 2^J ≥ n")]
 theorem def_sc_zero (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : PtrBits k) :
     1 ≤ J k ∧ (value (pre k σ ω) (.inl (lift k (.zero (J k - 1))))).length = 2 ^ J k ∧
       n k ≤ 2 ^ J k :=
   step_def_sc_zero k hk σ ω (lem_structure_a_pre k hk σ ω)
 
 /-- Proof of lem-structure (a) (main.typ 1100): "`R ≥ H/X^k ≥ 2` by @lem-free and @lem-params". -/
-@[kb "cstarpaper-lem-structure" (part := "a: R ≥ 2 (proof)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "a: R ≥ 2 (proof)")]
 theorem two_le_R (k : ℕ) (hk : 2 ≤ k) : 2 ≤ (paper k).R :=
   step_struct_a_R k hk (SCGadgets.lem_free_a k hk).2.2.1 (SCParams.lem_params_a k hk).2.2
 
 /-- Proof of lem-structure (a) (main.typ 1101): "`c_(h+1)` is an integer, as `B` is even" — the integer
 `c_(h+1)` is `c_h + B Δ_h (e(h + 1) − 1/2)`. -/
-@[kb "cstarpaper-lem-slots" (part := "a: every c_h is an integer")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-slots" (part := "a: every c_h is an integer")]
 theorem lem_structure_a_c (k : ℕ) (hk : 2 ≤ k) (h : ℕ) :
     (c k (h + 1) : ℚ) =
       (c k h : ℚ) + (SCParams.B k : ℚ) * (SCParams.Δ k h : ℚ) *
@@ -85,7 +85,7 @@ theorem lem_structure_a_c (k : ℕ) (hk : 2 ≤ k) (h : ℕ) :
   step_struct_a_c_int k hk h
 
 /-- lem-structure (a), second half (main.typ 1087): "`c_h < B s_(H−1)/8` for all `h`" (`h < H`). -/
-@[kb "cstarpaper-lem-slots" (part := "a: c_h < B s_(H−1)/8")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-slots" (part := "a: c_h < B s_(H−1)/8")]
 theorem lem_structure_a_cbound (k : ℕ) (hk : 2 ≤ k) :
     ∀ h < SCParams.H k,
       (c k h : ℚ) < (SCParams.B k : ℚ) * (SCParams.s k (SCParams.H k - 1) : ℚ) / 8 :=
@@ -99,7 +99,7 @@ root deleted; the claim holds for every `σ : Geometry`, not only those with `Is
 pointers and bits `ω`.)
 Proof structure (main.typ 1097–1102): acyclic, arities `≥ 2` (with `R ≥ 2`), the root the only source after
 the deletion; then the bound on `c_h`. -/
-@[kb "cstarpaper-lem-structure" (part := "a")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "a")]
 theorem lem_structure_a (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : PtrBits k) :
     IsZLP (Pk k σ ω) ∧
       ∀ h < SCParams.H k,
@@ -112,7 +112,7 @@ theorem lem_structure_a (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω :
 
 /-- Proof of lem-structure (b) (main.typ 1103–1105): "the numerator `c_h + γ + η_h(γ) − ζ_h` is a multiple
 of `Ψ_h` … hence non-negative, so `q ∈ ℕ`" (for every `γ`). -/
-@[kb "cstarpaper-lem-slots" (part := "b: q_h(γ) ∈ ℕ")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-slots" (part := "b: q_h(γ) ∈ ℕ")]
 theorem lem_structure_b_q (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (h : Fin (paper k).H) (γ : ℕ) :
     0 ≤ q k σ h γ ∧
@@ -127,7 +127,7 @@ theorem lem_structure_b_q (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
 `⌊q_h(γ)/a_h⌋ + κ < B` for all `κ < B/2`" — for every parent `h` and every geometry `σ`.
 Proof structure (main.typ 1103–1111): `q ∈ ℕ`; `q` increasing on `Γ`; range `< a_h`; so distinct residues;
 `a_h ≥ 4`; `q/a_h < B/8 + 1/2` by (a); so `⌊q/a_h⌋ + κ < B`. -/
-@[kb "cstarpaper-lem-structure" (part := "b")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "b")]
 theorem lem_structure_b (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (h : Fin (paper k).H) :
     (∀ γ ∈ Γ k, ∀ γ' ∈ Γ k,
@@ -156,7 +156,7 @@ theorem lem_structure_b (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
 /-- def-sc (main.typ 1053), in `P_k`: the free vertices and the parents survive the deletion, and `P_k`
 contains the free levels and the root above the parents `w_h`, with `Z^(J−1)` in the slots without a real
 child (TEXT GAP fix: lem-free (c) is applied to the pruned program). -/
-@[kb "cstarpaper-def-sc" (part := "the free levels and the root above the parents, in P_k")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "the free levels and the root above the parents, in P_k")]
 theorem def_sc_free_levels (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (ω : PtrBits k) :
     (∀ nd : FNode, (paper k).IsNode nd → (pre k σ ω).Reach (lift k (.fl nd))) ∧
@@ -166,7 +166,7 @@ theorem def_sc_free_levels (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
 
 /-- Proof of lem-structure (c), step 1 (main.typ 1116): "The dictionary words and `Z_A` have length
 `H + 1`, the columns and `Z_v` length `e(H + 1)`" (in the program as built). -/
-@[kb "cstarpaper-lem-structure" (part := "c: lengths of A_a, Z_A, columns, Z_v (proof)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "c: lengths of A_a, Z_A, columns, Z_v (proof)")]
 theorem lem_structure_c_lengths_low (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : PtrBits k) :
     (∀ a < Dict k, (value (pre k σ ω) (.inl (lift k (.dict a)))).length = SCParams.H k + 1) ∧
       (value (pre k σ ω) (.inl (lift k .zA))).length = SCParams.H k + 1 ∧
@@ -178,7 +178,7 @@ theorem lem_structure_c_lengths_low (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geo
 
 /-- lem-shifts for the gadget of `γ ∈ Γ`, in the program as built (TEXT GAP fix: lem-shifts is applied
 before the deletion), as used in the proof of lem-structure (c) (main.typ 1117, 1129). -/
-@[kb "cstarpaper-lem-structure" (part := "c: lem-shifts in the program before the deletion (proof; TEXT GAP)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "c: lem-shifts in the program before the deletion (proof; TEXT GAP)")]
 theorem lem_structure_shifts_pre (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : PtrBits k)
     (γ : ℕ) (hγ : γ ∈ Γ k) (z : ℕ) :
     value (pre k σ ω) (.inl (lift k (G k γ z))) =
@@ -196,7 +196,7 @@ theorem lem_structure_shifts_pre (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geomet
 
 /-- Proof of lem-structure (c), step 1 (main.typ 1116–1117): "the gadget vertices and `Z_G` length
 `B e (H + 1)` (@lem-shifts), and `w_h` length `a_h B e (H + 1)`" (in the program as built). -/
-@[kb "cstarpaper-lem-structure" (part := "c: lengths of G^γ_z, Z_G, w_h (proof)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "c: lengths of G^γ_z, Z_G, w_h (proof)")]
 theorem lem_structure_c_lengths_high (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : PtrBits k) :
     (∀ γ ∈ Γ k, ∀ z : ℕ, (value (pre k σ ω) (.inl (lift k (G k γ z)))).length =
         SCParams.B k * SCParams.e k * (SCParams.H k + 1)) ∧
@@ -211,7 +211,7 @@ theorem lem_structure_c_lengths_high (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Ge
 /-- Proof of lem-structure (c), step 3 (main.typ 1139–1141): "a position `p_h(γ, κ, t) < n` with
 `t < e(H + 1)` is read in this way through `v_(γ,κ)`: the zip rule at the root, the free levels, `w_h`,
 `G^γ_z` and the column retraces these steps" — read through `v_(γ,κ)` at `t`, and through the parent `w_h`. -/
-@[kb "cstarpaper-lem-structure" (part := "c: p_h(γ, κ, t) < n is read through v_(γ,κ) (proof)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "c: p_h(γ, κ, t) < n is read through v_(γ,κ) (proof)")]
 theorem lem_structure_c_read (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (ω : PtrBits k) :
     ∀ (v : RC k) (h : Fin (paper k).H) (p : ℕ), pos k σ h v.1 v.2.1 v.2.2 = (p : ℤ) → p < n k →
@@ -230,7 +230,7 @@ that equals no `p_h(γ, κ, t)` has `x_k[p] = 0` and is read through a zero word
 occurrences, `ReadThroughZero`). `Y_(β(γ,κ,ℓ), t)` is `ω.2 (ω.1 (γ, κ, ℓ)) t`.
 Proof structure (main.typ 1112–1142): step 1 (length), step 2 (decoding, st-struct-decode), step 3
 (uniqueness; its converse). -/
-@[kb "cstarpaper-lem-structure" (part := "c")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "c")]
 theorem lem_structure_c (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (ω : PtrBits k) :
     n k ≤ (Prelim.val (Pk k σ ω)).length ∧
@@ -273,7 +273,7 @@ theorem lem_structure_c (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
 cells and times, `R_0 = H + 1` and `D = u²`." — for every geometry `σ`: `LW k σ` (raw coordinates, cells and
 times of def-raw, `R₀ = H + 1`, `D = u²`, length `n`) satisfies def-labelled, `x_k` is its word for all
 pointers and bits `ω`, and position `p` carries `(γ, κ, t)` iff `p < n` and `p = p_h(γ, κ, t)` for some `h`. -/
-@[kb "cstarpaper-lem-structure" (part := "x_k is a labelled word")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "x_k is a labelled word")]
 theorem lem_structure_labelled (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) :
     (LW k σ).Valid ∧ (∀ ω : PtrBits k, x k σ ω = (LW k σ).word ω) ∧

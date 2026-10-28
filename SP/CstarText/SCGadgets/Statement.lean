@@ -34,7 +34,7 @@ theorem paper_facts (k : ℕ) (hk : 2 ≤ k) : (paper k).Facts :=
 at most `α_k/8` real children; `H/X^k ≤ R ≤ 2^(k−1) X`, and the free levels and the root have at most
 `5B` edges." (The arity of a vertex of level `i` is `α_i`; TEXT DEFECT D10: stated for the parents of
 def-slopes, whose types satisfy the remark after def-slopes.) -/
-@[kb "cstarpaper-lem-free" (part := "a: capacity and size bounds")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-free" (part := "a: capacity and size bounds")]
 theorem lem_free_a (k : ℕ) (hk : 2 ≤ k) :
     (∀ i : ℕ, 1 ≤ i → i < k → ∀ v ∈ (paper k).verts i,
         2 * ((paper k).realChildren i v).card ≤ arity v) ∧
@@ -56,7 +56,7 @@ theorem lem_free_a (k : ℕ) (hk : 2 ≤ k) :
 /-- lem-free (b) (main.typ 977): "The map `(j_1(h), …, j_k(h)) ↦ ζ_h` is a bijection onto `[Ψ_h]`" —
 `ζ_h = mixedRadix (type of h) (j_1(h), …, j_k(h))` (def-free), and `mixedRadix` maps the digit tuples
 `0 ≤ j_i < α_i(h)` bijectively onto `[Ψ_h]`. -/
-@[kb "cstarpaper-lem-free" (part := "b")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-free" (part := "b")]
 theorem lem_free_b (k : ℕ) (h : ℕ) :
     Set.BijOn (mixedRadix (SCParams.typeOf k h)) {j : Fin k → ℕ | ∀ i, j i < SCParams.typeOf k h i}
       (Set.Iio (SCParams.Ψ k h)) :=
@@ -64,7 +64,7 @@ theorem lem_free_b (k : ℕ) (h : ℕ) :
 
 /-- lem-free (b), the digits of a geometry (main.typ 966–968 with 977): `(j_1(h), …, j_k(h))` is a digit
 tuple (`j_i(h)` is a slot of a vertex of arity `α_i(h)`), so `ζ_h ∈ [Ψ_h]`. -/
-@[kb "cstarpaper-lem-free" (part := "b: the digits j_i(h) are digits, so ζ_h < Ψ_h")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-free" (part := "b: the digits j_i(h) are digits, so ζ_h < Ψ_h")]
 theorem lem_free_b_digits (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ)
     (h : Fin (paper k).H) :
     (∀ i : Fin k, (paper k).jd σ h i < SCParams.typeOf k h i) ∧ (paper k).ζ σ h < SCParams.Ψ k h :=
@@ -82,7 +82,7 @@ fix): "read through" is `ReadsThrough` (via occurrences), and "symbol `p` … is
 is: `p` is read through `c` at `t`, and then (if `p` is less than the length of the root's value) the
 two symbols agree. The final bound is stated as: every `m ≤ n` with `m ≤ R Ψ_h |val(w_h)|` for all `h`
 is at most the length. -/
-@[kb "cstarpaper-lem-free" (part := "c")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-free" (part := "c")]
 theorem lem_free_c (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ)
     {Q β : Type} (P : Program Q β) (hP : IsZLP P) (ι : FNode → Q) (w : Fin (paper k).H → Q)
     (fill : FNode → ℕ → Q ⊕ β) (hemb : (paper k).IsFreeLevelsOf P σ ι w fill) (n : ℕ)

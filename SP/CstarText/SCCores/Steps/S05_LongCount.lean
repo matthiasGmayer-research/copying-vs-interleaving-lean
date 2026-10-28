@@ -1410,7 +1410,7 @@ gadget of `γ` leads only to vertices of that gadget, to the columns `v_(γ,·)`
 through exactly one parent `w_h`, then through a slot of `w_h` that holds a gadget vertex `G^γ_z = V_(0,·)`
 of `γ`, then from that vertex to `v_(γ,κ)`. Context: `P_k` is a ZLP (lem-structure (a)), (b) and
 `q_h(γ) ∈ ℕ`, the free levels in `P_k` (def-sc). -/
-@[kb "cstarpaper-s-lem-structure-edge"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-edge"]
 theorem step_long_paths (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (pb : PtrBits k) (hzlp : IsZLP (Pk k σ pb))
     (hb : ∀ h : Fin (paper k).H,
@@ -1458,7 +1458,7 @@ theorem step_long_paths (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
 
 /-- main.typ 1208: "as the free levels form a tree": every parent `w_h` has exactly one root path in `P_k`
 (hence exactly one occurrence). Context: `P_k` is a ZLP, the free levels in `P_k` (def-sc, def-free). -/
-@[kb "cstarpaper-rem-long" (part := "SCCores.step_long_tree")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-rem-long" (part := "SCCores.step_long_tree")]
 theorem step_long_tree (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (pb : PtrBits k) (hzlp : IsZLP (Pk k σ pb))
     (hemb : (∀ nd : FNode, (paper k).IsNode nd → (pre k σ pb).Reach (lift k (.fl nd))) ∧
@@ -1476,7 +1476,7 @@ theorem step_long_tree (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
 (@lem-structure (b))" — exactly one slot `j < a_h` of `w_h` (in `P_k`) holds a vertex `V^γ_(i,z)` of the shift
 gadget of `γ`. Context: (b) for parent `h` and `q_h(γ) ∈ ℕ` (lem-structure), the parent `w_h` in `P_k`
 (def-sc), `a_h > 0` (def-slopes: `a_h ≥ 2`; added at the Codex gate). -/
-@[kb "cstarpaper-rem-long" (part := "SCCores.step_long_slot")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-rem-long" (part := "SCCores.step_long_slot")]
 theorem step_long_slot (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (pb : PtrBits k) (h : Fin (paper k).H)
     (ha : 0 < SCParams.a k h)
@@ -1514,7 +1514,7 @@ theorem step_long_slot (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
 `G^γ_z = V_(0,·)` of `γ` (in `P_k`) there is exactly one path to the column `v_(γ,κ)`, `κ < B/2` (the gadget
 lists `U_(−z), U_(1−z), …, U_(B−1−z)`, each index modulo `B` once, def-shifts and lem-shifts; `B = 2^g`,
 def-params). -/
-@[kb "cstarpaper-rem-long" (part := "SCCores.step_long_below")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-rem-long" (part := "SCCores.step_long_below")]
 theorem step_long_below (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (pb : PtrBits k)
     (γ : ℕ) (hγ : γ ∈ Γ k) (κ : ℕ) (hκ : κ < SCParams.B k / 2) :
     ∀ (u : Qk k σ pb) (z : ℕ), u.1.1 = .gad γ 0 z →
@@ -1547,7 +1547,7 @@ through exactly one parent, and for every parent exactly one occurrence runs thr
 a ZLP; occurrences ↔ root paths (def-occ, lem-occ; frozen `Prelim.lem_occ_bij`; added at the
 Codex gate); `step_long_paths`, `step_long_tree`, `step_long_slot`
 (for every parent), `step_long_below`. -/
-@[kb "cstarpaper-rem-long" (part := "SCCores.step_long_count")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-rem-long" (part := "SCCores.step_long_count")]
 theorem step_long_count (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (pb : PtrBits k)
     (hzlp : IsZLP (Pk k σ pb)) (γ κ : ℕ)
     (hbij : (∀ js : List ℕ, IsPathTo (Pk k σ pb) (Pk k σ pb).root js (colk k σ pb γ κ) →

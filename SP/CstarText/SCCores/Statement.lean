@@ -39,14 +39,14 @@ open SP.CstarText.SCStructure (pos Γ RC Cell LW PtrBits Pk pre lift wk R cellOf
 /-! ## The remark after def-critical (main.typ 1170–1171) -/
 
 /-- main.typ 1170: "Inner cells are core cells, so `S ⊆ S'`". -/
-@[kb "cstarpaper-def-critical" (part := "S ⊆ S'")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-critical" (part := "S ⊆ S'")]
 theorem def_critical_subset (k : ℕ) (σ : (paper k).Geometry) : S k σ ⊆ Sprime k σ :=
   step_crit_subset k σ
 
 /-- main.typ 1170–1171: "the point `y_h(ω)` carries the raw coordinate `(γ, κ, eh + ℓ)`, of time `h`":
 `y_h(ω) = p_h(γ, κ, eh + ℓ)` for the raw coordinate `pointRC k h ω = (γ, κ, eh + ℓ)`, whose cell is `ω` and
 whose time is `h` (that `y_h(ω) < n` carries it in the sense of def-labelled: `lem_cores_a_point`). -/
-@[kb "cstarpaper-def-critical" (part := "y_h(ω) carries (γ, κ, eh + ℓ), of time h")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-critical" (part := "y_h(ω) carries (γ, κ, eh + ℓ), of time h")]
 theorem def_critical_point (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k).H) (ω : Cell k) :
     point k σ h ω = pos k σ h (pointRC k h ω).1 (pointRC k h ω).2.1 (pointRC k h ω).2.2 ∧
       cellOf k (pointRC k h ω) = ω ∧ ((timeOf k (pointRC k h ω) : ℕ) = h) :=
@@ -59,7 +59,7 @@ theorem def_critical_point (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k
 `p_h(γ, κ, t) < n`." (Columns: `γ ∈ Γ`, `κ < B/2`; `t ≤ e(h + 1) − 3` written `t + 3 ≤ e(h + 1)`.)
 Proof structure (main.typ 1184–1194): the preamble (`g_h`, the difference `g_h − g_(h+1)`, the bound on
 `η + π/R`); `h' ≥ h` and `h' < h`; "Hence `p_h` is the least"; `p_h ≤ p_(H−1) < n`. -/
-@[kb "cstarpaper-lem-cores" (part := "a: p_h is the least of the p_(h') and < n")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-cores" (part := "a: p_h is the least of the p_(h') and < n")]
 theorem lem_cores_a_cols (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) :
     ∀ γ ∈ Γ k, ∀ κ < SCParams.B k / 2, ∀ (h : Fin (paper k).H) (t : ℕ),
@@ -103,7 +103,7 @@ the first position of its raw coordinate" — the point `y_h(ω)` of a core cell
 carries the raw coordinate `(γ, κ, eh + ℓ)` of def-critical (`pointRC`), and no smaller position carries it.
 Proof structure (main.typ 1195–1196 and 1178–1179): lem-structure (c) and the first sentence give the first
 position of `(γ, κ, t)`; a core cell has `eh + 2 ≤ eh + ℓ ≤ e(h + 1) − 3`. -/
-@[kb "cstarpaper-lem-cores" (part := "a: y_h(ω) is the first position of (γ, κ, eh + ℓ)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-cores" (part := "a: y_h(ω) is the first position of (γ, κ, eh + ℓ)")]
 theorem lem_cores_a_point (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) :
     ∀ (h : Fin (paper k).H) (ω : Cell k), IsCoreCell k ω →
@@ -120,7 +120,7 @@ theorem lem_cores_a_point (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
 `eh + 2 ≤ t ≤ e(h + 1) − 3`: `p_h(γ, κ, t) < p_(h')(γ, κ, t)` for every `h' ≠ h`, and `p_h(γ, κ, t) < n`. So every
 point of `S'` is the first position of its raw coordinate" — every `p ∈ S'` is `< n` and a first position of the
 labelled word `x_k` (def-labelled; lem-structure). -/
-@[kb "cstarpaper-lem-cores" (part := "a")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-cores" (part := "a")]
 theorem lem_cores_a (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ) :
     (∀ γ ∈ Γ k, ∀ κ < SCParams.B k / 2, ∀ (h : Fin (paper k).H) (t : ℕ),
       SCParams.e k * h + 2 ≤ t → t + 3 ≤ SCParams.e k * ((h : ℕ) + 1) →
@@ -139,7 +139,7 @@ theorem lem_cores_a (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (p
 point of `S'` of time `h + 1`" — `y_h(ω) < y_(h+1)(ω')` for all core cells `ω`, `ω'` and `h + 1 < H`.
 Proof structure (main.typ 1197–1201): the points of time `h` are below `R·U`, those of time `h + 1` are at
 least `R·L`, and `L − U` is at least a positive quantity; so (`R ≥ 0`) `y_h(ω) < R·U ≤ R·L ≤ y_(h+1)(ω')`. -/
-@[kb "cstarpaper-lem-cores" (part := "b")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-cores" (part := "b")]
 theorem lem_cores_b (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ) :
     ∀ (h : ℕ) (hh : h + 1 < (paper k).H) (ω ω' : Cell k), IsCoreCell k ω → IsCoreCell k ω' →
       point k σ ⟨h, by omega⟩ ω < point k σ ⟨h + 1, hh⟩ ω' := by
@@ -168,7 +168,7 @@ theorem lem_cores_b (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (p
 /-- lem-cores (b) across arbitrary times (used in lem-ap, main.typ 1289–1290: "By @lem-cores (b), every point
 of `S'` of time `f` lies strictly between `y_(h_1)(ω)` and `y_(h_(u+1))(ω)`"): for `i < j < H` and core cells
 `ω`, `ω'`, `y_i(ω) < y_j(ω')`. Glue: induction on `j`, chaining `lem_cores_b` through `ω'`. -/
-@[kb "cstarpaper-lem-cores" (part := "b: across arbitrary times i < j (consequence)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-cores" (part := "b: across arbitrary times i < j (consequence)")]
 theorem lem_cores_b_chain (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) :
     ∀ (i j : ℕ) (hij : i < j) (hj : j < (paper k).H) (ω ω' : Cell k), IsCoreCell k ω →
@@ -184,13 +184,13 @@ theorem lem_cores_b_chain (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
       exact lem_cores_b k hk σ hσ i hj ω ω' hω hω'
 
 /-- `S'` is finite (consequence of lem-cores (a): `S' ⊆ [0, n)`); used to pass `S'` to prop-scheme. -/
-@[kb "cstarpaper-def-critical" (part := "S' is finite (consequence of lem-cores (a))")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-critical" (part := "S' is finite (consequence of lem-cores (a))")]
 theorem Sprime_finite (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ) :
     (Sprime k σ).Finite :=
   (Set.finite_Iio (SCStructure.n k)).subset fun p hp => ((lem_cores_a k hk σ hσ).2 p hp).1
 
 /-- `S` is finite (`S ⊆ S'`). -/
-@[kb "cstarpaper-def-critical" (part := "S is finite (consequence)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-critical" (part := "S is finite (consequence)")]
 theorem S_finite (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ) :
     (S k σ).Finite :=
   (Sprime_finite k hk σ hσ).subset (def_critical_subset k σ)
@@ -199,7 +199,7 @@ theorem S_finite (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (pape
 for core cells implies `h = h'` and `ω = ω'`. Glue: both are positions `< n` carrying `pointRC`
 (`lem_cores_a_point`), a position carries at most one raw coordinate, and `pointRC` determines the cell and the
 time (`def_critical_point`). -/
-@[kb "cstarpaper-def-critical" (part := "the points of (parent, core cell) are distinct (consequence)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-critical" (part := "the points of (parent, core cell) are distinct (consequence)")]
 theorem point_injective (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ) :
     ∀ (h h' : Fin (paper k).H) (ω ω' : Cell k), IsCoreCell k ω → IsCoreCell k ω' →
       point k σ h ω = point k σ h' ω' → h = h' ∧ ω = ω' := by
@@ -225,7 +225,7 @@ occurrence, and the one through `w_h` is `t ↦ p_h(γ, κ, t)`.
 Proof structure (the reasons the remark gives): the free levels form a tree, one slot of `w_h` holds a gadget
 vertex of `γ` (lem-structure (b)), one path below it (lem-shifts), the path structure (TEXT GAP); the
 computation of st-struct-decode. -/
-@[kb "cstarpaper-rem-long" (part := "H occurrences, one through each parent, t ↦ p_h(γ, κ, t)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-rem-long" (part := "H occurrences, one through each parent, t ↦ p_h(γ, κ, t)")]
 theorem rem_long_occ (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ)
     (pb : PtrBits k) (γ : ℕ) (hγ : γ ∈ Γ k) (κ : ℕ) (hκ : κ < SCParams.B k / 2) :
     (pre k σ pb).Reach (lift k (.col γ κ)) ∧
@@ -256,7 +256,7 @@ theorem rem_long_occ (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (
 
 /-- rem-long, second sentence (main.typ 1210–1211): "and by (a) it is lowest at every `t` with
 `eh + 2 ≤ t ≤ e(h + 1) − 3`" (def-canonical, `P = P_k`). -/
-@[kb "cstarpaper-rem-long" (part := "lowest at eh + 2 ≤ t ≤ e(h + 1) − 3")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-rem-long" (part := "lowest at eh + 2 ≤ t ≤ e(h + 1) − 3")]
 theorem rem_long_lowest (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ)
     (pb : PtrBits k) (γ : ℕ) (hγ : γ ∈ Γ k) (κ : ℕ) (hκ : κ < SCParams.B k / 2) :
     ∀ (h : Fin (paper k).H) (ρ : Occ), ρ ∈ occ (Pk k σ pb) (colk k σ pb γ κ) →
@@ -270,7 +270,7 @@ theorem rem_long_lowest (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ 
 
 /-- rem-long, third sentence (main.typ 1211–1212): "So each of the `H` occurrences of every column has a
 canonical interval of at least `e − 4` indices" (def-canonical, `P = P_k`, `n` the length of `x_k`). -/
-@[kb "cstarpaper-rem-long" (part := "canonical intervals of at least e − 4 indices")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-rem-long" (part := "canonical intervals of at least e − 4 indices")]
 theorem rem_long_canon (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ)
     (pb : PtrBits k) (γ : ℕ) (hγ : γ ∈ Γ k) (κ : ℕ) (hκ : κ < SCParams.B k / 2) :
     ∀ ρ ∈ occ (Pk k σ pb) (colk k σ pb γ κ),
@@ -284,7 +284,7 @@ theorem rem_long_canon (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ :
 a vertex has a non-empty canonical interval" — in a synchronous ZLP (def-zlp), for any `n`, an occurrence
 `ρ ∈ occ_q` with `I_ρ ≠ ∅` is the least occurrence `ρ*_q` (def-least). Proof structure (TEXT GAP: the reason
 is ex-zlp's "all occurrences of a vertex have the same step" and def-least). -/
-@[kb "cstarpaper-rem-long" (part := "synchronous: only the least occurrence has I_ρ ≠ ∅")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-rem-long" (part := "synchronous: only the least occurrence has I_ρ ≠ ∅")]
 theorem rem_long_sync {Q α : Type} (P : Program Q α) (hP : IsZLP P) (hs : Prelim.IsSynchronous P)
     (n : ℕ) (q : Q) (ρ : Occ) (hρ : ρ ∈ occ P q) (hne : (UpperConv.canonInterval P n q ρ).Nonempty) :
     ρ = UpperConv.leastOcc P q :=

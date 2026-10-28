@@ -291,7 +291,7 @@ private theorem vtx_sum_bound (k : ℕ) (σ : (paper k).Geometry) (pb : PtrBits 
 
 /-- main.typ 1317: "An inner cell has one of `B/4` values of `κ` and one of `e/2 − 2` values of `ℓ`" — the number
 of inner cells is `|Γ|(B/4)(e/2 − 2)`. Context: `8 ∣ B`, `4 ∣ e` (def-params), `e ≥ 400` (lem-params (b)). -/
-@[kb "cstarpaper-s-lem-sc-final-inner" (part := "SCFinal.step_final_a_inner")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-inner" (part := "SCFinal.step_final_a_inner")]
 theorem step_final_a_inner (k : ℕ) (hk : 2 ≤ k) (hdiv : 8 ∣ SCParams.B k ∧ 4 ∣ SCParams.e k)
     (he : 400 ≤ SCParams.e k) :
     ((innerCells k).card : ℝ) =
@@ -386,7 +386,7 @@ theorem step_final_a_inner (k : ℕ) (hk : 2 ≤ k) (hdiv : 8 ∣ SCParams.B k �
 /-- main.typ 1317–1318: "… and `H` points; so `|S| = |Γ|(B/4)(e/2 − 2)H`" — `|S|` is the number of inner cells
 times `H`. Context (frozen facts, for the geometry `σ`): the points of the core cells are positions (lem-cores (a))
 and distinct (`SCCores.point_injective`). -/
-@[kb "cstarpaper-s-lem-sc-final-inner"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-inner"]
 theorem step_final_a_S (k : ℕ) (σ : (paper k).Geometry)
     (hpt : ∀ (h : Fin (paper k).H) (ω : Cell k), IsCoreCell k ω →
       ∃ p : ℕ, point k σ h ω = (p : ℤ) ∧ p < SCStructure.n k)
@@ -429,7 +429,7 @@ theorem step_final_a_S (k : ℕ) (σ : (paper k).Geometry)
 
 /-- main.typ 1318: "`|S| = |Γ|(B/4)(e/2 − 2)H = CH(1/4 − 1/e) ≥ CH/6`". Context: the two previous claims;
 `8 ∣ B`, `4 ∣ e`, `e ≥ 400`. -/
-@[kb "cstarpaper-s-lem-sc-final-inner" (part := "SCFinal.step_final_a_SC")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-inner" (part := "SCFinal.step_final_a_SC")]
 theorem step_final_a_SC (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hdiv : 8 ∣ SCParams.B k ∧ 4 ∣ SCParams.e k)
     (he : 400 ≤ SCParams.e k)
     (hinner : ((innerCells k).card : ℝ) =
@@ -460,7 +460,7 @@ theorem step_final_a_SC (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hdiv
 
 /-- main.typ 1318–1319: "`|Γ| ≥ s_(H−1)/(4Ψ_*) ≥ M/(4(2X)^k)`". Context (frozen facts): `M ≤ s_(H−1)`
 (def-slopes: the window lies in `[M, 2M)`), `1 ≤ Ψ_* ≤ (2X)^k` (def-slopes). -/
-@[kb "cstarpaper-s-lem-sc-final-claim"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-claim"]
 theorem step_final_a_Gamma (k : ℕ) (hk : 2 ≤ k) (hsM : SCParams.M k ≤ SCParams.s k (SCParams.H k - 1))
     (hΨ1 : 1 ≤ SCParams.Ψstar k) (hΨ : SCParams.Ψstar k ≤ (2 * SCParams.X k) ^ k) :
     (SCParams.s k (SCParams.H k - 1) : ℝ) / (4 * SCParams.Ψstar k) ≤ (Γ k).card ∧
@@ -508,7 +508,7 @@ theorem step_final_a_Gamma (k : ℕ) (hk : 2 ≤ k) (hsM : SCParams.M k ≤ SCPa
 
 /-- main.typ 1319: "so `C ≥ MBe/(8(2X)^k) ≥ e²B²/16`". Context: the previous claim; `(2X)^k ≤ B/4`
 (lem-params (b)); `8 ∣ B`, `4 ∣ e` (def-params: `M = 8eW²`, `W = B/8`). -/
-@[kb "cstarpaper-s-lem-sc-final-claim" (part := "SCFinal.step_final_a_C")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-claim" (part := "SCFinal.step_final_a_C")]
 theorem step_final_a_C (k : ℕ) (hk : 2 ≤ k) (hdiv : 8 ∣ SCParams.B k ∧ 4 ∣ SCParams.e k)
     (hΓ : (SCParams.M k : ℝ) / (4 * (2 * (SCParams.X k : ℝ)) ^ k) ≤ (Γ k).card)
     (h2X : (2 * (SCParams.X k : ℝ)) ^ k ≤ (SCParams.B k : ℝ) / 4) :
@@ -578,7 +578,7 @@ vertices of arity 2 per `γ`), the parents (`Σ_h a_h`), the free levels and the
 the dictionary (`u²(H + 1)`) and the zero words (`H + 1 + e + B + 2J`: `Z_A`, `Z_v`, `Z_G`, and `Z^(i)`, `i < J`, of
 arity 2) — "The other edges: …"; the deletion of unreachable vertices only removes edges. Context (frozen facts):
 `P_k` is a ZLP (lem-structure (a)); `J ≥ 1` (def-sc). -/
-@[kb "cstarpaper-s-lem-sc-final-edges"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-edges"]
 theorem step_final_a_edges (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (pb : PtrBits k)
     (hzlp : Prelim.IsZLP (Pk k σ pb)) (hJ : 1 ≤ SCStructure.J k) :
     Prelim.size (Pk k σ pb) ≤
@@ -599,7 +599,7 @@ theorem step_final_a_edges (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (p
   ring
 
 /-- main.typ 1320: "the gadgets `2gB|Γ| = (4g/e)C`". Context: `8 ∣ B` (def-params). -/
-@[kb "cstarpaper-s-lem-sc-final-edges" (part := "SCFinal.step_final_a_gadgets")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-edges" (part := "SCFinal.step_final_a_gadgets")]
 theorem step_final_a_gadgets (k : ℕ) (hk : 2 ≤ k) (hdiv : 8 ∣ SCParams.B k ∧ 4 ∣ SCParams.e k) :
     (2 * SCParams.g k * SCParams.B k * (Γ k).card : ℝ) =
       4 * (SCParams.g k : ℝ) / SCParams.e k * Ccol k := by
@@ -615,7 +615,7 @@ theorem step_final_a_gadgets (k : ℕ) (hk : 2 ≤ k) (hdiv : 8 ∣ SCParams.B k
 /-- main.typ 1320–1321: "the parents `Σ_h a_h ≤ W · 2M/X^k ≤ (2^(k+1)/e)C`". Context (frozen facts): def-slopes (the
 type of `h` is a type of `s_h`: `α_i(h) ∈ [X, 2X)`, so `Ψ_h ≥ X^k`; `s_h = Ψ_h a_h`); the slopes lie in `[M, 2M)`
 and `H ≤ W` (def-slopes); the previous bound `C ≥ MBe/(8(2X)^k)`; `8 ∣ B`. -/
-@[kb "cstarpaper-s-lem-sc-final-edges" (part := "SCFinal.step_final_a_parents")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-edges" (part := "SCFinal.step_final_a_parents")]
 theorem step_final_a_parents (k : ℕ) (hk : 2 ≤ k) (hdiv : 8 ∣ SCParams.B k ∧ 4 ∣ SCParams.e k)
     (htype : ∀ h < SCParams.H k, SCParams.IsType k (SCParams.s k h) (SCParams.typeOf k h))
     (hsa : ∀ h < SCParams.H k, SCParams.s k h = SCParams.Ψ k h * SCParams.a k h)
@@ -681,7 +681,7 @@ theorem step_final_a_parents (k : ℕ) (hk : 2 ≤ k) (hdiv : 8 ∣ SCParams.B k
 
 /-- main.typ 1321: "the dictionary `u²(H + 1) ≤ u²B`". Context (frozen fact): `H ≤ W = B/8` (def-slopes); `8 ∣ B`,
 `B ≥ 8` (def-params bridges). -/
-@[kb "cstarpaper-s-lem-sc-final-edges" (part := "SCFinal.step_final_a_dict")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-edges" (part := "SCFinal.step_final_a_dict")]
 theorem step_final_a_dict (k : ℕ) (hk : 2 ≤ k) (hHW : SCParams.H k ≤ SCParams.W k)
     (hBdiv : 8 ∣ SCParams.B k) (hB8 : 8 ≤ SCParams.B k) :
     SCParams.u k ^ 2 * (SCParams.H k + 1) ≤ SCParams.u k ^ 2 * SCParams.B k := by
@@ -694,7 +694,7 @@ TEXT GAP (low): the text gives no reason for `2J ≤ B` (with `e ≤ B`, `H + 1 
 `J = ⌈log n⌉` and `n ≤ X^(4k+6)` (lem-sc-final (b), proved after (a)). Context (frozen facts): `H ≤ W`
 (def-slopes), `2^(5k+9) u² ≤ X` (lem-params (b)), `n ≤ X^(4k+6)` (lem-sc-final (b)); `8 ∣ B`, `B ≥ 8`
 (def-params bridges). -/
-@[kb "cstarpaper-s-lem-sc-final-edges" (part := "SCFinal.step_final_a_zero")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-edges" (part := "SCFinal.step_final_a_zero")]
 theorem step_final_a_zero (k : ℕ) (hk : 2 ≤ k) (hHW : SCParams.H k ≤ SCParams.W k)
     (hX : 2 ^ (5 * k + 9) * SCParams.u k ^ 2 ≤ SCParams.X k)
     (hn : SCStructure.n k ≤ SCParams.X k ^ (4 * k + 6))
@@ -765,20 +765,20 @@ theorem step_final_a_zero (k : ℕ) (hk : 2 ≤ k) (hHW : SCParams.H k ≤ SCPar
 
 /-- main.typ 1322: "By @def-params, … `4g/e` … is below `1/4`" (`g = (k+1)L`, `e = 128 · 4^k · 10(4k+6)L`).
 Context: `u ≥ 1` (def-params bridge). -/
-@[kb "cstarpaper-s-lem-sc-final-below"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-below"]
 theorem step_final_a_params_g (k : ℕ) (hk : 2 ≤ k) (hu1 : 1 ≤ SCParams.u k) :
     4 * (SCParams.g k : ℝ) / SCParams.e k < 1 / 4 := by
   exact params_g_lt' k hk
 
 /-- main.typ 1322: "By @def-params, … `2^(k+1)/e` is below `1/4`" (`e = 128 · 4^k u`). Context: `u ≥ 1`
 (def-params bridge). -/
-@[kb "cstarpaper-s-lem-sc-final-below" (part := "SCFinal.step_final_a_params_pow")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-below" (part := "SCFinal.step_final_a_params_pow")]
 theorem step_final_a_params_pow (k : ℕ) (hk : 2 ≤ k) (hu1 : 1 ≤ SCParams.u k) :
     (2 : ℝ) ^ (k + 1) / SCParams.e k < 1 / 4 := by
   exact params_pow_lt' k hk hu1
 
 /-- main.typ 1322–1323: "and `(u² + 9)B ≤ C/4`". Context: `C ≥ e²B²/16` (above); `u ≥ 1` (def-params bridge). -/
-@[kb "cstarpaper-s-lem-sc-final-below" (part := "SCFinal.step_final_a_params_budget")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-below" (part := "SCFinal.step_final_a_params_budget")]
 theorem step_final_a_params_budget (k : ℕ) (hk : 2 ≤ k) (hu1 : 1 ≤ SCParams.u k)
     (hC : (SCParams.e k : ℝ) ^ 2 * (SCParams.B k : ℝ) ^ 2 / 16 ≤ Ccol k) :
     ((SCParams.u k : ℝ) ^ 2 + 9) * SCParams.B k ≤ (Ccol k : ℝ) / 4 := by
@@ -786,7 +786,7 @@ theorem step_final_a_params_budget (k : ℕ) (hk : 2 ≤ k) (hu1 : 1 ≤ SCParam
 
 /-- main.typ 1323: "so `|P_k| ≤ C(1 + 3/4) ≤ 2C`". Context: the edge count of `P_k` and the bounds of its terms
 (above), and `numEdges ≤ 5B` (lem-free (a): "the free levels and the root at most `5B`"). -/
-@[kb "cstarpaper-s-lem-sc-final-below" (part := "SCFinal.step_final_a_total")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-below" (part := "SCFinal.step_final_a_total")]
 theorem step_final_a_total (k : ℕ) (σ : (paper k).Geometry) (pb : PtrBits k)
     (hedges : Prelim.size (Pk k σ pb) ≤
       Ccol k + 2 * SCParams.g k * SCParams.B k * (Γ k).card +

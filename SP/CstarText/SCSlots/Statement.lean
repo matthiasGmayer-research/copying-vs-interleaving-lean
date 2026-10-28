@@ -20,7 +20,7 @@ open SP.CstarText.SCGadgets (paper)
 -- convention: `c_h` is an integer sequence by definition (`SCStructure.c : ℕ → ℤ`); "is an integer" is the
 statement that it satisfies the text's rational recurrence. "Every geometry" is every geometry in the support of
 the random geometry (`IsGeometry σ`), as for lem-structure. -/
-@[kb "cstarpaper-lem-slots"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-slots"]
 theorem lem_slots (k : ℕ) (hk : 2 ≤ k) :
     (∀ h : ℕ, (c k (h + 1) : ℚ) =
         (c k h : ℚ) + (SCParams.B k : ℚ) * (SCParams.Δ k h : ℚ) * ((SCParams.e k : ℚ) * ((h : ℚ) + 1) - 1 / 2)) ∧
@@ -38,7 +38,7 @@ theorem lem_slots (k : ℕ) (hk : 2 ≤ k) :
 
 /-- lem-slots (b), the two claims on the residues (the statement of `SCStructure.lem_structure_b`, which also
 formalises lem-structure (b)). -/
-@[kb "cstarpaper-lem-slots" (part := "b: distinct residues, ⌊q_h(γ)/a_h⌋ + κ < B")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-slots" (part := "b: distinct residues, ⌊q_h(γ)/a_h⌋ + κ < B")]
 theorem lem_slots_b (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (h : Fin (paper k).H) :
     (∀ γ ∈ Γ k, ∀ γ' ∈ Γ k,
@@ -50,7 +50,7 @@ theorem lem_slots_b (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
 /-- def-sc, the slots of the parents: "Slot `q_h(γ) mod a_h` of `w_h` holds `G^γ_z` with `z := ⌊q_h(γ)/a_h⌋`" —
 for every geometry in the support and every `γ ∈ Γ`, `parentChild` (defined with the least such `γ`) puts `G^γ_z`
 in slot `q_h(γ) mod a_h`; the least `γ` is the only one by lem-slots (b). -/
-@[kb "cstarpaper-def-sc" (part := "slot q_h(γ) mod a_h of w_h holds G^γ_z, z = ⌊q_h(γ)/a_h⌋")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "slot q_h(γ) mod a_h of w_h holds G^γ_z, z = ⌊q_h(γ)/a_h⌋")]
 theorem def_sc_slot (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ)
     (h : Fin (paper k).H) (γ : ℕ) (hγ : γ ∈ Γ k) :
     parentChild k σ h (q k σ h γ % (SCParams.a k h : ℤ)).toNat =

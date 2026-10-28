@@ -54,14 +54,13 @@ open SP.CstarText.SCGadgets (FNode FLeaf paper)
 /-! ## def-sc (main.typ 1036–1056) -/
 
 /-- `D := u²`, the number of dictionary words (def-sc, main.typ 1042). -/
-@[kb "cstarpaper-def-sc" (part := "D = u²")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "D = u²")]
 noncomputable def Dict (k : ℕ) : ℕ := SCParams.u k ^ 2
 
 /-- `c_0 := 0`, `c_(h+1) := c_h + B Δ_h (e(h + 1) − 1/2)` (def-sc, main.typ 1039).
 -- convention: as an integer, `c_(h+1) = c_h + B Δ_h e (h+1) − (B/2) Δ_h` (`B/2` natural-number
 division); equal to the paper's formula as `B` is even (`lem_structure_a_c`). -/
-@[kb "cstarpaper-def-slots" (part := "c_h") (deviation := "An integer sequence: c_(h+1) = c_h + B Δ_h e (h+1) \
-− (B/2) Δ_h, which is the paper's B Δ_h (e(h+1) − 1/2) as B is even (lem_structure_a_c).")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-slots" (part := "c_h") (deviation := "An integer sequence: c_(h+1) = c_h + B Δ_h e (h+1) \ − (B/2) Δ_h, which is the paper's B Δ_h (e(h+1) − 1/2) as B is even (lem_structure_a_c).")]
 noncomputable def c (k : ℕ) : ℕ → ℤ
   | 0 => 0
   | h + 1 => c k h + (SCParams.B k : ℤ) * SCParams.Δ k h * (SCParams.e k : ℤ) * ((h : ℤ) + 1) -
@@ -69,7 +68,7 @@ noncomputable def c (k : ℕ) : ℕ → ℤ
 
 /-- `Γ := Ψ_* ℤ ∩ [0, s_(H−1)/4)` (def-sc, main.typ 1039): the multiples `γ ≥ 0` of `Ψ_*` with
 `4γ < s_(H−1)`. -/
-@[kb "cstarpaper-def-slots" (part := "Γ")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-slots" (part := "Γ")]
 noncomputable def Γ (k : ℕ) : Finset ℕ :=
   (Finset.range (SCParams.s k (SCParams.H k - 1))).filter
     (fun γ => SCParams.Ψstar k ∣ γ ∧ 4 * γ < SCParams.s k (SCParams.H k - 1))
@@ -78,29 +77,29 @@ noncomputable def Γ (k : ℕ) : Finset ℕ :=
 noncomputable abbrev R (k : ℕ) : ℕ := (paper k).R
 
 /-- `n := R B s_(H−1) e (H + 1)` (def-sc, main.typ 1040). -/
-@[kb "cstarpaper-def-sc" (part := "n")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "n")]
 noncomputable def n (k : ℕ) : ℕ :=
   R k * SCParams.B k * SCParams.s k (SCParams.H k - 1) * SCParams.e k * (SCParams.H k + 1)
 
 /-- `J := ⌈log n⌉` (log to base 2; def-sc, main.typ 1040). -/
-@[kb "cstarpaper-def-sc" (part := "J")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "J")]
 noncomputable def J (k : ℕ) : ℕ := ⌈SP.log2 (n k : ℝ)⌉₊
 
 /-- The cells `(γ, κ, ℓ)`: `γ ∈ Γ`, `κ < B/2`, `ℓ < e` (the cells of the columns `v_(γ,κ)`, def-sc
 1043–1044; def-raw 1080). -/
-@[kb "cstarpaper-def-raw" (part := "cells")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-raw" (part := "cells")]
 abbrev Cell (k : ℕ) : Type :=
   {γ : ℕ // γ ∈ Γ k} × Fin (SCParams.B k / 2) × Fin (SCParams.e k)
 
 /-- The raw coordinates `(γ, κ, t)`: `γ ∈ Γ`, `κ < B/2` (a column), `t < e(H + 1)` (def-raw, main.typ
 1079). -/
-@[kb "cstarpaper-def-raw" (part := "raw coordinates")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-raw" (part := "raw coordinates")]
 abbrev RC (k : ℕ) : Type :=
   {γ : ℕ // γ ∈ Γ k} × Fin (SCParams.B k / 2) × Fin (SCParams.e k * (SCParams.H k + 1))
 
 /-- The pointers `β(γ, κ, ℓ) ∈ [D]` (one per cell) and the bits `Y_(a,t)` (`a < D`, `t ≤ H`) (def-sc,
 main.typ 1054–1055). Independent uniform pointers and bits is the uniform law on this finite type. -/
-@[kb "cstarpaper-def-sc" (part := "the randomness: pointers and bits")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "the randomness: pointers and bits")]
 abbrev PtrBits (k : ℕ) : Type :=
   (Cell k → Fin (Dict k)) × (Fin (Dict k) → Fin (SCParams.H k + 1) → Bool)
 
@@ -117,14 +116,14 @@ def bitv (k : ℕ) (ω : PtrBits k) (a t : ℕ) : Bool :=
 /-- `η_h(γ) ∈ [1, Ψ_h]`, the integer with `c_h + γ + η_h(γ) ≡ ζ_h (mod Ψ_h)` (def-sc, main.typ
 1049–1050): with `r := (ζ_h − c_h − γ) mod Ψ_h ∈ [0, Ψ_h)`, `η = Ψ_h` if `r = 0` and `η = r` otherwise.
 That this is the integer of the text is `def_sc_eta`. -/
-@[kb "cstarpaper-def-slots" (part := "η_h(γ)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-slots" (part := "η_h(γ)")]
 noncomputable def η (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k).H) (γ : ℕ) : ℕ :=
   let r : ℤ := (((paper k).ζ σ h : ℤ) - c k h - γ) % (SCParams.Ψ k h : ℤ)
   if r = 0 then SCParams.Ψ k h else r.toNat
 
 /-- `q_h(γ) := (c_h + γ + η_h(γ) − ζ_h) / Ψ_h` (def-sc, main.typ 1050–1051; an integer: the division is
 exact, `lem_structure_b_q`). -/
-@[kb "cstarpaper-def-slots" (part := "q_h(γ)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-slots" (part := "q_h(γ)")]
 noncomputable def q (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k).H) (γ : ℕ) : ℤ :=
   (c k h + γ + η k σ h γ - (paper k).ζ σ h) / (SCParams.Ψ k h : ℤ)
 
@@ -148,7 +147,7 @@ inductive Vtx where
 (`γ ∈ Γ`, `κ < B/2`), `Z_A, Z_v, Z_G`, `Z^(0)` and `Z^(i)` for `i < J`, for each `γ ∈ Γ` the vertices
 `V_(i,z)` (`i < g`, `z < B`) of def-shifts (the gadget's `V_(g,z)` is `U_z`, not a new vertex; the
 `G^γ_z = V_(0,−z)` are among them), the parents `w_h` (`h < H`), and the root and the free vertices. -/
-@[kb "cstarpaper-def-sc" (part := "the vertices of P_k before the deletion")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "the vertices of P_k before the deletion")]
 def IsVertex (k : ℕ) : Vtx → Prop
   | .dict a => a < Dict k
   | .col γ κ => γ ∈ Γ k ∧ κ < SCParams.B k / 2
@@ -161,7 +160,7 @@ def IsVertex (k : ℕ) : Vtx → Prop
   | .fl nd => (paper k).IsNode nd
 
 /-- The zero words `Z_A, Z_v, Z_G, Z^(i)` (def-sc, main.typ 1045–1046). -/
-@[kb "cstarpaper-def-sc" (part := "zero words")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "zero words")]
 def IsZeroWord : Vtx → Prop
   | .zA => True
   | .zv => True
@@ -171,23 +170,23 @@ def IsZeroWord : Vtx → Prop
 
 /-- The list of the gadget of `γ` (def-sc, main.typ 1047–1048): `U_κ := v_(γ,κ)` for `κ < B/2`,
 `U_κ := Z_v` for `B/2 ≤ κ` (used for `κ < B`). -/
-@[kb "cstarpaper-def-sc" (part := "the list U_κ of the shift gadget of γ")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "the list U_κ of the shift gadget of γ")]
 def U (k γ κ : ℕ) : Vtx := if κ < SCParams.B k / 2 then .col γ κ else .zv
 
 /-- The vertices `V_(i,z)` of def-shifts for the gadget of `γ`: `V_(i,z)` (`i < g`) is `gad γ i z`, and
 `V_(g,z) := U_z`. -/
-@[kb "cstarpaper-def-sc" (part := "the shift gadget of γ: V_(i,z)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "the shift gadget of γ: V_(i,z)")]
 def V (k γ : ℕ) (i z : ℕ) : Vtx := if i < SCParams.g k then .gad γ i z else U k γ z
 
 /-- `G^γ_z := V^γ_(0, −z)`, index modulo `B` (def-shifts with def-sc, main.typ 1047). -/
-@[kb "cstarpaper-def-sc" (part := "G^γ_z")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "G^γ_z")]
 def G (k γ z : ℕ) : Vtx := V k γ 0 ((SCParams.B k - z % SCParams.B k) % SCParams.B k)
 
 /-- The child in slot `j` of the parent `w_h` (def-sc, main.typ 1051–1052): "Slot `q_h(γ) mod a_h` of
 `w_h` holds `G^γ_z` with `z := ⌊q_h(γ)/a_h⌋`; all other slots hold `Z_G`."
 TEXT DEFECT D8 (stated with the proposed fix): the `γ` is the least `γ ∈ Γ` with `q_h(γ) mod a_h = j`,
 if any (the slots are distinct by lem-structure (b), proved later). -/
-@[kb "cstarpaper-def-sc" (part := "the children of the parents (defined with the least γ; it is the only one by lem-slots (b), SCSlots.def_sc_slot)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "the children of the parents (defined with the least γ; it is the only one by lem-slots (b), SCSlots.def_sc_slot)")]
 noncomputable def parentChild (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k).H) (j : ℕ) : Vtx :=
   if hj : ∃ γ, γ ∈ Γ k ∧ q k σ h γ % (SCParams.a k h : ℤ) = (j : ℤ) then
     G k (Nat.find hj) (q k σ h (Nat.find hj) / (SCParams.a k h : ℤ)).toNat
@@ -203,7 +202,7 @@ noncomputable def parentChild (k : ℕ) (σ : (paper k).Geometry) (h : Fin (pape
 * `w_h`: `a_h` slots (`parentChild`);
 * the root and the free vertices: their slots in the free levels with the geometry `σ`
   (`SCGadgets.Parents.graph`), a parent `h` as `w_h`, a slot without a real child as `Z^(J−1)`. -/
-@[kb "cstarpaper-def-sc" (part := "the children")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "the children")]
 noncomputable def rawδ (k : ℕ) (σ : (paper k).Geometry) (ω : PtrBits k) : Vtx → List (Vtx ⊕ Bool)
   | .dict a => (List.range (SCParams.H k + 1)).map fun t => .inr (bitv k ω a t)
   | .col γ κ => (List.range (SCParams.e k)).map fun ℓ => .inl (.dict (ptr k ω γ κ ℓ))
@@ -233,7 +232,7 @@ noncomputable def lift (k : ℕ) (v : Vtx) : Qpre k :=
 
 /-- The program of def-sc before the deletion of unreachable vertices: the vertices `IsVertex k`, the
 children `rawδ`, the root. -/
-@[kb "cstarpaper-def-sc" (part := "the program before the deletion")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "the program before the deletion")]
 noncomputable def pre (k : ℕ) (σ : (paper k).Geometry) (ω : PtrBits k) : Program (Qpre k) Bool where
   δ := fun v => (rawδ k σ ω v.1).map (Sum.map (lift k) id)
   root := lift k (.fl .root)
@@ -244,12 +243,12 @@ abbrev Qk (k : ℕ) (σ : (paper k).Geometry) (ω : PtrBits k) : Type :=
 
 /-- `P_k`: the program of def-sc with the vertices not reachable from the root deleted
 (main.typ 1041). -/
-@[kb "cstarpaper-def-sc" (part := "P_k")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "P_k")]
 noncomputable def Pk (k : ℕ) (σ : (paper k).Geometry) (ω : PtrBits k) : Program (Qk k σ ω) Bool :=
   (pre k σ ω).prune
 
 /-- The word `x_k := val(P_k)[:n]` (def-sc, main.typ 1055). -/
-@[kb "cstarpaper-def-sc" (part := "x_k")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-sc" (part := "x_k")]
 noncomputable def x (k : ℕ) (σ : (paper k).Geometry) (ω : PtrBits k) : List Bool :=
   Prelim.slice (Prelim.val (Pk k σ ω)) 0 (n k)
 
@@ -275,20 +274,20 @@ noncomputable def fillk (k : ℕ) (σ : (paper k).Geometry) (ω : PtrBits k) (_n
 /-! ## def-raw (main.typ 1076–1081) -/
 
 /-- `p_h(γ, κ, t) := R (s_h (B t + κ) + c_h + γ + η_h(γ)) + π_h` (def-raw, main.typ 1078), an integer. -/
-@[kb "cstarpaper-def-raw" (part := "p_h(γ, κ, t)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-raw" (part := "p_h(γ, κ, t)")]
 noncomputable def pos (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k).H) (γ κ t : ℕ) : ℤ :=
   (R k : ℤ) * ((SCParams.s k h : ℤ) * ((SCParams.B k : ℤ) * t + κ) + c k h + γ + η k σ h γ) +
     (paper k).π σ h
 
 /-- The cell `(γ, κ, t mod e)` of the raw coordinate `(γ, κ, t)` (def-raw, main.typ 1080). -/
-@[kb "cstarpaper-def-raw" (part := "the cell of a raw coordinate")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-raw" (part := "the cell of a raw coordinate")]
 def cellOf (k : ℕ) (v : RC k) : Cell k :=
   (v.1, v.2.1, ⟨v.2.2.val % SCParams.e k, Nat.mod_lt _ (Nat.pos_of_ne_zero fun h0 => by
     have h1 : v.2.2.val < SCParams.e k * (SCParams.H k + 1) := v.2.2.2
     simp [h0] at h1)⟩)
 
 /-- The time `⌊t/e⌋ < H + 1` of the raw coordinate `(γ, κ, t)` (def-raw, main.typ 1080–1081). -/
-@[kb "cstarpaper-def-raw" (part := "the time of a raw coordinate")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-raw" (part := "the time of a raw coordinate")]
 def timeOf (k : ℕ) (v : RC k) : Fin (SCParams.H k + 1) :=
   ⟨v.2.2.val / SCParams.e k, Nat.div_lt_of_lt_mul v.2.2.2⟩
 
@@ -297,7 +296,7 @@ def timeOf (k : ℕ) (v : RC k) : Fin (SCParams.H k + 1) :=
 /-- The labelling of `x_k`: position `p` carries the raw coordinate `(γ, κ, t)` if
 `p = p_h(γ, κ, t)` for some parent `h` (a choice if several; there is at most one for `p < n`,
 lem-structure (c)), and nothing otherwise. -/
-@[kb "cstarpaper-lem-structure" (part := "the labelling of x_k")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "the labelling of x_k")]
 noncomputable def label (k : ℕ) (σ : (paper k).Geometry) (p : ℕ) : Option (RC k) :=
   if hp : ∃ (v : RC k) (h : Fin (paper k).H), pos k σ h v.1 v.2.1 v.2.2 = (p : ℤ) then
     some hp.choose
@@ -306,7 +305,7 @@ noncomputable def label (k : ℕ) (σ : (paper k).Geometry) (p : ℕ) : Option (
 /-- `x_k` as a labelled word (def-labelled of target `Method`): the raw coordinates and cells of
 def-raw, `R₀ = H + 1`, `D = u²`, the cell and time maps of def-raw, length `n`, the labelling
 `label`. Its outcomes `(LW k σ).Outcome` are `PtrBits k`. -/
-@[kb "cstarpaper-lem-structure" (part := "the labelled word (R₀ = H + 1, D = u²)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "the labelled word (R₀ = H + 1, D = u²)")]
 noncomputable def LW (k : ℕ) (σ : (paper k).Geometry) : Method.Labelled where
   RC := RC k
   Cell := Cell k
@@ -321,13 +320,13 @@ noncomputable def LW (k : ℕ) (σ : (paper k).Geometry) : Method.Labelled where
 
 /-- TEXT DEFECT D6 (stated with the proposed fix): position `p` of `val(P_k)` is read through a zero
 word: `p = ρ(t)` for an occurrence `ρ` (def-occ) in `P_k` of a zero word and some `t`. -/
-@[kb "cstarpaper-lem-structure" (part := "read through a zero word (via occurrences: the passes-through of the proof)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "read through a zero word (via occurrences: the passes-through of the proof)")]
 def ReadThroughZero (k : ℕ) (σ : (paper k).Geometry) (ω : PtrBits k) (p : ℕ) : Prop :=
   ∃ v : Qk k σ ω, IsZeroWord v.1.1 ∧ ∃ ρ ∈ occ (Pk k σ ω) v, ∃ t : ℕ, p = ρ t
 
 /-- TEXT DEFECT D6 (stated with the proposed fix): position `p` is read through the column `v_(γ,κ)`
 at `t`: `p = ρ(t)` for an occurrence `ρ` in `P_k` of `v_(γ,κ)`. -/
-@[kb "cstarpaper-lem-structure" (part := "read through a column (via occurrences: the passes-through of the proof)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "read through a column (via occurrences: the passes-through of the proof)")]
 def ReadThroughCol (k : ℕ) (σ : (paper k).Geometry) (ω : PtrBits k) (γ κ p t : ℕ) : Prop :=
   ∃ v : Qk k σ ω, v.1.1 = .col γ κ ∧ ∃ ρ ∈ occ (Pk k σ ω) v, p = ρ t
 

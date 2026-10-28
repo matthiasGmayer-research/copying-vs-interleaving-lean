@@ -9,12 +9,12 @@ The paper is cited by the **labels** of its blocks (`thm-upper`, `lem-cut`, `st-
 numbers, which change while the paper is revised. The Lean source tags each declaration with the label of the block
 it formalises (`@[kb "cstarpaper-<label>"]`), and each tag records how the formal statement departs from the text.
 
-**Status.** Parts of the paper were revised after their formalisation; they are marked *pending* below. The upper
-bound (`thm-upper`, `thm-scale`, `lem-cut`, `lem-reach`, `lem-split` and its steps) is formalised in an earlier
-version with the constant 2^(5/4) in place of 2; the lower-bound construction is formalised for the earlier
-`def-params` (L = 1024 k² ⌈log(k + 2)⌉, free arities in [X, 2X)), so `thm-lower` is stated with the earlier, weaker
-loss exp(−C (log n)^(2/3) (log log n)^(1/3)) in place of exp(−C √(log n log log n)); `prop-scheme` is stated with a
-hypothesis ε_u whose instance is the paper's bound.
+**Status.** Every numbered definition, statement and proof step of the current paper, and every sentence anchored
+in it, has a sorry-free Lean declaration (axioms `propext`, `Classical.choice`, `Quot.sound`): the upper bound in its
+version U12a (`SP.CstarText.U12a`, constant 2), the lower bound in its version C1/I1 (prime types, parameters of
+(k, L) for every L ≥ 512 k log(k + 2): `SP.CstarText.C1Params` … `C1Lower`, `C1Coverage`, `C1Sent`), and the
+critical-set bound with the bound of lem-random (`SP.CstarText.MethodRev.prop_scheme`). The formalisations of the
+earlier versions are kept in the repository (see "Earlier versions" below); they no longer carry the paper's tags.
 
 <!-- app-lean-main -->
 ## The main statements in Lean
@@ -136,7 +136,7 @@ def Program.occ {Q α : Type} (P : Program Q α) (q : Q) : Set Occ :=
 ```
 
 The base-2 logarithm, the exponents c for which the inequality of `cor-cstar` holds with some constant C
-(`AdmissibleOAlpha`), and the length n and the word x_k of `def-sc` (`paper k`, `PtrBits k` and `IsGeometry`
+(`AdmissibleOAlpha`), and the length n and the word x_(k, L) of `def-sc` (every L ≥ L_k) (`paper k`, `PtrBits k` and `IsGeometry`
 formalise the free levels, the pointers and the bits, and the geometry):
 
 ```lean
@@ -146,31 +146,31 @@ noncomputable def log2 (x : ℝ) : ℝ := Real.logb 2 x
 def AdmissibleOAlpha (α : Type) [Nonempty α] (c : ℝ) : Prop :=
   ∃ C : ℝ, ∀ x : List α, 1 ≤ x.length → (ARC x : ℝ) ≤ C * (x.length : ℝ) ^ c * ZLC x
 
--- namespace SP.CstarText.SCStructure
-noncomputable def n (k : ℕ) : ℕ :=
-  R k * SCParams.B k * SCParams.s k (SCParams.H k - 1) * SCParams.e k * (SCParams.H k + 1)
+-- namespace SP.CstarText.C1Structure
+noncomputable def n (k L : ℕ) : ℕ :=
+  R k L * C1Params.B k L * C1Params.s k L (C1Params.H k L - 1) * C1Params.e k L * (C1Params.H k L + 1)
 
-noncomputable def x (k : ℕ) (σ : (paper k).Geometry) (ω : PtrBits k) : List Bool :=
-  Prelim.slice (Prelim.val (Pk k σ ω)) 0 (n k)
+-- namespace SP.CstarText.C1Structure
+noncomputable def x (k L : ℕ) (σ : (C1Gadgets.paper k L).Geometry) (ω : PtrBits k L) : List Bool :=
+  Prelim.slice (Prelim.val (Pk k L σ ω)) 0 (n k L)
 ```
 
-The main statements: `thm-upper` (earlier constant 2^(5/4); *pending*); `thm-lower`, with `lossFactor`, the factor
-of its first sentence in its earlier, weaker form (*pending*); `cor-cstar`; `cor-szlc`; and `prop-reverse`:
+The main statements: `thm-upper` (constant 2); `thm-lower` (every length), with `lossFactor`, the factor
+exp(−C √(log n log log n)) of its first sentence; `cor-cstar`; `cor-szlc`; and `prop-reverse`:
 
 ```lean
--- namespace SP.CstarText.UpperBound
-theorem thm_upper_paper {α : Type} [Nonempty α] (x : List α) (hn : 1 ≤ x.length) :
-    (ARC x : ℝ) ≤ (2 : ℝ) ^ (5 / 4 : ℝ) * (x.length : ℝ) ^ (1 / 4 : ℝ) * (ZLC x : ℝ)
+-- namespace SP.CstarText.U12a
+theorem thm_upper {α : Type} [Nonempty α] (x : List α) (hn : 1 ≤ x.length) :
+    (ARC x : ℝ) ≤ 2 * (x.length : ℝ) ^ (1 / 4 : ℝ) * (ZLC x : ℝ)
 ```
 
 ```lean
--- namespace SP.CstarText.EveryLength
+-- namespace SP.CstarText.C1Lower
 def lossFactor (C : ℝ) (n : ℕ) : ℝ :=
-  (n : ℝ) ^ ((1 : ℝ) / 4) *
-    Real.exp (-(C * SP.log2 (n : ℝ) ^ ((2 : ℝ) / 3) * SP.log2 (SP.log2 (n : ℝ)) ^ ((1 : ℝ) / 3)))
+  (n : ℝ) ^ ((1 : ℝ) / 4) * Real.exp (-(C * Real.sqrt (SP.log2 (n : ℝ) * SP.log2 (SP.log2 (n : ℝ)))))
 
--- namespace SP.CstarText.EveryLength
-theorem thm_lower_every :
+-- namespace SP.CstarText.C1Lower
+theorem thm_lower :
     (∃ C : ℝ, 0 < C ∧ ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
       ∃ x : List Bool, x.length = n ∧ lossFactor C n * (SP.ZLC x : ℝ) ≤ (SP.ARC x : ℝ)) ∧
     ∀ a : ℝ, a < 1 / 4 → ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
@@ -208,90 +208,92 @@ the author's research project (`export.sh`); module names keep its prefix `SP`.
 ## The correspondence
 
 Each numbered definition, statement and proof step of the paper's own development has a Lean declaration that
-states it, except the comparisons of `rem-measures` that rest on cited results (see below) and the blocks marked
-*pending*; the other blocks of the lower-bound construction have declarations for the earlier `def-params`. Names
-are relative to the namespace `SP.CstarText` unless they begin with `SP`. The main results come first.
+states it, except the comparisons of `rem-measures` that rest on cited results (see below). The table lists, for each
+numbered block, every declaration tagged with its label (definitions, statement parts) and the declarations of its
+proof steps; the sentence anchors of the paper are tagged the same way (`@[kb "cstarpaper-s-…"]`). Names are relative
+to the namespace `SP.CstarText` unless they begin with `SP`. The main results come first.
 
 <!-- tab-lean -->
 | paper (label) | statement | proof steps |
 |---|---|---|
-| `thm-upper` | `UpperBound.thm_upper_paper` (earlier constant 2^(5/4); *pending*) |  |
-| `thm-lower` | `EveryLength.thm_lower_every` (earlier loss; *pending*) | the loss: `EveryLength.lossFactor` (earlier loss) |
-| `cor-cstar` | `IntroRev.cor_cstar_text` |  |
-| `cor-szlc` | `CorSzlcEvery.cor_szlc_every` |  |
-| `prop-reverse` | `ReverseZ.prop_reverse` |  |
+| `thm-upper` | `U12a.thm_upper` |  |
+| `thm-lower` | `C1Lower.lossFactor`, `C1Lower.thm_lower` |  |
+| `cor-cstar` | `SP.CstarPaper.AdmissibleO`, `SP.CstarPaper.AdmissibleOAlpha`, `SP.CstarPaper.cor_cstar`, `SP.CstarPaper.cor_cstar_fixed_alphabet`, `Intro.cor_cstar_i`, `Intro.cor_cstar_ii`, `IntroRev.cor_cstar_text`, `IntroRev.cor_cstar` |  |
+| `cor-szlc` | `CoverageRev.no_polylog_szlc_zlc`, `CorSzlcEvery.cor_szlc_every` |  |
+| `prop-reverse` | `SP.ReverseUpper.zlc_le_arc`, `Reverse.prop_reverse_i`, `ReverseZ.prop_reverse_second`, `ReverseZ.prop_reverse` |  |
 | `sec-prelim`, conventions | `Prelim.log2`, `Prelim.slice` |  |
-| `def-interval` | `Prelim.ArithInterval` |  |
-| `def-ars` | `Prelim.IsARS` |  |
-| `def-zip` | `Prelim.zip`, `Prelim.zip_round_robin` |  |
-| `def-zlp` | `Prelim.IsZLP` |  |
-| `def-path`; paths to letters in `app-upper-conv` | `Prelim.IsPath`, `RefereeRev.IsPathToLetter` |  |
-| `def-occ` | `Prelim.occ` |  |
-| `lem-occ` | `Prelim.lem_occ_a`, `Prelim.lem_occ_b` |  |
-| `ex-zlp` | `Prelim.exProg` |  |
-| `sec-upper`, notation | `UpperConv.d0`, `UpperConv.scaleN` |  |
-| `thm-scale` | *pending* (`UpperBound.thm_scale`: earlier constant) |  |
-| `def-canonical` | `UpperConv.firstPos`, `UpperConv.canonInterval`, `UpperConv.def_canonical_first` |  |
-| `def-pair` | `UpperConv.compSet` |  |
-| `lem-conversion` | `UpperConv.lem_conversion` | `st-conv-lit`: `UpperConv.step_conv_lit`; `st-conv-eq`: `UpperConv.step_conv_eq`; `st-conv-cov`: `UpperConv.step_conv_cov`, `UpperConv.step_conv_cov_root` |
-| `def-least` | `UpperConv.leastOcc` |  |
-| `lem-least` | `RefereeRev.lem_least_a_rev`, `UpperConv.lem_least_b_tree` |  |
-| `lem-cut` | *pending* (`UpperConv.lem_cut`: earlier version) |  |
-| `lem-reach` | *pending* |  |
-| `lem-split` | *pending* (`UpperBoundRev.lem_split`: earlier version) | `st-split-early`, `st-split-least`, `st-split-other`: *pending* |
-| `def-forward` | `Method.ForwardEq` |  |
-| `def-labelled` | `Method.Labelled`, `Method.Labelled.Valid` |  |
-| `def-req` | `Method.Labelled.Requirement.Valid` |  |
-| `lem-random` | `Method.lem_random` | `st-rand-claim`: `Method.step_lem_random_1`; `st-rand-cond`: `Method.step_lem_random_2`; `st-rand-union`: `Method.step_lem_random_3_exp`, `Method.step_lem_random_3_bad` |
-| `prop-scheme` | *pending* (`Method.prop_scheme`: earlier statement with a hypothesis ε_u; the present bound is its instance at ε_u := 2^(-u) exp(6u²/D), whose hypothesis is `Method.lem_random`) | `st-scheme-cand`: `Method.step_prop_scheme_1_prob`, `Method.step_prop_scheme_1_count`; `st-scheme-event`: `Method.step_prop_scheme_2_event`, `Method.step_prop_scheme_2_prob`; `st-scheme-bound`: `Method.step_prop_scheme_3` |
-| `lem-relay` | `RelayRev.lem_relay` |  |
-| `thm-sc` | `RefereeRev.thm_sc_rev` |  |
-| `ex-zlp-cont` | `Prelim.ex_zlp_not_sync`, `UpperConv.ex_cont_ars`, `RefereeRev.ex_cont_arc_le`; the sentence on the cut edge: *pending* |  |
+| `def-interval` | `Prelim.ArithInterval`, `Prelim.readAt`, `Prelim.readLen`, `Prelim.def_interval_prefix`, `Prelim.def_interval_read`, `CoverageRev.interval_step_determined` |  |
+| `def-ars` | `Prelim.Covers`, `Prelim.IsARS`, `Prelim.ARC`, `Prelim.literals`, `Prelim.ars_determines`, `Prelim.arc_le_length`, `WordRev.CoversText`, `WordRev.covers_iff_coversText` |  |
+| `def-zip` | `Prelim.zip`, `Prelim.def_zip_spec`, `Prelim.zip_round_robin` |  |
+| `def-zlp` | `Prelim.Program`, `Prelim.IsZLP`, `Prelim.value`, `Prelim.val`, `Prelim.ell`, `Prelim.size`, `Prelim.ZLC`, `Prelim.IsSynchronous`, `Prelim.sZLC`, `Prelim.synchronous_iff_paths`, `CoverageRev.zlc_prefix_mono` |  |
+| `def-path`; paths to letters in `app-upper-conv` | `Prelim.IsPath`, `Prelim.IsPathTo`, `Prelim.pathProduct`, `Prelim.IsRootPath`, `CoverageRev.every_vertex_root_path`, `CoverageRev.value_zip_rule`, `RefereeRev.IsPathToLetter`, `RefereeRev.def_path_letter_follow`, `RefereeRev.def_path_letter_slots`, `CoverageRev2.descent`, `CoverageRev2.descent_spec` |  |
+| `def-occ` | `Prelim.Occ`, `Prelim.OccVia`, `Prelim.occ`, `Prelim.def_occ_root`, `Prelim.def_occ_child`, `Prelim.def_occ_form` |  |
+| `lem-occ` | `Prelim.lem_occ_a`, `Prelim.lem_occ_b`, `Prelim.lem_occ_bij` |  |
+| `ex-zlp` | `Prelim.exProg`, `Prelim.ex_zlp_isZLP`, `Prelim.ex_zlp_values`, `Prelim.ex_zlp_length`, `Prelim.ex_zlp_occ`, `Prelim.sync_same_step`, `Prelim.ex_zlp_not_sync`, `ExZlpRev.sync_iff_same_step`, `ExZlpRev.gap_diff_steps` |  |
+| `sec-upper`, notation | `UpperConv.d0`, `UpperConv.scaleN`, `UpperConv.mT`, `UpperConv.mSigma`, `UpperConv.sec_upper_two_card`, `CoverageRev.occ_step_dvd_d0` |  |
+| `thm-scale` | `U12a.thm_scale` |  |
+| `def-canonical` | `UpperConv.firstPos`, `UpperConv.IsLowest`, `UpperConv.canonInterval`, `UpperConv.Acan`, `UpperConv.vq`, `UpperConv.def_canonical_first`, `UpperConv.def_canonical_unique`, `UpperConv.def_canonical_interval`, `UpperConv.def_canonical_mono`, `UpperConv.def_canonical_partition`, `UpperConv.ex_canonical_firstPos`, `UpperConv.ex_canonical_intervals` |  |
+| `def-pair` | `UpperConv.U`, `UpperConv.chi`, `UpperConv.compSet`, `UpperConv.def_pair_chi` |  |
+| `lem-conversion` | `UpperConv.IsInitialSeg`, `UpperConv.IsPieces`, `UpperConv.litSet`, `UpperConv.lowLetterSlots`, `UpperConv.IsConvIndex`, `UpperConv.lem_conversion`, `UpperConv.lem_conversion_singleton`, `CoverageRev2.strict_conversion`, `CoverageRev4.conv_lit_val` | `st-conv-lit`: `UpperConv.step_conv_lit`; `st-conv-eq`: `UpperConv.step_conv_eq`, `CoverageRev2.strict_conv_eq`; `st-conv-cov`: `UpperConv.step_conv_cov` |
+| `def-least` | `UpperConv.Precedes`, `UpperConv.leastOcc`, `UpperConv.IsLeastPath`, `UpperConv.def_least_spec`, `CoverageRev.occ_finite` |  |
+| `lem-least` | `UpperConv.treeSlots`, `UpperConv.K`, `UpperConv.lem_least_b_prefix`, `UpperConv.lem_least_b_tree`, `UpperConv.lem_least_b_K`, `UpperConv.lem_least_b_treepath`, `UpperConv.lem_least_c`, `RefereeRev.lem_least_a_rev` |  |
+| `lem-cut` | `UpperConv.IsCutDecomp`, `U12a.BuiltFrom`, `U12a.IsCutEdgeTo`, `U12a.zetaE`, `U12a.lem_cut` |  |
+| `lem-reach` | `U12a.reach`, `U12a.lem_reach` |  |
+| `lem-split` | `U12a.lem_split` | `st-split-early`: `U12a.step_split_early`; `st-split-least`: `U12a.step_split_least`; `st-split-other`: `U12a.step_split_other` |
+| `def-forward` | `Method.ForwardEq`, `Method.targets`, `Method.FwdHolds`, `Method.rem_forward` |  |
+| `def-labelled` | `Method.Labelled`, `Method.Labelled.Valid`, `Method.Labelled.Outcome`, `Method.Labelled.Prob`, `Method.Labelled.bit`, `Method.Labelled.word`, `Method.Labelled.Carries`, `Method.Labelled.IsFirstPosition`, `Method.ex_labelled_valid`, `Method.ex_labelled_word`, `Method.ex_labelled_first`, `Method.ex_labelled_repeat` |  |
+| `def-req` | `Method.Labelled.firstPos`, `Method.Labelled.prec`, `Method.Labelled.Requirement`, `Method.Labelled.Requirement.Valid`, `Method.Labelled.Requirement.Holds`, `CoverageRev.ex_requirement` |  |
+| `lem-random` | `Method.lem_random` | `st-rand-claim`: `Method.step_lem_random_1`; `st-rand-cond`: `Method.step_lem_random_2`; `st-rand-union`: `Method.step_lem_random_3_bad`, `Method.step_lem_random_3_exp` |
+| `prop-scheme` | `MethodRev.prop_scheme` | `st-scheme-cand`: `Method.step_prop_scheme_1_count`, `Method.step_prop_scheme_1_prob`; `st-scheme-event`: `Method.step_prop_scheme_2_event`; `st-scheme-bound`: `Method.step_prop_scheme_3` |
+| `lem-relay` | `C1Relay.lem_relay` |  |
+| `thm-sc` | `C1Final.jointProb`, `C1Final.SCChain`, `C1Referee.thm_sc_rev` |  |
+| `ex-zlp-cont` | `UpperConv.exX`, `UpperConv.exEq1`, `UpperConv.exEq2`, `UpperConv.exEq3`, `UpperConv.exL`, `UpperConv.exΦ`, `UpperConv.ex_cont_params`, `UpperConv.ex_cont_least`, `UpperConv.ex_cont_tree`, `UpperConv.ex_cont_literals`, `UpperConv.ex_cont_eq_root`, `UpperConv.ex_cont_eq_s0`, `UpperConv.ex_cont_eq_s1`, `UpperConv.ex_cont_least_c_needed`, `UpperConv.ex_cont_ars`, `U12a.ex_cont_cut_u12a`, `RefereeRev.exL4`, `RefereeRev.exΦ4`, `RefereeRev.ex_cont_arc_le`, `CoverageRev4.ex_root_slot0` |  |
 | `rem-constant` | `SP.CstarPaper.rem_constant`, `ReadRev.rem_constant_all` |  |
-| `lem-forward` | `Method.lem_forward` |  |
-| `def-params` | *pending* (`SCParams.X`, `SCParams.B`, `SCParams.u`, `SCParams.e`, `SCParams.M`, `SCParams.IsGoodSlope`: earlier version) |  |
-| `lem-slopes` | *pending* (`SCParams.lem_slopes`: earlier version) | `st-slopes-types`, `st-slopes-mult`, `st-slopes-window`: *pending* |
-| `def-slopes` | *pending* (`SCParams.s`, `SCParams.typeOf`, `SCParams.Ψ`, `SCParams.a`, `SCParams.Δ`: earlier version) |  |
-| `def-free` | *pending* (`SCGadgets.Parents.graph`, `SCGadgets.Parents.geomProb`: earlier version) |  |
-| `def-shifts` | `SCGadgets.IsShiftGadget` |  |
-| `def-slots` | `SCStructure.c`, `SCStructure.Γ`, `SCStructure.η`, `SCStructure.q` |  |
-| `lem-slots` | `SCSlots.lem_slots`, `SCStructure.lem_structure_b` |  |
-| `def-sc` | `SCStructure.Pk`, `SCStructure.x`, `SCStructure.PtrBits` |  |
-| `def-raw` | `SCStructure.pos` |  |
-| `def-critical` | `SCCores.Sprime`, `SCCores.S` |  |
-| `lem-structure` | `SCStructure.lem_structure_a`, `SCStructure.lem_structure_c`, `SCStructure.lem_structure_labelled` | `st-struct-length`: `SCStructure.step_struct_c1`; `st-struct-decode`: `SCStructureRev.step_struct_c2_rev`; `st-struct-unique`: `SCStructure.step_struct_c3_unique`, `SCStructure.step_struct_c3_converse` |
-| `lem-cores` | `SCCores.lem_cores_a`, `SCCores.lem_cores_b` |  |
-| `lem-sc-final` | *pending* (`SCFinal.lem_sc_final_a`, `RefereeRev.lem_sc_final_b_rev`, `SCFinal.lem_sc_final_b_theta`: earlier version) |  |
-| `lem-ap` | `SCFinal.lem_ap` | `st-ap-large`: `SCFinal.step_ap_large`; `st-ap-small`: `SCFinal.step_ap_small` |
-| `lem-free` | *pending* (`SCGadgetsRev.lem_free`: earlier version) |  |
-| `lem-shifts` | `SCGadgets.lem_shifts` |  |
-| `rem-long` | `SCCores.rem_long_canon`, `SCCores.rem_long_sync` |  |
-| `lem-u` | `SCLemU.lem_u` | `st-u-hit`: `SCLemU.step_1`; `st-u-moment`: `SCLemU.step_2`; `st-u-root`: `SCLemU.step_3` |
-| `lem-params` | *pending* (`SCParams.lem_params_a`, `SCParams.lem_params_b`: earlier version) |  |
+| `lem-forward` | `Method.lem_forward`, `Sentences.lem_forward_sentences` |  |
+| `def-params` | `C1Params.Lk`, `C1Params.X`, `C1Params.B`, `C1Params.W`, `C1Params.u`, `C1Params.e`, `C1Params.M`, `C1Params.g`, `C1Params.Λ`, `C1Params.H`, `C1Params.primesP`, `C1Params.IsType`, `C1Params.IsGood`, `C1Final.step_params_basic` |  |
+| `lem-slopes` | `C1Params.goodIn`, `C1Params.lem_slopes` | `st-slopes-types`: `C1Params.step_slopes_types`; `st-slopes-mult`: `C1Params.step_slopes_mult`; `st-slopes-window`: `C1Params.step_slopes_window` |
+| `def-slopes` | `C1Params.goodWindow`, `C1Params.s`, `C1Params.IsLexLeastType`, `C1Params.typeOf`, `C1Params.Ψ`, `C1Params.a`, `C1Params.Ψstar`, `C1Params.Δ`, `C1Params.def_slopes_enough`, `C1Params.def_slopes_type`, `C1Params.def_slopes_a`, `C1Params.def_slopes_psi` |  |
+| `def-free` | `SCGadgets.Parents`, `SCGadgets.arity`, `SCGadgets.Parents.verts`, `SCGadgets.Parents.realChildren`, `SCGadgets.Parents.parentsOf`, `SCGadgets.Parents.R`, `SCGadgets.Parents.anc`, `SCGadgets.Parents.Geometry`, `SCGadgets.Parents.IsGeometry`, `SCGadgets.Parents.π`, `SCGadgets.Parents.jd`, `SCGadgets.Parents.geomProb`, `SCGadgets.Parents.ζ`, `SCGadgets.Parents.graph`, `SCGadgets.Parents.IsFreeLevelsOf`, `C1Gadgets.paper`, `C1Gadgets.verts_eq` |  |
+| `def-shifts` | `SCGadgets.IsShiftGadget`, `SCGadgets.ShiftGadgetFresh`, `SCGadgets.shiftG`, `SCGadgets.def_shifts_count`, `SCGadgets.def_shifts_example` |  |
+| `def-slots` | `C1Structure.c`, `C1Structure.Γ`, `C1Structure.η`, `C1Structure.q`, `C1Structure.def_sc_eta`, `SCStructure.def_sc_eta` |  |
+| `lem-slots` | `C1Structure.step_struct_b_distinct`, `C1Structure.lem_structure_a_c`, `C1Structure.lem_structure_a_cbound`, `C1Structure.lem_structure_b_q`, `C1Slots.lem_slots`, `C1Slots.lem_slots_b` |  |
+| `def-sc` | `C1Structure.Dict`, `C1Structure.n`, `C1Structure.J`, `C1Structure.PtrBits`, `C1Structure.IsVertex`, `C1Structure.IsZeroWord`, `C1Structure.U`, `C1Structure.V`, `C1Structure.G`, `C1Structure.parentChild`, `C1Structure.rawδ`, `C1Structure.pre`, `C1Structure.Pk`, `C1Structure.x`, `C1Structure.def_sc_closed`, `C1Structure.def_sc_zero`, `C1Structure.def_sc_free_levels`, `C1Slots.def_sc_slot` |  |
+| `def-raw` | `C1Structure.Cell`, `C1Structure.RC`, `C1Structure.pos`, `C1Structure.cellOf`, `C1Structure.timeOf`, `C1Cores.step_pi_lt_R` |  |
+| `def-critical` | `C1Cores.IsCoreCell`, `C1Cores.point`, `C1Cores.pointRC`, `C1Cores.Sprime`, `C1Cores.IsInnerCell`, `C1Cores.S`, `C1Cores.def_critical_subset`, `C1Cores.def_critical_point`, `C1Cores.Sprime_finite`, `C1Cores.S_finite`, `C1Cores.point_injective` |  |
+| `lem-structure` | `C1Structure.label`, `C1Structure.LW`, `C1Structure.ReadThroughZero`, `C1Structure.ReadThroughCol`, `C1Structure.lem_structure_a_pre`, `C1Structure.two_le_R`, `C1Structure.lem_structure_a`, `C1Structure.lem_structure_b`, `C1Structure.lem_structure_c_lengths_low`, `C1Structure.lem_structure_shifts_pre`, `C1Structure.lem_structure_c_lengths_high`, `C1Structure.lem_structure_c_read`, `C1Structure.lem_structure_c`, `C1Structure.lem_structure_labelled` | `st-struct-length`: `C1Structure.step_struct_c1`; `st-struct-decode`: `C1StructureRev.step_struct_c2_rev`; `st-struct-unique`: `C1Structure.step_struct_c3_unique` |
+| `lem-cores` | `C1Cores.lem_cores_a_cols`, `C1Cores.lem_cores_a_point`, `C1Cores.lem_cores_a`, `C1Cores.lem_cores_b`, `C1Cores.lem_cores_b_chain` |  |
+| `lem-sc-final` | `C1Final.Ccol`, `C1Final.colEdges`, `C1Final.lem_sc_final_b_theta`, `C1Final.lem_sc_final_a`, `C1Referee.lem_sc_final_b_rev` |  |
+| `lem-ap` | `C1Final.HasCells`, `C1Final.APGood`, `C1Final.lem_ap`, `C1Coverage.lem_ap_raw` | `st-ap-large`: `C1Final.step_ap_large_ybar`, `C1Final.step_ap_large_reduce`, `C1Final.step_ap_large`; `st-ap-small`: `C1Final.step_ap_small_pigeon`, `C1Final.step_ap_small_residue`, `C1Final.step_ap_small` |
+| `lem-free` | `SCGadgets.Parents.numEdges`, `SCGadgets.Parents.ReadsThrough`, `C1Gadgets.lem_free` |  |
+| `lem-shifts` | `SCGadgets.lem_shifts`, `CoverageRev3.shift_paths` |  |
+| `rem-long` | `C1Cores.colk`, `C1Cores.OccThrough`, `C1Cores.step_long_tree`, `C1Cores.step_long_slot`, `C1Cores.step_long_below`, `C1Cores.step_long_count`, `C1Cores.step_long_formula`, `C1Cores.rem_long_occ`, `C1Cores.rem_long_lowest`, `C1Cores.rem_long_canon`, `C1Cores.rem_long_sync` |  |
+| `lem-u` | `C1LemU.hits`, `C1LemU.Nhit`, `C1LemU.geomExp`, `C1LemU.lem_u` | `st-u-hit`: `C1LemU.step_1`; `st-u-moment`: `C1LemU.step_2_recursion`, `C1LemU.step_2`; `st-u-root`: `C1LemU.step_3` |
+| `lem-params` | `C1Params.SP_`, `C1Params.lem_params` |  |
 | `def-section` | `Reverse.sec` |  |
 | `lem-rev-upper` | `Reverse.lem_rev_upper` | `st-revup-arc`: `Reverse.step_lem_rev_upper_1`; `st-revup-cases`: `Reverse.step_lem_rev_upper_2`; `st-revup-final`: `Reverse.step_lem_rev_upper_3` |
-| `def-rev-words` | `ReverseZ.zm`, `ReverseZ.xn` |  |
+| `def-rev-words` | `ReverseZ.Nm`, `ReverseZ.zm`, `ReverseZ.mOf`, `ReverseZ.xn`, `ReverseZ.s_def_rev_words_unique`, `ReverseZ.def_rev_words_length`, `ReverseZ.s_def_rev_words_blocks` |  |
 | `lem-rev-arc` | `ReverseZ.lem_rev_arc` |  |
 | `lem-sections` | `ReverseZ.lem_sections` | `st-sec-first`: `ReverseZ.step_lem_sections_first`; `st-sec-pair`: `ReverseZ.step_lem_sections_pair`; `st-sec-congr`: `ReverseZ.step_lem_sections_congr` |
 | `lem-rev-zlc` | `ReverseZ.lem_rev_zlc` | `st-rev-stop`: `ReverseZ.step_lem_rev_zlc_stop`; `st-rev-vertex`: `ReverseZ.step_lem_rev_zlc_vertex` |
-| `rem-measures` | `RemMeasures.rem_measures_grammar`, `RemMeasures.rem_measures_zlc` |  |
+| `rem-measures` | `RemMeasures.CNFGrammar`, `RemMeasures.CNFGrammar.Derives`, `RemMeasures.zmGrammar`, `RemMeasures.rem_measures_grammar`, `RemMeasures.rem_measures_grammar_exists`, `RemMeasures.rem_measures_zlc`, `RemMeasures.rem_measures_lzc` |  |
 <!-- /tab-lean -->
 
-## Further declarations
+## Earlier versions
 
-| paper | Lean |
+The repository also keeps the formalisations of earlier versions of the paper; they are proved but no longer carry
+the paper's tags, and they do not state the current results:
+
+| earlier version | Lean |
 |---|---|
-| `thm-lower`, former form (infinitely many words): both sentences, first, second; the loss along the relay lengths | `SP.CstarText.SCFinal.thm_lower_conf`, `thm_lower_strong`, `thm_lower`, `rem_loss` |
-| The proof of `thm-lower` in its earlier version: st-lower-prefix, st-lower-aux (the auxiliary family `SP.CstarText.EveryLength.AuxFam`, L := ⌈1024 k² log(k+2)⌉), st-lower-lengths, st-lower-assemble | `SP.CstarText.EveryLength.step_lower_prefix`, `step_lower_aux`, `step_lower_lengths`, `step_lower_assemble` |
-| `thm-lower`, both sentences separately (earlier loss) | `SP.CstarText.EveryLength.thm_lower_every_first`, `thm_lower_every_second` |
-| `cor-szlc`, former form (infinitely many words) | `SP.CstarText.Sentences.cor_szlc_text` |
-| `rem-constant`: a constant valid for all words is at least 2^(−1/4) (the word aa) | `SP.CstarText.ReadRev.rem_constant_all`, from `SP.CstarPaper.rem_constant` |
-| No word with ARC(x) ≥ H ZLC(x) is shorter than H^4/32 (from `thm-upper` with the earlier constant; the paper now says H^4/16: *pending*) | `SP.CstarText.ReadRev.why_quarter_length` |
-| The conclusion of `ex-zlp-cont`: synchronous iff all occurrences of each vertex have one step; if ARC(x) > ZLC(x), every smallest program for x has a vertex with occurrences of different steps | `SP.CstarText.ExZlpRev.sync_iff_same_step`, `SP.CstarText.ExZlpRev.gap_diff_steps` |
-| Both main theorems for ARSs whose equations have α(t) < α′(t) < n at every index (strict ARSs); the descent of a position (proof of `lem-structure` (b)); further sentence-level claims of the coverage audit | `SP.CstarText.CoverageRev2.thm_upper_strict`, `SP.CstarText.CoverageRev2.thm_lower_strict` (former form; every length: `SP.CstarText.EveryLength.thm_lower_every_strict`), `SP.CstarText.CoverageRev2.descent_spec`, `SP.CstarText.CoverageRev2.descent_passes_occ` (all of `SP/CstarText/CoverageRev2`) |
-| Sentences reworded in the style round (2026-10-20) that state more than before: the paths through the shift gadget (`lem-shifts`), the occurrence through the cut edge, least occurrences along tree slots, the forward-equation symbols, the slope-type sum, the literal of a letter slot | `SP.CstarText.CoverageRev3.shift_paths`, `cut_occ`, `least_tree_slot`, `forward_every`, `slopes_sum_pow`, `split_slot_literal` (all of `SP/CstarText/CoverageRev3`) |
-| Sentences reworded in the author-voice round (2026-10-20) that state more than before: the letter of a literal slot (`lem-conversion`), slot 0 of the root in the example, `lem-ap` with raw coordinates, distinct points of the inner cells, the layers of the program (proof of `lem-structure` (a)), the moment chain of `lem-u`, ZLC(z_m) against the number of grammar rules | `SP.CstarText.CoverageRev4.conv_lit_val`, `ex_root_slot0`, `lem_ap_raw`, `inner_points`, `edge_layers`, `u_expected`, `rem_rules` (all of `SP/CstarText/CoverageRev4`) |
-| The sentence-level anchors of the paper (`s-<label>-...`) | the declarations tagged `@[kb "cstarpaper-s-..."]` (mostly `SP/CstarText/Sentences`, `ReadRev`, `CoverageRev*`) |
+| Upper bound with the constant 2^(5/4) (threshold λ, lem-paths): thm-upper, thm-scale, lem-split, lem-cut (bound p(π)t < √N) | `UpperBound.thm_upper_paper`, `UpperBound.thm_scale`, `UpperBound.lem_split`, `UpperBoundRev.lem_split`, `UpperConv.lem_cut` |
+| Lower bound with arities in [X, 2X) and L = 1024 k² ⌈log(k+2)⌉ (parameters of k only): the whole construction | `SCParams`, `SCGadgets` (its generic free-level machinery is reused by C1), `SCStructure`, `SCCores`, `SCLemU`, `SCFinal`, `RelayRev`, `RefereeRev` |
+| thm-lower with the loss exp(−C (log n)^(2/3) (log log n)^(1/3)), every length via an auxiliary family | `EveryLength.thm_lower_every` (and `EveryLength.AuxFam`) |
+| thm-lower, former form (infinitely many words) | `SCFinal.thm_lower_conf`, `SCFinal.thm_lower_strong`, `SCFinal.thm_lower`, `SCFinal.rem_loss` |
+| cor-szlc, former form (infinitely many words) | `Sentences.cor_szlc_text` |
+| Another proof of the main results (weaker constant) | `SP.CstarConst.arc_le_const`, `SP.CstarPaper.thm_lower`, `SP.CstarPaper.cor_cstar`, `SP.ReverseUpper.zlc_le_arc` |
+
+`cor-cstar` (`IntroRev.cor_cstar_text`) and `cor-szlc` (`CorSzlcEvery.cor_szlc_every`) state the paper's corollaries
+exactly; their proofs cite the earlier versions of the two main theorems, which imply the same corollaries.
 
 ## Cited results
 
@@ -312,11 +314,12 @@ construction and validity of equations (module `SP.CstarUpper`), and `SP.CstarPa
 computation of `rem-constant` for the word aa directly.
 
 Dependency routes (`lake env lean tools/Deps.lean`; `python3 tools/deps.py README.md` runs it on every name of the
-correspondence table): the main declarations of the paper's route depend on no theorem of the earlier formalisation,
-with one qualification: the proof of `thm-upper` (`thm_upper_paper`, hence also `cor_cstar_text`) uses 37 untagged
-helper lemmas of `SP/CstarUpper.lean` (the module that also holds the shared definitions of first positions and
-canonical intervals): basic facts on occurrences, paths and canonical intervals, and
-`SP.Program.exists_equations`/`equation_valid`, the two-equation construction that the step lemma of the conversion
-(`UpperConv`, st-conv-eq) invokes. `thm-lower`, its loss, `cor-szlc` and `prop-reverse` use only `SP.CstarText` and
-the definitions of `SP/Setting.lean` with their basic lemmas. The basic definitions (arithmetic repetition systems,
+correspondence table, 386 names): the declarations of the current version depend on no theorem of the earlier
+formalisations, with two qualifications. The upper bound (`U12a.*`, hence `thm_upper`) uses untagged helper lemmas of
+`SP/CstarUpper.lean` and `UpperConv` (basic facts on occurrences, paths and lowest intervals, and the two-equation
+construction of the conversion, `SP.Program.exists_equations`/`equation_valid`). `cor-cstar`'s declarations, the
+earlier proof of `prop-reverse` (`SP.ReverseUpper.zlc_le_arc`) and `rem-constant` (`SP.CstarPaper.rem_constant`, the
+computation for the word aa) use earlier declarations. The lower bound (`C1Params` … `C1Lower`, `C1Sent`), `cor-szlc`
+and `prop-reverse` (`ReverseZ`) use only `SP.CstarText` and the definitions of `SP/Setting.lean` with their basic
+lemmas. The basic definitions (arithmetic repetition systems,
 ARC, zipline programs, ZLC, occurrences) are in `SP/Setting.lean`.

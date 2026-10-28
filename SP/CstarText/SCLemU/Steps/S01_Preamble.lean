@@ -186,7 +186,7 @@ theorem step_geom_finite (D : Parents) (hD : D.Facts) :
 
 /-- main.typ 1218, proof of lem-u (preamble): "`𝔼 binom(N_hit, u)` is the sum over the `u`-sets `T` of
 parents of the probability that all of them hit" (the set of geometries being finite). -/
-@[kb "cstarpaper-s-lem-u-sum"]
+-- kb tag retired 2026-10-28 (superseded by C1LemU/Steps/S01_Preamble.lean:step_0_sum): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-u-sum"]
 theorem step_0_sum (D : Parents) (ξ : Fin D.H → Option (ℕ × (Fin D.k → ℕ))) (u : ℕ)
     (hfin : {σ : D.Geometry | D.IsGeometry σ}.Finite) :
     geomExp D (fun σ => ((Nhit D ξ σ).choose u : ℝ)) =
@@ -223,7 +223,7 @@ theorem step_0_sum (D : Parents) (ξ : Fin D.H → Option (ℕ × (Fin D.k → �
 /-- main.typ 1219–1220, proof of lem-u (preamble): "Each vertex other than the root is a real child of
 exactly one vertex" — for every vertex `y ≠ root` of the tree, `v̂ = above y` is a vertex with real
 children, `y` is a real child of `v̂`, and of no other vertex with real children. -/
-@[kb "cstarpaper-s-lem-u-vertex"]
+-- kb tag retired 2026-10-28 (superseded by C1LemU/Steps/S01_Preamble.lean:step_0_parent): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-u-vertex"]
 theorem step_0_parent (D : Parents) (hD : D.Facts) :
     ∀ y : Node D.H, IsTreeNode D y → y ≠ .root →
       IsInner D (above D y) ∧ y ∈ kids D (above D y) ∧
@@ -337,7 +337,7 @@ theorem step_0_parent (D : Parents) (hD : D.Facts) :
 /-- IMPLICIT STANDARD FACT (main.typ 1220, the definition of `V(T)`: "the vertices other than the
 root on the root paths of the members of `T`"): `V(T)` consists of vertices of the tree other than
 the root. -/
-@[kb "cstarpaper-s-lem-u-vertex" (part := "SCLemU.step_Vset_tree")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-u-vertex" (part := "SCLemU.step_Vset_tree")]
 theorem step_Vset_tree (D : Parents) (hD : D.Facts) (T : Finset (Fin D.H)) :
     ∀ v ∈ Vset D T, IsTreeNode D v ∧ v ≠ .root := by
   intro v hv
@@ -355,7 +355,7 @@ theorem step_Vset_tree (D : Parents) (hD : D.Facts) (T : Finset (Fin D.H)) :
 /-- IMPLICIT STANDARD FACT (used in step 1, main.typ 1228, `(a_y − u)^(−j_y)` with `a_y > u`, and in
 step 2, main.typ 1238, "all coefficients being non-negative"): for `1 ≤ u ≤ min(R, X)/4`, `w(v) > 0`
 for every vertex `v ≠ root` of the tree (`a_(v̂) ≥ min(R, X) > u`). -/
-@[kb "cstarpaper-s-lem-u-expected"]
+-- kb tag retired 2026-10-28 (superseded by C1LemU/Steps/S01_Preamble.lean:step_w_pos): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-u-expected"]
 theorem step_w_pos (D : Parents) (hD : D.Facts) (u : ℕ) (hu1 : 1 ≤ u)
     (hu : 4 * u ≤ min D.R D.X)
     (harity : ∀ i : ℕ, 1 ≤ i → i ≤ D.k → ∀ v ∈ D.verts i, D.X ≤ arity v)

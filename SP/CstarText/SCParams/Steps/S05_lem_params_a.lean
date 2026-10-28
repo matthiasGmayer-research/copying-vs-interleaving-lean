@@ -163,12 +163,12 @@ private lemma sp_log2_Lk (k : ℕ) (hk0 : (k : ℝ) ≠ 0) (hb0 : (b k : ℝ) �
 /-! ### Part (a) -/
 
 /-- main.typ 924, proof of lem-params: "As `k ≥ 2`, `2 ≤ b ≤ k`." -/
-@[kb "cstarpaper-s-lem-params-claim"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-claim"]
 theorem step_lem_params_b_range (k : ℕ) (hk : 2 ≤ k) : 2 ≤ b k ∧ b k ≤ k := by
   exact ⟨b_ge_two k hk, b_le_k k hk⟩
 
 /-- main.typ 926, lem-params (a): "`log(40k + 60) ≤ 6 + b`". -/
-@[kb "cstarpaper-s-lem-params-using"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-using"]
 theorem step_lem_params_a_1 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤ k) :
     SP.log2 (40 * (k : ℝ) + 60) ≤ 6 + (b k : ℝ) := by
   have h40 : SP.log2 (40 : ℝ) ≤ 6 := by
@@ -183,7 +183,7 @@ theorem step_lem_params_a_1 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤
   linarith [b_log_le k]
 
 /-- main.typ 926, lem-params (a): "`log(k²) ≤ 2b`". -/
-@[kb "cstarpaper-s-lem-params-using" (part := "SCParams.step_lem_params_a_2")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-using" (part := "SCParams.step_lem_params_a_2")]
 theorem step_lem_params_a_2 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤ k) :
     SP.log2 ((k : ℝ) ^ 2) ≤ 2 * (b k : ℝ) := by
   rw [sp_log2_sq]
@@ -191,7 +191,7 @@ theorem step_lem_params_a_2 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤
 
 /-- main.typ 925–926, lem-params (a): "`log u = log(10(4k + 6)) + log(1024 k² b) ≤ 17 + 4b`, using
 `log(40k + 60) ≤ 6 + b` and `log(k²) ≤ 2b`." -/
-@[kb "cstarpaper-s-lem-params-using" (part := "SCParams.step_lem_params_a_3")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-using" (part := "SCParams.step_lem_params_a_3")]
 theorem step_lem_params_a_3 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤ k)
     (h1 : SP.log2 (40 * (k : ℝ) + 60) ≤ 6 + (b k : ℝ))
     (h2 : SP.log2 ((k : ℝ) ^ 2) ≤ 2 * (b k : ℝ)) :
@@ -218,13 +218,13 @@ theorem step_lem_params_a_3 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤
     linarith [log2_k_le_b k hk, sp_log2_le_self (b k) (by have := b_ge_two k hk; omega)]
 
 /-- main.typ 926, lem-params (a): "`M = 16 · 4^k u B²`". -/
-@[kb "cstarpaper-s-lem-params-claim2"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-claim2"]
 theorem step_lem_params_a_4 (k : ℕ) (hk : 2 ≤ k) : M k = 16 * 4 ^ k * u k * B k ^ 2 := by
   exact M_eq k hk
 
 /-- main.typ 926–927, lem-params (a): "`M = 16 · 4^k u B²`, so
 `ln(2M) ≤ log(2M) ≤ 2(k + 1)L + 2k + 5 + log u`". -/
-@[kb "cstarpaper-s-lem-params-claim2" (part := "SCParams.step_lem_params_a_5")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-claim2" (part := "SCParams.step_lem_params_a_5")]
 theorem step_lem_params_a_5 (k : ℕ) (hk : 2 ≤ k) (hM : M k = 16 * 4 ^ k * u k * B k ^ 2) :
     Real.log (2 * (M k : ℝ)) ≤ SP.log2 (2 * (M k : ℝ)) ∧
       SP.log2 (2 * (M k : ℝ)) ≤
@@ -259,7 +259,7 @@ theorem step_lem_params_a_5 (k : ℕ) (hk : 2 ≤ k) (hM : M k = 16 * 4 ^ k * u 
 
 /-- main.typ 927, lem-params (a): "and `T_M ≤ 4kL`" (from the previous bound on `ln(2M)` and the
 bound on `log u`). -/
-@[kb "cstarpaper-s-lem-params-claim2" (part := "SCParams.step_lem_params_a_6")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-claim2" (part := "SCParams.step_lem_params_a_6")]
 theorem step_lem_params_a_6 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤ k)
     (hu : SP.log2 (u k : ℝ) ≤ 17 + 4 * (b k : ℝ))
     (hlnM : Real.log (2 * (M k : ℝ)) ≤
@@ -278,7 +278,7 @@ theorem step_lem_params_a_6 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤
   linarith [hlnM, hu, key]
 
 /-- main.typ 927–928, lem-params (a): "hence `log T_M ≤ 2 + log k + 10 + 2 log k + log b ≤ 10b`". -/
-@[kb "cstarpaper-s-lem-params-claim2" (part := "SCParams.step_lem_params_a_7")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-claim2" (part := "SCParams.step_lem_params_a_7")]
 theorem step_lem_params_a_7 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤ k)
     (hT : TM k ≤ 4 * (k : ℝ) * (L k : ℝ)) :
     SP.log2 (TM k) ≤ 2 + SP.log2 k + 10 + 2 * SP.log2 k + SP.log2 (b k) ∧
@@ -309,7 +309,7 @@ theorem step_lem_params_a_7 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤
   linarith
 
 /-- main.typ 928–929, lem-params (a): "So `log Λ ≤ 2k + 6 + 10b(k² + 2k) ≤ 22k²b < L/32 = 32k²b`". -/
-@[kb "cstarpaper-s-lem-params-claim3"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-claim3"]
 theorem step_lem_params_a_8 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤ k)
     (hlogT : SP.log2 (TM k) ≤ 10 * (b k : ℝ)) :
     SP.log2 (Λ k) ≤ 2 * (k : ℝ) + 6 + 10 * (b k : ℝ) * ((k : ℝ) ^ 2 + 2 * k) ∧
@@ -346,7 +346,7 @@ theorem step_lem_params_a_8 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤
 
 /-- main.typ 929, lem-params (a): "and `log(12u²) ≤ 4 + 34 + 8b < L/32`" (from the bound on
 `log u`). -/
-@[kb "cstarpaper-s-lem-params-claim3" (part := "SCParams.step_lem_params_a_9")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-claim3" (part := "SCParams.step_lem_params_a_9")]
 theorem step_lem_params_a_9 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤ k)
     (hu : SP.log2 (u k : ℝ) ≤ 17 + 4 * (b k : ℝ)) :
     SP.log2 (12 * (u k : ℝ) ^ 2) ≤ 4 + 34 + 8 * (b k : ℝ) ∧
@@ -366,7 +366,7 @@ theorem step_lem_params_a_9 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤
     linarith
 
 /-- main.typ 929, lem-params (a): "Then `H ≥ B 2^(−L/32) = B X^(−1/32)`" (from `log Λ < L/32`). -/
-@[kb "cstarpaper-s-lem-params-claim4"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-claim4"]
 theorem step_lem_params_a_10 (k : ℕ) (hk : 2 ≤ k) (hΛ : SP.log2 (Λ k) < (L k : ℝ) / 32) :
     (B k : ℝ) * (2 : ℝ) ^ (-((L k : ℝ) / 32)) ≤ (H k : ℝ) ∧
       (B k : ℝ) * (2 : ℝ) ^ (-((L k : ℝ) / 32)) = (B k : ℝ) * (X k : ℝ) ^ (-(1 : ℝ) / 32) := by

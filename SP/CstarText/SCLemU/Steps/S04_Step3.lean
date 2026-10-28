@@ -46,7 +46,7 @@ private lemma step3_one_le_prod {ι : Type*} (s : Finset ι) (x : ι → ℝ) (h
       Finset.prod_le_prod (fun _ _ => zero_le_one) (fun i hi => by linarith [hx i hi])
 
 /-- main.typ 1241, lem-u, step 3 (the claim): "`f_root(2) ≤ exp(4/3)`". -/
-@[kb "cstarpaper-st-u-root" (deviation := "the recursion for f_v and lem-free (a) arity facts enter as hypotheses hrec, hfreeA, harity")]
+-- kb tag retired 2026-10-28 (superseded by C1LemU/Steps/S04_Step3.lean:step_3): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-u-root" (deviation := "the recursion for f_v and lem-free (a) arity facts enter as hypotheses hrec, hfreeA, harity")]
 theorem step_3 (D : Parents) (hD : D.Facts) (u : ℕ) (hu1 : 1 ≤ u) (hu : 4 * u ≤ min D.R D.X)
     (harity : ∀ i : ℕ, 1 ≤ i → i ≤ D.k → ∀ v ∈ D.verts i, D.X ≤ arity v)
     (hfreeA : (∀ i : ℕ, 1 ≤ i → i < D.k → ∀ v ∈ D.verts i,

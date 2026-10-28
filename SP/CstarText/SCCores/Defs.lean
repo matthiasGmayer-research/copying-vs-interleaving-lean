@@ -35,20 +35,20 @@ open SP.CstarText.SCStructure (pos Cell RC PtrBits Qk Pk toPk cellOf timeOf)
 /-! ## def-critical (main.typ 1162–1168) -/
 
 /-- def-critical: "A cell `ω = (γ, κ, ℓ)` with `2 ≤ ℓ < e − 2` is a _core_ cell". -/
-@[kb "cstarpaper-def-critical" (part := "core cell")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-critical" (part := "core cell")]
 def IsCoreCell (k : ℕ) (ω : Cell k) : Prop :=
   2 ≤ (ω.2.2 : ℕ) ∧ (ω.2.2 : ℕ) + 2 < SCParams.e k
 
 /-- def-critical: "for `h < H` its _point_ of time `h` is `y_h(ω) := p_h(γ, κ, eh + ℓ)`" (an integer,
 defined for every cell). -/
-@[kb "cstarpaper-def-critical" (part := "the point y_h(ω)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-critical" (part := "the point y_h(ω)")]
 def point (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k).H) (ω : Cell k) : ℤ :=
   pos k σ h ω.1 ω.2.1 (SCParams.e k * h + ω.2.2)
 
 /-- The raw coordinate `(γ, κ, eh + ℓ)` of the point `y_h(ω)` (remark after def-critical, main.typ
 1170–1171: "the point `y_h(ω)` carries the raw coordinate `(γ, κ, eh + ℓ)`"); `eh + ℓ < e(H + 1)` as
 `ℓ < e` and `h < H`. -/
-@[kb "cstarpaper-def-critical" (part := "the raw coordinate (γ, κ, eh + ℓ) of y_h(ω)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-critical" (part := "the raw coordinate (γ, κ, eh + ℓ) of y_h(ω)")]
 def pointRC (k : ℕ) (h : Fin (paper k).H) (ω : Cell k) : RC k :=
   (ω.1, ω.2.1, ⟨SCParams.e k * h + ω.2.2, by
     have h1 := ω.2.2.isLt
@@ -59,19 +59,19 @@ def pointRC (k : ℕ) (h : Fin (paper k).H) (ω : Cell k) : RC k :=
     omega⟩)
 
 /-- def-critical: "`S'` is the set of these points" — the points `y_h(ω)` of the core cells, `h < H`. -/
-@[kb "cstarpaper-def-critical" (part := "S'")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-critical" (part := "S'")]
 def Sprime (k : ℕ) (σ : (paper k).Geometry) : Set ℕ :=
   {p : ℕ | ∃ (h : Fin (paper k).H) (ω : Cell k), IsCoreCell k ω ∧ point k σ h ω = (p : ℤ)}
 
 /-- def-critical: "A core cell is _inner_ if `B/8 ≤ κ < 3B/8` and `e/4 + 1 ≤ ℓ < 3e/4 − 1`". -/
-@[kb "cstarpaper-def-critical" (part := "inner cell")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-critical" (part := "inner cell")]
 def IsInnerCell (k : ℕ) (ω : Cell k) : Prop :=
   IsCoreCell k ω ∧
     (SCParams.B k : ℚ) / 8 ≤ (ω.2.1 : ℕ) ∧ ((ω.2.1 : ℕ) : ℚ) < 3 * (SCParams.B k : ℚ) / 8 ∧
     (SCParams.e k : ℚ) / 4 + 1 ≤ (ω.2.2 : ℕ) ∧ ((ω.2.2 : ℕ) : ℚ) < 3 * (SCParams.e k : ℚ) / 4 - 1
 
 /-- def-critical: "`S` is the set of the points of the inner cells". -/
-@[kb "cstarpaper-def-critical" (part := "S")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-critical" (part := "S")]
 def S (k : ℕ) (σ : (paper k).Geometry) : Set ℕ :=
   {p : ℕ | ∃ (h : Fin (paper k).H) (ω : Cell k), IsInnerCell k ω ∧ point k σ h ω = (p : ℤ)}
 
@@ -79,13 +79,13 @@ def S (k : ℕ) (σ : (paper k).Geometry) : Set ℕ :=
 
 /-- The column `v_(γ,κ)` as a vertex of `P_k` (the root of `P_k` if `v_(γ,κ)` is not reachable;
 rem-long shows it is, `rem_long_occ`). -/
-@[kb "cstarpaper-rem-long" (part := "the column v_(γ,κ) in P_k")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-rem-long" (part := "the column v_(γ,κ) in P_k")]
 def colk (k : ℕ) (σ : (paper k).Geometry) (pb : PtrBits k) (γ κ : ℕ) : Qk k σ pb :=
   toPk k σ pb (.col γ κ)
 
 /-- An occurrence `ρ ∈ occ_q` _through_ the vertex `w`: its root path (def-occ) passes through `w`, i.e.
 has a prefix that is a root path with end `w`. (rem-long: "one through each parent".) -/
-@[kb "cstarpaper-rem-long" (part := "an occurrence through a vertex")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-rem-long" (part := "an occurrence through a vertex")]
 def OccThrough {Q α : Type} (P : Program Q α) (q w : Q) (ρ : Occ) : Prop :=
   ∃ js₁ js₂ : List ℕ, OccVia P q ρ (js₁ ++ js₂) ∧ IsPathTo P P.root js₁ w
 

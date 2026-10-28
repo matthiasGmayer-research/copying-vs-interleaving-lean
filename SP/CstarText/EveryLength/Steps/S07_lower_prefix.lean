@@ -17,7 +17,7 @@ namespace SP.CstarText.EveryLength
 
 set_option maxHeartbeats 4000000 in
 open SP SP.CstarText.Method in
-@[kb "cstarpaper-st-lower-prefix" (part := "EveryLength.step_lower_prefix")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-lower-prefix" (part := "EveryLength.step_lower_prefix")]
 theorem step_lower_prefix (k : ℕ) (hk : 2 ≤ k) :
     ∃ (σ : (SCGadgets.paper k).Geometry) (pb : SCStructure.PtrBits k), (SCGadgets.paper k).IsGeometry σ ∧
       ∀ m : ℕ, m ≤ SCStructure.n k → 2 ≤ (m : ℝ) * SCParams.H k / SCStructure.n k →

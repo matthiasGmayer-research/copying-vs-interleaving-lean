@@ -42,7 +42,7 @@ def-labelled, `R₀ = H + 1`, `D = u²`, whose position `p` carries `(γ, κ, t)
 for some parent `h`); `S ⊆ S'` and every element of `S'` is `< n`.
 Proof (main.typ, App. C.1): lem-structure; the remark after def-critical; lem-cores (a); lem-ap with the remark after
 def-critical; lem-sc-final (a); lem-sc-final (b) with lem-params (a), as `log(12u²) < L/32` and `X = 2^L`. -/
-@[kb "cstarpaper-lem-relay"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-relay"]
 theorem lem_relay (k : ℕ) (hk : 2 ≤ k) :
     -- the lead
     (∀ σ : (paper k).Geometry, (paper k).IsGeometry σ → ∀ ω : PtrBits k,

@@ -5,8 +5,9 @@ import SP.CstarText.UpperBound.Statement
 
 `papers/cstar/draft/main.typ` @ c009715, lines 1438–1455. The proof had no step or sentence marks; each sentence is
 formalised here by declarations tagged `cstarpaper-s-lem-paths-<word>`, and `lem_paths_sentences` assembles the
-lemma from them by induction on the height (`P.rank`, the length of a longest edge path from `z`, gated; the text's
-height counts slots to a letter, one more; only the well-foundedness along edges is used). Context: `P` a ZLP,
+lemma from them by strong induction on `P.rank z` (`SlotGraph.rank`: the number of vertices reachable from `z` by at least one
+edge, which decreases strictly along edges between vertices; the text inducts on the height, the largest number of
+edges of a path from `z` to a letter; only the well-foundedness along edges is used). Context: `P` a ZLP,
 `z` a vertex, `d = d_z`, `y` real; `W P z y` and `pathsW P z y` are those of lem-paths (target `UpperBound`).
 -/
 

@@ -97,7 +97,7 @@ theorem step_psi_le_psistar (k : ℕ) (hk : 2 ≤ k) (h : ℕ) (hh : h < SCParam
 /-- TEXT GAP (trivial, implicit in the proof of lem-structure (b), main.typ 1104: "a multiple of `Ψ_h`
 greater than `−Ψ_h`" uses `c_h ≥ 0`): `c_h ≥ 0` for `h < H`, as every increment
 `B Δ_h (e(h + 1) − 1/2)` is positive (`Δ_h ≥ 1`, remark after def-slopes). -/
-@[kb "cstarpaper-s-lem-structure-numerator" (part := "SCStructure.step_c_nonneg")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-numerator" (part := "SCStructure.step_c_nonneg")]
 theorem step_c_nonneg (k : ℕ) (hk : 2 ≤ k)
     (hΔ : ∀ h : ℕ, h + 1 < SCParams.H k → 1 ≤ SCParams.Δ k h)
     (h : ℕ) (hh : h < SCParams.H k) : 0 ≤ c k h := by

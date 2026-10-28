@@ -22,7 +22,7 @@ open SP.CstarText.SCCores (point IsCoreCell IsInnerCell)
 /-- main.typ 1277: "(applicable as `u ≤ X^(31/32)/4 ≤ R/4` by @lem-free (a) and @lem-params)" — the hypotheses
 `1 ≤ u ≤ min(R, X)/4` of lem-u hold. Context: `u ≥ 1` (def-params bridge); frozen facts: lem-free (a) (`H/X^k ≤ R`), lem-params (a)
 (`H ≥ B X^(−1/32)`), lem-params (b) (`u ≤ X^(31/32)/4`); `B = X^(k+1)` (def-params). -/
-@[kb "cstarpaper-s-lem-ap-applicable"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-applicable"]
 theorem step_ap_large_applic (k : ℕ) (hk : 2 ≤ k)
     (hR : (SCParams.H k : ℝ) / (SCParams.X k : ℝ) ^ k ≤ (paper k).R)
     (hH : (SCParams.B k : ℝ) * (SCParams.X k : ℝ) ^ (-(1 : ℝ) / 32) ≤ (SCParams.H k : ℝ))
@@ -62,7 +62,7 @@ theorem step_ap_large_applic (k : ℕ) (hk : 2 ≤ k)
 `𝔼 binom(N_hit, u)`" — for the tuples `ξ` of `step_ap_large_tuple` (every geometry that puts `y_h(ω)` into
 `ν + τℤ` makes `h` hit), as `u ≤ N_hit` on this event (`P(N_hit ≥ u) ≤ 𝔼 binom(N_hit, u)`, the standard fact
 `hmarkov`). -/
-@[kb "cstarpaper-s-lem-ap-applicable" (part := "SCFinal.step_ap_large_markov")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-applicable" (part := "SCFinal.step_ap_large_markov")]
 theorem step_ap_large_markov (k : ℕ) (ω : Cell k) (τ ν : ℕ)
     (ξ : Fin (paper k).H → Option (ℕ × (Fin (paper k).k → ℕ)))
     (hξ : ∀ σ : (paper k).Geometry, (paper k).IsGeometry σ → ∀ h : Fin (paper k).H,
@@ -91,7 +91,7 @@ private theorem mem_innerCells_iff (k : ℕ) (ω : Cell k) : ω ∈ innerCells k
 `n`)". Context (frozen facts): a geometry exists; for a geometry the points `y_h(ω)` of the core cells are
 positions below `n` (lem-cores (a)) and distinct (`SCCores.point_injective`); `H ≥ 1` (def-slopes); `n ≥ 1`
 (lem-sc-final (b): `n ≥ X^(3(k+1))`). -/
-@[kb "cstarpaper-s-lem-ap-fewer"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-fewer"]
 theorem step_ap_large_count (k : ℕ) (hk : 2 ≤ k)
     (hne : {σ : (paper k).Geometry | (paper k).IsGeometry σ}.Nonempty)
     (hpt : ∀ σ : (paper k).Geometry, (paper k).IsGeometry σ → ∀ (h : Fin (paper k).H) (ω : Cell k),
@@ -160,7 +160,7 @@ theorem step_ap_large_count (k : ℕ) (hk : 2 ≤ k)
 
 /-- main.typ 1280–1281: "and `u ≥ 10 log n` …; so … `1 − exp(4/3) n³ 2^(−u) ≥ 1 − 4n^(−7)`" — the numerical
 inequality `exp(4/3) n³ 2^(−u) ≤ 4n^(−7)` for `n ≥ 1` and `u ≥ 10 log n`. -/
-@[kb "cstarpaper-s-lem-ap-fewer" (part := "SCFinal.step_ap_large_numeric")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-fewer" (part := "SCFinal.step_ap_large_numeric")]
 theorem step_ap_large_numeric (n u : ℕ) (hn : 1 ≤ n) (hu : 10 * SP.log2 (n : ℝ) ≤ (u : ℝ)) :
     Real.exp (4 / 3) * (n : ℝ) ^ 3 * ((2 : ℝ) ^ u)⁻¹ ≤ 4 * (n : ℝ) ^ (-7 : ℝ) := by
   have hN : (1 : ℝ) ≤ n := by exact_mod_cast hn
@@ -200,7 +200,7 @@ TEXT DEFECT D9 (stated with the proposed fix): the text's triples have `τ < n` 
 `SCCores.point_injective`), so a progression of step `τ ≥ n` contains at most one of them, fewer than `u ≥ 2`.
 Context (frozen facts): points of core cells are positions `< n` (lem-cores (a)); distinct
 (`SCCores.point_injective`); `u ≥ 2` (def-params). -/
-@[kb "cstarpaper-st-ap-large" (part := "SCFinal.step_ap_large_reduce")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-ap-large" (part := "SCFinal.step_ap_large_reduce")]
 theorem step_ap_large_reduce (k : ℕ) (σ : (paper k).Geometry)
     (hpt : ∀ (h : Fin (paper k).H) (ω : Cell k), IsCoreCell k ω →
       ∃ p : ℕ, point k σ h ω = (p : ℤ) ∧ p < SCStructure.n k)
@@ -279,7 +279,7 @@ Context: the bound `exp(4/3) 2^(−u)` per triple (lem-u with `step_ap_large_mar
 (`step_ap_large_count`), the numerics (`step_ap_large_numeric` with lem-sc-final (b)), the reduction to
 triples (`step_ap_large_reduce`), and the standard facts (union bound, complement, monotonicity) for the law
 of the geometry. -/
-@[kb "cstarpaper-st-ap-large" (deviation := "the sub-claims of its proof (per-triple bound via lem-u, triple count, numerics, reduction) and union bound/complement/monotonicity of the geometry law enter as hypotheses")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-ap-large" (deviation := "the sub-claims of its proof (per-triple bound via lem-u, triple count, numerics, reduction) and union bound/complement/monotonicity of the geometry law enter as hypotheses")]
 theorem step_ap_large (k : ℕ)
     (hbad : ∀ t ∈ triples k,
       (paper k).geomProb (fun σ => ResBad k σ t.1 t.2.1 t.2.2) ≤

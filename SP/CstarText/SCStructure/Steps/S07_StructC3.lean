@@ -949,7 +949,7 @@ theorem step_struct_c3_converse (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometr
 this decomposition is unique … So the tuple is unique": a position `p < n` equals `p_h(γ, κ, t)` for at
 most one parent `h` and raw coordinate `(γ, κ, t)`; and (as the decomposition of `p` is unique) such a
 position is not read through a zero word. Context: `P_k` is a ZLP; (b); the converse. -/
-@[kb "cstarpaper-st-struct-unique" (deviation := "`descent through a zero word` is ReadThroughZero via occurrences (the passes-through of the proof); the converse (step_struct_c3_converse) and (b) enter as hypotheses")]
+-- kb tag retired 2026-10-28 (superseded by C1Structure/Steps/S07_StructC3.lean:step_struct_c3_unique): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-struct-unique" (deviation := "`descent through a zero word` is ReadThroughZero via occurrences (the passes-through of the proof); the converse (step_struct_c3_converse) and (b) enter as hypotheses")]
 theorem step_struct_c3_unique (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (ω : PtrBits k) (hzlp : IsZLP (Pk k σ ω))
     (hb : ∀ h : Fin (paper k).H,

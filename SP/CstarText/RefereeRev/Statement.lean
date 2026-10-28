@@ -73,7 +73,7 @@ private theorem pathOcc_offset_lt_aux {Q L : Type} (G : SP.SlotGraph Q L) (js : 
 /-- main.typ @ 71ec77c, line 2342, proof of thm-sc (s-thm-sc-failure), verbatim: "With @lem-ap, the failure
 probability is at most `4 n^(-7) + exp(6) n^(-6) <= (4 + exp(6)) n^(-6) <= 408 n^(-6)`." (`n ≥ 1`; the two
 inequalities of the chain.) Supersedes `SCFinal.step_sc_fail_num` (`… ≤ 408 n^(−5)`). -/
-@[kb "cstarpaper-s-thm-sc-failure"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-sc-failure"]
 theorem step_sc_fail_num_rev (n : ℕ) (hn : 1 ≤ n) :
     4 * (n : ℝ) ^ (-7 : ℝ) + Real.exp 6 * (n : ℝ) ^ (-6 : ℝ) ≤ (4 + Real.exp 6) * (n : ℝ) ^ (-6 : ℝ) ∧
       (4 + Real.exp 6) * (n : ℝ) ^ (-6 : ℝ) ≤ 408 * (n : ℝ) ^ (-6 : ℝ) := by
@@ -99,7 +99,7 @@ theorem step_sc_fail_num_rev (n : ℕ) (hn : 1 ≤ n) :
 `1 - 408 n^(-6) > 0`, a binary word `x_k` with `ARC(x_k) >= n^a ZLC(x_k)`." The positivity, for `k ≥ 2`, from
 `n ≥ X^(3(k+1))` (lem-sc-final (b)) and `X ≥ 2` (def-params); same hypotheses as `SCFinal.step_lower_pos`
 (`0 < 1 − 408 n^(−5)`), which it supersedes. -/
-@[kb "cstarpaper-s-thm-sc-gives" (part := "RefereeRev.step_lower_pos_rev")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-sc-gives" (part := "RefereeRev.step_lower_pos_rev")]
 theorem step_lower_pos_rev (k : ℕ) (hk : 2 ≤ k) (hX : 2 ≤ SCParams.X k)
     (hn : SCParams.X k ^ (3 * (k + 1)) ≤ SCStructure.n k) :
     0 < 1 - 408 * (SCStructure.n k : ℝ) ^ (-6 : ℝ) := by
@@ -131,7 +131,7 @@ for every outcome, and the chain `SCFinal.SCChain` has probability at least `1 �
 `SCFinal.jointProb` (the geometry, the pointers and the bits independent and uniform).
 Proof (main.typ 2337–2346): as for `SCFinal.thm_sc`; the failure bound `4 n^(−7) + e^6 n^(−6)` (lem-ap and
 prop-scheme, `step_jointProb_total`) is then bounded by `step_sc_fail_num_rev`. -/
-@[kb "cstarpaper-thm-sc"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-sc"]
 theorem thm_sc_rev (k : ℕ) (hk : 2 ≤ k) :
     (∀ σ : (paper k).Geometry, (paper k).IsGeometry σ → ∀ pb : PtrBits k,
         (SCStructure.x k σ pb).length = SCStructure.n k) ∧
@@ -206,7 +206,7 @@ verbatim: "Then `10 log n ≤ 10(4k + 6) L = u`, and `3(k + 1) L ≤ log n ≤ (
 so `u/log n <= 10(4k + 6)/(3k + 3) <= 140/9 < 16` for `k >= 2`." The first part is `SCFinal.step_final_b_log`
 (unchanged); this is the chain after "so" (`log` base 2). Context (as for `step_final_b_log`):
 `X^(3(k+1)) ≤ n ≤ X^(4k+6)`. -/
-@[kb "cstarpaper-s-lem-sc-final-claim4" (part := "RefereeRev.step_final_b_ratio")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-claim4" (part := "RefereeRev.step_final_b_ratio")]
 theorem step_final_b_ratio (k : ℕ) (hk : 2 ≤ k)
     (hlow : SCParams.X k ^ (3 * (k + 1)) ≤ SCStructure.n k)
     (hup : SCStructure.n k ≤ SCParams.X k ^ (4 * k + 6)) :
@@ -232,7 +232,7 @@ theorem step_final_b_ratio (k : ℕ) (hk : 2 ≤ k)
 `10 log n <= u <= 16 log n`, and `log n = Theta(k^3 log k)`." (for `k ≥ 2`, `log` base 2; the last clause is the
 unchanged `SCFinal.lem_sc_final_b_theta`). Supersedes `SCFinal.lem_sc_final_b` (same, without `u ≤ 16 log n`).
 Proof (main.typ 2321–2324): as for `SCFinal.lem_sc_final_b`; then `step_final_b_ratio`. -/
-@[kb "cstarpaper-lem-sc-final" (part := "b")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-sc-final" (part := "b")]
 theorem lem_sc_final_b_rev (k : ℕ) (hk : 2 ≤ k) :
     SCParams.X k ^ (3 * (k + 1)) ≤ SCStructure.n k ∧ SCStructure.n k ≤ SCParams.X k ^ (4 * k + 6) ∧
       10 * SP.log2 (SCStructure.n k : ℝ) ≤ (SCParams.u k : ℝ) ∧

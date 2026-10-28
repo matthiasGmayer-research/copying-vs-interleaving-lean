@@ -78,7 +78,7 @@ structure Parents where
 
 /-- The paper's parents: `H = SCParams.H k` parents, parent `h` with the type of def-slopes
 (`SCParams.typeOf k h`), and `X = SCParams.X k` (def-params). -/
-@[kb "cstarpaper-def-free" (part := "the parents of def-slopes")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-free" (part := "the parents of def-slopes")]
 noncomputable def paper (k : ℕ) : Parents where
   k := k
   X := SCParams.X k

@@ -34,7 +34,7 @@ private theorem step_ap_large_aux (R a b p p' : ℤ) (hR : 0 < R) (hp : 0 ≤ p)
 
 /-- main.typ 1273–1274: "With `ȳ_h := s_h(B(eh + ℓ) + κ) + c_h + γ`, which does not depend on the geometry,
 `y_h(ω) = R(ȳ_h + η_h(γ)) + π_h`." (`ybar` is a function of `k`, `h`, `ω` only.) -/
-@[kb "cstarpaper-st-ap-large" (part := "SCFinal.step_ap_large_ybar")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-ap-large" (part := "SCFinal.step_ap_large_ybar")]
 theorem step_ap_large_ybar (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k).H) (ω : Cell k) :
     point k σ h ω =
       ((paper k).R : ℤ) * (ybar k h ω + (η k σ h ω.1 : ℤ)) + ((paper k).π σ h : ℤ) := by
@@ -50,7 +50,7 @@ to `y_h(ω)` is injective; "bijectively" is used only through injectivity).
 Context: the previous claim (`y_h(ω) = R(ȳ_h + η_h(γ)) + π_h`); frozen facts: lem-free (b) (`mixedRadix` of the type of `h` is a bijection of the digit tuples onto
 `[Ψ_h]`, and a geometry's digits `j_i(h)` are digits); def-sc's `η_h(γ)` (the integer in `[1, Ψ_h]` with
 `c_h + γ + η_h(γ) ≡ ζ_h (mod Ψ_h)`); `π_h < R` (def-free). -/
-@[kb "cstarpaper-s-lem-ap-determined"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-determined"]
 theorem step_ap_large_bij (k : ℕ) (ω : Cell k) (h : Fin (paper k).H)
     (hy : ∀ σ : (paper k).Geometry,
       point k σ h ω = ((paper k).R : ℤ) * (ybar k h ω + (η k σ h ω.1 : ℤ)) + ((paper k).π σ h : ℤ))
@@ -130,7 +130,7 @@ theorem step_ap_large_bij (k : ℕ) (ω : Cell k) (h : Fin (paper k).H)
 geometry that puts `y_h(ω)` into `ν + τℤ` gives parent `h` the tuple `ξ_h` (parent `h` hits, lem-u).
 Context: the previous step (window of `RΨ_h` consecutive integers, injectivity) for every parent, and
 `Ψ_h ≤ Ψ_*` (def-slopes), so `RΨ_h ≤ τ_0`. -/
-@[kb "cstarpaper-s-lem-ap-determined" (part := "SCFinal.step_ap_large_tuple")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-determined" (part := "SCFinal.step_ap_large_tuple")]
 theorem step_ap_large_tuple (k : ℕ) (ω : Cell k) (τ ν : ℕ) (hτ : τ0 k < τ)
     (hwin : ∀ (h : Fin (paper k).H) (σ : (paper k).Geometry), (paper k).IsGeometry σ →
       ((paper k).R : ℤ) * (ybar k h ω + 1) ≤ point k σ h ω ∧

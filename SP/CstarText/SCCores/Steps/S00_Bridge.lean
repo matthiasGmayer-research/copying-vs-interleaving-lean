@@ -42,7 +42,7 @@ private lemma bridge_ancFromBottom_mem (D : SCGadgets.Parents) :
 /-- BRIDGE (def-free, main.typ 969–971: "`π_h` [is] the slot index of its level-1 ancestor in the root",
 and the root has the `R` slot indices `[R]`, onto which the level-1 vertices go bijectively): for a
 geometry, `π_h < R`. (Used in the proof of lem-cores, main.typ 1187–1188: `0 ≤ π_h / R < 1`.) -/
-@[kb "cstarpaper-def-raw" (part := "SCCores.step_pi_lt_R")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-def-raw" (part := "SCCores.step_pi_lt_R")]
 theorem step_pi_lt_R (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
     (hσ : (paper k).IsGeometry σ) (h : Fin (paper k).H) :
     (paper k).π σ h < (paper k).R := by

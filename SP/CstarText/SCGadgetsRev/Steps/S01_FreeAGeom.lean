@@ -167,7 +167,7 @@ private theorem freeA_geom_nonempty (D : Parents) (hk : 2 ≤ D.k)
 
 /-- main.typ:1493, proof of lem-free (a). Claim: "the root has `R` slots for its `R` children": there is a
 bijection of the level-1 vertices onto the root's slot indices `[R]` (`R` is the number of level-1 vertices). -/
-@[kb "cstarpaper-s-lem-free-group"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-free-group"]
 theorem step_free_a_geom_root (k : ℕ) (hk : 2 ≤ k) :
     ∃ g : List ℕ × ℕ → ℕ, Set.BijOn g ↑((paper k).verts 1) (Set.Iio (paper k).R) :=
   freeA_exists_bijOn ((paper k).verts 1)
@@ -201,7 +201,7 @@ theorem step_free_a_geom_pslots (k : ℕ) (hk : 2 ≤ k)
 @def-free exists" — and with them a geometry: the bijection of the root (`hroot`), and for every free vertex an
 injection of its real children into its slots (`hslots`, levels `i < k`; `hpslots`, level `k`), chosen
 independently, form a geometry (`IsGeometry`). -/
-@[kb "cstarpaper-s-lem-free-group" (part := "SCGadgetsRev.step_free_a_geom_exists")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-free-group" (part := "SCGadgetsRev.step_free_a_geom_exists")]
 theorem step_free_a_geom_exists (k : ℕ) (hk : 2 ≤ k)
     (hroot : ∃ g : List ℕ × ℕ → ℕ, Set.BijOn g ↑((paper k).verts 1) (Set.Iio (paper k).R))
     (hslots : ∀ i : ℕ, 1 ≤ i → i < k → ∀ v ∈ (paper k).verts i,

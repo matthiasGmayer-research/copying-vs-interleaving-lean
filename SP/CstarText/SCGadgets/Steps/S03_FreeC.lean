@@ -960,7 +960,7 @@ theorem step_free_c_decode (D : Parents) (hD : D.Facts) (σ : D.Geometry) (hσ :
 
 /-- main.typ 996, proof of lem-free (c): "each decomposition is unique" — `p` is read through at most
 one parent, at one position `t`. -/
-@[kb "cstarpaper-s-lem-free-symbol" (part := "SCGadgets.step_free_c_unique")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-free-symbol" (part := "SCGadgets.step_free_c_unique")]
 theorem step_free_c_unique (D : Parents) (hD : D.Facts) (σ : D.Geometry) (hσ : D.IsGeometry σ)
     {p : ℕ} {h h' : Fin D.H} {t t' : ℕ} (hr : D.ReadsThrough σ (.inr (.par h)) p t)
     (hr' : D.ReadsThrough σ (.inr (.par h')) p t') : h = h' ∧ t = t' := by
@@ -978,7 +978,7 @@ of the child in slot `π` … at a vertex of level `i`, symbol `t_i` is symbol `
 slot `j`" — along the path, if `p` is read through `c` at `t` and `p` is less than the length of the
 root's value, then `t` is less than the length of the value of (the program vertex or letter at) `c`,
 and symbol `p` of the root's value is symbol `t` of that value (cf. lem-occ (a); TEXT DEFECT D6). -/
-@[kb "cstarpaper-s-lem-free-symbol"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-free-symbol"]
 theorem step_free_c_read (D : Parents) (hD : D.Facts) (σ : D.Geometry) (hσ : D.IsGeometry σ)
     {Q β : Type} (P : Program Q β) (hP : IsZLP P) (ι : FNode → Q) (w : Fin D.H → Q)
     (fill : FNode → ℕ → Q ⊕ β) (hemb : D.IsFreeLevelsOf P σ ι w fill)

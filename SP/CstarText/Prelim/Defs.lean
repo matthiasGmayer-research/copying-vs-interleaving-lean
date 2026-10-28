@@ -66,9 +66,9 @@ abbrev Covers (e : ArithInterval × ArithInterval) (i : ℕ) : Prop := SP.Covers
 equation has `|α| = |α'|` and `x[α] = x[α']`; every `i < n` has its literal or is covered.
 -- convention: `L : Finset (α × ℕ)`, the condition `L ⊆ Σ × [n]` is the conjunct `p.2 < n`;
 `Φ` is a `Finset` of pairs of interval records (gated deviation of `SP.IsARS`). -/
-@[kb "cstarpaper-def-ars" (deviation := "Φ is a finite set of pairs of interval records (σ, τ, ℓ); \
-two records with σ equal, ℓ = 1 and different τ are the same map in the paper but two equations here. \
-This only allows larger systems, so ARC is unchanged. Size = L.card + Φ.card.")]
+@[kb "cstarpaper-def-ars" (deviation := "Φ is a finite set of pairs of records (σ, τ, ℓ), the parameters of \
+def-interval. Where two triples denote the same map (ℓ = 1, the same σ, different τ) the Lean counts two equations; \
+this only allows larger systems, so ARC is unchanged. Size = L.card + Φ.card.")]
 abbrev IsARS {α : Type} (x : List α) (L : Finset (α × ℕ))
     (Φ : Finset (ArithInterval × ArithInterval)) : Prop := SP.IsARS x L Φ
 

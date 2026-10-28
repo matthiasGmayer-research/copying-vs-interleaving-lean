@@ -37,10 +37,11 @@ open SP.CstarText.Prelim
 
 /-! ## 1. def-interval -/
 
-/-- def-interval (main.typ 1077–1078): "A finite arithmetic progression is the image `α([ℓ])` of an arithmetic
-interval; if it has at least two elements, it determines `τ`, its step." Two arithmetic intervals with the same image,
-of at least two elements, have the same step. -/
-@[kb "cstarpaper-def-interval" (part := "CoverageRev.a progression with ≥ 2 elements determines its step")]
+/-- def-interval: two progressions with the same image of at least two elements have the same step, so the step is
+well defined where a progression is identified with its image (formalised for an earlier wording, main.typ 1077–1078
+"… if it has at least two elements, it determines `τ`, its step"; the text since cstar d000ff5 defines a progression
+by its parameters and identifies it with its image where only the positions matter). -/
+@[kb "cstarpaper-def-interval" (part := "CoverageRev.the step of a progression identified with its image (≥ 2 elements) is well defined")]
 theorem interval_step_determined (A A' : ArithInterval)
     (himg : {p : ℕ | ∃ t < A.len, A t = p} = {p : ℕ | ∃ t < A'.len, A' t = p})
     (htwo : 2 ≤ A.len) : A.step = A'.step := by
@@ -186,7 +187,7 @@ open SP.CstarText.SCParams in
 `W = B/8`, and the last slope is at least `M = 8eW² ≥ H²`, which @lem-slots (a) uses to keep the intercepts below
 `B s_(H−1)/8`." All clauses, for every `k ≥ 2`: the slopes `s_h` (`h < H`) are distinct and lie in the window
 `[μ₀, μ₀ + W)`, and `c_h < B s_(H−1)/8` (lem-slots (a), re-stated here). -/
-@[kb "cstarpaper-sec-sc" (part := "CoverageRev.why the construction stops at 1/4")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-sec-sc" (part := "CoverageRev.why the construction stops at 1/4")]
 theorem why_quarter_relay (k : ℕ) (hk : 2 ≤ k) :
     SCStructure.n k = SCStructure.R k * B k * s k (H k - 1) * (e k * (H k + 1)) ∧
       (∀ h < H k, ∀ h' < H k, s k h = s k h' → h = h') ∧
@@ -385,7 +386,7 @@ private theorem polylog_eventually_lt (K c : ℝ) :
 
 /-- §1 (main.typ 431; also 262–263): "By @thm-lower, no such bound holds": there are no real constants `K, c` with
 `ARC(x) ≤ K (1 + log n)^c ZLC(x)` for every binary word `x` (`n = |x|`). -/
-@[kb "cstarpaper-thm-lower" (part := "CoverageRev.no polylogarithmic bound ARC ≤ ZLC · polylog(n)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-lower" (part := "CoverageRev.no polylogarithmic bound ARC ≤ ZLC · polylog(n)")]
 theorem no_polylog_arc_zlc :
     ¬ ∃ K c : ℝ, ∀ x : List Bool,
       (SP.ARC x : ℝ) ≤ K * (1 + SP.log2 (x.length : ℝ)) ^ c * (ZLC x : ℝ) := by

@@ -24,7 +24,7 @@ open SP.CstarText.SCStructure (pos c η R Γ Cell)
 `t = e(h + 1) − 3` and is less than `R(s_h(Bt + B/2) + c_h + s_(H−1)/4 + Ψ_* + 1)`" — every point of time `h`
 (of a core cell `ω`) is less than this bound at `t = e(h + 1) − 3`. Context: `γ ∈ Γ` (so `γ < s_(H−1)/4`),
 `κ < B/2`, `ℓ ≤ e − 3` (the cell is a core cell), `η_h(γ) ≤ Ψ_*`, `π_h < R`. -/
-@[kb "cstarpaper-s-lem-cores-increases"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-cores-increases"]
 theorem step_cores_b_upper (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h : ℕ)
     (hh : h < (paper k).H) (ω : Cell k) (hω : IsCoreCell k ω)
     (hη : η k σ ⟨h, hh⟩ ω.1 ≤ SCParams.Ψstar k) (hπ : (paper k).π σ ⟨h, hh⟩ < R k) :
@@ -71,7 +71,7 @@ theorem step_cores_b_upper (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h
 /-- main.typ 1198–1199, proof of (b): "the least point of time `h + 1` has `t' = e(h + 1) + 2` and is at
 least `R(s_(h+1) B t' + c_(h+1))`" — for a parent `h'` (here `h' = h + 1`), every point of time `h'` (of a
 core cell `ω'`) is at least `R(s_(h') B (e h' + 2) + c_(h'))`. -/
-@[kb "cstarpaper-s-lem-cores-increases" (part := "SCCores.step_cores_b_lower")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-cores-increases" (part := "SCCores.step_cores_b_lower")]
 theorem step_cores_b_lower (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h' : ℕ)
     (hh' : h' < (paper k).H) (ω' : Cell k) (hω' : IsCoreCell k ω') :
     (R k : ℚ) * ((SCParams.s k h' : ℚ) * (SCParams.B k : ℚ) * ((SCParams.e k : ℚ) * (h' : ℚ) + 2) +
@@ -104,7 +104,7 @@ theorem step_cores_b_lower (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h
 Context: the definition of `c_(h+1)` (frozen: `SCStructure.lem_structure_a_c`), `Δ_h = s_h − s_(h+1)`
 (def-slopes), `s_(H−1) ≤ s_h` (remark after def-slopes), `Ψ_* + 1 ≤ B/2` (the preamble),
 `s_h = Ψ_h a_h` with `a_h ≥ 2` and `Ψ_h ≥ 1`. -/
-@[kb "cstarpaper-s-lem-cores-divided"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-cores-divided"]
 theorem step_cores_b_diff (k : ℕ) (hk : 2 ≤ k) (h : ℕ) (hh : h + 1 < (paper k).H)
     (hc : (c k (h + 1) : ℚ) =
       (c k h : ℚ) + (SCParams.B k : ℚ) * (SCParams.Δ k h : ℚ) *

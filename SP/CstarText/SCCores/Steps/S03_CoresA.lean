@@ -26,7 +26,7 @@ open SP.CstarText.SCStructure (pos c η R n Γ RC Cell LW)
 `g_(h') − g_(h'+1) ≤ Δ_(h')(−3B + B) ≤ −2B` (as `Δ_(h') ≥ 1`), and `p_(h') < p_(h'+1)`."
 Context: `t ≤ e(h + 1) − 3`, `κ < B/2`; the preamble (`g_h − g_(h+1)`, `p_h = R(g_h + γ + η_h) + π_h`,
 the bound `< Ψ_* + 1 ≤ B/2`); `R > 0`; `Δ_(h') ≥ 1` (remark after def-slopes). -/
-@[kb "cstarpaper-s-lem-cores-claim"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-cores-claim"]
 theorem step_cores_a_up (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (γ κ t h : ℕ)
     (hκ : κ < SCParams.B k / 2) (ht : t + 3 ≤ SCParams.e k * (h + 1))
     (hR : 0 < R k)
@@ -87,7 +87,7 @@ theorem step_cores_a_up (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (γ �
 
 /-- main.typ 1190–1191, proof of (a): "For `h' < h`, `t ≥ e(h' + 1) + 2`, so `g_(h') − g_(h'+1) ≥ 2.5B`, and
 `p_(h') > p_(h'+1)`." Context: `eh + 2 ≤ t`, `κ ≥ 0`; the preamble; `R > 0`; `Δ_(h') ≥ 1`. -/
-@[kb "cstarpaper-s-lem-cores-claim2"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-cores-claim2"]
 theorem step_cores_a_down (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (γ κ t h : ℕ)
     (ht : SCParams.e k * h + 2 ≤ t)
     (hR : 0 < R k)
@@ -147,7 +147,7 @@ theorem step_cores_a_down (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (γ
 
 /-- main.typ 1191, proof of (a): "Hence `p_h` is the least" — from the two comparisons of consecutive
 parents (`p_(h') < p_(h'+1)` for `h' ≥ h`, `p_(h') > p_(h'+1)` for `h' < h`). -/
-@[kb "cstarpaper-s-lem-cores-least"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-cores-least"]
 theorem step_cores_a_least (k : ℕ) (σ : (paper k).Geometry) (γ κ t : ℕ) (h : Fin (paper k).H)
     (hup : ∀ (h' : ℕ) (hh' : h' + 1 < (paper k).H), (h : ℕ) ≤ h' →
       pos k σ ⟨h', by omega⟩ γ κ t < pos k σ ⟨h' + 1, hh'⟩ γ κ t)
@@ -205,7 +205,7 @@ theorem step_cores_a_least (k : ℕ) (σ : (paper k).Geometry) (γ κ t : ℕ) (
 
 /-- main.typ 1192, proof of (a): "Moreover `p_h ≤ p_(H−1)` by the first of these" (`p_(h') < p_(h'+1)` for
 `h' ≥ h`); `hl` is the parent `H − 1`. -/
-@[kb "cstarpaper-s-lem-cores-first"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-cores-first"]
 theorem step_cores_a_last (k : ℕ) (σ : (paper k).Geometry) (γ κ t : ℕ) (h : Fin (paper k).H)
     (hup : ∀ (h' : ℕ) (hh' : h' + 1 < (paper k).H), (h : ℕ) ≤ h' →
       pos k σ ⟨h', by omega⟩ γ κ t < pos k σ ⟨h' + 1, hh'⟩ γ κ t)
@@ -241,7 +241,7 @@ theorem step_cores_a_last (k : ℕ) (σ : (paper k).Geometry) (γ κ t : ℕ) (h
 R s_(H−1) B e H < n`" (the parent `hl = H − 1`). Context: `c_(H−1) < B s_(H−1)/8` (lem-structure (a));
 `t < eH`; `γ ∈ Γ` (so `γ < s_(H−1)/4`), `κ < B/2`; `η_(H−1)(γ) ≤ Ψ_*`; `π_(H−1) < R`; `Ψ_* + 1 ≤ B/2` (the
 preamble); `s_(H−1) = Ψ_(H−1) a_(H−1)` with `a_(H−1) ≥ 2` (def-slopes) and `Ψ_(H−1) ≥ 1`. -/
-@[kb "cstarpaper-s-lem-cores-first2"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-cores-first2"]
 theorem step_cores_a_lt_n (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (γ κ t : ℕ)
     (hl : Fin (paper k).H) (hhl : (hl : ℕ) + 1 = (paper k).H)
     (hγ : γ ∈ Γ k) (hκ : κ < SCParams.B k / 2) (ht : t < SCParams.e k * (paper k).H)
@@ -300,7 +300,7 @@ theorem step_cores_a_lt_n (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (γ
 the raw coordinate `v = (γ, κ, t)` and no smaller position does. Context: `p_h < p_(h')` for `h' ≠ h`
 ("Hence `p_h` is the least"), `p_h < n`, `p_h ≥ 0`, and lem-structure ("position `p` carries `v` iff `p < n` and
 `p = p_(h')(v)` for some `h'`", frozen: the last conjunct of `SCStructure.lem_structure_labelled`). -/
-@[kb "cstarpaper-s-lem-cores-first2" (part := "SCCores.step_cores_a_first")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-cores-first2" (part := "SCCores.step_cores_a_first")]
 theorem step_cores_a_first (k : ℕ) (σ : (paper k).Geometry) (v : RC k) (h : Fin (paper k).H)
     (hmin : ∀ h' : Fin (paper k).H, h' ≠ h →
       pos k σ h v.1 v.2.1 v.2.2 < pos k σ h' v.1 v.2.1 v.2.2)

@@ -172,13 +172,13 @@ theorem step_lem_slopes_3_2 (k : ℕ) (hk : 2 ≤ k)
           div_le_div_of_nonneg_right hsq hQpos.le
 
 /-- main.typ 910, lem-slopes step 3: "`W` divides `M`". -/
-@[kb "cstarpaper-s-lem-slopes-divides"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-slopes-divides"]
 theorem step_lem_slopes_3_3 (k : ℕ) (hk : 2 ≤ k) : W k ∣ M k := by
   exact ⟨8 * e k * W k, M_eq k⟩
 
 /-- main.typ 910, lem-slopes step 3: "As `W` divides `M`, `[M, 2M)` is the union of `M / W` windows
 `[μ, μ + W)` with `W | μ`" (the windows `μ = M + iW`, `i < M / W`; each lies in `[M, 2M)`). -/
-@[kb "cstarpaper-s-lem-slopes-divides" (part := "SCParams.step_lem_slopes_3_4")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-slopes-divides" (part := "SCParams.step_lem_slopes_3_4")]
 theorem step_lem_slopes_3_4 (k : ℕ) (hk : 2 ≤ k) (hW : W k ∣ M k) :
     (∀ i < M k / W k, Set.Ico (M k + i * W k) (M k + i * W k + W k) ⊆ Set.Ico (M k) (2 * M k) ∧
         W k ∣ M k + i * W k) ∧
@@ -252,7 +252,7 @@ theorem step_lem_slopes_3_5 (k : ℕ) (hk : 2 ≤ k)
   linarith
 
 /-- main.typ 911, lem-slopes step 3: "`W / (2^(2k+3) T_M^E) = B / Λ`". -/
-@[kb "cstarpaper-s-lem-slopes-divides" (part := "SCParams.step_lem_slopes_3_6")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-slopes-divides" (part := "SCParams.step_lem_slopes_3_6")]
 theorem step_lem_slopes_3_6 (k : ℕ) (hk : 2 ≤ k) :
     (W k : ℝ) / (2 ^ (2 * k + 3) * TM k ^ E k) = (B k : ℝ) / Λ k := by
   have h8 : (B k : ℝ) = 8 * (W k : ℝ) := by exact_mod_cast B_eq_8W k hk
@@ -265,7 +265,7 @@ theorem step_lem_slopes_3_6 (k : ℕ) (hk : 2 ≤ k) :
 /-- main.typ 908, proof of lem-slopes, step 3 (claim): "Some window contains at least `B / Λ` good
 integers" (a window as in lem-slopes: `[μ, μ + W) ⊆ [M, 2M)`, `W | μ`), from the claims of steps 1
 and 2. -/
-@[kb "cstarpaper-st-slopes-window" (deviation := "the claims of st-slopes-types and st-slopes-square enter as hypotheses hS1, hS2")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-slopes-window" (deviation := "the claims of st-slopes-types and st-slopes-square enter as hypotheses hS1, hS2")]
 theorem step_lem_slopes_3 (k : ℕ) (hk : 2 ≤ k)
     (hS1 : (M k : ℝ) / 2 ^ (k + 1) ≤ ∑ s ∈ Finset.Ico (M k) (2 * M k), (numTypes k s : ℝ))
     (hS2 : ∑ s ∈ Finset.Ico (M k) (2 * M k), (numTypes k s : ℝ) ^ 2 ≤ 2 * (M k : ℝ) * TM k ^ E k) :

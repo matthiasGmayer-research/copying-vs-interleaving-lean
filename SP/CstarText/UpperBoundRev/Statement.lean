@@ -18,7 +18,7 @@ open SP.CstarText.Prelim SP.CstarText.UpperConv SP.CstarText.UpperBound
 (b) If `√N ≤ 4λ`, then `ARC(x) ≤ λ(m + m_𝒯) + m_𝒯 + 2K`."
 Context (§4): `P` a ZLP, `x ⊑ val(P)`, `n = |x| ≥ 1`; `m = size P`, `m_𝒯 = mT P`, `K = K P`, `N = scaleN P n`.
 Glue only: `UpperBound.lem_split` and `UpperBound.lem_split_b`. -/
-@[kb "cstarpaper-lem-split"]
+-- kb tag retired 2026-10-28 (superseded by U12a/Statement.lean:lem_split): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-split"]
 theorem lem_split {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (lam : ℕ) (hlam : 1 ≤ lam) :
     (ARC x : ℝ) ≤ lam * ((size P : ℝ) + mT P) + mT P +

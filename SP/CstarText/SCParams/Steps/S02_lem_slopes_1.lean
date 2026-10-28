@@ -244,7 +244,7 @@ theorem step_lem_slopes_1_1 (k : ℕ) (hk : 2 ≤ k) (s : ℕ) (hs1 : M k ≤ s)
 
 /-- main.typ 893, lem-slopes step 1: "Every multiple of `Ψ(α) < (2X)^k` in `[M, 2M)` has quotient
 at least `2`, as `M ≥ 2^(k+1) X^k`". -/
-@[kb "cstarpaper-s-lem-slopes-multiple"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-slopes-multiple"]
 theorem step_lem_slopes_1_2 (k : ℕ) (hk : 2 ≤ k) (α : Fin k → ℕ) (hα : α ∈ tupleBox k) (s : ℕ)
     (hs1 : M k ≤ s) (hs2 : s < 2 * M k) (hdvd : prodT α ∣ s) : 2 ≤ s / prodT α := by
   have hpos := ls1_prodT_pos k hk α hα
@@ -266,7 +266,7 @@ theorem step_lem_slopes_1_2 (k : ℕ) (hk : 2 ≤ k) (α : Fin k → ℕ) (hα :
     linarith
 
 /-- main.typ 894, lem-slopes step 1: "`∑_{X ≤ α < 2X} 1/α > ln 2 > 1/2`". -/
-@[kb "cstarpaper-s-lem-slopes-multiple" (part := "SCParams.step_lem_slopes_1_3")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-slopes-multiple" (part := "SCParams.step_lem_slopes_1_3")]
 theorem step_lem_slopes_1_3 (k : ℕ) (hk : 2 ≤ k) :
     Real.log 2 < ∑ α ∈ Finset.Ico (X k) (2 * X k), (1 : ℝ) / (α : ℝ) ∧ (1 : ℝ) / 2 < Real.log 2 := by
   have hX := ls1_X_ge k hk
@@ -283,7 +283,7 @@ theorem step_lem_slopes_1_3 (k : ℕ) (hk : 2 ≤ k) :
 
 /-- main.typ 895, lem-slopes step 1, first inequality of the display:
 "`∑_s A(s) ≥ ∑_α (M / Ψ(α) − 1)`" (`s` over `[M, 2M)`, `α` over `[X, 2X)^k`). -/
-@[kb "cstarpaper-s-lem-slopes-claim"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-slopes-claim"]
 theorem step_lem_slopes_1_4 (k : ℕ) (hk : 2 ≤ k) :
     ∑ α ∈ tupleBox k, ((M k : ℝ) / (prodT α : ℝ) - 1) ≤
       ∑ s ∈ Finset.Ico (M k) (2 * M k), (numTypes k s : ℝ) := by
@@ -312,7 +312,7 @@ theorem step_lem_slopes_1_4 (k : ℕ) (hk : 2 ≤ k) :
 
 /-- main.typ 895, lem-slopes step 1, second inequality of the display:
 "`∑_α (M / Ψ(α) − 1) ≥ M 2^(−k) − X^k`". -/
-@[kb "cstarpaper-s-lem-slopes-claim" (part := "SCParams.step_lem_slopes_1_5")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-slopes-claim" (part := "SCParams.step_lem_slopes_1_5")]
 theorem step_lem_slopes_1_5 (k : ℕ) (hk : 2 ≤ k) :
     (M k : ℝ) / 2 ^ k - (X k : ℝ) ^ k ≤ ∑ α ∈ tupleBox k, ((M k : ℝ) / (prodT α : ℝ) - 1) := by
   have hXpos : (0 : ℝ) < (X k : ℝ) ^ k := pow_pos (by exact_mod_cast ls1_X_pos k hk) k
@@ -335,7 +335,7 @@ theorem step_lem_slopes_1_5 (k : ℕ) (hk : 2 ≤ k) :
 
 /-- main.typ 895, lem-slopes step 1, third inequality of the display:
 "`M 2^(−k) − X^k ≥ M 2^(−k−1)`". -/
-@[kb "cstarpaper-s-lem-slopes-claim" (part := "SCParams.step_lem_slopes_1_6")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-slopes-claim" (part := "SCParams.step_lem_slopes_1_6")]
 theorem step_lem_slopes_1_6 (k : ℕ) (hk : 2 ≤ k) :
     (M k : ℝ) / 2 ^ (k + 1) ≤ (M k : ℝ) / 2 ^ k - (X k : ℝ) ^ k := by
   have key := ls1_key_M k hk
@@ -349,7 +349,7 @@ theorem step_lem_slopes_1_6 (k : ℕ) (hk : 2 ≤ k) :
 
 /-- main.typ 891, proof of lem-slopes, step 1 (claim): "With `A(s)` the number of types of `s`,
 `∑_{M ≤ s < 2M} A(s) ≥ M 2^(−k−1)`." -/
-@[kb "cstarpaper-st-slopes-types"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-slopes-types"]
 theorem step_lem_slopes_1 (k : ℕ) (hk : 2 ≤ k) :
     (M k : ℝ) / 2 ^ (k + 1) ≤ ∑ s ∈ Finset.Ico (M k) (2 * M k), (numTypes k s : ℝ) :=
   -- the display of step 1: `_1_6`, `_1_5`, `_1_4` chained

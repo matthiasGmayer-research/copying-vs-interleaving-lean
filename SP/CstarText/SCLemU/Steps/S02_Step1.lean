@@ -1215,7 +1215,7 @@ prescribed slots `s v` (`v ∈ V(T)`) such that, for every geometry, all members
 directly below one vertex are distinct and are slots of it ("given distinct slots of `y`",
 main.typ 1227; a prescription that is not a slot, or two equal prescribed slots below one vertex, is a
 conflict). -/
-@[kb "cstarpaper-s-lem-u-otherwise" (part := "SCLemU.step_1_event")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-u-otherwise" (part := "SCLemU.step_1_event")]
 theorem step_1_event (D : Parents) (hD : D.Facts) (ξ : Fin D.H → Option (ℕ × (Fin D.k → ℕ)))
     (T : Finset (Fin D.H)) :
     D.geomProb (fun σ => ∀ h ∈ T, hits D ξ σ h) = 0 ∨
@@ -1259,7 +1259,7 @@ take `j_y` given distinct slots of `y` is `1/(a_y (a_y − 1) ⋯ (a_y − j_y +
 real children (the root or a free vertex), a set `C` of its real children and distinct slots `s c` of
 `y` (`s c < a_y`), the probability that every `c ∈ C` takes slot `s c` is `1/(a_y)_(|C|)` (falling
 factorial). -/
-@[kb "cstarpaper-s-lem-u-otherwise" (part := "SCLemU.step_1_marginal")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-u-otherwise" (part := "SCLemU.step_1_marginal")]
 theorem step_1_marginal (D : Parents) (hD : D.Facts) :
     ∀ y : Node D.H, IsInner D y → ∀ C : Finset (Node D.H), C ⊆ kids D y →
       ∀ s : Node D.H → ℕ, Set.InjOn s ↑C → (∀ c ∈ C, s c < arityN D y) →
@@ -1272,7 +1272,7 @@ theorem step_1_marginal (D : Parents) (hD : D.Facts) :
 
 /-- main.typ 1228, proof of lem-u, step 1: "`1/(a_y (a_y − 1) ⋯ (a_y − j_y + 1)) ≤ (a_y − u)^(−j_y)`"
 (for `j_y ≤ u < a_y`). -/
-@[kb "cstarpaper-s-lem-u-otherwise" (part := "SCLemU.step_1_falling")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-u-otherwise" (part := "SCLemU.step_1_falling")]
 theorem step_1_falling :
     ∀ a j u : ℕ, j ≤ u → u < a → (1 : ℝ) / (a.descFactorial j : ℝ) ≤ (((a : ℝ) - u)⁻¹) ^ j := by
   intro a j u hju hua
@@ -1289,7 +1289,7 @@ theorem step_1_falling :
 
 /-- main.typ 1227, proof of lem-u, step 1: "if `j_y` vertices of `V(T)` lie directly below a vertex `y`
 (so `j_y ≤ u`)" — at most `|T|` vertices of `V(T)` lie directly below one vertex. -/
-@[kb "cstarpaper-s-lem-u-otherwise"]
+-- kb tag retired 2026-10-28 (superseded by C1LemU/Steps/S02_Step1.lean:step_1_jy): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-u-otherwise"]
 theorem step_1_jy (D : Parents) (hD : D.Facts) (T : Finset (Fin D.H)) :
     ∀ y : Node D.H, ((Vset D T).filter (fun v => above D v = y)).card ≤ T.card := by
   intro y
@@ -1311,7 +1311,7 @@ theorem step_1_jy (D : Parents) (hD : D.Facts) (T : Finset (Fin D.H)) :
 /-- main.typ 1228–1229, proof of lem-u, step 1 (independence in the geometry): "the placements at
 distinct vertices are independent" — for distinct vertices `y ∈ Y` with real children, sets `C y` of
 their real children and slots `s`, the events "every `c ∈ C y` takes slot `s c`" are independent. -/
-@[kb "cstarpaper-s-lem-u-otherwise" (part := "SCLemU.step_1_indep")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-u-otherwise" (part := "SCLemU.step_1_indep")]
 theorem step_1_indep (D : Parents) (hD : D.Facts) :
     ∀ Y : Finset (Node D.H), (∀ y ∈ Y, IsInner D y) →
       ∀ C : Node D.H → Finset (Node D.H), (∀ y ∈ Y, C y ⊆ kids D y) →
@@ -1339,7 +1339,7 @@ theorem step_1_indep (D : Parents) (hD : D.Facts) :
 most `Π_(v ∈ V(T)) w(v)`." In the context of lem-u (`1 ≤ u ≤ min(R, X)/4`), from the claims of its proof
 (the event, the uniform marginal, the inequality, `j_y ≤ u`, the independence) and the preamble (each
 vertex other than the root is a real child of exactly one vertex; `V(T)` has no root; `w > 0`). -/
-@[kb "cstarpaper-st-u-hit" (deviation := "the sub-claims of its proof (event shape, uniform marginals, falling-factorial bound, j_y ≤ u, independence) and the preamble facts enter as hypotheses")]
+-- kb tag retired 2026-10-28 (superseded by C1LemU/Steps/S02_Step1.lean:step_1): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-u-hit" (deviation := "the sub-claims of its proof (event shape, uniform marginals, falling-factorial bound, j_y ≤ u, independence) and the preamble facts enter as hypotheses")]
 theorem step_1 (D : Parents) (hD : D.Facts) (ξ : Fin D.H → Option (ℕ × (Fin D.k → ℕ))) (u : ℕ)
     (hu1 : 1 ≤ u) (hu : 4 * u ≤ min D.R D.X)
     (harity : ∀ i : ℕ, 1 ≤ i → i ≤ D.k → ∀ v ∈ D.verts i, D.X ≤ arity v)

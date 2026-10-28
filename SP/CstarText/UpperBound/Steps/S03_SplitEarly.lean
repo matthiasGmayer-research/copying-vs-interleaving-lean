@@ -271,7 +271,7 @@ equations of the early pieces number at most `λ(m + m_𝒯)`.
 Hypotheses: `hconv`, the ARS of lem-conversion (cited) for these pieces; `hletter`, the claim of the
 preamble sentence "A slot `j` that holds a letter is met only at the index `j < d_q`, which is early"
 (`step_split_letter_early`). The proof also cites lem-least (a) (`UpperConv.lem_least_a`). -/
-@[kb "cstarpaper-st-split-early" (deviation := "takes the preamble claim that letter slots are met only at early indices as hypothesis hletter (proved as step_split_letter_early); the cost counts all literals plus the equations of early pieces")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-split-early" (deviation := "takes the preamble claim that letter slots are met only at early indices as hypothesis hletter (proved as step_split_letter_early); the cost counts all literals plus the equations of early pieces")]
 theorem step_split_early {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (lam : ℕ) (hlam : 1 ≤ lam)
     (L : Finset (α × ℕ)) (Φ : Finset (SP.ArithInterval × SP.ArithInterval))

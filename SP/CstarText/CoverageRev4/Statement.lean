@@ -39,7 +39,7 @@ theorem ex_root_slot0 :
 
 /-- lem-ap as reworded ("positions of `S'` that carry raw coordinates of at least `u` distinct cells"):
 `step_lem_ap_raw`. -/
-@[kb "cstarpaper-lem-ap" (part := "CoverageRev4.lem_ap_raw: positions of S' carrying raw coordinates of u distinct cells")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-ap" (part := "CoverageRev4.lem_ap_raw: positions of S' carrying raw coordinates of u distinct cells")]
 theorem lem_ap_raw (k : ℕ) (hk : 2 ≤ k) :
     1 - 4 * (SCStructure.n k : ℝ) ^ (-7 : ℝ) ≤ (paper k).geomProb (fun σ =>
       ∀ P : Set ℤ, SP.IsAP P → SCParams.u k ^ 2 ≤ {p : ℕ | p ∈ S k σ ∧ (p : ℤ) ∈ P}.ncard →
@@ -50,7 +50,7 @@ theorem lem_ap_raw (k : ℕ) (hk : 2 ≤ k) :
 
 /-- Proof of lem-sc-final (a), "The points of all inner cells are pairwise distinct (…, as they lie below `n` …)":
 `step_inner_points`. -/
-@[kb "cstarpaper-s-lem-sc-final-inner" (part := "CoverageRev4.inner_points: the points of the inner cells are distinct positions below n")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-inner" (part := "CoverageRev4.inner_points: the points of the inner cells are distinct positions below n")]
 theorem inner_points (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ) :
     (∀ (h : Fin (paper k).H) (ω : Cell k), IsInnerCell k ω →
       ∃ p : ℕ, point k σ h ω = (p : ℤ) ∧ p < SCStructure.n k) ∧
@@ -59,7 +59,7 @@ theorem inner_points (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (
   step_inner_points k hk σ hσ
 
 /-- Proof of lem-structure (a), the sentence `s-lem-structure-edge` (the layers): `step_edge_layers`. -/
-@[kb "cstarpaper-s-lem-structure-edge" (part := "CoverageRev4.edge_layers: every edge goes down the layers")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-edge" (part := "CoverageRev4.edge_layers: every edge goes down the layers")]
 theorem edge_layers (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : PtrBits k) (v : Vtx)
     (hv : IsVertex k v) (w : Vtx) (hw : (.inl w : Vtx ⊕ Bool) ∈ rawδ k σ ω v) :
     (∃ i : ℕ, v = .zero (i + 1) ∧ w = .zero i) ∨

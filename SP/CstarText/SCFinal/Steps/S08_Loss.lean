@@ -100,7 +100,7 @@ private theorem loss_LL_bounds (c₁ c₂ k L : ℝ) (hc₁ : 0 < c₁) (hc₂ :
 
 /-- main.typ 1359: "the factor lost is `n^(9/(64k + 96)) = exp(O(log n / k))`" — `n_k^(9/(64k+96)) ≤ exp(C₁ log n_k / k)`
 for all `k ≥ 2`, with one constant `C₁`. Context: `n_k ≥ 1` (lem-sc-final (b)). -/
-@[kb "cstarpaper-s-thm-lower-loss" (part := "SCFinal.step_loss_factor")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-lower-loss" (part := "SCFinal.step_loss_factor")]
 theorem step_loss_factor (hn : ∀ k : ℕ, 2 ≤ k → 1 ≤ SCStructure.n k) :
     ∃ C₁ : ℝ, 0 < C₁ ∧ ∀ k : ℕ, 2 ≤ k →
       (SCStructure.n k : ℝ) ^ (9 / (64 * (k : ℝ) + 96)) ≤
@@ -127,7 +127,7 @@ theorem step_loss_factor (hn : ∀ k : ℕ, 2 ≤ k → 1 ≤ SCStructure.n k) :
 
 /-- main.typ 1358 and 1360: "As `log n = Θ(k³ log k)`, … `k = Θ((log n / log log n)^(1/3))`". Context:
 `log n_k = Θ(k³ log k)` (lem-sc-final (b)); `n_k ≥ 512` (so `log log n_k > 0`; lem-sc-final (b), `X ≥ 2`). -/
-@[kb "cstarpaper-s-thm-lower-loss" (part := "SCFinal.step_loss_k")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-lower-loss" (part := "SCFinal.step_loss_k")]
 theorem step_loss_k
     (htheta : ∃ c₁ c₂ : ℝ, 0 < c₁ ∧ 0 < c₂ ∧ ∀ k : ℕ, 2 ≤ k →
       c₁ * (k : ℝ) ^ 3 * SP.log2 k ≤ SP.log2 (SCStructure.n k : ℝ) ∧
@@ -211,7 +211,7 @@ theorem step_loss_k
 /-- main.typ 1358–1359: the two clauses combined: `exp(O(log n / k)) = exp(O((log n)^(2/3)(log log n)^(1/3)))` —
 `n_k^(9/(64k+96)) ≤ exp(C (log n_k)^(2/3) (log log n_k)^(1/3))` for all `k ≥ 2`. Context: the two previous claims;
 `n_k ≥ 512`. -/
-@[kb "cstarpaper-s-thm-lower-loss" (part := "SCFinal.step_loss_combine")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-lower-loss" (part := "SCFinal.step_loss_combine")]
 theorem step_loss_combine (hn : ∀ k : ℕ, 2 ≤ k → 512 ≤ SCStructure.n k)
     (hfac : ∃ C₁ : ℝ, 0 < C₁ ∧ ∀ k : ℕ, 2 ≤ k →
       (SCStructure.n k : ℝ) ^ (9 / (64 * (k : ℝ) + 96)) ≤
@@ -280,7 +280,7 @@ theorem step_loss_combine (hn : ∀ k : ℕ, 2 ≤ k → 512 ≤ SCStructure.n k
 
 /-- main.typ 1358: "the words `x_k` give `ARC(x) ≥ n^(1/4) exp(−O(…)) ZLC(x)`" — from
 `ARC ≥ n^(1/4 − 9/(64k+96)) ZLC` (thm-sc) and `n^(9/(64k+96)) ≤ exp(t)`: `ARC ≥ n^(1/4) exp(−t) ZLC` (`n ≥ 1`). -/
-@[kb "cstarpaper-s-thm-lower-loss" (part := "SCFinal.step_loss_final")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-lower-loss" (part := "SCFinal.step_loss_final")]
 theorem step_loss_final (n Z A c t : ℝ) (hn : 1 ≤ n) (hZ : 0 ≤ Z) (h : n ^ (1 / 4 - c) * Z ≤ A)
     (hc : n ^ c ≤ Real.exp t) :
     n ^ ((1 : ℝ) / 4) * Real.exp (-t) * Z ≤ A := by

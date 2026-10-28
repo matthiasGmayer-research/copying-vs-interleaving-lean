@@ -62,7 +62,7 @@ theorem step_lower_strong (C : ℝ)
 infinitely many binary words `x`, of lengths `n := |x| ≥ 4`, satisfy
 `ARC(x) ≥ n^(1/4) exp(−C (log n)^(2/3) (log log n)^(1/3)) ZLC(x)`." (`log` to base 2.)
 Proof (§6.4, first paragraph): rem-loss gives `C` and the words `x_k`; `step_lower_strong`. -/
-@[kb "cstarpaper-thm-lower" (part := "strong form, first sentence (CstarText)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-lower" (part := "strong form, first sentence (CstarText)")]
 theorem thm_lower_strong :
     ∃ C : ℝ, 0 < C ∧ Set.Infinite {x : List Bool | 4 ≤ x.length ∧
       (x.length : ℝ) ^ ((1 : ℝ) / 4) *
@@ -75,7 +75,7 @@ theorem thm_lower_strong :
 /-- thm-lower as stated (main.typ @ 0f9bf7e, §1.1, conference round), both sentences: the first
 (`thm_lower_strong`) and "In particular, for every `a < 1/4` there are infinitely many binary words `x` with
 `ARC(x) ≥ n^a ZLC(x)`" (`thm_lower`, the second statement of the proof in §6.4, from thm-sc). -/
-@[kb "cstarpaper-thm-lower" (part := "both sentences, conference form (CstarText)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-lower" (part := "both sentences, conference form (CstarText)")]
 theorem thm_lower_conf :
     (∃ C : ℝ, 0 < C ∧ Set.Infinite {x : List Bool | 4 ≤ x.length ∧
       (x.length : ℝ) ^ ((1 : ℝ) / 4) *
@@ -111,7 +111,7 @@ theorem step_sizes_L (k : ℕ) (hk : 2 ≤ k) : 8192 ≤ SCParams.L k := by
 /-- §1.1 (main.typ @ 0f9bf7e, after thm-lower): "The words that we give for @thm-lower have one length for each
 `k ≥ 2`, and all have length at least `2^73728`": `n_k ≥ X^(3(k+1)) ≥ 2^(9L) ≥ 2^73728` (lem-sc-final (b),
 `L ≥ 8192`). -/
-@[kb "cstarpaper-s-lengths-least"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lengths-least"]
 theorem lengths_ge (k : ℕ) (hk : 2 ≤ k) : 2 ^ 73728 ≤ SCStructure.n k := by
   refine le_trans ?_ (lem_sc_final_b k hk).1
   unfold SCParams.X
@@ -124,7 +124,7 @@ theorem lengths_ge (k : ℕ) (hk : 2 ≤ k) : 2 ^ 73728 ≤ SCStructure.n k := b
 /-- §6.4 (main.typ @ 0f9bf7e, after the proof of thm-lower): "for `k = 2`, `L = 8192`, `2^73728 ≤ n ≤ 2^114688` and
 the exponent is `1/4 − 9/224 ≈ 0.21`" (the exponent of thm-sc, `1/4 − 9/(64k + 96)`, at `k = 2`; "≈ 0.21": within
 `0.005` of `0.21`). -/
-@[kb "cstarpaper-s-sizes-k2"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-sizes-k2"]
 theorem sizes_k2 :
     SCParams.L 2 = 8192 ∧ 2 ^ 73728 ≤ SCStructure.n 2 ∧ SCStructure.n 2 ≤ 2 ^ 114688 ∧
       scExp 2 = 1 / 4 - 9 / 224 ∧ |scExp 2 - 0.21| < 0.005 := by

@@ -66,7 +66,7 @@ private theorem apStep_mem_between {P : Set ℤ} {τ a b x : ℤ} (hP : IsAPStep
 /-- main.typ 1287–1289: "Let `Π` be a finite progression with `u²` points of `S` but points of `S'` of fewer than
 `u` cells. As `u² > (u − 1)(u + 1)`, some inner cell `ω = (γ, κ_0, ℓ_0)` has at least `u + 1` points in `Π`, of
 times `h_1 < h_2 < ⋯ < h_(u+1)`". Context: `S` is finite (lem-cores (a), `SCCores.S_finite`). -/
-@[kb "cstarpaper-st-ap-small" (part := "SCFinal.step_ap_small_pigeon")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-ap-small" (part := "SCFinal.step_ap_small_pigeon")]
 theorem step_ap_small_pigeon (k : ℕ) (σ : (paper k).Geometry) (hSfin : (S k σ).Finite)
     (P : Set ℤ) (hcard : SCParams.u k ^ 2 ≤ {p : ℕ | p ∈ S k σ ∧ (p : ℤ) ∈ P}.ncard)
     (hfew : ¬ HasCells k σ P (SCParams.u k)) :
@@ -155,7 +155,7 @@ theorem step_ap_small_pigeon (k : ℕ) (σ : (paper k).Geometry) (hSfin : (S k �
 
 /-- main.typ 1289: "; so `τ ≤ τ_0`" — on the event of st-ap-large, a progression of step `τ` with `u + 1` points
 of one inner cell (distinct times) has `τ ≤ τ_0`. -/
-@[kb "cstarpaper-s-lem-ap-inner"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-inner"]
 theorem step_ap_small_step (k : ℕ) (σ : (paper k).Geometry) (hL : LargeOK k σ)
     (P : Set ℤ) (τ : ℤ) (hP : IsAPStep P τ) (ω : Cell k) (hω : IsInnerCell k ω)
     (hs : Fin (SCParams.u k + 1) → Fin (paper k).H) (hmono : StrictMono hs)
@@ -184,7 +184,7 @@ theorem step_ap_small_step (k : ℕ) (σ : (paper k).Geometry) (hL : LargeOK k �
 `y_(h_1)(ω), y_(h_2)(ω) ∈ Π`: every point `y_f(ω')` of a core cell `ω'` with `y_f(ω') ≡ y_(h_1)(ω) (mod τ)` is in
 `Π` (a progression contains every integer of its residue class between two of its elements).
 Context (frozen fact): lem-cores (b) across arbitrary times (`SCCores.lem_cores_b_chain`). -/
-@[kb "cstarpaper-s-lem-ap-point"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-point"]
 theorem step_ap_small_between (k : ℕ) (σ : (paper k).Geometry)
     (hchain : ∀ (i j : ℕ) (hij : i < j) (hj : j < (paper k).H) (ω ω' : Cell k), IsCoreCell k ω →
       IsCoreCell k ω' → point k σ ⟨i, by omega⟩ ω < point k σ ⟨j, hj⟩ ω')
@@ -200,7 +200,7 @@ theorem step_ap_small_between (k : ℕ) (σ : (paper k).Geometry)
 /-- main.typ 1291–1292: "For a core cell `(γ, κ, ℓ)` of the same `γ`,
 `y_f(γ, κ, ℓ) − y_f(ω) = R s_f (B(ℓ − ℓ_0) + κ − κ_0)`" (`ω = (γ, κ_0, ℓ_0)`; holds for all cells of the same
 `γ`). -/
-@[kb "cstarpaper-s-lem-ap-core"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-core"]
 theorem step_ap_small_diff (k : ℕ) (σ : (paper k).Geometry) (f : Fin (paper k).H) (ω ω' : Cell k)
     (hγ : ω'.1 = ω.1) :
     point k σ f ω' - point k σ f ω =
@@ -214,7 +214,7 @@ theorem step_ap_small_diff (k : ℕ) (σ : (paper k).Geometry) (f : Fin (paper k
 /-- main.typ 1293–1294: "so `y_f(γ, κ, ℓ) ∈ Π` as soon as `τ' := τ / gcd(τ, R s_f)` divides
 `(Bℓ + κ) − (Bℓ_0 + κ_0)`" — the divisibility it uses: if `τ / gcd(τ, c)` divides `d`, then `τ` divides `c d`
 (here `c = R s_f`, `d = (Bℓ + κ) − (Bℓ_0 + κ_0)`). -/
-@[kb "cstarpaper-s-lem-ap-core" (part := "SCFinal.step_ap_small_div")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-core" (part := "SCFinal.step_ap_small_div")]
 theorem step_ap_small_div (τ c d : ℤ) (hτ : 1 ≤ τ) (h : τ / (Int.gcd τ c : ℤ) ∣ d) : τ ∣ c * d := by
   have hg0 : (Int.gcd τ c : ℤ) ≠ 0 := by
     have : Int.gcd τ c ≠ 0 := fun h0 => by
@@ -232,7 +232,7 @@ theorem step_ap_small_div (τ c d : ℤ) (hτ : 1 ≤ τ) (h : τ / (Int.gcd τ 
 `|κ − κ_0| ≤ δ_κ` and `|ℓ − ℓ_0| ≤ δ_ℓ` has `1 ≤ κ < B/2` and `3 ≤ ℓ < e − 3`, so `(γ, κ, ℓ)` is a core cell"
 (`κ, ℓ` integers; core: `2 ≤ ℓ < e − 2`, implied). Context: `8 ∣ B`, `B ≥ 8`, `4 ∣ e` (def-params), `e ≥ 400`
 (lem-params (b)). -/
-@[kb "cstarpaper-s-lem-ap-inner2"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-inner2"]
 theorem step_ap_small_box (k : ℕ) (hB8 : 8 ≤ SCParams.B k) (hdiv : 8 ∣ SCParams.B k ∧ 4 ∣ SCParams.e k)
     (he : 400 ≤ SCParams.e k) (ω : Cell k) (hω : IsInnerCell k ω) (κ ℓ : ℤ)
     (hκ : |κ - ((ω.2.1 : ℕ) : ℤ)| ≤ (dK k : ℤ)) (hℓ : |ℓ - ((ω.2.2 : ℕ) : ℤ)| ≤ (dL k : ℤ)) :
@@ -259,7 +259,7 @@ theorem step_ap_small_box (k : ℕ) (hB8 : 8 ≤ SCParams.B k) (hdiv : 8 ∣ SCP
 `RΨ_* ≤ 2^(k−1) X (2X)^k = 4^k B/2` and `τ' ≤ τ ≤ τ_0`" — for every `τ' ≤ τ_0`.
 Context (frozen facts): lem-free (a) (`R ≤ 2^(k−1) X`), def-slopes (`Ψ_* ≤ (2X)^k`), lem-params (b) (`e ≥ 400`);
 `8 ∣ B`, `B ≥ 8`, `4 ∣ e` (def-params). -/
-@[kb "cstarpaper-s-lem-ap-integers"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-ap-integers"]
 theorem step_ap_small_count (k : ℕ) (hk : 2 ≤ k) (hB8 : 8 ≤ SCParams.B k)
     (hdiv : 8 ∣ SCParams.B k ∧ 4 ∣ SCParams.e k) (he : 400 ≤ SCParams.e k)
     (hR : (paper k).R ≤ 2 ^ (k - 1) * SCParams.X k)
@@ -316,7 +316,7 @@ theorem step_ap_small_count (k : ℕ) (hk : 2 ≤ k) (hB8 : 8 ≤ SCParams.B k)
 one of these from all of them and adding `Bℓ_0 + κ_0` gives `u` distinct integers `Bℓ + κ` of the box, each
 `≡ Bℓ_0 + κ_0 (mod τ')`" — `u` distinct pairs `(κ_i, ℓ_i)` of the box `|κ − κ_0| ≤ δ_κ`, `|ℓ − ℓ_0| ≤ δ_ℓ`
 with `Bℓ_i + κ_i ≡ Bℓ_0 + κ_0 (mod τ')`. -/
-@[kb "cstarpaper-st-ap-small" (part := "SCFinal.step_ap_small_residue")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-ap-small" (part := "SCFinal.step_ap_small_residue")]
 theorem step_ap_small_residue (k : ℕ) (hdK : dK k < SCParams.B k) (τ' : ℤ) (hτ' : 1 ≤ τ')
     (hcount : (SCParams.u k : ℤ) * τ' ≤ (((dL k + 1) * (dK k + 1) : ℕ) : ℤ)) (κ₀ ℓ₀ : ℤ) :
     ∃ κs ℓs : Fin (SCParams.u k) → ℤ, Function.Injective (fun i => (κs i, ℓs i)) ∧
@@ -403,7 +403,7 @@ of `S` contains points of `S'` of at least `u` cells." Its proof (main.typ 1287�
 claims above: "Their cells have points of time `f` in `Π`: `u` distinct cells, a contradiction."
 Context: the event of st-ap-large (`hL`; it enters through `step_ap_small_step`), the claims of the proof (`step_ap_small_pigeon`, `_step`, `_between`, `_diff`, `_div`, `_box`, `_count`,
 `_residue`, instantiated for `σ`), `u ≥ 2` (def-params). -/
-@[kb "cstarpaper-st-ap-small" (deviation := "the sub-claims of its proof (pigeonhole, step bound, betweenness, differences, box, count, residue) enter as hypotheses")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-ap-small" (deviation := "the sub-claims of its proof (pigeonhole, step bound, betweenness, differences, box, count, residue) enter as hypotheses")]
 theorem step_ap_small (k : ℕ) (σ : (paper k).Geometry) (hL : LargeOK k σ) (hu : 2 ≤ SCParams.u k)
     (hpigeon : ∀ P : Set ℤ, SCParams.u k ^ 2 ≤ {p : ℕ | p ∈ S k σ ∧ (p : ℤ) ∈ P}.ncard →
       ¬ HasCells k σ P (SCParams.u k) →

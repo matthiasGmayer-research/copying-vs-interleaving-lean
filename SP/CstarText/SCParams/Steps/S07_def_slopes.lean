@@ -189,7 +189,7 @@ theorem step_def_slopes_psistar (k : ℕ) (hk : 2 ≤ k)
 /-- main.typ 943, remark after def-slopes: "As the `s_h` are distinct integers, `Δ_h ≥ 1` and
 `s_h ≥ s_(H−1)`" (`h + 1 < H` for `Δ_h`, `h < H` for `s_h`; context: the window has at least `H`
 good integers). -/
-@[kb "cstarpaper-s-def-slopes-distinct"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-def-slopes-distinct"]
 theorem step_def_slopes_distinct (k : ℕ) (hk : 2 ≤ k) (hH : H k ≤ (goodWindow k).card) :
     (∀ h, h + 1 < H k → 1 ≤ Δ k h) ∧ (∀ h < H k, s k (H k - 1) ≤ s k h) := by
   constructor
@@ -204,7 +204,7 @@ theorem step_def_slopes_distinct (k : ℕ) (hk : 2 ≤ k) (hH : H k ≤ (goodWin
       rw [this]
 
 /-- main.typ 943–944, remark after def-slopes: "`W / X^k = X/8`" (exact natural-number divisions). -/
-@[kb "cstarpaper-s-def-slopes-type"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-def-slopes-type"]
 theorem step_def_slopes_W_div (k : ℕ) (hk : 2 ≤ k) : W k / X k ^ k = X k / 8 := by
   rw [h07_W_eq k hk, Nat.mul_div_cancel_left _ (pow_pos (h07_X_pos k) k)]
 

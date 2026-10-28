@@ -21,7 +21,7 @@ noncomputable def gq (k h t κ : ℕ) : ℚ :=
   (SCParams.s k h : ℚ) * ((SCParams.B k : ℚ) * t + κ) + (c k h : ℚ)
 
 /-- main.typ 1184–1185: "so that `p_h(γ, κ, t) = R(g_h + γ + η_h(γ)) + π_h`". -/
-@[kb "cstarpaper-s-lem-cores-write"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-cores-write"]
 theorem step_cores_pre_pos (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k).H) (γ κ t : ℕ) :
     (pos k σ h γ κ t : ℚ) =
       (R k : ℚ) * (gq k h t κ + γ + η k σ h γ) + ((paper k).π σ h : ℚ) := by
@@ -32,7 +32,7 @@ theorem step_cores_pre_pos (k : ℕ) (σ : (paper k).Geometry) (h : Fin (paper k
 /-- main.typ 1185–1186: "By the definition of `c_(h+1)`, `g_h − g_(h+1) = Δ_h (Bt + κ − Be(h + 1) + B/2)`"
 (`Δ_h = s_h − s_(h+1)`, def-slopes). Context: the definition `c_(h+1) = c_h + B Δ_h (e(h + 1) − 1/2)`
 (frozen: `SCStructure.lem_structure_a_c`). -/
-@[kb "cstarpaper-s-lem-cores-definition"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-cores-definition"]
 theorem step_cores_pre_g (k : ℕ)
     (hc : ∀ h : ℕ, (c k (h + 1) : ℚ) =
       (c k h : ℚ) + (SCParams.B k : ℚ) * (SCParams.Δ k h : ℚ) *
@@ -52,7 +52,7 @@ theorem step_cores_pre_g (k : ℕ)
 /-- main.typ 1187–1188: "`|(η_h(γ) + π_h/R) − (η_(h')(γ) + π_(h')/R)| < Ψ_* + 1 ≤ B/2`, as
 `Ψ_* ≤ (2X)^k ≤ B/4` (@lem-params (b))". Context: `1 ≤ η_h(γ) ≤ Ψ_h` (def-sc), `Ψ_h ≤ Ψ_*` (def-slopes),
 `π_h < R` (def-free), `Ψ_* ≤ (2X)^k` (def-slopes), `(2X)^k ≤ B/4` (lem-params (b)). -/
-@[kb "cstarpaper-s-lem-cores-definition" (part := "SCCores.step_cores_pre_eta")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-cores-definition" (part := "SCCores.step_cores_pre_eta")]
 theorem step_cores_pre_eta (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (γ : ℕ)
     (hη : ∀ h : Fin (paper k).H, 1 ≤ η k σ h γ ∧ η k σ h γ ≤ SCParams.Ψ k h)
     (hΨ : ∀ h : Fin (paper k).H, SCParams.Ψ k h ≤ SCParams.Ψstar k)

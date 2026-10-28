@@ -62,7 +62,7 @@ theorem descent_spec {Q α : Type} (P : Program Q α) (hP : IsZLP P) (p : ℕ) (
 of `ρ` is an initial segment of the descent; then symbol `p` of `val(P)` is symbol `t` of `val(q)` (@lem-occ (a))."
 For a ZLP, `p < |val(P)|` and an occurrence `ρ` of `q` with root path `js`: `p = ρ(t)` for some `t` iff `js` is an
 initial segment of the slots of the descent; and if `p = ρ(t)`, symbol `p` of `val(P)` is symbol `t` of `val(q)`. -/
-@[kb "cstarpaper-lem-structure" (part := "CoverageRev2.p = ρ(t) for some t iff the root path of ρ is an initial segment of the descent")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "CoverageRev2.p = ρ(t) for some t iff the root path of ρ is an initial segment of the descent")]
 theorem descent_passes_occ {Q α : Type} (P : Program Q α) (hP : IsZLP P) (p : ℕ) (hp : p < (val P).length)
     (q : Q) (ρ : Occ) (js : List ℕ) (hρ : OccVia P q ρ js) :
     ((∃ t : ℕ, ρ t = p) ↔ js <+: descentSlots P p) ∧
@@ -77,7 +77,7 @@ theorem descent_passes_occ {Q α : Type} (P : Program Q α) (hP : IsZLP P) (p : 
 /-- The proof of lem-structure (b), the notion "passes through" (main.typ @ 3d254b5 lines 3499–3500): for a ZLP and
 `p < |val(P)|`, the descent of `p` passes through `q` (`p = ρ(t)` for some `ρ ∈ occ_q` and `t`) iff some root path
 with end `q` is an initial segment of the slots of the descent. -/
-@[kb "cstarpaper-lem-structure" (part := "CoverageRev2.the descent passes through q iff a root path to q is an initial segment of it")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-structure" (part := "CoverageRev2.the descent passes through q iff a root path to q is an initial segment of it")]
 theorem passes_through_iff {Q α : Type} (P : Program Q α) (hP : IsZLP P) (p : ℕ) (hp : p < (val P).length)
     (q : Q) :
     PassesThrough P p q ↔ ∃ js : List ℕ, IsPathTo P P.root js q ∧ js <+: descentSlots P p := by
@@ -100,7 +100,7 @@ theorem s_descent {Q α : Type} (P : Program Q α) (hP : IsZLP P) (p : ℕ) (hp 
 /-- Sentence anchor `s-struct-b-descent` (proof of lem-structure (b), main.typ @ 3d254b5 lines 3493–3495): "Each
 `p < |val(P_k)|` has a descent, a unique root path to a letter, and symbol `p` of `val(P_k)` is that letter" —
 `descent_spec` for `P_k` (a ZLP by lem-structure (a)), for every `k ≥ 2`, geometry, pointers and bits. -/
-@[kb "cstarpaper-s-struct-b-descent"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-struct-b-descent"]
 theorem s_struct_b_descent (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (pb : PtrBits k) (p : ℕ)
     (hp : p < (val (Pk k σ pb)).length) :
     (∃ a : Bool, FollowsRule (Pk k σ pb) (Pk k σ pb).root p (descent (Pk k σ pb) p).1 (descent (Pk k σ pb) p).2 a ∧
@@ -112,7 +112,7 @@ theorem s_struct_b_descent (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (p
 
 /-- Sentence anchor `s-struct-b-passes` (proof of lem-structure (b), main.typ @ 3d254b5 lines 3499–3501):
 `descent_passes_occ` for `P_k`. -/
-@[kb "cstarpaper-s-struct-b-passes"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-struct-b-passes"]
 theorem s_struct_b_passes (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (pb : PtrBits k) (p : ℕ)
     (hp : p < (val (Pk k σ pb)).length) (q : SCStructure.Qk k σ pb) (ρ : Occ) (js : List ℕ)
     (hρ : OccVia (Pk k σ pb) q ρ js) :
@@ -153,7 +153,7 @@ theorem strict_conversion {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : L
   exact ⟨L, Φ, E, hc, hc.1, hs⟩
 
 /-- thm-scale (`UpperBound.thm_scale`) for strict ARSs: `strictARC(x) ≤ 2√2 N^{1/4} m`. -/
-@[kb "cstarpaper-thm-scale" (part := "CoverageRev2.for strict ARSs (App. A, Conventions)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-scale" (part := "CoverageRev2.for strict ARSs (App. A, Conventions)")]
 theorem thm_scale_strict {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) :
     (strictARC x : ℝ) ≤ 2 * Real.sqrt 2 * scaleN P x.length ^ (1 / 4 : ℝ) * size P := by
@@ -165,7 +165,7 @@ theorem thm_scale_strict {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : Li
 /-- App. A, Conventions: "Both main theorems also hold if every equation `(α, α')` of an ARS must have
 `α(t) < α'(t) < n` at every index `t`" — thm-upper for strict ARSs: for every non-empty alphabet and every `x` with
 `n = |x| ≥ 1`, `strictARC(x) ≤ 2^{5/4} n^{1/4} ZLC(x)` (the route of `UpperBound.thm_upper_paper`). -/
-@[kb "cstarpaper-thm-upper" (part := "CoverageRev2.for strict ARSs (App. A, Conventions)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-upper" (part := "CoverageRev2.for strict ARSs (App. A, Conventions)")]
 theorem thm_upper_strict {α : Type} [Nonempty α] (x : List α) (hn : 1 ≤ x.length) :
     (strictARC x : ℝ) ≤ (2 : ℝ) ^ (5 / 4 : ℝ) * (x.length : ℝ) ^ (1 / 4 : ℝ) * (ZLC x : ℝ) := by
   obtain ⟨Q, P, hP, hx, hsize⟩ := step_upper_take x
@@ -181,7 +181,7 @@ theorem thm_upper_strict {α : Type} [Nonempty α] (x : List α) (hn : 1 ≤ x.l
 
 /-- App. A, Conventions: "such a system is an ARS, so @thm-lower holds a fortiori" — thm-lower as stated (both
 sentences, `SCFinal.thm_lower_conf`) for strict ARSs. -/
-@[kb "cstarpaper-thm-lower" (part := "CoverageRev2.for strict ARSs (App. A, Conventions)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-lower" (part := "CoverageRev2.for strict ARSs (App. A, Conventions)")]
 theorem thm_lower_strict :
     (∃ C : ℝ, 0 < C ∧ Set.Infinite {x : List Bool | 4 ≤ x.length ∧
       (x.length : ℝ) ^ ((1 : ℝ) / 4) *
@@ -197,7 +197,7 @@ theorem thm_lower_strict :
   exact (hlow a ha).mono fun x hx => le_trans hx (hle x)
 
 /-- Sentence anchor `s-conventions-strict` (App. A, Conventions): both main theorems for strict ARSs. -/
-@[kb "cstarpaper-s-conventions-strict"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-conventions-strict"]
 theorem s_conventions_strict :
     (∀ (α : Type) [Nonempty α] (x : List α), 1 ≤ x.length →
       (strictARC x : ℝ) ≤ (2 : ℝ) ^ (5 / 4 : ℝ) * (x.length : ℝ) ^ (1 / 4 : ℝ) * (ZLC x : ℝ)) ∧
@@ -214,7 +214,7 @@ theorem s_conventions_strict :
 
 /-- Sentence anchor `s-bounds-meet` (§5, main.typ @ 3d254b5 line 2023): "with `d₀ = R`, so `N = n/R`" — for
 `P = P_k` and `n` the length of `x_k`: the arity of the root is `R`, and `N = n/d₀ = n/R`. -/
-@[kb "cstarpaper-s-bounds-meet"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-bounds-meet"]
 theorem d0_Pk (k : ℕ) (σ : (paper k).Geometry) (pb : PtrBits k) :
     d0 (Pk k σ pb) = R k ∧ scaleN (Pk k σ pb) (SCStructure.n k) = (SCStructure.n k : ℝ) / (R k : ℝ) := by
   have h := step_d0_Pk k σ pb
@@ -224,7 +224,7 @@ theorem d0_Pk (k : ℕ) (σ : (paper k).Geometry) (pb : PtrBits k) :
 
 /-- Sentence anchor `s-bounds-meet` (§5, the same sentence, main.typ @ 3d254b5 lines 2024–2026): "here `H − 1` such occurrences
 [other than the least one] of every column have canonical intervals of at least `e − 4` indices" (`step_cols_nonleast`). -/
-@[kb "cstarpaper-s-bounds-meet" (part := "CoverageRev2.cols_nonleast: H − 1 occurrences other than the least, each with ≥ e − 4 indices")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-bounds-meet" (part := "CoverageRev2.cols_nonleast: H − 1 occurrences other than the least, each with ≥ e − 4 indices")]
 theorem cols_nonleast (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ)
     (pb : PtrBits k) (γ : ℕ) (hγ : γ ∈ Γ k) (κ : ℕ) (hκ : κ < SCParams.B k / 2) :
     (occ (Pk k σ pb) (SCCores.colk k σ pb γ κ) \ {leastOcc (Pk k σ pb) (SCCores.colk k σ pb γ κ)}).ncard =
@@ -282,7 +282,7 @@ theorem zip_example {α : Type} (a b c d : α) :
 
 /-- The proof of lem-free (c) (main.typ @ 3d254b5 line 4089, App. D, "Free levels"): "`|zip(u_0, …, u_(a−1))| = min_j (a|u_j| + j)`" — the length of
 the zip of `a ≥ 1` words is the least of the numbers `a|u_j| + j`, `j < a`. -/
-@[kb "cstarpaper-lem-free" (part := "CoverageRev2.zip_length_min: |zip(u_0, …, u_(a−1))| = min_j (a|u_j| + j)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-free" (part := "CoverageRev2.zip_length_min: |zip(u_0, …, u_(a−1))| = min_j (a|u_j| + j)")]
 theorem zip_length_min {α : Type} (us : List (List α)) (h : us ≠ []) :
     (∀ j : ℕ, ∀ hj : j < us.length, (zip us).length ≤ us.length * (us[j]'hj).length + j) ∧
       ∃ j : ℕ, ∃ hj : j < us.length, (zip us).length = us.length * (us[j]'hj).length + j :=

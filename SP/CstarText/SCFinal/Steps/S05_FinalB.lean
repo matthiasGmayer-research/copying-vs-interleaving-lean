@@ -31,7 +31,7 @@ private lemma stepB_log2_le {x y : ℝ} (hx : 0 < x) (hxy : x ≤ y) : SP.log2 x
 /-- main.typ 1324: "`n ≥ B s_(H−1) ≥ BM ≥ B³`" (and `B³ = X^(3(k+1))`). Context (frozen facts): `R ≥ 1`
 (lem-structure (a): `R ≥ 2`); `M ≤ s_(H−1)` (def-slopes); `8 ∣ B` (def-params bridge: `W = B/8` exact, so
 `M = 8eW² = eB²/8`) and `e ≥ 8` (lem-params (b): `e ≥ 400`), so `M ≥ B²`. -/
-@[kb "cstarpaper-s-lem-sc-final-claim2"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-claim2"]
 theorem step_final_b_lower (k : ℕ) (hk : 2 ≤ k) (hR : 1 ≤ (paper k).R)
     (hsM : SCParams.M k ≤ SCParams.s k (SCParams.H k - 1))
     (hBdiv : 8 ∣ SCParams.B k) (he8 : 8 ≤ SCParams.e k) :
@@ -71,7 +71,7 @@ theorem step_final_b_lower (k : ℕ) (hk : 2 ≤ k) (hR : 1 ≤ (paper k).R)
 `n ≤ 2^(5k+9) u² X B⁴`". Context (frozen facts): lem-free (a) (`R ≤ 2^(k−1) X`); def-slopes (`s_(H−1) < 2M`,
 `H ≤ W`); `8 ∣ B`, `B ≥ 8` (def-params bridges: `W = B/8` exact; `H + 1 ≤ B/4`). The intermediate equalities
 (`2M = 32 · 4^k u B²`, `H + 1 ≤ B/4`) are used inside, not exported. -/
-@[kb "cstarpaper-s-lem-sc-final-claim3"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-claim3"]
 theorem step_final_b_upper (k : ℕ) (hk : 2 ≤ k) (hR : (paper k).R ≤ 2 ^ (k - 1) * SCParams.X k)
     (hs2M : SCParams.s k (SCParams.H k - 1) < 2 * SCParams.M k)
     (hHW : SCParams.H k ≤ SCParams.W k) (hBdiv : 8 ∣ SCParams.B k) (hB8 : 8 ≤ SCParams.B k) :
@@ -102,7 +102,7 @@ theorem step_final_b_upper (k : ℕ) (hk : 2 ≤ k) (hR : (paper k).R ≤ 2 ^ (k
 
 /-- main.typ 1325: "`2^(5k+9) u² X B⁴ ≤ X^(4k+6)` by @lem-params". Context (frozen fact): lem-params (b)
 (`2^(5k+9) u² ≤ X`). -/
-@[kb "cstarpaper-s-lem-sc-final-claim3" (part := "SCFinal.step_final_b_upper2")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-claim3" (part := "SCFinal.step_final_b_upper2")]
 theorem step_final_b_upper2 (k : ℕ) (hX : 2 ^ (5 * k + 9) * SCParams.u k ^ 2 ≤ SCParams.X k) :
     2 ^ (5 * k + 9) * SCParams.u k ^ 2 * SCParams.X k * SCParams.B k ^ 4 ≤
       SCParams.X k ^ (4 * k + 6) := by
@@ -114,7 +114,7 @@ theorem step_final_b_upper2 (k : ℕ) (hX : 2 ^ (5 * k + 9) * SCParams.u k ^ 2 �
 
 /-- main.typ 1325–1326: "Then `10 log n ≤ 10(4k + 6)L = u`, and `3(k + 1)L ≤ log n ≤ (4k + 6)L`" (`X = 2^L`).
 Context: `X^(3(k+1)) ≤ n ≤ X^(4k+6)` (above). -/
-@[kb "cstarpaper-s-lem-sc-final-claim4"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-sc-final-claim4"]
 theorem step_final_b_log (k : ℕ) (hlow : SCParams.X k ^ (3 * (k + 1)) ≤ SCStructure.n k)
     (hup : SCStructure.n k ≤ SCParams.X k ^ (4 * k + 6)) :
     10 * SP.log2 (SCStructure.n k : ℝ) ≤ 10 * ((4 * (k : ℝ) + 6) * SCParams.L k) ∧

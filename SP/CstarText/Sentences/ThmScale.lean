@@ -502,7 +502,7 @@ theorem s_thm_scale_large_so {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x 
   · unfold lamStar; ring
 
 /-- thm-scale from the sentences of its proof: the two cases (`s_thm_scale_small_so`, `s_thm_scale_large_so`). -/
-@[kb "cstarpaper-thm-scale" (part := "from the sentences of the proof")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-scale" (part := "from the sentences of the proof")]
 theorem thm_scale_sentences {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) :
     (ARC x : ℝ) ≤ 2 * Real.sqrt 2 * scaleN P x.length ^ (1 / 4 : ℝ) * size P := by

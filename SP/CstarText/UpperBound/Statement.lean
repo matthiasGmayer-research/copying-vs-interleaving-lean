@@ -44,7 +44,7 @@ theorem lem_paths {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : Q) (y : �
 /-- lem-split (main.typ 598–603): "For every integer `λ ≥ 1`,
 `ARC(x) ≤ λ(m + m_𝒯) + m_𝒯 + 2K max(1, √N/λ − 1)`." Context: `P` a ZLP, `x ⊑ val(P)`, `n = |x| ≥ 1`
 (main.typ 377–380). Proof: lem-conversion with the pieces `splitPieces`, steps 1–3 and "Adding up". -/
-@[kb "cstarpaper-lem-split" (part := "a")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-split" (part := "a")]
 theorem lem_split {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (lam : ℕ) (hlam : 1 ≤ lam) :
     (ARC x : ℝ) ≤ lam * ((size P : ℝ) + mT P) + mT P +
@@ -81,7 +81,7 @@ thm-scale, case `N ≤ 16`, takes from "the proof of lem-split", main.typ 644–
 `λ ≥ 1`, if `√N ≤ 4λ` (so that there is no late piece of an occurrence other than a least one),
 `ARC(x) ≤ λ(m + m_𝒯) + m_𝒯 + 2K`. Proof: as `lem_split`, with step 3 replaced by
 `step_split_other_none`. -/
-@[kb "cstarpaper-lem-split" (part := "b")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-split" (part := "b")]
 theorem lem_split_b {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (lam : ℕ) (hlam : 1 ≤ lam)
     (hsmall : Real.sqrt (scaleN P x.length) ≤ 4 * lam) :
@@ -108,7 +108,7 @@ theorem lem_split_b {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α
 
 /-- thm-scale (main.typ 383–386): "`ARC(x) ≤ 2√2 N^{1/4} m`." Context (main.typ 377–380): `P` a ZLP,
 `x ⊑ val(P)`, `n = |x| ≥ 1`, `m = |P|`, `N = n/d₀`. Proof: the two cases `N ≤ 16` and `N > 16`. -/
-@[kb "cstarpaper-thm-scale"]
+-- kb tag retired 2026-10-28 (superseded by U12a/Statement.lean:thm_scale): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-scale"]
 theorem thm_scale {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) :
     (ARC x : ℝ) ≤ 2 * Real.sqrt 2 * scaleN P x.length ^ (1 / 4 : ℝ) * size P := by
@@ -124,7 +124,7 @@ theorem thm_scale {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
 alphabet `Σ` and every `x ∈ Σⁿ` with `n ≥ 1`, `ARC(x) ≤ 2^{5/4} n^{1/4} ZLC(x)`.
 -- convention: the alphabet is any non-empty type (no finiteness needed; non-empty as `x` is). The same
 statement by another proof is `SP.CstarConst.arc_le_const` (tag `cstarpaper-thm-upper`). -/
-@[kb "cstarpaper-thm-upper" (part := "paper route (§4: thm-scale with d₀ ≥ 2)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-upper" (part := "paper route (§4: thm-scale with d₀ ≥ 2)")]
 theorem thm_upper_paper {α : Type} [Nonempty α] (x : List α) (hn : 1 ≤ x.length) :
     (ARC x : ℝ) ≤ (2 : ℝ) ^ (5 / 4 : ℝ) * (x.length : ℝ) ^ (1 / 4 : ℝ) * (ZLC x : ℝ) := by
   obtain ⟨Q, P, hP, hx, hsize⟩ := step_upper_take x

@@ -277,7 +277,7 @@ theorem lem_least_c {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α
 /-- lem-cut (main.typ 528–529), the cut edge exists (step 1 of the proof): for `q ≠ q₀` and
 `ρ ∈ A_q ∖ {ρ*_q}` with root path `js`, `js` has a first slot `e = (w, j)` not in `𝒯`, leading to `z`, and
 the rest `π` is a path from `z` to `q`. -/
-@[kb "cstarpaper-lem-cut" (part := "the cut edge exists")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-cut" (part := "the cut edge exists")]
 theorem lem_cut_exists {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (q : Q) (hq : q ≠ P.root) (ρ : Occ)
     (hρ : ρ ∈ Acan P x.length q) (hne : ρ ≠ leastOcc P q) (js : List ℕ) (hjs : OccVia P q ρ js) :
@@ -289,7 +289,7 @@ theorem lem_cut_exists {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List
 path of `ρ` that is not in `𝒯` (its cut edge), `z` the vertex it leads to, `π` the rest of the path from `z`
 to `q`, and `p := p(π)`. Then `pt < √N` for every `t ∈ I_ρ`, and `(e, π)` determines `ρ`." (Determines: any
 `ρ' ∈ A_q ∖ {ρ*_q}` with the same cut edge and rest is `ρ`.) Steps 2 and 1 of the proof. -/
-@[kb "cstarpaper-lem-cut"]
+-- kb tag retired 2026-10-28 (superseded by U12a/Statement.lean:lem_cut): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-cut"]
 theorem lem_cut {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (q : Q) (hq : q ≠ P.root) (ρ : Occ)
     (hρ : ρ ∈ Acan P x.length q) (hne : ρ ≠ leastOcc P q) (js js₁ : List ℕ) (w : Q) (j : ℕ)
@@ -324,7 +324,7 @@ theorem ex_cont_tree :
   step_ex_cont_tree
 
 /-- ex-zlp-cont (main.typ 559–560): the cut edge of `4t`. -/
-@[kb "cstarpaper-ex-zlp-cont" (part := "cut edge of 4t")]
+-- kb tag retired 2026-10-28 (superseded by U12a/ExampleStatement.lean:ex_cont_cut_u12a): @[kb "cstarpaper-ex-zlp-cont" (part := "cut edge of 4t")]
 theorem ex_cont_cut :
     OccVia exProg .q ⟨4, 0⟩ [0, 0] ∧ IsCutDecomp exProg [0, 0] [0] .s 0 .q [] ∧
       pathProduct exProg .q [] = 1 ∧ canonInterval exProg exX.length .q ⟨4, 0⟩ = {0} ∧

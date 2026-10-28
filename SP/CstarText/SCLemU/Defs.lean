@@ -38,14 +38,13 @@ open SP.CstarText.SCGadgets
 
 /-- Parent `h` *hits* (geometry `σ`): its tuple `(π_h, j_1(h), …, j_k(h))` equals the prescribed tuple
 `ξ_h` (`ξ_h = none`: no tuple, the parent does not hit). -/
-@[kb "cstarpaper-lem-u" (part := "hits") (deviation := "ξ h : Option (ℕ × (Fin k → ℕ)); some (π, j) \
-prescribes π_h = π and j_i(h) = j ⟨i − 1, _⟩.")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-u" (part := "hits") (deviation := "ξ h : Option (ℕ × (Fin k → ℕ)); some (π, j) \ prescribes π_h = π and j_i(h) = j ⟨i − 1, _⟩.")]
 def hits (D : Parents) (ξ : Fin D.H → Option (ℕ × (Fin D.k → ℕ))) (σ : D.Geometry) (h : Fin D.H) :
     Prop :=
   ξ h = some (D.π σ h, D.jd σ h)
 
 /-- `N_hit`: the number of parents that hit. -/
-@[kb "cstarpaper-lem-u" (part := "N_hit")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-u" (part := "N_hit")]
 noncomputable def Nhit (D : Parents) (ξ : Fin D.H → Option (ℕ × (Fin D.k → ℕ))) (σ : D.Geometry) : ℕ :=
   (Finset.univ.filter (fun h => hits D ξ σ h)).card
 
@@ -54,8 +53,7 @@ noncomputable def Nhit (D : Parents) (ξ : Fin D.H → Option (ℕ × (Fin D.k �
 -- convention: counting mean (`finsum` over `{σ | IsGeometry σ}`, divided by its `ncard`); like
 `geomProb`, a totalised ratio, an expectation when the set of geometries is finite and nonempty
 (under `Parents.Facts`). -/
-@[kb "cstarpaper-lem-u" (part := "𝔼 over the geometry") (deviation := "The expectation for the \
-uniform counting law geomProb of def-free: the sum of f over the geometries divided by their number.")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-u" (part := "𝔼 over the geometry") (deviation := "The expectation for the \ uniform counting law geomProb of def-free: the sum of f over the geometries divided by their number.")]
 noncomputable def geomExp (D : Parents) (f : D.Geometry → ℝ) : ℝ :=
   (∑ᶠ σ ∈ {σ : D.Geometry | D.IsGeometry σ}, f σ) / ({σ : D.Geometry | D.IsGeometry σ}.ncard : ℝ)
 

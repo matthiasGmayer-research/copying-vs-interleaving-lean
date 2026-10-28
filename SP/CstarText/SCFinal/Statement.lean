@@ -52,7 +52,7 @@ theorem lem_sc_final_b (k : ℕ) (hk : 2 ≤ k) :
 /-- lem-sc-final (b), last clause (main.typ 1313): "and `log n = Θ(k³ log k)`" — there are constants
 `c₁, c₂ > 0` with `c₁ k³ log k ≤ log n ≤ c₂ k³ log k` for all `k ≥ 2`.
 Proof structure (main.typ 1326): `3(k + 1)L ≤ log n ≤ (4k + 6)L` with `L = Θ(k² log k)`. -/
-@[kb "cstarpaper-lem-sc-final" (part := "b: log n = Θ(k³ log k)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-sc-final" (part := "b: log n = Θ(k³ log k)")]
 theorem lem_sc_final_b_theta :
     ∃ c₁ c₂ : ℝ, 0 < c₁ ∧ 0 < c₂ ∧ ∀ k : ℕ, 2 ≤ k →
       c₁ * (k : ℝ) ^ 3 * SP.log2 k ≤ SP.log2 (SCStructure.n k : ℝ) ∧
@@ -69,7 +69,7 @@ progression that contains at least `u²` points of `S` contains points of `S'` o
 (TEXT DEFECT D5: "finite arithmetic progression" is `SP.IsAP`; the law of the geometry is `geomProb` of def-free.)
 Proof structure (main.typ 1264–1306): step 1 (st-ap-large: large steps, with lem-u and a union bound) holds with
 probability at least `1 − 4n^(−7)`; on its event, step 2 (small steps) gives the conclusion. -/
-@[kb "cstarpaper-lem-ap"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-ap"]
 theorem lem_ap (k : ℕ) (hk : 2 ≤ k) :
     1 - 4 * (SCStructure.n k : ℝ) ^ (-7 : ℝ) ≤ (paper k).geomProb (APGood k) := by
   have hD := SCGadgets.paper_facts k hk
@@ -141,7 +141,7 @@ theorem lem_ap (k : ℕ) (hk : 2 ≤ k) :
 so `|S| ≥ H|P_k|/12`." — for every geometry `σ` and all pointers and bits `pb` (`|P_k|` the size of `P_k`, def-zlp).
 Proof structure (main.typ 1317–1323): the count of `S`; the bounds on `|Γ|` and `C`; the other edges; the parameters;
 `|P_k| ≤ C(1 + 3/4) ≤ 2C`. -/
-@[kb "cstarpaper-lem-sc-final" (part := "a")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-sc-final" (part := "a")]
 theorem lem_sc_final_a (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ)
     (pb : PtrBits k) :
     colEdges k σ pb = Ccol k ∧ (Ccol k : ℝ) * (paper k).H / 6 ≤ ((S k σ).ncard : ℝ) ∧
@@ -294,7 +294,7 @@ binary words `x` with `ARC(x) ≥ n^a ZLC(x)`, where `n := |x|`." (Paper route o
 `SP.CstarPaper.thm_lower` proves it by the two-parameter construction.)
 Proof structure (main.typ 1350–1354): the `k ≥ 2` with `9/(64k + 96) ≤ 1/4 − a`; thm-sc gives a word `x_k` for each;
 their lengths `≥ X^(3(k+1))` are unbounded; so infinitely many. -/
-@[kb "cstarpaper-thm-lower" (part := "paper route (CstarText)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-lower" (part := "paper route (CstarText)")]
 theorem thm_lower (a : ℝ) (ha : a < 1 / 4) :
     Set.Infinite {x : List Bool | (x.length : ℝ) ^ a * (SP.ZLC x : ℝ) ≤ (SP.ARC x : ℝ)} := by
   obtain ⟨k₀, hk₀, hka⟩ := step_lower_k a ha

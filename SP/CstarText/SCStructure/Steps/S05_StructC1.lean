@@ -152,7 +152,7 @@ private theorem len_zv (k : ℕ) (σ : (paper k).Geometry) (ω : PtrBits k)
 
 /-- main.typ 1116, proof of (c), step 1: "The dictionary words and `Z_A` have length `H + 1`, the columns
 and `Z_v` length `e(H + 1)`" (values in the program as built). Context: it is finite and acyclic. -/
-@[kb "cstarpaper-s-lem-structure-dictionary" (part := "SCStructure.step_struct_c1_lengths_low")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-dictionary" (part := "SCStructure.step_struct_c1_lengths_low")]
 theorem step_struct_c1_lengths_low (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : PtrBits k)
     (hfa : SCGadgets.IsFiniteAcyclic (pre k σ ω)) :
     (∀ a < Dict k, (value (pre k σ ω) (.inl (lift k (.dict a)))).length = SCParams.H k + 1) ∧
@@ -168,7 +168,7 @@ theorem step_struct_c1_lengths_low (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geom
 (@lem-shifts), and `w_h` length `a_h B e (H + 1)`" (values in the program as built; the gadget vertices
 are the `G^γ_z`, `γ ∈ Γ`). Context: finite and acyclic; `lengths_low`; lem-shifts applied before the
 deletion (`step_struct_shifts_pre`, TEXT GAP fix). -/
-@[kb "cstarpaper-s-lem-structure-dictionary"]
+-- kb tag retired 2026-10-28 (superseded by C1Structure/Steps/S05_StructC1.lean:step_struct_c1_lengths_high): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-dictionary"]
 theorem step_struct_c1_lengths_high (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : PtrBits k)
     (hfa : SCGadgets.IsFiniteAcyclic (pre k σ ω))
     (hlow : (value (pre k σ ω) (.inl (lift k .zv))).length = SCParams.e k * (SCParams.H k + 1) ∧
@@ -247,7 +247,7 @@ finite and acyclic; `P_k` is a ZLP ((a)); the lengths of `w_h` and of `Z^(J−1)
 (`lengths_high`, `step_def_sc_zero`); the free levels in `P_k` (`step_struct_embed`). Values of the
 retained vertices `w_h`, `Z^(J−1)` are transferred from the program as built to `P_k` by
 `SCGadgets.value_prune` (TEXT GAP). -/
-@[kb "cstarpaper-st-struct-length" (deviation := "context facts of the proof (lengths of w_h and Z^(J−1) in the program as built, the free levels in P_k, ZLP) enter as hypotheses")]
+-- kb tag retired 2026-10-28 (superseded by C1Structure/Steps/S05_StructC1.lean:step_struct_c1): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-struct-length" (deviation := "context facts of the proof (lengths of w_h and Z^(J−1) in the program as built, the free levels in P_k, ZLP) enter as hypotheses")]
 theorem step_struct_c1 (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ)
     (ω : PtrBits k) (hfa : SCGadgets.IsFiniteAcyclic (pre k σ ω)) (hzlp : IsZLP (Pk k σ ω))
     (hpar : ∀ h : Fin (paper k).H, (value (pre k σ ω) (.inl (lift k (.par h)))).length =

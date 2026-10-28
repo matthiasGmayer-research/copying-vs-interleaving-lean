@@ -328,7 +328,7 @@ private theorem finite_Qpre (k : ℕ) : Finite (Qpre k) :=
 letter; the zero words `Z^(i)` only lead to smaller ones. So the graph is acyclic" — the program as built
 (before the deletion) is finite (implicit: def-sc lists finitely many vertices) and acyclic. Context:
 the children are vertices of the list (`step_def_sc_closed`). -/
-@[kb "cstarpaper-s-lem-structure-edge2"]
+-- kb tag retired 2026-10-28 (superseded by C1Structure/Steps/S02_StructA.lean:step_struct_a_acyclic): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-edge2"]
 theorem step_struct_a_acyclic (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : PtrBits k)
     (hcl : ∀ v : Vtx, IsVertex k v → ∀ w : Vtx, (.inl w : Vtx ⊕ Bool) ∈ rawδ k σ ω v → IsVertex k w) :
     SCGadgets.IsFiniteAcyclic (pre k σ ω) := by
@@ -344,7 +344,7 @@ theorem step_struct_a_acyclic (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry)
 
 /-- main.typ 1100, proof of (a): "`R ≥ H/X^k ≥ 2` by @lem-free and @lem-params" (the inputs: lem-free (a),
 `H/X^k ≤ R`, and lem-params (a), `H ≥ B X^(−1/32)`). -/
-@[kb "cstarpaper-s-lem-structure-edge2" (part := "SCStructure.step_struct_a_R")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-edge2" (part := "SCStructure.step_struct_a_R")]
 theorem step_struct_a_R (k : ℕ) (hk : 2 ≤ k)
     (hfree : (SCParams.H k : ℝ) / (SCParams.X k : ℝ) ^ k ≤ ((paper k).R : ℝ))
     (hH : (SCParams.B k : ℝ) * (SCParams.X k : ℝ) ^ (-(1 : ℝ) / 32) ≤ (SCParams.H k : ℝ)) :
@@ -387,7 +387,7 @@ theorem step_struct_a_R (k : ℕ) (hk : 2 ≤ k)
 
 /-- main.typ 1099–1100, proof of (a): "all arities are at least `2`" (of the program as built), given
 `R ≥ 2`. -/
-@[kb "cstarpaper-s-lem-structure-edge2" (part := "SCStructure.step_struct_a_arity")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-edge2" (part := "SCStructure.step_struct_a_arity")]
 theorem step_struct_a_arity (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : PtrBits k)
     (hR : 2 ≤ (paper k).R) : ∀ v : Qpre k, 2 ≤ (pre k σ ω).arity v := by
   obtain ⟨-, -, -, hH1⟩ := sc_facts k hk
@@ -454,7 +454,7 @@ private theorem prune_arity {Q α : Type} (P : SP.Program Q α) (a : {v : Q // P
 /-- main.typ 1100, proof of (a): "after the deletion the root is the only source" — so `P_k` (the program
 as built with the unreachable vertices deleted) is a ZLP, given that the program as built is finite and
 acyclic with all arities at least `2`. -/
-@[kb "cstarpaper-s-lem-structure-edge2" (part := "SCStructure.step_struct_a_zlp")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-edge2" (part := "SCStructure.step_struct_a_zlp")]
 theorem step_struct_a_zlp (k : ℕ) (σ : (paper k).Geometry) (ω : PtrBits k)
     (hfa : SCGadgets.IsFiniteAcyclic (pre k σ ω)) (har : ∀ v : Qpre k, 2 ≤ (pre k σ ω).arity v) :
     IsZLP (Pk k σ ω) := by
@@ -487,7 +487,7 @@ theorem step_struct_a_zlp (k : ℕ) (σ : (paper k).Geometry) (ω : PtrBits k)
 
 /-- main.typ 1101, proof of (a): "`c_(h+1)` is an integer, as `B` is even" — the integer `c_(h+1)` of
 `c` is the paper's `c_h + B Δ_h (e(h + 1) − 1/2)`. -/
-@[kb "cstarpaper-s-lem-structure-integer"]
+-- kb tag retired 2026-10-28 (superseded by C1Structure/Steps/S02_StructA.lean:step_struct_a_c_int): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-integer"]
 theorem step_struct_a_c_int (k : ℕ) (hk : 2 ≤ k) (h : ℕ) :
     (c k (h + 1) : ℚ) =
       (c k h : ℚ) + (SCParams.B k : ℚ) * (SCParams.Δ k h : ℚ) * ((SCParams.e k : ℚ) * ((h : ℚ) + 1) - 1 / 2) := by
@@ -504,7 +504,7 @@ theorem step_struct_a_c_int (k : ℕ) (hk : 2 ≤ k) (h : ℕ) :
 
 /-- main.typ 1101, proof of (a): "Each step `c_(h+1) − c_h` is less than `B Δ_h e H`" (for `h + 1 < H`;
 with `Δ_h ≥ 1`, remark after def-slopes). -/
-@[kb "cstarpaper-s-lem-structure-step" (part := "SCStructure.step_struct_a_c_step")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-step" (part := "SCStructure.step_struct_a_c_step")]
 theorem step_struct_a_c_step (k : ℕ) (hk : 2 ≤ k) (h : ℕ) (hh : h + 1 < SCParams.H k)
     (hΔ : 1 ≤ SCParams.Δ k h) :
     c k (h + 1) - c k h <
@@ -529,7 +529,7 @@ theorem step_struct_a_c_step (k : ℕ) (hk : 2 ≤ k) (h : ℕ) (hh : h + 1 < SC
 /-- main.typ 1101–1102, proof of (a): "so `c_h < B e H (s_0 − s_(H−1)) < B e W² ≤ B μ/8 ≤ B s_(H−1)/8`, as
 `H ≤ W` and `μ ≥ M = 8 e W²`" — for all `h < H`. Context: the step bound (`step_struct_a_c_step`), the
 window facts of def-slopes (`step_slopes_window`), and `s_(H−1) ≤ s_h` (remark after def-slopes). -/
-@[kb "cstarpaper-s-lem-structure-step"]
+-- kb tag retired 2026-10-28 (superseded by C1Structure/Steps/S02_StructA.lean:step_struct_a_c_bound): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-structure-step"]
 theorem step_struct_a_c_bound (k : ℕ) (hk : 2 ≤ k)
     (hstep : ∀ h : ℕ, h + 1 < SCParams.H k → c k (h + 1) - c k h <
       (SCParams.B k : ℤ) * SCParams.Δ k h * (SCParams.e k : ℤ) * (SCParams.H k : ℤ))

@@ -439,7 +439,7 @@ theorem step_free_a_children (D : Parents) (hD : D.Facts) :
 a common prefix of length `i`: `N_k = 1`, and a prefix of length `i` has at most `X N_(i+1)`
 level-`(i+1)` vertices below it, in at most `2 N_(i+1)` groups; so `N_i ≤ 2^(k−i)`" — every prefix `p`
 of length `i` is the prefix of at most `2^(k−i)` level-`i` vertices. -/
-@[kb "cstarpaper-s-lem-free-largest"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-free-largest"]
 theorem step_free_a_N (D : Parents) (hD : D.Facts) :
     ∀ i : ℕ, 1 ≤ i → i ≤ D.k → ∀ p : List ℕ,
       ((D.verts i).filter (fun v => v.1 = p)).card ≤ 2 ^ (D.k - i) := by
@@ -447,7 +447,7 @@ theorem step_free_a_N (D : Parents) (hD : D.Facts) :
   exact D.card_pref_le hD (D.k - i) i (by omega) h1 p
 
 /-- main.typ 988, proof of lem-free (a): "`R ≤ X N_1 ≤ 2^(k−1) X`" (given `N_i ≤ 2^(k−i)`). -/
-@[kb "cstarpaper-s-lem-free-largest" (part := "SCGadgets.step_free_a_R_le")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-free-largest" (part := "SCGadgets.step_free_a_R_le")]
 theorem step_free_a_R_le (D : Parents) (hD : D.Facts)
     (hN : ∀ i : ℕ, 1 ≤ i → i ≤ D.k → ∀ p : List ℕ,
       ((D.verts i).filter (fun v => v.1 = p)).card ≤ 2 ^ (D.k - i)) :
@@ -459,7 +459,7 @@ theorem step_free_a_R_le (D : Parents) (hD : D.Facts)
 
 /-- main.typ 988, proof of lem-free (a): "level `i` has at most `2^(k−i) X^i` vertices, of arity
 below `2X`" (given `N_i ≤ 2^(k−i)`). -/
-@[kb "cstarpaper-s-lem-free-largest" (part := "SCGadgets.step_free_a_levels")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-free-largest" (part := "SCGadgets.step_free_a_levels")]
 theorem step_free_a_levels (D : Parents) (hD : D.Facts)
     (hN : ∀ i : ℕ, 1 ≤ i → i ≤ D.k → ∀ p : List ℕ,
       ((D.verts i).filter (fun v => v.1 = p)).card ≤ 2 ^ (D.k - i)) :
@@ -503,7 +503,7 @@ theorem step_free_a_edges (D : Parents) (hD : D.Facts) (hR : D.R ≤ 2 ^ (D.k - 
 /-- main.typ 990–991, proof of lem-free (a): "Below a level-`1` vertex there are at most
 `(X/2)^(k−1) X/8 < X^k` parents" (a parent is below `v` if `v` is its level-1 ancestor; given that
 a group has at most `X/2` members and a type at most `X/8` parents). -/
-@[kb "cstarpaper-s-lem-free-below" (part := "SCGadgets.step_free_a_below")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-free-below" (part := "SCGadgets.step_free_a_below")]
 theorem step_free_a_below (D : Parents) (hD : D.Facts)
     (hch : (∀ i : ℕ, 1 ≤ i → i < D.k → ∀ v ∈ D.verts i, (D.realChildren i v).card ≤ D.X / 2) ∧
       (∀ v ∈ D.verts D.k, (D.parentsOf v).card ≤ D.X / 8)) :
@@ -542,7 +542,7 @@ theorem step_free_a_below (D : Parents) (hD : D.Facts)
 
 /-- main.typ 991, proof of lem-free (a): "… parents, so `R ≥ H/X^k`" (given fewer than `X^k` parents
 below each level-1 vertex). -/
-@[kb "cstarpaper-s-lem-free-below"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-free-below"]
 theorem step_free_a_R_ge (D : Parents) (hD : D.Facts)
     (hbelow : ∀ v ∈ D.verts 1,
       ((Finset.univ.filter (fun h => D.anc 1 h = v)).card : ℝ) < (D.X : ℝ) ^ D.k) :

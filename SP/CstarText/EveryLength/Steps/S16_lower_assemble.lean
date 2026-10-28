@@ -274,7 +274,7 @@ private theorem lower_assemble_loss_le (k : ℕ) (C : ℝ) (n N : ℕ) (hn : 1 �
     hlog (n : ℝ), hlog (N : ℝ)]
   linarith [hcore]
 
-@[kb "cstarpaper-st-lower-assemble" (part := "EveryLength.step_lower_assemble")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-lower-assemble" (part := "EveryLength.step_lower_assemble")]
 theorem step_lower_assemble : ∃ C : ℝ, 0 < C ∧ ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
     ∃ (k : ℕ) (σ : (AuxFam.SCGadgets.paper k).Geometry) (pb : AuxFam.SCStructure.PtrBits k),
       2 ≤ k ∧ (AuxFam.SCGadgets.paper k).IsGeometry σ ∧ n ≤ (AuxFam.SCStructure.x k σ pb).length ∧

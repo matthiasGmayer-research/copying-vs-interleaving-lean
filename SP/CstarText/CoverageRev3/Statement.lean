@@ -45,7 +45,7 @@ theorem forward_every {α : Type} (x : List α) (A B : ArithInterval) (hlen : A.
   step_forward_every x A B hlen hread
 
 /-- Sentence `s-lem-slopes-multiple` (proof of lem-slopes, step 1), its last clause: `step_slopes_sum_pow`. -/
-@[kb "cstarpaper-s-lem-slopes-multiple" (part := "CoverageRev3.slopes_sum_pow")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-slopes-multiple" (part := "CoverageRev3.slopes_sum_pow")]
 theorem slopes_sum_pow (k : ℕ) (hk : 2 ≤ k) :
     ∑ a ∈ tupleBox k, (1 : ℝ) / (prodT a : ℝ) = (∑ a ∈ Finset.Ico (X k) (2 * X k), (1 : ℝ) / (a : ℝ)) ^ k ∧
       Real.log 2 ^ k < (∑ a ∈ Finset.Ico (X k) (2 * X k), (1 : ℝ) / (a : ℝ)) ^ k ∧

@@ -445,7 +445,7 @@ private theorem single_block_sum (D : Parents) (u : ℕ) (lam : ℝ) (L : ℕ) (
 vertex, `f_v(λ) = Π_c (1 + w(c)(f_c(λ) − 1))` over its real children `c`, as a set below `v` is a family
 of sets below its children, and `c` is on a path exactly when its set is not empty." (Given that each
 vertex other than the root is a real child of exactly one vertex, preamble.) -/
-@[kb "cstarpaper-st-u-moment" (part := "SCLemU.step_2_recursion")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-u-moment" (part := "SCLemU.step_2_recursion")]
 theorem step_2_recursion (D : Parents) (hD : D.Facts) (u : ℕ)
     (hpar : ∀ y : Node D.H, IsTreeNode D y → y ≠ .root →
       IsInner D (above D y) ∧ y ∈ kids D (above D y) ∧
@@ -508,7 +508,7 @@ lem-u, from the preamble ("`𝔼 binom(N_hit, u)` is the sum over the `u`-sets `
 probability that all of them hit"; `V(T)` has no root; `w > 0`, so all coefficients are non-negative)
 and step 1 (each `u`-set hits with probability at most `Π_(v ∈ V(T)) w(v)`): the expected number is at
 most `[λ^u] f_root(λ) = Σ_(|T| = u) Π_(v ∈ V(T)) w(v) ≤ 2^(−u) f_root(2)`. -/
-@[kb "cstarpaper-st-u-moment" (deviation := "the preamble identity (𝔼 binom = sum over u-sets) and the claim of st-u-hit enter as hypotheses hsum, hstep1; the recursion for f_v is not part of this declaration (it is hypothesis hrec of step_3)")]
+-- kb tag retired 2026-10-28 (superseded by C1LemU/Steps/S03_Step2.lean:step_2): -- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-u-moment" (deviation := "the preamble identity (𝔼 binom = sum over u-sets) and the claim of st-u-hit enter as hypotheses hsum, hstep1; the recursion for f_v is not part of this declaration (it is hypothesis hrec of step_3)")]
 theorem step_2 (D : Parents) (hD : D.Facts) (ξ : Fin D.H → Option (ℕ × (Fin D.k → ℕ))) (u : ℕ)
     (hVset : ∀ T : Finset (Fin D.H), ∀ v ∈ Vset D T, IsTreeNode D v ∧ v ≠ .root)
     (hw : ∀ y : Node D.H, IsTreeNode D y → y ≠ .root → 0 < w D u y)

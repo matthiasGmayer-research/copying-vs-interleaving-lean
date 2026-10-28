@@ -16,7 +16,7 @@ theorem step_upper_take {α : Type} [Nonempty α] (x : List α) :
   exact ⟨Q, P, h1, h2, h3⟩
 
 /-- main.typ 390, proof of thm-upper: "As `d₀ ≥ 2`" (every arity of a ZLP is at least 2, def-zlp). -/
-@[kb "cstarpaper-s-thm-scale-gives"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-scale-gives"]
 theorem step_upper_d0 {Q α : Type} (P : Program Q α) (hP : IsZLP P) : 2 ≤ d0 P := by
   exact hP.2.1 P.root
 

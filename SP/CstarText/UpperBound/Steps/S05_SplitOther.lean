@@ -65,7 +65,7 @@ occurrences cost at most `2K max(√N/λ − 2, 0)`."
 Hypotheses: `hconv`, the ARS of lem-conversion (cited) for these pieces; `hpaths`, lem-paths (a result of
 this target, `lem_paths`, cited by the step). The proof also cites lem-cut (`UpperConv.lem_cut`,
 `lem_cut_exists`). -/
-@[kb "cstarpaper-st-split-other" (deviation := "only the bound 2K max(√N/λ − 2, 0); the clause `nothing if √N ≤ 4λ` is the separate lemma step_split_other_none; lem-paths enters as hypothesis hpaths")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-split-other" (deviation := "only the bound 2K max(√N/λ − 2, 0); the clause `nothing if √N ≤ 4λ` is the separate lemma step_split_other_none; lem-paths enters as hypothesis hpaths")]
 theorem step_split_other {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (lam : ℕ) (hlam : 1 ≤ lam)
     (L : Finset (α × ℕ)) (Φ : Finset (SP.ArithInterval × SP.ArithInterval))

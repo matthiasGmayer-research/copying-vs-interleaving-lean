@@ -1947,7 +1947,7 @@ end SP
 namespace SP.CstarConst
 
 /-- Main theorem: `ARC(x) ≤ 2^{5/4} · n^{1/4} · ZLC(x)` for every non-empty word `x` of length `n`. -/
-@[kb "cstarpaper-thm-upper"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-upper"]
 theorem arc_le_const {α : Type} [Nonempty α] (x : List α) (hn : 1 ≤ x.length) :
     (ARC x : ℝ) ≤ (2 : ℝ) ^ (5 / 4 : ℝ) * (x.length : ℝ) ^ (1 / 4 : ℝ) * (ZLC x : ℝ) := by
   obtain ⟨Q, P, hP, hx, hsize⟩ := ZLC_spec x

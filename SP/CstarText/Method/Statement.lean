@@ -97,7 +97,7 @@ equation that holds in `x` has fewer than `u²` targets in `S`, and `ARC(x) ≥ 
 TEXT DEFECT D7: stated with the proposed fix (`u ≥ 2` an integer parameter fixed before (b)).
 TEXT DEFECT D5: "finite arithmetic progression" is `SP.IsAP`.
 TEXT DEFECT D4: forward equations have steps `τ, τ' ≥ 1` (def-forward with the fix). -/
-@[kb "cstarpaper-prop-scheme"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-prop-scheme"]
 theorem prop_scheme (W : Labelled) (hW : W.Valid) (fix : W.RC → W.RC → Prop)
     (hfix : IsStrictTotalOrder W.RC fix) (S S' : Finset ℕ) (hSS' : S ⊆ S')
     (hS'n : ∀ p ∈ S', p < W.n)

@@ -20,7 +20,7 @@ open SP.CstarText.Prelim (Program value IsZLP ell)
 parents of def-slopes (`paper k`, `k ≥ 2`) the set of geometries of def-free is non-empty.
 Proof (main.typ:1492–1494): the capacity bounds (lem-free (a), `SCGadgets.lem_free_a`), "a vertex of level `i` has
 `α_i` slots, and the root has `R` slots for its `R` children, so each injection of @def-free exists". -/
-@[kb "cstarpaper-lem-free" (part := "a: so the injections of the geometry exist (fix5)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-free" (part := "a: so the injections of the geometry exist (fix5)")]
 theorem lem_free_a_geom (k : ℕ) (hk : 2 ≤ k) :
     {σ : (paper k).Geometry | (paper k).IsGeometry σ}.Nonempty := by
   have ha := SP.CstarText.SCGadgets.lem_free_a k hk
@@ -31,7 +31,7 @@ theorem lem_free_a_geom (k : ℕ) (hk : 2 ≤ k) :
 level `k` at most `α_k/8` real children, so the injections of the geometry exist; `H/X^k ≤ R ≤ 2^(k−1) X`, and the
 free levels and the root have at most `5B` edges." Glue only: the capacity and size bounds are the proved, frozen
 `SP.CstarText.SCGadgets.lem_free_a` (same conjuncts, same order), the added clause is `lem_free_a_geom`. -/
-@[kb "cstarpaper-lem-free" (part := "a")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-free" (part := "a")]
 theorem lem_free_a (k : ℕ) (hk : 2 ≤ k) :
     ((∀ i : ℕ, 1 ≤ i → i < k → ∀ v ∈ (paper k).verts i,
         2 * ((paper k).realChildren i v).card ≤ arity v) ∧
@@ -49,7 +49,7 @@ def-slopes (`paper k`, `k ≥ 2`). Glue only:
   `SCGadgets.lem_free_b_digits` (for a geometry, `(j_1(h), …, j_k(h))` is such a digit tuple, so `ζ_h < Ψ_h`);
 * (c): the frozen `SCGadgets.lem_free_c` (stated for every `p < n`; restricted to `p < min(n, |val(q_0)|)` it is
   the fix6 wording of (c)). -/
-@[kb "cstarpaper-lem-free"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-free"]
 theorem lem_free (k : ℕ) (hk : 2 ≤ k) :
     -- (a)
     (((∀ i : ℕ, 1 ≤ i → i < k → ∀ v ∈ (paper k).verts i,

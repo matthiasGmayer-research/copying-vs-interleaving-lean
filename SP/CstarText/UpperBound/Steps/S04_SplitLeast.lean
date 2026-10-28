@@ -91,7 +91,7 @@ most one equation for each tree slot of `q` (lem-least (c) and lem-conversion) a
 other slot holding a vertex; there are `m_𝒯` tree slots and `K` other slots holding a vertex."
 Hypothesis `hconv`: the ARS of lem-conversion (cited) for these pieces. The proof also cites lem-least (b),
 (c) (`UpperConv.lem_least_c`, `lem_least_b_tree`, `lem_least_b_K`). -/
-@[kb "cstarpaper-st-split-least"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-split-least"]
 theorem step_split_least {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (lam : ℕ) (hlam : 1 ≤ lam)
     (L : Finset (α × ℕ)) (Φ : Finset (SP.ArithInterval × SP.ArithInterval))

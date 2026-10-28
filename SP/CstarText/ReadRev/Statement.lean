@@ -27,7 +27,7 @@ open SP
 `H^4/32`." For every word `x` (over any alphabet with a letter) and every real `H ≥ 0`: if
 `H · ZLC(x) ≤ ARC(x)`, then `|x| < H^4/32` fails. Proof: thm-upper (`UpperBound.thm_upper_paper`) and `ZLC(x) ≥ 1`
 give `H ≤ 2^(5/4) n^(1/4)`, so `H^4 ≤ 32 n`; the empty word has `ARC = 0`, so there `H = 0`. -/
-@[kb "cstarpaper-s-why-quarter-length"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-why-quarter-length"]
 theorem why_quarter_length {α : Type} [Nonempty α] (x : List α) (H : ℝ) (hH : 0 ≤ H)
     (h : H * (ZLC x : ℝ) ≤ (ARC x : ℝ)) :
     ¬ ((x.length : ℝ) < H ^ 4 / 32) := by

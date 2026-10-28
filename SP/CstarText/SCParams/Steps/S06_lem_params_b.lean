@@ -60,7 +60,7 @@ private lemma lpb_e_ge (k : ℕ) (hk : 2 ≤ k) : 128 * 4 ^ k ≤ e k := by
   exact Nat.le_mul_of_pos_right _ h2
 
 /-- main.typ 930, lem-params (b): "`M ≥ B² ≥ 2^(k+1) X^k`". -/
-@[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_1")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_1")]
 theorem step_lem_params_b_1 (k : ℕ) (hk : 2 ≤ k) :
     B k ^ 2 ≤ M k ∧ 2 ^ (k + 1) * X k ^ k ≤ B k ^ 2 := by
   constructor
@@ -81,12 +81,12 @@ theorem step_lem_params_b_1 (k : ℕ) (hk : 2 ≤ k) :
       _ = B k ^ 2 := by unfold B; ring
 
 /-- main.typ 930, lem-params (b): "as `X ≥ 2^(k+2)`". -/
-@[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_2")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_2")]
 theorem step_lem_params_b_2 (k : ℕ) (hk : 2 ≤ k) : 2 ^ (k + 2) ≤ X k := by
   exact lpb_X_ge k hk
 
 /-- main.typ 930, lem-params (b): "`(2X)^k ≤ X^(k+1)/4` as `X ≥ 2^(k+2)`" (`X^(k+1) = B`). -/
-@[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_3")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_3")]
 theorem step_lem_params_b_3 (k : ℕ) (hk : 2 ≤ k) (hX : 2 ^ (k + 2) ≤ X k) :
     (2 * (X k : ℝ)) ^ k ≤ (X k : ℝ) ^ (k + 1) / 4 := by
   have hXr : (2:ℝ) ^ (k + 2) ≤ (X k : ℝ) := by exact_mod_cast hX
@@ -98,7 +98,7 @@ theorem step_lem_params_b_3 (k : ℕ) (hk : 2 ≤ k) (hX : 2 ^ (k + 2) ≤ X k) 
 
 /-- main.typ 930–931, lem-params (b): "`log(2^(5k+9) u²) ≤ 5k + 9 + 34 + 8b < L`" (using
 `log u ≤ 17 + 4b`). -/
-@[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_4")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_4")]
 theorem step_lem_params_b_4 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤ k)
     (hu : SP.log2 (u k : ℝ) ≤ 17 + 4 * (b k : ℝ)) :
     SP.log2 ((2 : ℝ) ^ (5 * k + 9) * (u k : ℝ) ^ 2) ≤ 5 * (k : ℝ) + 9 + 34 + 8 * (b k : ℝ) ∧
@@ -126,7 +126,7 @@ theorem step_lem_params_b_4 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤
 
 /-- main.typ 930–931, lem-params (b): the claim `2^(5k+9) u² ≤ X` from
 "`log(2^(5k+9) u²) ≤ 5k + 9 + 34 + 8b < L`" (`X = 2^L`). -/
-@[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_5")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_5")]
 theorem step_lem_params_b_5 (k : ℕ) (hk : 2 ≤ k)
     (hlog : SP.log2 ((2 : ℝ) ^ (5 * k + 9) * (u k : ℝ) ^ 2) < (L k : ℝ)) :
     2 ^ (5 * k + 9) * u k ^ 2 ≤ X k := by
@@ -141,7 +141,7 @@ theorem step_lem_params_b_5 (k : ℕ) (hk : 2 ≤ k)
   exact le_of_lt hN
 
 /-- main.typ 931, lem-params (b): "`4u < X^(31/32)` likewise" (using `log u ≤ 17 + 4b`). -/
-@[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_6")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_6")]
 theorem step_lem_params_b_6 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤ k)
     (hu : SP.log2 (u k : ℝ) ≤ 17 + 4 * (b k : ℝ)) :
     4 * (u k : ℝ) < (X k : ℝ) ^ ((31 : ℝ) / 32) := by
@@ -174,7 +174,7 @@ theorem step_lem_params_b_6 (k : ℕ) (hk : 2 ≤ k) (hb : 2 ≤ b k ∧ b k ≤
   exact Real.rpow_lt_rpow_of_exponent_lt (by norm_num) key
 
 /-- main.typ 931, lem-params (b): "and `e ≥ 128 · 4^k > 400`". -/
-@[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_7")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-likewise" (part := "SCParams.step_lem_params_b_7")]
 theorem step_lem_params_b_7 (k : ℕ) (hk : 2 ≤ k) : 128 * 4 ^ k ≤ e k ∧ 400 < 128 * 4 ^ k := by
   constructor
   · exact lpb_e_ge k hk

@@ -47,7 +47,7 @@ noncomputable def W {Q α : Type} (P : Program Q α) (z : Q) (y : ℝ) : ℕ :=
 open Classical in
 /-- The threshold of the early pieces (main.typ 606–608): `λ d₀` at the root, `λ (d_q + 2)` at a vertex
 `q ≠ q₀`. -/
-@[kb "cstarpaper-lem-split" (part := "threshold of the early pieces")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-split" (part := "threshold of the early pieces")]
 noncomputable def thr {Q α : Type} (P : Program Q α) (lam : ℕ) (q : Q) : ℕ :=
   if q = P.root then lam * d0 P else lam * (P.arity q + 2)
 
@@ -58,7 +58,7 @@ the early pieces. The rest of each canonical interval is one late piece." For `�
 -- convention: the indices of `[v_q]` are those of the canonical intervals of `q` (def-canonical: they
 partition `[v_q]`; at the root `v_{q₀} = n`), so "every index of `[v_q]` below the threshold" is, piece by
 piece, "every index of `I_ρ` below the threshold". -/
-@[kb "cstarpaper-lem-split" (part := "early and late pieces")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-split" (part := "early and late pieces")]
 def splitPieces {Q α : Type} (P : Program Q α) (n lam : ℕ) : Q → Occ → Set (Set ℕ) :=
   fun q ρ => {J | (∃ t ∈ canonInterval P n q ρ, t < thr P lam q ∧ J = {t}) ∨
     (J = canonInterval P n q ρ ∩ Set.Ici (thr P lam q) ∧ J.Nonempty)}
@@ -86,7 +86,7 @@ def ConvOutput {Q α : Type} (P : Program Q α) (x : List α) (pieces : Q → Oc
 /-- The equations of the early pieces (main.typ 608, st-split-early): the union of the equation sets
 `E(q, ρ, J, j, q')` over the indices of lem-conversion (for the pieces `splitPieces`) whose piece `J` lies
 below the threshold of `q`. -/
-@[kb "cstarpaper-lem-split" (part := "equations of the early pieces")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-split" (part := "equations of the early pieces")]
 def earlyEqs {Q α : Type} (P : Program Q α) (n lam : ℕ)
     (E : Q → Occ → Set ℕ → ℕ → Q → Finset (SP.ArithInterval × SP.ArithInterval)) :
     Set (SP.ArithInterval × SP.ArithInterval) :=
@@ -96,7 +96,7 @@ def earlyEqs {Q α : Type} (P : Program Q α) (n lam : ℕ)
 
 /-- The equations of the late pieces of the least occurrences (st-split-least): the indices whose piece
 `J` lies at or above the threshold of `q` and whose occurrence is `ρ*_q`. -/
-@[kb "cstarpaper-lem-split" (part := "equations of the late pieces of the least occurrences")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-split" (part := "equations of the late pieces of the least occurrences")]
 def lateLeastEqs {Q α : Type} (P : Program Q α) (n lam : ℕ)
     (E : Q → Occ → Set ℕ → ℕ → Q → Finset (SP.ArithInterval × SP.ArithInterval)) :
     Set (SP.ArithInterval × SP.ArithInterval) :=
@@ -106,7 +106,7 @@ def lateLeastEqs {Q α : Type} (P : Program Q α) (n lam : ℕ)
 
 /-- The equations of the late pieces of the other occurrences (st-split-other): the indices whose piece
 `J` lies at or above the threshold of `q` and whose occurrence is not `ρ*_q`. -/
-@[kb "cstarpaper-lem-split" (part := "equations of the late pieces of the other occurrences")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-split" (part := "equations of the late pieces of the other occurrences")]
 def lateOtherEqs {Q α : Type} (P : Program Q α) (n lam : ℕ)
     (E : Q → Occ → Set ℕ → ℕ → Q → Finset (SP.ArithInterval × SP.ArithInterval)) :
     Set (SP.ArithInterval × SP.ArithInterval) :=

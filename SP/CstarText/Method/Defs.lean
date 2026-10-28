@@ -29,10 +29,10 @@ open SP
 /-- **def-forward** (main.typ:701–705). A forward equation in a word `x ∈ Σⁿ`: a pair of arithmetic
 progressions `(σ + τ t)_{t<ℓ}` (the interval `A`: `A.start = σ`, `A.step = τ`, `A.len = ℓ`) and
 `(σ' + τ' t)_{t<ℓ}` (`B`) with `σ + τ t < σ' + τ' t < n` for all `t < ℓ`.
-TEXT DEFECT D4: stated with the proposed fix: the steps satisfy `τ, τ' ≥ 1` and `ℓ ≥ 1` (built into
-`ArithInterval`); the text leaves "arithmetic progression" without a step condition. -/
-@[kb "cstarpaper-def-forward" (deviation := "The progressions are interval records (ArithInterval), so \
-tau, tau' >= 1 and l >= 1, as for the arithmetic intervals of def-interval.")]
+TEXT DEFECT D4 (resolved in the text by cstar d000ff5..598218c: def-interval now has `τ ≥ 1`, `ℓ ≥ 1`): the steps
+satisfy `τ, τ' ≥ 1` and `ℓ ≥ 1` (built into `ArithInterval`). -/
+@[kb "cstarpaper-def-forward" (deviation := "None now: the progressions are records (ArithInterval), so \
+tau, tau' >= 1 and l >= 1, as in def-interval.")]
 abbrev ForwardEq {α : Type} (x : List α) (A B : ArithInterval) : Prop :=
   IsForwardEq x.length A B
 

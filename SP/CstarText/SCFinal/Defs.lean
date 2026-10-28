@@ -55,14 +55,14 @@ def IsAPStep (P : Set ℤ) (τ : ℤ) : Prop :=
 /-- "`P` contains points of `S'` of at least `m` distinct cells" (lem-ap, main.typ 1261): there are `m`
 pairwise distinct core cells `ω_i` and parents `h_i` with `y_(h_i)(ω_i) ∈ P` (the points of `S'` are the
 `y_h(ω)` of the core cells, def-critical; the cell of the point `y_h(ω)` is `ω`). -/
-@[kb "cstarpaper-lem-ap" (part := "P contains points of S' of at least m distinct cells")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-ap" (part := "P contains points of S' of at least m distinct cells")]
 def HasCells (k : ℕ) (σ : (paper k).Geometry) (P : Set ℤ) (m : ℕ) : Prop :=
   ∃ (hs : Fin m → Fin (paper k).H) (ω : Fin m → Cell k), Function.Injective ω ∧
     ∀ i : Fin m, IsCoreCell k (ω i) ∧ point k σ (hs i) (ω i) ∈ P
 
 /-- The event of lem-ap (main.typ 1260–1261): every finite arithmetic progression that contains at least
 `u²` points of `S` contains points of `S'` of at least `u` distinct cells. -/
-@[kb "cstarpaper-lem-ap" (part := "the event")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-ap" (part := "the event")]
 def APGood (k : ℕ) (σ : (paper k).Geometry) : Prop :=
   ∀ P : Set ℤ, SP.IsAP P → SCParams.u k ^ 2 ≤ {p : ℕ | p ∈ S k σ ∧ (p : ℤ) ∈ P}.ncard →
     HasCells k σ P (SCParams.u k)
@@ -114,12 +114,12 @@ def dL (k : ℕ) : ℕ := SCParams.e k / 4 - 2
 /-! ## lem-sc-final (main.typ 1310–1327) -/
 
 /-- `C := |Γ| (B/2) e` (lem-sc-final (a), main.typ 1311). -/
-@[kb "cstarpaper-lem-sc-final" (part := "C = |Γ|(B/2)e")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-sc-final" (part := "C = |Γ|(B/2)e")]
 def Ccol (k : ℕ) : ℕ := (Γ k).card * (SCParams.B k / 2) * SCParams.e k
 
 /-- The number of edges of the columns `v_(γ,κ)` (`γ ∈ Γ`, `κ < B/2`) in `P_k`: the sum of their
 arities (lem-sc-final (a), main.typ 1311: "The columns have `C` edges"). -/
-@[kb "cstarpaper-lem-sc-final" (part := "the edges of the columns")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-lem-sc-final" (part := "the edges of the columns")]
 def colEdges (k : ℕ) (σ : (paper k).Geometry) (pb : PtrBits k) : ℕ :=
   ∑ γ ∈ Γ k, ∑ κ ∈ Finset.range (SCParams.B k / 2), (Pk k σ pb).arity (SCCores.colk k σ pb γ κ)
 
@@ -130,7 +130,7 @@ def colEdges (k : ℕ) (σ : (paper k).Geometry) (pb : PtrBits k) : ℕ :=
 law `geomProb` of the geometries (def-free) and the uniform law on `PtrBits k`.
 -- convention: counting probability (`Set.ncard` of the event among the pairs with `IsGeometry`, divided by
 `#geometries · #PtrBits`); a probability when the set of geometries is finite and non-empty. -/
-@[kb "cstarpaper-thm-sc" (part := "the joint law of the geometry, the pointers and the bits")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-sc" (part := "the joint law of the geometry, the pointers and the bits")]
 def jointProb (k : ℕ) (E : (paper k).Geometry → PtrBits k → Prop) : ℝ :=
   ({q : (paper k).Geometry × PtrBits k | (paper k).IsGeometry q.1 ∧ E q.1 q.2}.ncard : ℝ) /
     (({σ : (paper k).Geometry | (paper k).IsGeometry σ}.ncard : ℝ) * (Nat.card (PtrBits k) : ℝ))
@@ -140,7 +140,7 @@ def scExp (k : ℕ) : ℝ := 1 / 4 - 9 / (64 * (k : ℝ) + 96)
 
 /-- The chain of thm-sc (main.typ 1334) for the geometry `σ` and the pointers and bits `pb`:
 `ARC(x_k) ≥ |S|/(u² − 1) ≥ H/(12u²) |P_k| ≥ n^(1/4 − 9/(64k+96)) ZLC(x_k)`. -/
-@[kb "cstarpaper-thm-sc" (part := "the chain of inequalities")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-sc" (part := "the chain of inequalities")]
 def SCChain (k : ℕ) (σ : (paper k).Geometry) (pb : PtrBits k) : Prop :=
   ((S k σ).ncard : ℝ) / ((SCParams.u k : ℝ) ^ 2 - 1) ≤ (SP.ARC (SCStructure.x k σ pb) : ℝ) ∧
     (SCParams.H k : ℝ) / (12 * (SCParams.u k : ℝ) ^ 2) * (Prelim.size (Pk k σ pb) : ℝ) ≤

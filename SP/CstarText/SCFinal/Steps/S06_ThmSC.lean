@@ -39,7 +39,7 @@ theorem step_sc_fix (k : ℕ) : ∃ fix : RC k → RC k → Prop, IsStrictTotalO
 
 /-- main.typ 1339–1340: "By @lem-random with `D = u²`, `ε_u ≤ exp(6) 2^(−u)`" — the bound
 `2^(−u) exp(6u²/D)` of lem-random equals `exp(6) 2^(−u)` for the labelled word `x_k` (`D = u²`, lem-structure). -/
-@[kb "cstarpaper-s-thm-sc-claim"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-sc-claim"]
 theorem step_sc_eps (k : ℕ) (σ : (paper k).Geometry) (hu : 1 ≤ SCParams.u k) :
     (2 : ℝ) ^ (-((SCParams.u k : ℕ) : ℝ)) *
         Real.exp (6 * ((SCParams.u k : ℕ) : ℝ) ^ 2 / ((LW k σ).D : ℝ)) =
@@ -54,7 +54,7 @@ theorem step_sc_eps (k : ℕ) (σ : (paper k).Geometry) (hu : 1 ≤ SCParams.u k
   rw [h6, mul_comm]
 
 /-- main.typ 1340: "`exp(6) 2^(−u) ≤ exp(6) n^(−10)`" for `n ≥ 1` and `u ≥ 10 log n` (lem-sc-final (b)). -/
-@[kb "cstarpaper-s-thm-sc-claim" (part := "SCFinal.step_sc_eps_le")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-sc-claim" (part := "SCFinal.step_sc_eps_le")]
 theorem step_sc_eps_le (n u : ℕ) (hn : 1 ≤ n) (hu : 10 * SP.log2 (n : ℝ) ≤ (u : ℝ)) :
     Real.exp 6 * (2 : ℝ) ^ (-(u : ℝ)) ≤ Real.exp 6 * (n : ℝ) ^ (-10 : ℝ) := by
   apply mul_le_mul_of_nonneg_left _ (Real.exp_pos 6).le
@@ -110,7 +110,7 @@ theorem step_sc_scheme_b (k : ℕ) (σ : (paper k).Geometry) (hSf : (S k σ).Fin
 
 /-- Implicit in main.typ 1341 ("`1 − |S| n³ exp(6) n^(−10) ≥ 1 − exp(6) n^(−6)`" uses `|S| ≤ n`): `|S| ≤ n`, as
 `S ⊆ [n)` (lem-cores (a)). -/
-@[kb "cstarpaper-s-thm-sc-given"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-sc-given"]
 theorem step_sc_S_le (k : ℕ) (σ : (paper k).Geometry) (hSf : (S k σ).Finite)
     (hlt : ∀ p ∈ S k σ, p < SCStructure.n k) :
     hSf.toFinset.card ≤ SCStructure.n k := by
@@ -122,7 +122,7 @@ theorem step_sc_S_le (k : ℕ) (σ : (paper k).Geometry) (hSf : (S k σ).Finite)
 
 /-- main.typ 1340–1341: "with probability at least `1 − |S| n³ exp(6) n^(−10) ≥ 1 − exp(6) n^(−6)`" — the
 numerical inequality, for `|S| ≤ n`, `n ≥ 1`. -/
-@[kb "cstarpaper-s-thm-sc-given" (part := "SCFinal.step_sc_given_num")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-sc-given" (part := "SCFinal.step_sc_given_num")]
 theorem step_sc_given_num (n s : ℕ) (hn : 1 ≤ n) (hs : s ≤ n) :
     1 - Real.exp 6 * (n : ℝ) ^ (-6 : ℝ) ≤
       1 - (s : ℝ) * (n : ℝ) ^ 3 * (Real.exp 6 * (n : ℝ) ^ (-10 : ℝ)) := by
@@ -169,7 +169,7 @@ theorem step_sc_fail_num (n : ℕ) (hn : 1 ≤ n) :
 
 /-- main.typ 1342–1343: "By @lem-sc-final (a), `|S|/(u² − 1) ≥ H|P_k|/(12u²)`" — from `|S| ≥ H|P_k|/12` and
 `u ≥ 2`. -/
-@[kb "cstarpaper-s-thm-sc-claim2"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-sc-claim2"]
 theorem step_sc_chain1 (S H P u : ℝ) (hu : 2 ≤ u) (hH : 0 ≤ H) (hP : 0 ≤ P)
     (hS : H * P / 12 ≤ S) :
     H / (12 * u ^ 2) * P ≤ S / (u ^ 2 - 1) := by
@@ -185,7 +185,7 @@ theorem step_sc_chain1 (S H P u : ℝ) (hu : 2 ≤ u) (hH : 0 ≤ H) (hP : 0 ≤
 /-- main.typ 1343–1344: "by @lem-params (a) (`H ≥ B X^(−1/32)`, and `12u² < X^(1/32)` as `log(12u²) < L/32`),
 `H/(12u²) ≥ B X^(−1/32) X^(−1/32) = X^(k + 15/16)`" (`B = X^(k+1)`, `X = 2^L`). Context (frozen facts):
 lem-params (a). -/
-@[kb "cstarpaper-s-thm-sc-claim2" (part := "SCFinal.step_sc_exp1")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-sc-claim2" (part := "SCFinal.step_sc_exp1")]
 theorem step_sc_exp1 (k : ℕ)
     (hH : (SCParams.B k : ℝ) * (SCParams.X k : ℝ) ^ (-(1 : ℝ) / 32) ≤ (SCParams.H k : ℝ))
     (h12 : SP.log2 (12 * (SCParams.u k : ℝ) ^ 2) < (SCParams.L k : ℝ) / 32) :
@@ -232,7 +232,7 @@ theorem step_sc_exp1 (k : ℕ)
 
 /-- main.typ 1344–1345: "As `n ≤ X^(4k+6)`, `X^(k + 15/16) ≥ n^((k + 15/16)/(4k + 6)) = n^(1/4 − 9/(64k + 96))`".
 Context: `1 ≤ n ≤ X^(4k+6)` (lem-sc-final (b)). -/
-@[kb "cstarpaper-s-thm-sc-claim3"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-sc-claim3"]
 theorem step_sc_exp2 (k : ℕ) (hn : 1 ≤ SCStructure.n k)
     (hnX : SCStructure.n k ≤ SCParams.X k ^ (4 * k + 6)) :
     (SCStructure.n k : ℝ) ^ scExp k ≤ (SCParams.X k : ℝ) ^ ((k : ℝ) + 15 / 16) := by
@@ -262,7 +262,7 @@ theorem step_sc_exp2 (k : ℕ) (hn : 1 ≤ SCStructure.n k)
 
 /-- main.typ 1345–1346: "Finally `ZLC(x_k) ≤ |P_k|`" (`x_k` is a prefix of `val(P_k)`, and `P_k` is a ZLP:
 lem-structure (a)). -/
-@[kb "cstarpaper-s-thm-sc-claim4"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-sc-claim4"]
 theorem step_sc_zlc (k : ℕ) (σ : (paper k).Geometry) (pb : PtrBits k) (hzlp : Prelim.IsZLP (Pk k σ pb)) :
     SP.ZLC (SCStructure.x k σ pb) ≤ Prelim.size (Pk k σ pb) := by
   have hx : SCStructure.x k σ pb <+: Prelim.val (Pk k σ pb) := by

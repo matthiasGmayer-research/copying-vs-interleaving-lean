@@ -19,7 +19,7 @@ type of at most `W / X^k = X/8` indices (remark after def-slopes, main.typ 944�
 `(2X)^k ≤ B/4` (lem-params (b); with `B = X^(k+1)` this is "`X ≥ 2^(k+2)`", main.typ 931);
 `H ≥ B X^(−1/32)` (lem-params (a)), so `H ≥ 1` (TEXT GAP, trivial: `H ≥ 1` is used, not stated);
 `X = 2^L` is even (def-params). -/
-@[kb "cstarpaper-s-lem-params-likewise"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-lem-params-likewise"]
 theorem step_paper_facts (k : ℕ) (hk : 2 ≤ k)
     (htype : ∀ h < SCParams.H k, SCParams.IsType k (SCParams.s k h) (SCParams.typeOf k h))
     (hcount : ∀ τ : Fin k → ℕ,

@@ -64,7 +64,7 @@ private theorem aux_L_le_klog (k : ℕ) (hk : 2 ≤ k) : (Laux k : ℝ) ≤ 2049
     exact mul_le_mul_of_nonneg_left hlog2 this
   nlinarith
 
-@[kb "cstarpaper-st-lower-lengths" (part := "EveryLength.step_lower_lengths")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-st-lower-lengths" (part := "EveryLength.step_lower_lengths")]
 theorem step_lower_lengths : ∃ k₁ : ℕ, 3 ≤ k₁ ∧ ∃ C : ℝ, 0 < C ∧ ∀ k : ℕ, k₁ ≤ k →
     (4 * (k : ℝ) + 4) * (Laux k : ℝ) ≤ SP.log2 (Naux k : ℝ) ∧
       SP.log2 (Naux k : ℝ) ≤ (4 * (k : ℝ) + 6) * (Laux k : ℝ) ∧

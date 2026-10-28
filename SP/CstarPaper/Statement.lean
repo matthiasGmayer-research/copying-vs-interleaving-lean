@@ -214,7 +214,7 @@ theorem admissible_quarter : AdmissibleO (1 / 4 : ℝ) :=
 
 /-- Theorem "Lower bound": for every `a < 1/4` there are infinitely many binary words `x`
 (of length `n ≥ 1`) with `n^a ZLC(x) ≤ ARC(x)`. -/
-@[kb "cstarpaper-thm-lower"]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-lower"]
 theorem thm_lower (a : ℝ) (ha : a < 1 / 4) :
     Set.Infinite {x : List Bool | 1 ≤ x.length ∧
       (x.length : ℝ) ^ a * (ZLC x : ℝ) ≤ (ARC x : ℝ)} := by

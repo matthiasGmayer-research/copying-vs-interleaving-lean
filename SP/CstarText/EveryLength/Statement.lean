@@ -19,7 +19,7 @@ namespace SP.CstarText.EveryLength
 /-- **thm-lower**, first sentence (main.typ 551–554): "There are constants `C > 0` and `n_0` such that for every integer
 `n ≥ n_0` some binary word `x` of length `n` satisfies `ARC(x) ≥ n^(1/4) exp(−C (log n)^(2/3) (log log n)^(1/3)) ZLC(x)`"
 (`log` to base 2; binary words are `List Bool`). -/
-@[kb "cstarpaper-thm-lower" (part := "EveryLength.first sentence, every length")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-lower" (part := "EveryLength.first sentence, every length")]
 theorem thm_lower_every_first : ∃ C : ℝ, 0 < C ∧ ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
     ∃ x : List Bool, x.length = n ∧ lossFactor C n * (SP.ZLC x : ℝ) ≤ (SP.ARC x : ℝ) := by
   obtain ⟨C, hC, n₀, h⟩ := step_lower_assemble
@@ -29,7 +29,7 @@ theorem thm_lower_every_first : ∃ C : ℝ, 0 < C ∧ ∃ n₀ : ℕ, ∀ n : �
 
 /-- **thm-lower**, second sentence (main.typ 555–556): "In particular, for every `a < 1/4` and every large enough `n`,
 some binary word `x` of length `n` has `ARC(x) ≥ n^a ZLC(x)`." -/
-@[kb "cstarpaper-thm-lower" (part := "EveryLength.second sentence, every length")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-lower" (part := "EveryLength.second sentence, every length")]
 theorem thm_lower_every_second (a : ℝ) (ha : a < 1 / 4) : ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
     ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (SP.ZLC x : ℝ) ≤ (SP.ARC x : ℝ) := by
   obtain ⟨C, hC, n₀, h⟩ := thm_lower_every_first
@@ -39,7 +39,7 @@ theorem thm_lower_every_second (a : ℝ) (ha : a < 1 / 4) : ∃ n₀ : ℕ, ∀ 
   exact ⟨x, hx, le_trans (mul_le_mul_of_nonneg_right (h₁ n (le_of_max_le_right hn)) (Nat.cast_nonneg _)) hineq⟩
 
 /-- **thm-lower** (main.typ 549–557), both sentences: the statement as written. -/
-@[kb "cstarpaper-thm-lower" (part := "EveryLength.the statement as written (every length)")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-thm-lower" (part := "EveryLength.the statement as written (every length)")]
 theorem thm_lower_every :
     (∃ C : ℝ, 0 < C ∧ ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
       ∃ x : List Bool, x.length = n ∧ lossFactor C n * (SP.ZLC x : ℝ) ≤ (SP.ARC x : ℝ)) ∧
@@ -49,7 +49,7 @@ theorem thm_lower_every :
 
 /-- Sentence anchor `s-thm-lower-strong` (proof of thm-lower, main.typ 4545): "The word `z` of @st-lower-assemble is
 binary and has length `n`: this is the first statement." -/
-@[kb "cstarpaper-s-thm-lower-strong" (part := "EveryLength.s_lower_strong")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-lower-strong" (part := "EveryLength.s_lower_strong")]
 theorem s_lower_strong : ∃ C : ℝ, 0 < C ∧ ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
     ∃ x : List Bool, x.length = n ∧ lossFactor C n * (SP.ZLC x : ℝ) ≤ (SP.ARC x : ℝ) :=
   thm_lower_every_first
@@ -57,7 +57,7 @@ theorem s_lower_strong : ∃ C : ℝ, 0 < C ∧ ∃ n₀ : ℕ, ∀ n : ℕ, n�
 /-- Sentence anchor `s-thm-sc-gives` (proof of thm-lower, main.typ 4546–4548): "For the second, let `a < 1/4`. As
 `(log n)^(2/3) (log log n)^(1/3) = o(log n)`, `n^(1/4) exp(−C (log n)^(2/3) (log log n)^(1/3)) ≥ n^a` for all large `n`,
 so the same words have `ARC(z) ≥ n^a ZLC(z)`." -/
-@[kb "cstarpaper-s-thm-sc-gives" (part := "EveryLength.s_lower_gives")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-thm-sc-gives" (part := "EveryLength.s_lower_gives")]
 theorem s_lower_gives (C : ℝ) (hC : 0 < C) (a : ℝ) (ha : a < 1 / 4) (n₀ : ℕ)
     (hwords : ∀ n : ℕ, n₀ ≤ n → ∃ x : List Bool, x.length = n ∧ lossFactor C n * (SP.ZLC x : ℝ) ≤ (SP.ARC x : ℝ)) :
     ∃ n₁ : ℕ, ∀ n : ℕ, n₁ ≤ n → ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (SP.ZLC x : ℝ) ≤ (SP.ARC x : ℝ) := by
@@ -68,7 +68,7 @@ theorem s_lower_gives (C : ℝ) (hC : 0 < C) (a : ℝ) (ha : a < 1 / 4) (n₀ : 
 
 /-- App. A, Conventions (`s-conventions-strict`), for the every-length thm-lower: both sentences hold for `strictARC`
 (the least size of an ARS whose equations have `α(t) < α'(t) < n` at every index), as `strictARC ≥ ARC`. -/
-@[kb "cstarpaper-s-conventions-strict" (part := "EveryLength.thm-lower (every length) for strict ARSs")]
+-- kb tag retired 2026-10-28 (superseded by the U12a/C1 version): @[kb "cstarpaper-s-conventions-strict" (part := "EveryLength.thm-lower (every length) for strict ARSs")]
 theorem thm_lower_every_strict :
     (∃ C : ℝ, 0 < C ∧ ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
       ∃ x : List Bool, x.length = n ∧ lossFactor C n * (SP.ZLC x : ℝ) ≤ (CoverageRev2.strictARC x : ℝ)) ∧
