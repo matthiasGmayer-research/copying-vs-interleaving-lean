@@ -217,7 +217,7 @@ to the namespace `SP.CstarText` unless they begin with `SP`. The main results co
 | paper (label) | statement | proof steps |
 |---|---|---|
 | `thm-upper` | `U12a.thm_upper` |  |
-| `thm-lower` | `C1Lower.lossFactor`, `C1Lower.thm_lower` |  |
+| `thm-lower` | `C1Lower.lossFactor`, `C1Lower.thm_lower` | `st-lower-prefix`: `C1Lower.step_lower_prefix`; `st-lower-lengths`: `C1Lower.step_lower_lengths`; `st-lower-assemble`: `C1Lower.step_lower_assemble` |
 | `cor-cstar` | `SP.CstarPaper.AdmissibleO`, `SP.CstarPaper.AdmissibleOAlpha`, `SP.CstarPaper.cor_cstar`, `SP.CstarPaper.cor_cstar_fixed_alphabet`, `Intro.cor_cstar_i`, `Intro.cor_cstar_ii`, `IntroRev.cor_cstar_text`, `IntroRev.cor_cstar` |  |
 | `cor-szlc` | `CoverageRev.no_polylog_szlc_zlc`, `CorSzlcEvery.cor_szlc_every` |  |
 | `prop-reverse` | `SP.ReverseUpper.zlc_le_arc`, `Reverse.prop_reverse_i`, `ReverseZ.prop_reverse_second`, `ReverseZ.prop_reverse` |  |
