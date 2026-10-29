@@ -49,11 +49,11 @@
   #v(0.6cm)
   #text(size: 12pt)[Supplementary material to]
   #v(0.2cm)
-  #block(width: 85%)[#text(size: 13pt, style: "italic")[Copying along Arithmetic Progressions Cannot Simulate Interleaving with Polylogarithmic Loss: The Optimal Exponent Is $1\/4$]]
+  #block(width: 85%)[#text(size: 13pt, style: "italic")[Copying along Arithmetic Progressions Cannot Simulate Interleaving with Polylogarithmic Loss]]
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("5683db46099e") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  #text(size: 10pt)[Lean repository revision #raw("74fcb05cc950") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
   350 modules · 592 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
