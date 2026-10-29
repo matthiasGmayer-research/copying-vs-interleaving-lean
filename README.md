@@ -112,10 +112,12 @@ noncomputable def ZLC {α : Type} [Nonempty α] (x : List α) : ℕ :=
 ```
 
 ```lean
+-- namespace SP.CstarText.Prelim
 def IsSynchronous {Q α : Type} (P : Program Q α) : Prop :=
   ∃ φ : Q → ℕ, φ P.root = 1 ∧
     ∀ (q q' : Q) (j : ℕ), (P.δ q)[j]? = some (.inl q') → φ q' = P.arity q * φ q
 
+-- namespace SP.CstarText.Prelim
 noncomputable def sZLC {α : Type} [Nonempty α] (x : List α) : ℕ :=
   sInf {m : ℕ | ∃ (Q : Type) (P : Program Q α), IsZLP P ∧ IsSynchronous P ∧
     x <+: SP.Program.val P ∧ SP.Program.size P = m}
@@ -221,7 +223,14 @@ to the namespace `SP.CstarText` unless they begin with `SP`. The main results co
 over two declarations, of which the table lists the second: `st-scheme-event` says that with probability at least
 1 − |S| n³ 2^(−u) exp(6u²/D) no candidate holds, and that then every forward equation that holds in x has fewer than
 u² targets in S. The probability clause is `Method.step_prop_scheme_2_prob` (anchor `s-prop-scheme-first`; its ε is
-the bound 2^(−u) exp(6u²/D) of `st-scheme-cand`), the consequence is `Method.step_prop_scheme_2_event`.
+the bound 2^(−u) exp(6u²/D) of `st-scheme-cand`), the consequence is `Method.step_prop_scheme_2_event`. Likewise `st-conv-cov` is stated for every vertex q by
+`UpperConv.step_conv_cov`; its clause "in particular every position of [n] is" is the case q = q₀, with
+F_(q₀)(t') = t' (`UpperConv.step_conv_cov_root`, anchor `s-lem-conversion-induction`). The declaration of a proof step
+states the step's claim in the context of its block: the block's hypotheses, the claims of the earlier steps and, for
+`st-struct-length`, `st-struct-unique`, `st-u-hit`, `st-u-moment`, `st-u-root`, `st-ap-large` and `st-ap-small`,
+the sub-claims of the step's own proof enter as hypotheses, which the block's declaration discharges where it applies
+the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypotheses of
+`C1Structure.step_struct_c2`, which `lem-structure` applies).
 
 <!-- tab-lean -->
 | paper (label) | statement | proof steps |
