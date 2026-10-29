@@ -314,7 +314,7 @@ construction and validity of equations (module `SP.CstarUpper`), and `SP.CstarPa
 computation of `rem-constant` for the word aa directly.
 
 Dependency routes (`lake env lean tools/Deps.lean`; `python3 tools/deps.py README.md` runs it on every name of the
-correspondence table, 386 names): the declarations of the current version depend on no theorem of the earlier
+correspondence table, 388 names): the declarations of the current version depend on no theorem of the earlier
 formalisations, with two qualifications. The upper bound (`U12a.*`, hence `thm_upper`) uses untagged helper lemmas of
 `SP/CstarUpper.lean` and `UpperConv` (basic facts on occurrences, paths and lowest intervals, and the two-equation
 construction of the conversion, `SP.Program.exists_equations`/`equation_valid`). `cor-cstar`'s declarations, the
