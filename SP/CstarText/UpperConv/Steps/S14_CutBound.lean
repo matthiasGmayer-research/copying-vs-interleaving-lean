@@ -52,7 +52,7 @@ private theorem s14_arith {d S I S₀ I₀ u n : ℕ} (hdS : d ∣ S) (hdS₀ : 
 /-- main.typ 542–550, proof of lem-cut, step 2. Claim: "`pt < √N` for every `t ∈ I_ρ`", where `p := p(π)`.
 Context (main.typ 528–530): `P` a ZLP, `x ⊑ val(P)`, `n = |x| ≥ 1`, `N = n/d₀`, `q ≠ q₀`,
 `ρ ∈ A_q ∖ {ρ*_q}` with root path `js`, cut edge `e = (w, j)` leading to `z`, rest `π`. -/
-@[kb "cstarpaper-st-cut-small"]
+-- kb tag retired 2026-10-29 (label no longer in the paper): @[kb "cstarpaper-st-cut-small"]
 theorem step_lem_cut_2 {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (q : Q) (hq : q ≠ P.root) (ρ : Occ)
     (hρ : ρ ∈ Acan P x.length q) (hne : ρ ≠ leastOcc P q) (js js₁ : List ℕ) (w : Q) (j : ℕ)

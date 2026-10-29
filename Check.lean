@@ -26,6 +26,7 @@ import SP
 #check @SP.CstarText.ReverseZ.prop_reverse  -- prop-reverse
 #check @SP.CstarText.RemMeasures.rem_measures_grammar  -- rem-measures
 #check @SP.CstarText.RemMeasures.rem_measures_zlc  -- rem-measures
+#check @SP.CstarText.RemMeasures.rem_measures_lzc_every  -- rem-measures: LZC ≥ n^a ZLC at every large length, given LZC ≥ ARC
 #check @SP.CstarText.U12a.s_why_quarter_length  -- no word with ARC ≥ H ZLC is shorter than H^4/16
 #check @SP.CstarText.ReadRev.rem_constant_all  -- rem-constant: every valid C is ≥ 2^(−1/4)
 #check @SP.CstarText.ExZlpRev.sync_iff_same_step  -- ex-zlp-cont: synchronous iff one step per vertex
@@ -62,6 +63,7 @@ import SP
 #print axioms SP.CstarText.ReverseZ.prop_reverse
 #print axioms SP.CstarText.RemMeasures.rem_measures_grammar
 #print axioms SP.CstarText.RemMeasures.rem_measures_zlc
+#print axioms SP.CstarText.RemMeasures.rem_measures_lzc_every
 #print axioms SP.CstarText.U12a.s_why_quarter_length
 #print axioms SP.CstarText.ReadRev.rem_constant_all
 #print axioms SP.CstarText.ExZlpRev.sync_iff_same_step

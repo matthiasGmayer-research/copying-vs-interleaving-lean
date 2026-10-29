@@ -48,7 +48,7 @@ private theorem cut_split_aux {Q α : Type} (P : Program Q α) (q : Q) :
 /-- main.typ 536–538, proof of lem-cut, step 1, first part. Claim: "The cut edge exists": the root path
 `js` of `ρ` has a first slot `e = (w, j)` not in `𝒯` (`js = js₁ ++ j :: π`, all slots of `js₁` in `𝒯`), it
 leads to a vertex `z`, and `π` is a path from `z` to `q`. -/
-@[kb "cstarpaper-st-cut-exists" (deviation := "only the first half (the cut edge exists); the half `(e, π) determines ρ` is the separate lemma step_lem_cut_1_determines")]
+-- kb tag retired 2026-10-29 (label no longer in the paper): @[kb "cstarpaper-st-cut-exists" (deviation := "only the first half (the cut edge exists); the half `(e, π) determines ρ` is the separate lemma step_lem_cut_1_determines")]
 theorem step_lem_cut_1_exists {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (q : Q) (hq : q ≠ P.root) (ρ : Occ)
     (hρ : ρ ∈ Acan P x.length q) (hne : ρ ≠ leastOcc P q) (js : List ℕ) (hjs : OccVia P q ρ js) :

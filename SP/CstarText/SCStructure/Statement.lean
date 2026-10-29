@@ -40,7 +40,7 @@ open SP.CstarText.SCGadgets (paper FNode)
 
 /-- def-sc (main.typ 1049–1050): `η_h(γ)` is "the integer in `[1, Ψ_h]` with
 `c_h + γ + η_h(γ) ≡ ζ_h (mod Ψ_h)`". -/
-@[kb "cstarpaper-def-slots" (part := "η_h(γ) is the integer in [1, Ψ_h] with the congruence")]
+-- kb tag retired 2026-10-28 (superseded by the current version): @[kb "cstarpaper-def-slots" (part := "η_h(γ) is the integer in [1, Ψ_h] with the congruence")]
 theorem def_sc_eta (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (h : Fin (paper k).H) (γ : ℕ) :
     1 ≤ η k σ h γ ∧ η k σ h γ ≤ SCParams.Ψ k h ∧
       (SCParams.Ψ k h : ℤ) ∣ (c k h + γ + η k σ h γ - (paper k).ζ σ h) ∧

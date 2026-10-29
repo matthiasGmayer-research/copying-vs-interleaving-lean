@@ -76,7 +76,7 @@ theorem step_sc_fail_num_rev (n : ℕ) (hn : 1 ≤ n) :
 `1 - 408 n^(-6) > 0`, a binary word `x_k` with `ARC(x_k) >= n^a ZLC(x_k)`." The positivity, for `k ≥ 2`, from
 `n ≥ X^(3(k+1))` (lem-sc-final (b)) and `X ≥ 2` (def-params); same hypotheses as `C1Final.step_lower_pos`
 (`0 < 1 − 408 n^(−5)`), which it supersedes. -/
-@[kb "cstarpaper-s-thm-sc-gives" (part := "C1: C1Referee.step_lower_pos_rev")]
+-- kb tag retired 2026-10-28 (superseded by the current version): @[kb "cstarpaper-s-thm-sc-gives" (part := "C1: C1Referee.step_lower_pos_rev")]
 theorem step_lower_pos_rev (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) (hX : 2 ≤ C1Params.X k L)
     (hn : C1Params.X k L ^ (3 * (k + 1)) ≤ C1Structure.n k L) :
     0 < 1 - 408 * (C1Structure.n k L : ℝ) ^ (-6 : ℝ) := by

@@ -1,4 +1,4 @@
-# Lean 4 formalisation for "Copying along arithmetic progressions cannot simulate interleaving: the optimal exponent is 1/4"
+# Lean 4 formalisation for "Copying along arithmetic progressions cannot simulate interleaving with polylogarithmic loss: the optimal exponent is 1/4"
 
 Machine-checked proofs (Lean 4 + Mathlib; the only axioms are `propext`, `Classical.choice` and `Quot.sound`) for the
 paper by Matthias G. Mayer. The formalisation along the paper's text is the namespace `SP.CstarText` (one directory
@@ -255,7 +255,7 @@ to the namespace `SP.CstarText` unless they begin with `SP`. The main results co
 | `def-slopes` | `C1Params.goodWindow`, `C1Params.s`, `C1Params.IsLexLeastType`, `C1Params.typeOf`, `C1Params.Ψ`, `C1Params.a`, `C1Params.Ψstar`, `C1Params.Δ`, `C1Params.def_slopes_enough`, `C1Params.def_slopes_type`, `C1Params.def_slopes_a`, `C1Params.def_slopes_psi` |  |
 | `def-free` | `SCGadgets.Parents`, `SCGadgets.arity`, `SCGadgets.Parents.verts`, `SCGadgets.Parents.realChildren`, `SCGadgets.Parents.parentsOf`, `SCGadgets.Parents.R`, `SCGadgets.Parents.anc`, `SCGadgets.Parents.Geometry`, `SCGadgets.Parents.IsGeometry`, `SCGadgets.Parents.π`, `SCGadgets.Parents.jd`, `SCGadgets.Parents.geomProb`, `SCGadgets.Parents.ζ`, `SCGadgets.Parents.graph`, `SCGadgets.Parents.IsFreeLevelsOf`, `C1Gadgets.paper`, `C1Gadgets.verts_eq` |  |
 | `def-shifts` | `SCGadgets.IsShiftGadget`, `SCGadgets.ShiftGadgetFresh`, `SCGadgets.shiftG`, `SCGadgets.def_shifts_count`, `SCGadgets.def_shifts_example` |  |
-| `def-slots` | `C1Structure.c`, `C1Structure.Γ`, `C1Structure.η`, `C1Structure.q`, `C1Structure.def_sc_eta`, `SCStructure.def_sc_eta` |  |
+| `def-slots` | `C1Structure.c`, `C1Structure.Γ`, `C1Structure.η`, `C1Structure.q`, `C1Structure.def_sc_eta` |  |
 | `lem-slots` | `C1Structure.step_struct_b_distinct`, `C1Structure.lem_structure_a_c`, `C1Structure.lem_structure_a_cbound`, `C1Structure.lem_structure_b_q`, `C1Slots.lem_slots`, `C1Slots.lem_slots_b` |  |
 | `def-sc` | `C1Structure.Dict`, `C1Structure.n`, `C1Structure.J`, `C1Structure.PtrBits`, `C1Structure.IsVertex`, `C1Structure.IsZeroWord`, `C1Structure.U`, `C1Structure.V`, `C1Structure.G`, `C1Structure.parentChild`, `C1Structure.rawδ`, `C1Structure.pre`, `C1Structure.Pk`, `C1Structure.x`, `C1Structure.def_sc_closed`, `C1Structure.def_sc_zero`, `C1Structure.def_sc_free_levels`, `C1Slots.def_sc_slot` |  |
 | `def-raw` | `C1Structure.Cell`, `C1Structure.RC`, `C1Structure.pos`, `C1Structure.cellOf`, `C1Structure.timeOf`, `C1Cores.step_pi_lt_R` |  |
@@ -275,7 +275,7 @@ to the namespace `SP.CstarText` unless they begin with `SP`. The main results co
 | `lem-rev-arc` | `ReverseZ.lem_rev_arc` |  |
 | `lem-sections` | `ReverseZ.lem_sections` | `st-sec-first`: `ReverseZ.step_lem_sections_first`; `st-sec-pair`: `ReverseZ.step_lem_sections_pair`; `st-sec-congr`: `ReverseZ.step_lem_sections_congr` |
 | `lem-rev-zlc` | `ReverseZ.lem_rev_zlc` | `st-rev-stop`: `ReverseZ.step_lem_rev_zlc_stop`; `st-rev-vertex`: `ReverseZ.step_lem_rev_zlc_vertex` |
-| `rem-measures` | `RemMeasures.CNFGrammar`, `RemMeasures.CNFGrammar.Derives`, `RemMeasures.zmGrammar`, `RemMeasures.rem_measures_grammar`, `RemMeasures.rem_measures_grammar_exists`, `RemMeasures.rem_measures_zlc`, `RemMeasures.rem_measures_lzc` |  |
+| `rem-measures` | `RemMeasures.CNFGrammar`, `RemMeasures.CNFGrammar.Derives`, `RemMeasures.zmGrammar`, `RemMeasures.rem_measures_grammar`, `RemMeasures.rem_measures_grammar_exists`, `RemMeasures.rem_measures_zlc`, `RemMeasures.rem_measures_lzc_every` |  |
 <!-- /tab-lean -->
 
 ## Earlier versions

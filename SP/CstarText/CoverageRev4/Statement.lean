@@ -70,7 +70,7 @@ theorem edge_layers (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (ω : Ptr
 
 open SP.CstarText.SCGadgets SP.CstarText.SCLemU in
 /-- Proof of lem-u, st-u-moment, the sentence `s-lem-u-expected`: `step_u_expected`. -/
-@[kb "cstarpaper-s-lem-u-expected" (part := "CoverageRev4.u_expected: E binom(N_hit, u) ≤ Σ_(|T|=u) Π w = [λ^u] f_root ≤ 2^(−u) f_root(2)")]
+-- kb tag retired 2026-10-28 (superseded by the current version): @[kb "cstarpaper-s-lem-u-expected" (part := "CoverageRev4.u_expected: E binom(N_hit, u) ≤ Σ_(|T|=u) Π w = [λ^u] f_root ≤ 2^(−u) f_root(2)")]
 theorem u_expected (D : Parents) (hD : D.Facts) (ξ : Fin D.H → Option (ℕ × (Fin D.k → ℕ))) (u : ℕ)
     (hVset : ∀ T : Finset (Fin D.H), ∀ v ∈ Vset D T, IsTreeNode D v ∧ v ≠ .root)
     (hw : ∀ y : Node D.H, IsTreeNode D y → y ≠ .root → 0 < w D u y)

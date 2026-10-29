@@ -14,7 +14,7 @@ text is the compilation of the `AuxFam` copy. -/
 namespace SP.CstarText.EveryLength
 
 open SP SP.CstarText.Method in
-@[kb "cstarpaper-st-lower-aux" (part := "EveryLength.step_lower_aux")]
+-- kb tag retired 2026-10-29 (label no longer in the paper): @[kb "cstarpaper-st-lower-aux" (part := "EveryLength.step_lower_aux")]
 theorem step_lower_aux (k : ℕ) (hk : 2 ≤ k) :
     ∃ (σ : (AuxFam.SCGadgets.paper k).Geometry) (pb : AuxFam.SCStructure.PtrBits k), (AuxFam.SCGadgets.paper k).IsGeometry σ ∧
       ∀ m : ℕ, m ≤ AuxFam.SCStructure.n k → 2 ≤ (m : ℝ) * AuxFam.SCParams.H k / AuxFam.SCStructure.n k →

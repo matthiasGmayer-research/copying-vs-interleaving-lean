@@ -624,7 +624,7 @@ theorem step_lem_slopes_2_10 (k : ℕ) (hk : 2 ≤ k) :
   exact le_trans hsub h8
 
 /-- main.typ 898, proof of lem-slopes, step 2 (claim): "`∑_{M ≤ s < 2M} A(s)² ≤ 2M T_M^E`." -/
-@[kb "cstarpaper-st-slopes-square"]
+-- kb tag retired 2026-10-29 (label no longer in the paper): @[kb "cstarpaper-st-slopes-square"]
 theorem step_lem_slopes_2 (k : ℕ) (hk : 2 ≤ k) :
     ∑ s ∈ Finset.Ico (M k) (2 * M k), (numTypes k s : ℝ) ^ 2 ≤ 2 * (M k : ℝ) * TM k ^ E k :=
   -- "Hence …": the display of step 2, `_2_9` then `_2_10`

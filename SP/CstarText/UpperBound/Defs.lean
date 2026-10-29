@@ -30,7 +30,7 @@ noncomputable def endArity {Q α : Type} (P : Program Q α) (z : Q) (π : List �
   | _ => 0
 
 /-- The paths `π` from `z`, with end `w`, such that `p(π)(d_w + 2) ≤ y` (lem-paths, main.typ 580–581). -/
-@[kb "cstarpaper-lem-paths" (part := "the paths π from z with p(π)(d_w + 2) ≤ y")]
+-- kb tag retired 2026-10-29 (label no longer in the paper): @[kb "cstarpaper-lem-paths" (part := "the paths π from z with p(π)(d_w + 2) ≤ y")]
 def pathsW {Q α : Type} (P : Program Q α) (z : Q) (y : ℝ) : Set (List ℕ) :=
   {π | ∃ w : Q, IsPathTo P z π w ∧ (pathProduct P z π : ℝ) * ((P.arity w : ℝ) + 2) ≤ y}
 
@@ -38,7 +38,7 @@ def pathsW {Q α : Type} (P : Program Q α) (z : Q) (y : ℝ) : Set (List ℕ) :
 (lem-paths, main.typ 580–581).
 -- convention: a `finsum` over the set `pathsW P z y`; that this set is finite (so the `finsum` is the
 paper's finite sum) is part of the statement `lem_paths`. -/
-@[kb "cstarpaper-lem-paths" (part := "W_z(y)")]
+-- kb tag retired 2026-10-29 (label no longer in the paper): @[kb "cstarpaper-lem-paths" (part := "W_z(y)")]
 noncomputable def W {Q α : Type} (P : Program Q α) (z : Q) (y : ℝ) : ℕ :=
   ∑ᶠ (π : List ℕ) (_ : π ∈ pathsW P z y), endArity P z π
 

@@ -88,7 +88,7 @@ theorem thm_lower_every_strict :
 /-- Sentence anchor `s-thm-lower-loss` (end of st-lower-assemble, main.typ 4542): "So, for one constant `C > 0` and all
 large `n`, `ARC(z) ≥ n^(1/4) exp(−C (log n)^(2/3) (log log n)^(1/3)) ZLC(z)`" — `z` the prefix of length `n` of an
 auxiliary word (st-lower-assemble). -/
-@[kb "cstarpaper-rem-loss" (part := "EveryLength.s_lower_loss")]
+-- kb tag retired 2026-10-28 (superseded by the current version): @[kb "cstarpaper-rem-loss" (part := "EveryLength.s_lower_loss")]
 theorem s_lower_loss : ∃ C : ℝ, 0 < C ∧ ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
     ∃ (k : ℕ) (σ : (AuxFam.SCGadgets.paper k).Geometry) (pb : AuxFam.SCStructure.PtrBits k),
       2 ≤ k ∧ (AuxFam.SCGadgets.paper k).IsGeometry σ ∧ n ≤ (AuxFam.SCStructure.x k σ pb).length ∧

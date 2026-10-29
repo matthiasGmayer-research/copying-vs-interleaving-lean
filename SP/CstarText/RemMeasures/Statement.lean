@@ -558,7 +558,8 @@ theorem rem_measures_zlc (m : ℕ) (hm : 3 ≤ m) :
 /-- rem-measures (main.typ:865–866): "Second, `LZC(x) ≥ ARC(x)` [Kosoy, Prop. 4.3], so the words of @thm-lower have
 `LZC(x) ≥ n^a ZLC(x)`, for each `a < 1/4`." The claim is the deduction: Kosoy's Prop. 4.3 is the hypothesis `hK` on
 an arbitrary measure `LZC` (not formalised here); thm-lower is `SCFinal.thm_lower` (paper route). -/
-@[kb "cstarpaper-rem-measures" (part := "the words of thm-lower have LZC ≥ n^a ZLC, given Kosoy's LZC ≥ ARC")]
+-- @[kb "cstarpaper-rem-measures" (part := "the words of thm-lower have LZC ≥ n^a ZLC, given Kosoy's LZC ≥ ARC")]
+-- retired (cstar 869424f): superseded by RemMeasures.rem_measures_lzc_every (Every.lean).
 theorem rem_measures_lzc (LZC : List Bool → ℕ) (hK : ∀ x, ARC x ≤ LZC x) (a : ℝ) (ha : a < 1 / 4) :
     Set.Infinite {x : List Bool | (x.length : ℝ) ^ a * (ZLC x : ℝ) ≤ (LZC x : ℝ)} := by
   refine (SP.CstarText.SCFinal.thm_lower a ha).mono ?_

@@ -216,6 +216,7 @@ import SP.CstarText.ReadRev.Statement
 import SP.CstarText.RefereeRev.Statement
 import SP.CstarText.RelayRev.Statement
 import SP.CstarText.RemMeasures.Defs
+import SP.CstarText.RemMeasures.Every
 import SP.CstarText.RemMeasures.Statement
 import SP.CstarText.Reverse.Defs
 import SP.CstarText.Reverse.Statement

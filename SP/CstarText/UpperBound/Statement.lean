@@ -34,7 +34,7 @@ open SP.CstarText.Prelim SP.CstarText.UpperConv
 /-- lem-paths (main.typ 579–582): "For a vertex `z` and a real `y`, let `W_z(y)` be the sum of `d_w` over
 the paths `π` from `z`, with end `w`, such that `p(π)(d_w + 2) ≤ y`. Then `W_z(y) ≤ max(y − 2, 0)`." (With
 the finiteness of the set of these paths, implicit in the sum.) -/
-@[kb "cstarpaper-lem-paths"]
+-- kb tag retired 2026-10-29 (label no longer in the paper): @[kb "cstarpaper-lem-paths"]
 theorem lem_paths {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : Q) (y : ℝ) :
     (pathsW P z y).Finite ∧ (W P z y : ℝ) ≤ max (y - 2) 0 :=
   step_lem_paths P hP z y
