@@ -1,4 +1,4 @@
-# Lean 4 formalisation for "Copying along arithmetic progressions cannot simulate interleaving with polylogarithmic loss: the optimal exponent is 1/4"
+# Lean 4 formalisation for "Copying along Arithmetic Progressions Cannot Simulate Interleaving with Polylogarithmic Loss: The Optimal Exponent Is 1/4"
 
 Machine-checked proofs (Lean 4 + Mathlib; the only axioms are `propext`, `Classical.choice` and `Quot.sound`) for the
 paper by Matthias G. Mayer. The formalisation along the paper's text is the namespace `SP.CstarText` (one directory
