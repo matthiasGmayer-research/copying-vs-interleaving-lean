@@ -6,7 +6,7 @@ usage (from the repository root, after `lake build` and `lake env lean Check.lea
 
 Everything in the PDF is generated, so it rebuilds after renames:
   - title and author: from the paper's main.typ (the `title:` and `authors:` arguments of `paper.with`);
-  - coverage: the paper's own words, the paragraph under `== Formal verification <sec-lean>` of main.typ
+  - coverage: the paper's own words, the paragraph under the `<sec-lean>` heading of main.typ
     (cross-references printed as labels), then the README's status and cited-results paragraphs;
   - the main statements, the correspondence, the earlier versions: README.md, converted section by section;
   - the correspondence table is checked against the source: every row lists exactly the declarations tagged
@@ -53,8 +53,9 @@ def paper_meta(path):
     title, _ = balanced(s, s.index('[', t))
     a = s.index('authors:', m.end())
     names = re.findall(r'name:\s*"([^"]*)"', s[a:s.index('abstract:', a) if 'abstract:' in s[a:] else a + 400])
-    m = re.search(r'^== Formal verification <sec-lean>\s*$', s, re.M)
-    if not m: die(f'no heading `== Formal verification <sec-lean>` in {path}')
+    # keyed on the label, so a change of the heading's wording or case does not break the build
+    m = re.search(r'^== .*<sec-lean>\s*$', s, re.M)
+    if not m: die(f'no heading `== … <sec-lean>` in {path}')
     rest = s[m.end():]
     n = re.search(r'^=', rest, re.M)
     body = rest[:n.start() if n else len(rest)].strip()
@@ -338,7 +339,7 @@ tags (#raw("@[kb \\"cstarpaper-<label>\\"]")).]
 
 = Coverage
 
-Section 1.3 of the paper (Formal verification) states:
+Section 1.3 of the paper (Formal Verification) states:
 
 #block(inset: (left: 1.2em), stroke: (left: 1pt + luma(180)))[{coverage}]
 
