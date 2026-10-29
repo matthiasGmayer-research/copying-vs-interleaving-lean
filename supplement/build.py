@@ -115,7 +115,23 @@ def table(rows, widths=None):
     return '\n'.join(out)
 
 
+WORD = re.compile(r'[^\W_]+')
+
+
 def md_to_typst(md, level_shift=0, table_widths=None):
+    out = _md_to_typst(md, level_shift, table_widths)
+    # no prose may be lost: every word of the Markdown (as a multiset) must be in the Typst
+    from collections import Counter
+    src = Counter(WORD.findall(re.sub(r'<!--.*?-->', '', md, flags=re.S)))
+    got = Counter(WORD.findall(out))
+    lost = src - got
+    if lost:
+        die(f'README text lost in the conversion (words missing: {dict(lost)}) in the section starting '
+            f'{md.strip()[:80]!r}')
+    return out
+
+
+def _md_to_typst(md, level_shift=0, table_widths=None):
     md = re.sub(r'<!--.*?-->', '', md, flags=re.S)
     lines, out, i = md.split('\n'), [], 0
     para = []
@@ -141,7 +157,7 @@ def md_to_typst(md, level_shift=0, table_widths=None):
         if m:
             flush()
             out += ['=' * (len(m.group(1)) - 1 + level_shift) + ' ' + inline(m.group(2)), '']
-        elif l.startswith('|'):
+        elif l.startswith('|') and i + 1 < len(lines) and re.match(r'\|\s*:?-{3,}', lines[i + 1]):
             flush()
             j = i
             while j < len(lines) and lines[j].startswith('|'): j += 1
