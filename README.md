@@ -9,12 +9,15 @@ The paper is cited by the **labels** of its blocks (`thm-upper`, `lem-cut`, `st-
 numbers, which change while the paper is revised. The Lean source tags each declaration with the label of the block
 it formalises (`@[kb "cstarpaper-<label>"]`), and each tag records how the formal statement departs from the text.
 
-**Status.** Every numbered definition, statement and proof step of the current paper, and every sentence anchored
-in it, has a sorry-free Lean declaration (axioms `propext`, `Classical.choice`, `Quot.sound`): the upper bound in its
-version U12a (`SP.CstarText.U12a`, constant 2), the lower bound in its version C1/I1 (prime types, parameters of
-(k, L) for every L ≥ 512 k log(k + 2): `SP.CstarText.C1Params` … `C1Lower`, `C1Coverage`, `C1Sent`), and the
-critical-set bound with the bound of lem-random (`SP.CstarText.MethodRev.prop_scheme`). The formalisations of the
-earlier versions are kept in the repository (see "Earlier versions" below); they no longer carry the paper's tags.
+**Status.** Every numbered definition, statement and proof step of the paper's own development, apart from the
+comparisons in `rem-measures` that rest on cited results, has a sorry-free Lean declaration (axioms `propext`,
+`Classical.choice`, `Quot.sound`): the upper bound in its version U12a (`SP.CstarText.U12a`, constant 2), the lower
+bound in its version C1/I1 (prime types, parameters of (k, L) for every L ≥ 512 k log(k + 2): `SP.CstarText.C1Params`
+… `C1Lower`, `C1Coverage`, `C1Sent`), and `prop-scheme`, the critical-set bound, with the bound of `lem-random`
+(`SP.CstarText.MethodRev.prop_scheme`). Sentences of the text outside the numbered blocks that state a fact are tagged
+as well (sentence anchors, `@[kb "cstarpaper-s-…"]`); these tags locate the declarations and claim nothing beyond the
+statement above. The formalisations of earlier versions are kept in the repository (see "Earlier versions" below);
+their superseded statements no longer carry the paper's tags.
 
 <!-- app-lean-main -->
 ## The main statements in Lean
@@ -28,6 +31,9 @@ them. The formal statements depart from the text as follows: words are lists, `x
 `cor_cstar_text`. Some names keep earlier terms: an `ArithInterval` is an arithmetic progression (`def-interval`), a
 `SlotGraph` is the map δ whose pairs (q, j) are the edges of a program, and `SlotGraph.Edge q q'` says that some edge
 of `q` leads to `q'`. In Lean names and part labels, *slot* means edge and *canonical interval* means lowest interval.
+In `Covers` the index ranges over t < |α|, where `def-ars` says t < min(|α|, |α'|); the two predicates agree when
+|α| = |α'| (`WordRev.covers_iff_coversText`, where `WordRev.CoversText` is the text's predicate), and `IsARS` requires
+|α| = |α'| of every equation, so ARSs, ARC and every result about them are the text's.
 
 Arithmetic repetition systems (`def-interval`, `def-ars`):
 
@@ -211,7 +217,11 @@ Each numbered definition, statement and proof step of the paper's own developmen
 states it, except the comparisons of `rem-measures` that rest on cited results (see below). The table lists, for each
 numbered block, every declaration tagged with its label (definitions, statement parts) and the declarations of its
 proof steps; the sentence anchors of the paper are tagged the same way (`@[kb "cstarpaper-s-…"]`). Names are relative
-to the namespace `SP.CstarText` unless they begin with `SP`. The main results come first.
+to the namespace `SP.CstarText` unless they begin with `SP`. The main results come first. One proof step is split
+over two declarations, of which the table lists the second: `st-scheme-event` says that with probability at least
+1 − |S| n³ 2^(−u) exp(6u²/D) no candidate holds, and that then every forward equation that holds in x has fewer than
+u² targets in S. The probability clause is `Method.step_prop_scheme_2_prob` (anchor `s-prop-scheme-first`; its ε is
+the bound 2^(−u) exp(6u²/D) of `st-scheme-cand`), the consequence is `Method.step_prop_scheme_2_event`.
 
 <!-- tab-lean -->
 | paper (label) | statement | proof steps |
@@ -280,8 +290,11 @@ to the namespace `SP.CstarText` unless they begin with `SP`. The main results co
 
 ## Earlier versions
 
-The repository also keeps the formalisations of earlier versions of the paper; they are proved but no longer carry
-the paper's tags, and they do not state the current results:
+The repository also keeps the formalisations of earlier versions of the paper. They are proved; the superseded
+statements in the first five rows no longer carry the paper's tags and do not state the current results. The last
+row is a second proof of the main results, with a weaker constant in the upper bound (see "The earlier
+formalisation"); its `SP.CstarPaper.cor_cstar_fixed_alphabet` states the current `cor-cstar` (a fixed alphabet) and
+`SP.CstarPaper.cor_cstar` a variant uniform over all finite alphabets, and both keep the tag of `cor-cstar`.
 
 | earlier version | Lean |
 |---|---|
@@ -297,8 +310,10 @@ exactly; their proofs cite the earlier versions of the two main theorems, which 
 
 ## Cited results
 
-Kosoy's ARC ≤ sZLC (Prop. 4.9 of her paper), used in the proof of `cor-szlc` and in `ex-zlp-cont`, is also
-formalised, as `SP.CstarText.Kosoy49.kosoy_arc_le_szlc`. Kosoy's ARC ≤ LZC (Prop. 4.3), Rytter's bound (Thm. 1) and
+Three cited results are formalised: Kosoy's ARC ≤ sZLC (Prop. 4.9 of Kosoy's paper), used in the proof of `cor-szlc`
+and in `ex-zlp-cont`, as `SP.CstarText.Kosoy49.kosoy_arc_le_szlc`; Kosoy's lemma on occurrences (App. E.3), `lem-occ`, as
+`Prelim.lem_occ_a` and `Prelim.lem_occ_b`; and the two Chebyshev bounds on the sum of ln p over primes used in
+`lem-params`, which are in Mathlib (`Chebyshev.theta_le_log4_mul_x`, `Chebyshev.theta_ge`). Kosoy's ARC ≤ LZC (Prop. 4.3), Rytter's bound (Thm. 1) and
 the polylogarithmic comparisons of measures cited in the introduction, used in `rem-measures`, are cited and not
 formalised; where a sentence of the paper derives something from one of them, the Lean takes the cited result as a
 hypothesis. Kosoy's Prop. 4.7, Lemma E.2 and Thm. 4.11 appear only in comparisons and in the consequences for
@@ -307,13 +322,13 @@ prediction in the introduction, and are not formalised.
 ## The earlier formalisation
 
 The repository also contains a second formalisation of the main results, by a different route
-(`SP.CstarConst.arc_le_const`, `SP.CstarPaper.thm_lower`, `SP.CstarPaper.cor_cstar`, `SP.ReverseUpper.zlc_le_arc`), and
-`SP.CstarText.IntroRev.cor_cstar`, `cor-cstar` by the paper's proof steps but citing those earlier proofs of the two
-theorems. The declarations of the correspondence use from it only helper lemmas on occurrences, paths, and the
+(`SP.CstarConst.arc_le_const`, `SP.CstarPaper.thm_lower`, `SP.CstarPaper.cor_cstar`, `SP.ReverseUpper.zlc_le_arc`).
+`SP.CstarText.IntroRev.cor_cstar` proves `cor-cstar` along the paper's proof steps but cites those earlier proofs of
+the two theorems. The declarations of the correspondence use from it only helper lemmas on occurrences, paths, and the
 construction and validity of equations (module `SP.CstarUpper`), and `SP.CstarPaper.rem_constant`, which states the
 computation of `rem-constant` for the word aa directly.
 
-Dependency routes (`lake env lean tools/Deps.lean`; `python3 tools/deps.py README.md` runs it on every name of the
+Dependency routes (`python3 tools/deps.py README.md` runs `lake env lean tools/Deps.lean` on every name of the
 correspondence table, 388 names): the declarations of the current version depend on no theorem of the earlier
 formalisations, with two qualifications. The upper bound (`U12a.*`, hence `thm_upper`) uses untagged helper lemmas of
 `SP/CstarUpper.lean` and `UpperConv` (basic facts on occurrences, paths and lowest intervals, and the two-equation
