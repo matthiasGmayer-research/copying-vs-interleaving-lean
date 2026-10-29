@@ -53,8 +53,8 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("74fcb05cc950") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
-  350 modules · 592 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
+  #text(size: 10pt)[Lean repository revision #raw("53cba6a31f5c") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  351 modules · 592 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
 #block(inset: (x: 1cm))[#set text(size: 9.5pt)
@@ -93,7 +93,7 @@ The following cited results are formalised: Kosoy's ARC ≤ sZLC (Prop. 4.9 of K
 
 = The main statements in Lean <sec-main>
 
-The following declarations are copied from this revision of the repository, without their documentation comments, their tags and their proofs (#raw("python3 tools/listings.py") extracts them; #raw("--check README.md") compares). The comments that name a namespace are ours; the definitions are in the namespace #raw("SP") unless such a comment says otherwise. The module #raw("SP.CstarText.Prelim") names the definitions of the paper's preliminaries (#raw("sec-prelim")) by abbreviations of them. The formal statements depart from the text as follows: words are lists, #raw("x <+: y") says that #raw("x") is a prefix of #raw("y"), a vertex set is any type required to be finite, and the alphabet is any type with an element, finite in #raw("cor_cstar_text"). Some names keep earlier terms: an #raw("ArithInterval") is an arithmetic progression (#raw("def-interval")), a #raw("SlotGraph") is the map δ whose pairs (q, j) are the edges of a program, and #raw("SlotGraph.Edge q q'") says that some edge of #raw("q") leads to #raw("q'"). In Lean names and part labels, _slot_ means edge and _canonical interval_ means lowest interval. In #raw("Covers") the index ranges over t \< |α|, where #raw("def-ars") says t \< min(|α|, |α'|); the two predicates agree when |α| = |α'| (#raw("WordRev.covers_iff_coversText"), where #raw("WordRev.CoversText") is the text's predicate), and #raw("IsARS") requires |α| = |α'| of every equation, so ARSs, ARC and every result about them are the text's.
+The following declarations are copied from this revision of the repository, without their documentation comments, their tags and their proofs (#raw("python3 tools/listings.py") extracts them; #raw("--check README.md") compares). The comments that name a namespace are ours; the definitions are in the namespace #raw("SP") unless such a comment says otherwise. The module #raw("SP.CstarText.Prelim") names the definitions of the paper's preliminaries (#raw("sec-prelim")) by abbreviations of them. The formal statements depart from the text as follows: words are lists, #raw("x <+: y") says that #raw("x") is a prefix of #raw("y"), a vertex set is any type required to be finite, and the alphabet is any type with an element, finite in #raw("cor_cstar"). Some names keep earlier terms: an #raw("ArithInterval") is an arithmetic progression (#raw("def-interval")), a #raw("SlotGraph") is the map δ whose pairs (q, j) are the edges of a program, and #raw("SlotGraph.Edge q q'") says that some edge of #raw("q") leads to #raw("q'"). In Lean names and part labels, _slot_ means edge and _canonical interval_ means lowest interval. In #raw("Covers") the index ranges over t \< |α|, where #raw("def-ars") says t \< min(|α|, |α'|); the two predicates agree when |α| = |α'| (#raw("WordRev.covers_iff_coversText"), where #raw("WordRev.CoversText") is the text's predicate), and #raw("IsARS") requires |α| = |α'| of every equation, so ARSs, ARC and every result about them are the text's.
 
 Arithmetic repetition systems (#raw("def-interval"), #raw("def-ars")):
 
@@ -243,12 +243,12 @@ theorem thm_lower :
 ```
 
 ```lean
--- namespace SP.CstarText.IntroRev
-theorem cor_cstar_text (α : Type) [Fintype α] [Nonempty α] (h : ∃ a b : α, a ≠ b) :
+-- namespace SP.CstarText.CorDirect
+theorem cor_cstar (α : Type) [Fintype α] [Nonempty α] (h : ∃ a b : α, a ≠ b) :
     IsLeast {c : ℝ | SP.CstarPaper.AdmissibleOAlpha α c} (1 / 4 : ℝ)
 
--- namespace SP.CstarText.CorSzlcEvery
-theorem cor_szlc_every (a : ℝ) (ha : a < 1 / 4) : ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
+-- namespace SP.CstarText.CorDirect
+theorem cor_szlc (a : ℝ) (ha : a < 1 / 4) : ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
     ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (ZLC x : ℝ) ≤ (SP.CstarText.Prelim.sZLC x : ℝ)
 ```
 
@@ -271,8 +271,8 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("thm-lower")], [#raw("C1Lower.lossFactor"), #raw("C1Lower.thm_lower")], [#raw("st-lower-prefix"): #raw("C1Lower.step_lower_prefix") \
 #raw("st-lower-lengths"): #raw("C1Lower.step_lower_lengths") \
 #raw("st-lower-assemble"): #raw("C1Lower.step_lower_assemble")],
-  [#raw("cor-cstar")], [#raw("SP.CstarPaper.AdmissibleO"), #raw("SP.CstarPaper.AdmissibleOAlpha"), #raw("SP.CstarPaper.cor_cstar"), #raw("SP.CstarPaper.cor_cstar_fixed_alphabet"), #raw("Intro.cor_cstar_i"), #raw("Intro.cor_cstar_ii"), #raw("IntroRev.cor_cstar_text"), #raw("IntroRev.cor_cstar")], [],
-  [#raw("cor-szlc")], [#raw("CoverageRev.no_polylog_szlc_zlc"), #raw("CorSzlcEvery.cor_szlc_every")], [],
+  [#raw("cor-cstar")], [#raw("SP.CstarPaper.AdmissibleO"), #raw("SP.CstarPaper.AdmissibleOAlpha"), #raw("SP.CstarPaper.cor_cstar"), #raw("SP.CstarPaper.cor_cstar_fixed_alphabet"), #raw("Intro.cor_cstar_i"), #raw("Intro.cor_cstar_ii"), #raw("IntroRev.cor_cstar"), #raw("CorDirect.cor_cstar")], [],
+  [#raw("cor-szlc")], [#raw("CoverageRev.no_polylog_szlc_zlc"), #raw("CorDirect.cor_szlc")], [],
   [#raw("prop-reverse")], [#raw("SP.ReverseUpper.zlc_le_arc"), #raw("Reverse.prop_reverse_i"), #raw("ReverseZ.prop_reverse_second"), #raw("ReverseZ.prop_reverse")], [],
   [#raw("sec-prelim"), conventions], [#raw("Prelim.log2"), #raw("Prelim.slice")], [],
   [#raw("def-interval")], [#raw("Prelim.ArithInterval"), #raw("Prelim.readAt"), #raw("Prelim.readLen"), #raw("Prelim.def_interval_prefix"), #raw("Prelim.def_interval_read"), #raw("CoverageRev.interval_step_determined")], [],
@@ -353,7 +353,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
 
 == Earlier versions
 
-The repository also keeps the formalisations of earlier versions of the paper. They are proved; the superseded statements in the first five rows no longer carry the paper's tags and do not state the current results. The last row is a second proof of the main results, with a weaker constant in the upper bound (see "The earlier formalisation"); its #raw("SP.CstarPaper.cor_cstar_fixed_alphabet") states the current #raw("cor-cstar") (a fixed alphabet) and #raw("SP.CstarPaper.cor_cstar") a variant uniform over all finite alphabets, and both keep the tag of #raw("cor-cstar").
+The repository also keeps the formalisations of earlier versions of the paper. They are proved; the superseded statements in the first six rows no longer carry the paper's tags and do not state the current results. The last row is a second proof of the main results, with a weaker constant in the upper bound (see "The earlier formalisation"); its #raw("SP.CstarPaper.cor_cstar_fixed_alphabet") states the current #raw("cor-cstar") (a fixed alphabet) and #raw("SP.CstarPaper.cor_cstar") a variant uniform over all finite alphabets, and both keep the tag of #raw("cor-cstar").
 
 #table(columns: (1fr, 1fr), align: left, stroke: 0.4pt + luma(180), inset: 4pt,
   table.header([*earlier version*], [*Lean*]),
@@ -362,10 +362,11 @@ The repository also keeps the formalisations of earlier versions of the paper. T
   [thm-lower with the loss exp(−C (log n)^(2/3) (log log n)^(1/3)), every length via an auxiliary family], [#raw("EveryLength.thm_lower_every") (and #raw("EveryLength.AuxFam"))],
   [thm-lower, former form (infinitely many words)], [#raw("SCFinal.thm_lower_conf"), #raw("SCFinal.thm_lower_strong"), #raw("SCFinal.thm_lower"), #raw("SCFinal.rem_loss")],
   [cor-szlc, former form (infinitely many words)], [#raw("Sentences.cor_szlc_text")],
+  [cor-cstar and cor-szlc as stated now, proved from the earlier versions of the two main theorems], [#raw("IntroRev.cor_cstar_text"), #raw("CorSzlcEvery.cor_szlc_every"), #raw("CorSzlcEvery.s_cor_szlc_proof")],
   [Another proof of the main results (weaker constant)], [#raw("SP.CstarConst.arc_le_const"), #raw("SP.CstarPaper.thm_lower"), #raw("SP.CstarPaper.cor_cstar"), #raw("SP.ReverseUpper.zlc_le_arc")],
 )
 
-#raw("cor-cstar") (#raw("IntroRev.cor_cstar_text")) and #raw("cor-szlc") (#raw("CorSzlcEvery.cor_szlc_every")) state the paper's corollaries exactly; their proofs cite the earlier versions of the two main theorems, which imply the same corollaries.
+#raw("cor-cstar") (#raw("CorDirect.cor_cstar")) and #raw("cor-szlc") (#raw("CorDirect.cor_szlc")) are proved from the current #raw("U12a.thm_upper") and #raw("C1Lower.thm_lower").
 
 == The earlier formalisation
 
@@ -377,7 +378,7 @@ Dependency routes (#raw("python3 tools/deps.py README.md") runs #raw("lake env l
 
 The formalisation uses Lean 4 at the toolchain #raw("leanprover/lean4:v4.33.0-rc1") (#raw("lean-toolchain")) and Mathlib at the tag #raw("v4.33.0-rc1") (commit #raw("79d0395"), pinned in #raw("lake-manifest.json")). #raw("lake exe cache get && lake build") builds the formalisation. Then #raw("lake env lean Check.lean") prints the statements (#raw("#check")) and the axioms on which the main declarations depend; they are among #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound"). This repository is exported from the author's research project (#raw("export.sh")); module names keep its prefix #raw("SP").
 
-The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 350 modules.
+The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 351 modules.
 
 == The audit file Check.lean
 
@@ -404,8 +405,8 @@ import SP
 #check @SP.CstarText.C1Params.lem_slopes  -- lem-slopes
 #check @SP.CstarText.MethodRev.prop_scheme  -- prop-scheme (bound 2^(−u) exp(6u²/D))
 #check @SP.CstarText.C1Sent.s_conventions_strict  -- App. A Conventions: both main theorems for strict ARSs
-#check @SP.CstarText.IntroRev.cor_cstar_text  -- cor-cstar (the least exponent is 1/4)
-#check @SP.CstarText.CorSzlcEvery.cor_szlc_every  -- cor-szlc (every large length)
+#check @SP.CstarText.CorDirect.cor_cstar  -- cor-cstar (the least exponent is 1/4)
+#check @SP.CstarText.CorDirect.cor_szlc  -- cor-szlc (every large length)
 #check @SP.CstarText.Kosoy49.kosoy_arc_le_szlc  -- Kosoy's Prop. 4.9 (cited, used by cor-szlc)
 #check @SP.CstarText.ReverseZ.prop_reverse  -- prop-reverse
 #check @SP.CstarText.RemMeasures.rem_measures_grammar  -- rem-measures
@@ -441,8 +442,8 @@ import SP
 #print axioms SP.CstarText.C1Params.lem_slopes
 #print axioms SP.CstarText.MethodRev.prop_scheme
 #print axioms SP.CstarText.C1Sent.s_conventions_strict
-#print axioms SP.CstarText.IntroRev.cor_cstar_text
-#print axioms SP.CstarText.CorSzlcEvery.cor_szlc_every
+#print axioms SP.CstarText.CorDirect.cor_cstar
+#print axioms SP.CstarText.CorDirect.cor_szlc
 #print axioms SP.CstarText.Kosoy49.kosoy_arc_le_szlc
 #print axioms SP.CstarText.ReverseZ.prop_reverse
 #print axioms SP.CstarText.RemMeasures.rem_measures_grammar
@@ -676,9 +677,9 @@ SP.CstarText.C1Sent.s_conventions_strict : (∀ (α : Type) [inst : Nonempty α]
                   SP.CstarText.C1Lower.lossFactor C n * ↑(SP.ZLC x) ≤ ↑(SP.CstarText.CoverageRev2.strictARC x)) ∧
     ∀ a < 1 / 4,
       ∃ n₀, ∀ (n : ℕ), n₀ ≤ n → ∃ x, x.length = n ∧ ↑n ^ a * ↑(SP.ZLC x) ≤ ↑(SP.CstarText.CoverageRev2.strictARC x)
-SP.CstarText.IntroRev.cor_cstar_text : ∀ (α : Type) [Fintype α] [inst : Nonempty α],
+SP.CstarText.CorDirect.cor_cstar : ∀ (α : Type) [Fintype α] [inst : Nonempty α],
   (∃ a b, a ≠ b) → IsLeast {c | SP.CstarPaper.AdmissibleOAlpha α c} (1 / 4)
-SP.CstarText.CorSzlcEvery.cor_szlc_every : ∀ a < 1 / 4,
+SP.CstarText.CorDirect.cor_szlc : ∀ a < 1 / 4,
   ∃ n₀, ∀ (n : ℕ), n₀ ≤ n → ∃ x, x.length = n ∧ ↑n ^ a * ↑(SP.ZLC x) ≤ ↑(SP.CstarText.Prelim.sZLC x)
 @SP.CstarText.Kosoy49.kosoy_arc_le_szlc : ∀ {α : Type} [inst : Nonempty α] (x : List α),
   SP.ARC x ≤ SP.CstarText.Prelim.sZLC x
@@ -765,8 +766,8 @@ SP.CstarText.Sentences.cor_szlc_text : ∀ a < 1 / 4,
 'SP.CstarText.C1Params.lem_slopes' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.MethodRev.prop_scheme' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.C1Sent.s_conventions_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.IntroRev.cor_cstar_text' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.CorSzlcEvery.cor_szlc_every' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SP.CstarText.CorDirect.cor_cstar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SP.CstarText.CorDirect.cor_szlc' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.Kosoy49.kosoy_arc_le_szlc' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.ReverseZ.prop_reverse' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.RemMeasures.rem_measures_grammar' depends on axioms: [propext, Classical.choice, Quot.sound]
