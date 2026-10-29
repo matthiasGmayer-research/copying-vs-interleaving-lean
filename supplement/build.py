@@ -379,6 +379,11 @@ All {len(ax)} declarations audited depend only on #raw("propext"), #raw("Classic
 ```
 ''')
     src = '\n'.join(T)
+    # a character right after an embedded expression would continue it: `;` ends the expression (and is eaten),
+    # `[` or `(` would add an argument; escape it (the README has `name`; and `name`[...] in prose)
+    RAWCALL = r'(#raw\("(?:[^"\\]|\\.)*"\))'
+    src = re.sub(RAWCALL + r'([;\[(])', r'\1\\\2', src)
+    if re.search(RAWCALL + r'[;\[(]', src): die('unescaped character after #raw(...)')
     out = os.path.join(ROOT, 'supplement', 'lean-appendix.typ')
     open(out, 'w').write(src)
     print(f'wrote {out}: {len(seen)} labels in the table, {len(sentences)} sentence tags, {len(ax)} axiom lines;'
