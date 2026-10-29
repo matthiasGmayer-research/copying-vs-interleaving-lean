@@ -12,7 +12,7 @@ it formalises (`@[kb "cstarpaper-<label>"]`), and each tag records how the forma
 **Status.** Every numbered definition, statement and proof step of the paper's own development, apart from the
 comparisons in `rem-measures` that rest on cited results, has a sorry-free Lean declaration (axioms `propext`,
 `Classical.choice`, `Quot.sound`): the upper bound in its version U12a (`SP.CstarText.U12a`, constant 2), the lower
-bound in its version C1/I1 (prime types, parameters of (k, L) for every L ≥ 512 k log(k + 2): `SP.CstarText.C1Params`
+bound in its version C1/I1 (prime types, parameters of (k, L) for all integers k ≥ 2 and L ≥ 512 k log₂(k + 2): `SP.CstarText.C1Params`
 … `C1Lower`, `C1Coverage`, `C1Sent`), and `prop-scheme`, the critical-set bound, with the bound of `lem-random`
 (`SP.CstarText.MethodRev.prop_scheme`). Sentences of the text outside the numbered blocks that state a fact are tagged
 as well (sentence anchors, `@[kb "cstarpaper-s-…"]`); these tags locate the declarations and claim nothing beyond the
@@ -31,9 +31,9 @@ them. The formal statements depart from the text as follows: words are lists, `x
 `cor_cstar_text`. Some names keep earlier terms: an `ArithInterval` is an arithmetic progression (`def-interval`), a
 `SlotGraph` is the map δ whose pairs (q, j) are the edges of a program, and `SlotGraph.Edge q q'` says that some edge
 of `q` leads to `q'`. In Lean names and part labels, *slot* means edge and *canonical interval* means lowest interval.
-In `Covers` the index ranges over t < |α|, where `def-ars` says t < min(|α|, |α'|); the two predicates agree when
-|α| = |α'| (`WordRev.covers_iff_coversText`, where `WordRev.CoversText` is the text's predicate), and `IsARS` requires
-|α| = |α'| of every equation, so ARSs, ARC and every result about them are the text's.
+In `Covers` the index ranges over t < |α|, where `def-ars` says t < min(|α|, |α'|); the two predicates agree
+when |α| = |α'| (`WordRev.covers_iff_coversText`, where `WordRev.CoversText` is the text's predicate), and `IsARS`
+requires |α| = |α'| of every equation, so ARSs, ARC and every result about them are the text's.
 
 Arithmetic repetition systems (`def-interval`, `def-ars`):
 
@@ -320,7 +320,7 @@ exactly; their proofs cite the earlier versions of the two main theorems, which 
 
 ## Cited results
 
-Three cited results are formalised: Kosoy's ARC ≤ sZLC (Prop. 4.9 of Kosoy's paper), used in the proof of `cor-szlc`
+The following cited results are formalised: Kosoy's ARC ≤ sZLC (Prop. 4.9 of Kosoy's paper), used in the proof of `cor-szlc`
 and in `ex-zlp-cont`, as `SP.CstarText.Kosoy49.kosoy_arc_le_szlc`; Kosoy's lemma on occurrences (App. E.3), `lem-occ`, as
 `Prelim.lem_occ_a` and `Prelim.lem_occ_b`; and the two Chebyshev bounds on the sum of ln p over primes used in
 `lem-params`, which are in Mathlib (`Chebyshev.theta_le_log4_mul_x`, `Chebyshev.theta_ge`). Kosoy's ARC ≤ LZC (Prop. 4.3), Rytter's bound (Thm. 1) and
