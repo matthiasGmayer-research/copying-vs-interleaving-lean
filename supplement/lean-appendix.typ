@@ -75,8 +75,8 @@ Section 1.3 of the paper (Formal Verification) states:
 #raw("rem-measures") that rest on cited results, is formalised and proved in Lean 4 with Mathlib, with the constants and the
 loss stated here, using only the standard axioms of Lean. Of the cited results, only Kosoy's $ARC <= sZLC$, #raw("lem-occ")
 and two Chebyshev bounds in Mathlib are formalised; formal deductions that use another cited comparison take it as a
-hypothesis. The Lean proofs of #raw("cor-cstar") and #raw("cor-szlc") use earlier versions of the two theorems, which imply the same
-statements. The README of the Lean repository gives the declarations of each numbered block and proof step.]
+hypothesis.
+The README of the Lean repository gives the declarations of each numbered block and proof step.]
 
 The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-cut"), #raw("st-split-early"), ...), not by their numbers, which change while the paper is revised. The Lean source tags each declaration with the label of the block it formalises (#raw("@[kb \"cstarpaper-<label>\"]")), and each tag records how the formal statement departs from the text.
 
