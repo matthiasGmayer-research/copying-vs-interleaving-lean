@@ -49,11 +49,11 @@
   #v(0.6cm)
   #text(size: 12pt)[Supplementary material to]
   #v(0.2cm)
-  #block(width: 85%)[#text(size: 13pt, style: "italic")[Copying along arithmetic progressions cannot simulate interleaving with polylogarithmic loss: the optimal exponent is $1\/4$]]
+  #block(width: 85%)[#text(size: 13pt, style: "italic")[Copying along Arithmetic Progressions Cannot Simulate Interleaving with Polylogarithmic Loss: The Optimal Exponent Is $1\/4$]]
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("a6cc5807872c") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  #text(size: 10pt)[Lean repository revision #raw("5683db46099e") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
   350 modules · 592 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
@@ -69,7 +69,7 @@ tags (#raw("@[kb \"cstarpaper-<label>\"]")).]
 
 = Coverage
 
-Section 1.3 of the paper (Formal verification) states:
+Section 1.3 of the paper (Formal Verification) states:
 
 #block(inset: (left: 1.2em), stroke: (left: 1pt + luma(180)))[Every numbered definition, statement and proof step of this paper's own development, apart from the comparisons in
 #raw("rem-measures") that rest on cited results, is formalised and proved in Lean 4 with Mathlib, with the constants and the
