@@ -407,7 +407,7 @@ private lemma s2_pp_sq (j p ε : ℕ) (hp : p.Prime) : d j (p ^ ε) ^ 2 ≤ d (j
 
 
 /-- main.typ 900, lem-slopes step 2: "Then `A(s) ≤ d_(k+1)(s)`". -/
-@[kb "cstarpaper-s-lem-slopes-both"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-slopes-both"]
 theorem step_lem_slopes_2_1 (k : ℕ) (hk : 2 ≤ k) (s : ℕ) : numTypes k s ≤ d (k + 1) s := by
   rcases Nat.eq_zero_or_pos s with rfl | hs
   · have hempty : {α : Fin k → ℕ | IsType k 0 α} = ∅ := by
@@ -443,7 +443,7 @@ theorem step_lem_slopes_2_1 (k : ℕ) (hk : 2 ≤ k) (s : ℕ) : numTypes k s �
 
 /-- main.typ 900, lem-slopes step 2: "`d_j(s)² ≤ d_(j²)(s)`" (for every `j` and every positive
 integer `s`). -/
-@[kb "cstarpaper-s-lem-slopes-both" (part := "SCParams.step_lem_slopes_2_2")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-slopes-both" (part := "SCParams.step_lem_slopes_2_2")]
 theorem step_lem_slopes_2_2 (j s : ℕ) (hs : 1 ≤ s) : d j s ^ 2 ≤ d (j ^ 2) s := by
   refine Nat.recOnPosPrimePosCoprime (motive := fun s => d j s ^ 2 ≤ d (j ^ 2) s) ?_ ?_ ?_ ?_ s
   · intro p n hp hn
@@ -457,7 +457,7 @@ theorem step_lem_slopes_2_2 (j s : ℕ) (hs : 1 ≤ s) : d j s ^ 2 ≤ d (j ^ 2)
 
 /-- main.typ 900, lem-slopes step 2: "both sides are multiplicative" (the function `d_j` is
 multiplicative, for every `j`; applied with `j` and with `j²`). -/
-@[kb "cstarpaper-s-lem-slopes-both" (part := "SCParams.step_lem_slopes_2_3")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-slopes-both" (part := "SCParams.step_lem_slopes_2_3")]
 theorem step_lem_slopes_2_3 (j m n : ℕ) (hmn : Nat.Coprime m n) : d j (m * n) = d j m * d j n := by
   exact s2_mul j m n hmn
 
@@ -481,7 +481,7 @@ theorem step_lem_slopes_2_5 (j ε : ℕ) (r c : Fin j → ℕ) (hr : r ∈ WeakC
 into the weak compositions of `ε` into `j²` parts".
 -- convention: a `j × j` matrix is flattened to a tuple indexed by `Fin (j ^ 2)` by any fixed
 bijection `Fin j × Fin j ≃ Fin (j ^ 2)`; the claim is the existence of the injection. -/
-@[kb "cstarpaper-s-lem-slopes-both" (part := "SCParams.step_lem_slopes_2_6")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-slopes-both" (part := "SCParams.step_lem_slopes_2_6")]
 theorem step_lem_slopes_2_6 (j ε : ℕ) :
     ∃ φ : (Fin j → ℕ) × (Fin j → ℕ) → (Fin (j ^ 2) → ℕ),
       Set.MapsTo φ (WeakComp ε j ×ˢ WeakComp ε j) (WeakComp ε (j ^ 2)) ∧
@@ -490,7 +490,7 @@ theorem step_lem_slopes_2_6 (j ε : ℕ) :
 
 /-- main.typ 900–903, lem-slopes step 2: the prime-power case of `d_j(s)² ≤ d_(j²)(s)` ("at a prime
 power `p^ε` … an injection into the weak compositions of `ε` into `j²` parts"). -/
-@[kb "cstarpaper-s-lem-slopes-both" (part := "SCParams.step_lem_slopes_2_7")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-slopes-both" (part := "SCParams.step_lem_slopes_2_7")]
 theorem step_lem_slopes_2_7 (j p ε : ℕ) (hp : p.Prime) : d j (p ^ ε) ^ 2 ≤ d (j ^ 2) (p ^ ε) := by
   exact s2_pp_sq j p ε hp
 
@@ -498,7 +498,7 @@ theorem step_lem_slopes_2_7 (j p ε : ℕ) (hp : p.Prime) : d j (p ^ ε) ^ 2 ≤
 summing `y / (f_1 ⋯ f_(j−1))` over the first `j − 1` factors".
 -- scope: stated for positive integers `y` and `j ≥ 1` (the text leaves `y` unspecified); the proof
 uses it only at `y = 2M`, `j = (k+1)²` (`step_lem_slopes_2_10`). `s ≤ y` ranges over `1 ≤ s ≤ y`. -/
-@[kb "cstarpaper-s-lem-slopes-claim2" (part := "SCParams.step_lem_slopes_2_8")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-slopes-claim2" (part := "SCParams.step_lem_slopes_2_8")]
 theorem step_lem_slopes_2_8 (j y : ℕ) (hj : 1 ≤ j) (hy : 1 ≤ y) :
     ∑ s ∈ Finset.Icc 1 y, (d j s : ℝ) ≤ (y : ℝ) * (1 + Real.log (y : ℝ)) ^ (j - 1) := by
   obtain ⟨m, rfl⟩ : ∃ m, j = m + 1 := ⟨j - 1, by omega⟩
@@ -573,7 +573,7 @@ theorem step_lem_slopes_2_8 (j y : ℕ) (hj : 1 ≤ j) (hy : 1 ≤ y) :
 
 /-- main.typ 905, lem-slopes step 2, first inequality of the display:
 "`∑_{M ≤ s < 2M} A(s)² ≤ ∑_{s < 2M} d_((k+1)²)(s)`". -/
-@[kb "cstarpaper-s-lem-slopes-claim2" (part := "SCParams.step_lem_slopes_2_9")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-slopes-claim2" (part := "SCParams.step_lem_slopes_2_9")]
 theorem step_lem_slopes_2_9 (k : ℕ) (hk : 2 ≤ k) :
     ∑ s ∈ Finset.Ico (M k) (2 * M k), (numTypes k s : ℝ) ^ 2 ≤
       ∑ s ∈ Finset.range (2 * M k), (d ((k + 1) ^ 2) s : ℝ) := by
@@ -596,7 +596,7 @@ theorem step_lem_slopes_2_9 (k : ℕ) (hk : 2 ≤ k) :
 
 /-- main.typ 905, lem-slopes step 2, second inequality of the display:
 "`∑_{s < 2M} d_((k+1)²)(s) ≤ 2M T_M^E`". -/
-@[kb "cstarpaper-s-lem-slopes-claim2"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-slopes-claim2"]
 theorem step_lem_slopes_2_10 (k : ℕ) (hk : 2 ≤ k) :
     ∑ s ∈ Finset.range (2 * M k), (d ((k + 1) ^ 2) s : ℝ) ≤ 2 * (M k : ℝ) * TM k ^ E k := by
   rcases Nat.eq_zero_or_pos (M k) with hM | hM

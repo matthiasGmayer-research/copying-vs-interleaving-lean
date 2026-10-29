@@ -105,7 +105,7 @@ theorem s_struct_b_passes (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.
 
 /-- Sentence anchor `s-bounds-meet` (§5, main.typ @ 3d254b5 line 2023): "with `d₀ = R`, so `N = n/R`" — for
 `P = P_k` and `n` the length of `x_k`: the arity of the root is `R`, and `N = n/d₀ = n/R`. -/
-@[kb "cstarpaper-s-bounds-meet" (part := "C1")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-bounds-meet" (part := "C1")]
 theorem d0_Pk (k L : ℕ) (σ : (C1Gadgets.paper k L).Geometry) (pb : PtrBits k L) :
     d0 (Pk k L σ pb) = R k L ∧
       scaleN (Pk k L σ pb) (C1Structure.n k L) = (C1Structure.n k L : ℝ) / (R k L : ℝ) := by
@@ -117,7 +117,7 @@ theorem d0_Pk (k L : ℕ) (σ : (C1Gadgets.paper k L).Geometry) (pb : PtrBits k 
 /-- Sentence anchor `s-bounds-meet` (§5, the same sentence, main.typ @ 3d254b5 lines 2024–2026): "here `H − 1` such
 occurrences [other than the least one] of every column have canonical intervals of at least `e − 4` indices"
 (`step_cols_nonleast`). -/
-@[kb "cstarpaper-s-bounds-meet" (part := "C1: C1Coverage.cols_nonleast: H − 1 occurrences other than the least, each with ≥ e − 4 indices")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-bounds-meet" (part := "C1: C1Coverage.cols_nonleast: H − 1 occurrences other than the least, each with ≥ e − 4 indices")]
 theorem cols_nonleast (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L)
     (σ : (C1Gadgets.paper k L).Geometry) (hσ : (C1Gadgets.paper k L).IsGeometry σ)
     (pb : PtrBits k L) (γ : ℕ) (hγ : γ ∈ Γ k L) (κ : ℕ) (hκ : κ < C1Params.B k L / 2) :

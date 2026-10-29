@@ -7,7 +7,7 @@ namespace SP.CstarText.UpperConv
 open SP.CstarText.Prelim
 
 /-- main.typ 379–380 (§4 notation): "As every arity is at least 2, `2|Q| ≤ m`". -/
-@[kb "cstarpaper-s-sec-upper-arity"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-sec-upper-arity"]
 theorem step_upper_two_card {Q α : Type} (P : Program Q α) (hP : IsZLP P) :
     2 * Nat.card Q ≤ size P := by
   obtain ⟨hfin, harity, -, -⟩ := hP

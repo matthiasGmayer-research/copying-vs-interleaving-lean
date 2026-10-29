@@ -12,7 +12,7 @@ open SP.CstarText.Prelim SP.CstarText.UpperConv
 are the early pieces. The rest of each canonical interval is one late piece." Claim (implicit in "apply
 lem-conversion with the following pieces"): these pieces partition every canonical interval into intervals,
 as lem-conversion requires. -/
-@[kb "cstarpaper-s-lem-split-root"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-split-root"]
 theorem step_split_pieces {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (lam : ℕ) (hlam : 1 ≤ lam) :
     IsPieces P x.length (splitPieces P x.length lam) := by
@@ -58,7 +58,7 @@ theorem step_split_pieces {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : L
 /-- main.typ 609–610, proof of lem-split: "A slot `j` that holds a letter is met only at the index
 `j < d_q`, which is early." Claim: if slot `j` of `q` holds a letter, then the only index `d_q t + j` of
 this slot with `F_q(d_q t + j) < n` is `j` (`t = 0`), and `j < d_q` lies below the threshold of `q`. -/
-@[kb "cstarpaper-s-lem-split-slot"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-split-slot"]
 theorem step_split_letter_early {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (lam : ℕ) (hlam : 1 ≤ lam) (q : Q) (j : ℕ) (a : α)
     (hj : (P.δ q)[j]? = some (.inr a)) :
@@ -112,7 +112,7 @@ theorem step_split_letter_early {Q α : Type} (P : Program Q α) (hP : IsZLP P) 
 interval is one late piece. [...] We count the literals and equations of each kind of piece." Claim: the
 equations of lem-conversion for these pieces are those of the early pieces, of the late pieces of the least
 occurrences, and of the late pieces of the other occurrences. -/
-@[kb "cstarpaper-s-lem-split-these"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-split-these"]
 theorem step_split_kinds {Q α : Type} (P : Program Q α) (n lam : ℕ)
     (E : Q → Occ → Set ℕ → ℕ → Q → Finset (SP.ArithInterval × SP.ArithInterval)) :
     eqUnion P n (splitPieces P n lam) E =

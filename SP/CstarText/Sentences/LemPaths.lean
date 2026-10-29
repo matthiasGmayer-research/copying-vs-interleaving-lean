@@ -49,7 +49,7 @@ private theorem arity_pos_aux {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z
 
 /-- main.typ:1445–1447: "If `y < d + 2`, no path qualifies: the empty path needs `d + 2 ≤ y`, and a non-empty one
 has `p(π)(d_w + 2) ≥ 4d ≥ d + 2`." -/
-@[kb "cstarpaper-s-lem-paths-small" (part := "the empty path needs d + 2 ≤ y")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-paths-small" (part := "the empty path needs d + 2 ≤ y")]
 theorem s_lem_paths_empty {Q α : Type} (P : Program Q α) (z : Q) (y : ℝ) :
     [] ∈ pathsW P z y ↔ (P.arity z : ℝ) + 2 ≤ y := by
   unfold pathsW
@@ -69,7 +69,7 @@ theorem s_lem_paths_empty {Q α : Type} (P : Program Q α) (z : Q) (y : ℝ) :
     simpa using h
 
 /-- main.typ:1446–1447: "a non-empty one has `p(π)(d_w + 2) ≥ 4d ≥ d + 2`". -/
-@[kb "cstarpaper-s-lem-paths-small" (part := "a non-empty path has p(π)(d_w + 2) ≥ 4d ≥ d + 2")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-paths-small" (part := "a non-empty path has p(π)(d_w + 2) ≥ 4d ≥ d + 2")]
 theorem s_lem_paths_nonempty {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z w : Q) (π : List ℕ)
     (hπ : π ≠ []) (hzw : IsPathTo P z π w) :
     4 * (P.arity z : ℝ) ≤ (pathProduct P z π : ℝ) * ((P.arity w : ℝ) + 2) ∧
@@ -94,7 +94,7 @@ theorem s_lem_paths_nonempty {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z 
     nlinarith
 
 /-- main.typ:1445: "If `y < d + 2`, no path qualifies" (so `W_z(y) = 0`). -/
-@[kb "cstarpaper-s-lem-paths-small" (part := "if y < d + 2, no path qualifies")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-paths-small" (part := "if y < d + 2, no path qualifies")]
 theorem s_lem_paths_small {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : Q) (y : ℝ)
     (hy : y < (P.arity z : ℝ) + 2) : pathsW P z y = ∅ ∧ W P z y = 0 := by
   have hd2 : (2 : ℝ) ≤ (P.arity z : ℝ) := by exact_mod_cast P.two_le_arity hP z
@@ -114,7 +114,7 @@ theorem s_lem_paths_small {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : Q
 
 /-- main.typ:1447–1448: "the paths that begin with a slot `j` holding a vertex `z_j` correspond to the paths from
 `z_j` with bound `y/d`": for such a slot, `j :: π` qualifies for `(z, y)` iff `π` qualifies for `(z_j, y/d)`. -/
-@[kb "cstarpaper-s-lem-paths-otherwise" (part := "paths through slot j ↔ paths from z_j with bound y/d")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-paths-otherwise" (part := "paths through slot j ↔ paths from z_j with bound y/d")]
 theorem s_lem_paths_correspond {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z zj : Q) (j : ℕ)
     (hj : (P.δ z)[j]? = some (.inl zj)) (y : ℝ) (π : List ℕ) :
     j :: π ∈ pathsW P z y ↔ π ∈ pathsW P zj (y / P.arity z) := by
@@ -197,7 +197,7 @@ private theorem fiber_aux {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : Q
 
 /-- main.typ:1447–1449: "Otherwise the empty path contributes `d`, and [the correspondence]:
 `W_z(y) = d + ∑_j W_(z_j)(y/d)`" (for `y ≥ d + 2`). -/
-@[kb "cstarpaper-s-lem-paths-otherwise" (part := "W_z(y) = d + ∑_j W_(z_j)(y/d)")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-paths-otherwise" (part := "W_z(y) = d + ∑_j W_(z_j)(y/d)")]
 theorem s_lem_paths_recurrence {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : Q) (y : ℝ)
     (hy : (P.arity z : ℝ) + 2 ≤ y) : W P z y = P.arity z + childSum P z (y / P.arity z) := by
   have hfin := (UpperBound.lem_paths P hP z y).1
@@ -229,7 +229,7 @@ theorem s_lem_paths_recurrence {Q α : Type} (P : Program Q α) (hP : IsZLP P) (
 
 /-- main.typ:1451–1452: "If `y/d < 2`, all terms of the sum vanish (by the first case for `z_j`, as
 `d_(z_j) + 2 ≥ 4`), and `W_z(y) = d ≤ y − 2`" (in the case `y ≥ d + 2`). -/
-@[kb "cstarpaper-s-lem-paths-vanish"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-paths-vanish"]
 theorem s_lem_paths_vanish {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : Q) (y : ℝ)
     (hy : (P.arity z : ℝ) + 2 ≤ y) (hyd : y / P.arity z < 2) :
     (∀ (j : ℕ) (zj : Q), (P.δ z)[j]? = some (.inl zj) →
@@ -255,7 +255,7 @@ theorem s_lem_paths_vanish {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : 
 
 /-- main.typ:1452–1453: "Otherwise, by induction, `W_z(y) ≤ d + d(y/d − 2) = y − d ≤ y − 2`, as there are at most
 `d` slots and `d ≥ 2`." The induction hypothesis is `ih` (the bound for the children `z_j` at `y/d`). -/
-@[kb "cstarpaper-s-lem-paths-induction-step"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-paths-induction-step"]
 theorem s_lem_paths_step {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : Q) (y : ℝ)
     (hy : (P.arity z : ℝ) + 2 ≤ y) (hyd : 2 ≤ y / P.arity z)
     (ih : ∀ (j : ℕ) (zj : Q), (P.δ z)[j]? = some (.inl zj) →
@@ -291,7 +291,7 @@ theorem s_lem_paths_step {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : Q)
 /-- lem-paths from the sentences of its proof (main.typ:1445, "By induction on the height of `z`"): the bound
 `W_z(y) ≤ max(y − 2, 0)`, by induction on `P.rank z` from `s_lem_paths_small`, `s_lem_paths_vanish` and
 `s_lem_paths_step`. -/
-@[kb "cstarpaper-s-lem-paths-induction" (part := "the induction on the height")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-paths-induction" (part := "the induction on the height")]
 theorem lem_paths_sentences {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : Q) (y : ℝ) :
     (W P z y : ℝ) ≤ max (y - 2) 0 := by
   haveI : Finite Q := hP.1

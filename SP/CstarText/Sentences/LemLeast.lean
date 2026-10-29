@@ -368,7 +368,7 @@ theorem s_lem_least_b_path {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q : 
 
 /-- main.typ:1324–1325: "The child `q'` in slot `j` has the least path of `q` followed by `(q, j)` as its least
 path; so `χ = ρ*_q(d_q t + j)` is the least occurrence `ρ*_(q')`" (for a tree slot `(q, j)` holding `q'`). -/
-@[kb "cstarpaper-s-lem-least-c-child"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-least-c-child"]
 theorem s_lem_least_c_child {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q q' : Q) (j : ℕ)
     (hT : (q, j) ∈ treeSlots P) (hj : (P.δ q)[j]? = some (.inl q')) (π : List ℕ)
     (hπ : IsLeastPath P q π) :
@@ -396,7 +396,7 @@ theorem s_lem_least_c_child {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q q
 
 /-- main.typ:1325–1326: "Let `η ∈ occ_(q')` with `η(t) < χ(t)` for some `t`. As `χ` is least, `η` has a larger step
 than `χ`, or the same step and a larger offset". -/
-@[kb "cstarpaper-s-lem-least-c-let"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-least-c-let"]
 theorem s_lem_least_c_let {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q q' : Q) (j : ℕ)
     (hT : (q, j) ∈ treeSlots P) (hj : (P.δ q)[j]? = some (.inl q')) (η : Occ) (hη : η ∈ occ P q')
     (t : ℕ) (ht : η t < chi P q (leastOcc P q) j t) :
@@ -412,7 +412,7 @@ theorem s_lem_least_c_let {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q q' 
     exact h'
 
 /-- main.typ:1326–1327: "in the second case `η` would lie above `χ` everywhere". -/
-@[kb "cstarpaper-s-lem-least-c-second"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-least-c-second"]
 theorem s_lem_least_c_second (χ η : Occ) (hs : χ.step = η.step) (ho : χ.offset < η.offset) :
     ∀ t : ℕ, χ t < η t := by
   intro t
@@ -421,7 +421,7 @@ theorem s_lem_least_c_second (χ η : Occ) (hs : χ.step = η.step) (ho : χ.off
   omega
 
 /-- main.typ:1327–1328: "So its step is larger, `η − χ` is increasing, and `U_η` is an initial segment." -/
-@[kb "cstarpaper-s-lem-least-c-so"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-least-c-so"]
 theorem s_lem_least_c_so {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q q' : Q) (j : ℕ)
     (hT : (q, j) ∈ treeSlots P) (hj : (P.δ q)[j]? = some (.inl q')) (J : Set ℕ) (η : Occ)
     (hη : η ∈ occ P q') (t : ℕ) (ht : η t < chi P q (leastOcc P q) j t) :

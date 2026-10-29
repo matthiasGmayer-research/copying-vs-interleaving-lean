@@ -125,7 +125,7 @@ theorem step_lem_slopes_3_1 (k : ℕ) (hk : 2 ≤ k) :
 
 /-- main.typ 909–910, lem-slopes step 3: "`(∑_s A(s))² / ∑_s A(s)² ≥ M / (2^(2k+3) T_M^E)`", from the
 claims of steps 1 and 2. -/
-@[kb "cstarpaper-s-lem-slopes-cauchy"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-slopes-cauchy"]
 theorem step_lem_slopes_3_2 (k : ℕ) (hk : 2 ≤ k)
     (hS1 : (M k : ℝ) / 2 ^ (k + 1) ≤ ∑ s ∈ Finset.Ico (M k) (2 * M k), (numTypes k s : ℝ))
     (hS2 : ∑ s ∈ Finset.Ico (M k) (2 * M k), (numTypes k s : ℝ) ^ 2 ≤ 2 * (M k : ℝ) * TM k ^ E k) :

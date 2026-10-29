@@ -246,7 +246,7 @@ private theorem ts_rmax (N : ℝ) :
 
 /-- main.typ:1540–1541: "Take `λ = 1`. As `√N ≤ 4 = 4λ`, @lem-split (b) gives `ARC(x) ≤ (m + m_𝒯) + m_𝒯 + 2K =
 3m − 2m_Σ ≤ 3m`, with `K = m − m_Σ − m_𝒯`." -/
-@[kb "cstarpaper-s-thm-scale-small-take"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-thm-scale-small-take"]
 theorem s_thm_scale_small_take {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (hN : scaleN P x.length ≤ 16) :
     Real.sqrt (scaleN P x.length) ≤ 4 * ((1 : ℕ) : ℝ) ∧
@@ -271,7 +271,7 @@ theorem s_thm_scale_small_take {Q α : Type} (P : Program Q α) (hP : IsZLP P) (
   exact_mod_cast h3
 
 /-- main.typ:1541: "Also `ARC(x) ≤ n = N d₀ ≤ N m`." -/
-@[kb "cstarpaper-s-thm-scale-small-also"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-thm-scale-small-also"]
 theorem s_thm_scale_small_also {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) :
     (ARC x : ℝ) ≤ x.length ∧ (x.length : ℝ) = scaleN P x.length * d0 P ∧
       scaleN P x.length * d0 P ≤ scaleN P x.length * size P := by
@@ -283,7 +283,7 @@ theorem s_thm_scale_small_also {Q α : Type} (P : Program Q α) (hP : IsZLP P) (
   · exact mul_le_mul_of_nonneg_left (by exact_mod_cast hd.2) hN0
 
 /-- main.typ:1542: "So `ARC(x) ≤ min(N, 3) m ≤ 3^(3/4) N^(1/4) m < 2√2 N^(1/4) m`." -/
-@[kb "cstarpaper-s-thm-scale-small-so"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-thm-scale-small-so"]
 theorem s_thm_scale_small_so {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (hN : scaleN P x.length ≤ 16) :
     (ARC x : ℝ) ≤ min (scaleN P x.length) 3 * size P ∧
@@ -361,7 +361,7 @@ theorem s_thm_scale_small_so {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x 
 
 /-- main.typ:1543–1545: "Put `λ_* := √2 N^(1/4) > 2√2`, `λ := ⌊λ_*⌋ ≥ 2`, `f := λ_* − λ ∈ [0, 1)` and
 `r := max(2, λ_*²/λ − 2)`; as `λ_*² = 2√N`, `2 max(1, √N/λ − 1) = r`." -/
-@[kb "cstarpaper-s-thm-scale-large-put"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-thm-scale-large-put"]
 theorem s_thm_scale_large_put (N : ℝ) (hN : 16 < N) :
     2 * Real.sqrt 2 < lamStar N ∧ 2 ≤ lamFl N ∧ 0 ≤ fracF N ∧ fracF N < 1 ∧
       lamStar N ^ 2 = 2 * Real.sqrt N ∧
@@ -371,7 +371,7 @@ theorem s_thm_scale_large_put (N : ℝ) (hN : 16 < N) :
 
 /-- main.typ:1545–1546: "By @lem-split (a), with `K ≤ m − m_𝒯`, `ARC(x) ≤ λm + (λ + 1)m_𝒯 + r(m − m_𝒯) =
 (λ + r)m + (λ + 1 − r)m_𝒯`." -/
-@[kb "cstarpaper-s-thm-scale-large-by"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-thm-scale-large-by"]
 theorem s_thm_scale_large_by {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (hN : 16 < scaleN P x.length) :
     (K P : ℝ) ≤ size P - mT P ∧
@@ -400,7 +400,7 @@ theorem s_thm_scale_large_by {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x 
 
 /-- main.typ:1547–1548: "The coefficient `λ + 1 − r` is `λ − 1 > 0` if `r = 2`, and otherwise
 `3 − 2f − f²/λ > 0`, as `λ_*²/λ = λ + 2f + f²/λ`." -/
-@[kb "cstarpaper-s-thm-scale-large-coefficient"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-thm-scale-large-coefficient"]
 theorem s_thm_scale_large_coefficient (N : ℝ) (hN : 16 < N) :
     (rCoef N = 2 → (lamFl N : ℝ) + 1 - rCoef N = lamFl N - 1 ∧ 0 < (lamFl N : ℝ) - 1) ∧
       (rCoef N ≠ 2 → (lamFl N : ℝ) + 1 - rCoef N = 3 - 2 * fracF N - fracF N ^ 2 / lamFl N ∧
@@ -409,7 +409,7 @@ theorem s_thm_scale_large_coefficient (N : ℝ) (hN : 16 < N) :
   exact ts_coeff N hN
 
 /-- main.typ:1548–1550: "With `m_𝒯 ≤ m/2`, `ARC(x)/m ≤ (3λ + r + 1)/2 = max((3λ + 3)/2, (3λ + λ_*²/λ − 1)/2)`." -/
-@[kb "cstarpaper-s-thm-scale-large-with"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-thm-scale-large-with"]
 theorem s_thm_scale_large_with {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (hN : 16 < scaleN P x.length) :
     (mT P : ℝ) ≤ size P / 2 ∧
@@ -436,7 +436,7 @@ theorem s_thm_scale_large_with {Q α : Type} (P : Program Q α) (hP : IsZLP P) (
   nlinarith
 
 /-- main.typ:1550–1551: "The first term is at most `2λ ≤ 2λ_*` if `λ ≥ 3`, and `9/2 < 2λ_*` if `λ = 2`." -/
-@[kb "cstarpaper-s-thm-scale-large-first"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-thm-scale-large-first"]
 theorem s_thm_scale_large_first (N : ℝ) (hN : 16 < N) :
     (3 ≤ lamFl N → (3 * (lamFl N : ℝ) + 3) / 2 ≤ 2 * lamFl N ∧ 2 * (lamFl N : ℝ) ≤ 2 * lamStar N) ∧
       (lamFl N = 2 → (3 * (lamFl N : ℝ) + 3) / 2 = 9 / 2 ∧ (9 / 2 : ℝ) < 2 * lamStar N) := by
@@ -453,7 +453,7 @@ theorem s_thm_scale_large_first (N : ℝ) (hN : 16 < N) :
     · linarith
 
 /-- main.typ:1551–1552: "The second is `2λ_* − f − 1/2 + f²/(2λ) < 2λ_*`." -/
-@[kb "cstarpaper-s-thm-scale-large-second"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-thm-scale-large-second"]
 theorem s_thm_scale_large_second (N : ℝ) (hN : 16 < N) :
     (3 * (lamFl N : ℝ) + lamStar N ^ 2 / lamFl N - 1) / 2 =
         2 * lamStar N - fracF N - 1 / 2 + fracF N ^ 2 / (2 * lamFl N) ∧
@@ -476,7 +476,7 @@ theorem s_thm_scale_large_second (N : ℝ) (hN : 16 < N) :
   · linarith
 
 /-- main.typ:1552: "So `ARC(x) ≤ 2λ_* m = 2√2 N^(1/4) m`." -/
-@[kb "cstarpaper-s-thm-scale-large-so"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-thm-scale-large-so"]
 theorem s_thm_scale_large_so {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (hN : 16 < scaleN P x.length) :
     (ARC x : ℝ) ≤ 2 * lamStar (scaleN P x.length) * size P ∧

@@ -18,7 +18,7 @@ open SP.CstarText.Prelim SP.CstarText.UpperConv SP.CstarText.Method SP.CstarText
 open SP.CstarText.SCParams SP.CstarText.SCGadgets SP.CstarText.UpperBound
 
 /-- Sentence `s-least-larger-step` (§4.2): `step_least_tree_slot`. -/
-@[kb "cstarpaper-s-least-larger-step" (part := "CoverageRev3.least_tree_slot")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-least-larger-step" (part := "CoverageRev3.least_tree_slot")]
 theorem least_tree_slot {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q q' : Q) (j : ℕ)
     (hT : (q, j) ∈ treeSlots P) (hj : (P.δ q)[j]? = some (.inl q')) :
     chi P q (leastOcc P q) j = leastOcc P q' ∧
@@ -27,7 +27,7 @@ theorem least_tree_slot {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q q' : 
   step_least_tree_slot P hP q q' j hT hj
 
 /-- Sentence `s-cut-steps-differ` (after lem-cut): `step_cut_occ`. -/
-@[kb "cstarpaper-s-cut-steps-differ" (part := "CoverageRev3.cut_occ")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-cut-steps-differ" (part := "CoverageRev3.cut_occ")]
 theorem cut_occ {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (q : Q) (hq : q ≠ P.root) (ρ : Occ)
     (hρ : ρ ∈ Acan P x.length q) (hne : ρ ≠ leastOcc P q) (js js₁ : List ℕ) (w : Q) (j : ℕ)
@@ -68,7 +68,7 @@ theorem shift_paths {Q β : Type} (P : Program Q β) (hP : IsFiniteAcyclic P) (g
   step_shift_paths P hP g U V hV L hL z hz
 
 /-- Sentence `s-lem-split-slot` (proof of lem-split): `step_split_slot_literal`. -/
-@[kb "cstarpaper-s-lem-split-slot" (part := "CoverageRev3.split_slot_literal")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-lem-split-slot" (part := "CoverageRev3.split_slot_literal")]
 theorem split_slot_literal {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (lam : ℕ) (hlam : 1 ≤ lam) (q : Q) (j : ℕ) (a : α)
     (hj : (P.δ q)[j]? = some (.inr a)) :

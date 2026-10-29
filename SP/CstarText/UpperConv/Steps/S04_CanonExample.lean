@@ -26,7 +26,7 @@ private theorem ex_firstPos_aux (t : ℕ) :
     · rintro x (rfl | rfl | rfl) <;> simp <;> omega
 
 /-- main.typ 409–410: "`F_q(0), F_q(1), F_q(2) = 0, 3, 5` and `F_q(3) = 7 = n`". -/
-@[kb "cstarpaper-s-def-canonical-example"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-def-canonical-example"]
 theorem step_ex_canonical_firstPos :
     firstPos exProg .q 0 = 0 ∧ firstPos exProg .q 1 = 3 ∧ firstPos exProg .q 2 = 5 ∧
       firstPos exProg .q 3 = 7 ∧ exX.length = 7 := by
@@ -41,7 +41,7 @@ theorem step_ex_canonical_firstPos :
 
 /-- main.typ 410–411: "the canonical intervals of the occurrences `4t`, `2t + 1` and `4t + 2` of `q` are
 `{0}`, `{1, 2}` and `∅`" (with `n = |x| = 7`). -/
-@[kb "cstarpaper-s-def-canonical-example" (part := "UpperConv.step_ex_canonical_intervals")]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-def-canonical-example" (part := "UpperConv.step_ex_canonical_intervals")]
 theorem step_ex_canonical_intervals :
     canonInterval exProg 7 .q ⟨4, 0⟩ = {0} ∧ canonInterval exProg 7 .q ⟨2, 1⟩ = {1, 2} ∧
       canonInterval exProg 7 .q ⟨4, 2⟩ = ∅ := by

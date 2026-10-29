@@ -237,7 +237,7 @@ theorem cols_nonleast (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : 
 
 /-- Sentence anchor `s-least-larger-step` (before lem-least, main.typ @ 3d254b5 lines 1467–1468): "an occurrence of the
 child that writes some symbol earlier than the child's least occurrence has a larger step" (for any vertex). -/
-@[kb "cstarpaper-s-least-larger-step"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-least-larger-step"]
 theorem earlier_larger_step {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q : Q) (η : Occ)
     (hη : η ∈ occ P q) (t : ℕ) (ht : η t < leastOcc P q t) : (leastOcc P q).step < η.step :=
   step_earlier_larger_step P hP q η hη t ht
@@ -245,7 +245,7 @@ theorem earlier_larger_step {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q :
 /-- Sentence anchor `s-cut-steps-differ` (after lem-cut, main.typ @ 3d254b5 lines 1513–1514): "the least occurrence
 of `z` and the occurrence of `z` along the root path of `ρ`, whose steps differ by at least `d₀`" — for `z ≠ q₀` and
 an occurrence `ζ` of `z` below `ρ*_z` at some index. -/
-@[kb "cstarpaper-s-cut-steps-differ"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-cut-steps-differ"]
 theorem steps_differ_ge_d0 {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : Q) (hz : z ≠ P.root) (ζ : Occ)
     (hζ : ζ ∈ occ P z) (t : ℕ) (ht : ζ t < leastOcc P z t) : (leastOcc P z).step + d0 P ≤ ζ.step :=
   step_steps_differ P hP z hz ζ hζ t ht
@@ -253,7 +253,7 @@ theorem steps_differ_ge_d0 {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : 
 /-- Sentence anchor `s-fig-example-middle` (fig-example, the middle panel): "under each position of `x`, the
 occurrence `s t + i` of `q` that writes it and the index `t`" — positions `0, …, 6` are written by `4t, 2t+1, 4t+2,
 2t+1, 4t, 2t+1, 4t+2` at the indices `0, 0, 0, 1, 1, 2, 1`, and by no other occurrence of `q` or index. -/
-@[kb "cstarpaper-s-fig-example-middle"]
+-- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-fig-example-middle"]
 theorem fig_example_table :
     ∀ i : Fin 7, figOcc i ∈ occ exProg .q ∧ figOcc i (figIdx i) = i ∧
       ∀ ρ' ∈ occ exProg .q, ∀ t' : ℕ, ρ' t' = i → ρ' = figOcc i ∧ t' = figIdx i :=
