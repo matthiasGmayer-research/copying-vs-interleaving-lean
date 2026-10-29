@@ -60,7 +60,13 @@ def paper_meta(path):
     body = rest[:n.start() if n else len(rest)].strip()
     # cross-references -> the label in monospace (the paper's labels, as in the README)
     body = re.sub(r'@([A-Za-z0-9][A-Za-z0-9_:-]*[A-Za-z0-9])', lambda k: f'#raw("{k.group(1)}")', body)
-    return title.strip(), names, body
+    # the paper's notation macros (ARC, sZLC, ...), without the site's hover links
+    nf = os.path.join(os.path.dirname(path), 'notation.typ')
+    notation = ''
+    if os.path.exists(nf):
+        notation = '#let doc-sym(label, body) = body\n' + '\n'.join(
+            l for l in open(nf).read().split('\n') if not l.startswith('#import'))
+    return title.strip(), names, body, notation
 
 
 # ---------------------------------------------------------------- Markdown (the README subset) -> Typst
@@ -80,10 +86,11 @@ def rawstr(t):
 
 def inline(t):
     out, i = [], 0
-    for m in re.finditer(r'`([^`]+)`|\*\*([^*]+)\*\*', t):
+    for m in re.finditer(r'`([^`]+)`|\*\*([^*]+)\*\*|(?<![\w*])\*([^*\s][^*]*)\*(?![\w*])', t):
         out.append(esc(t[i:m.start()]))
         if m.group(1) is not None: out.append('#' + rawstr(m.group(1)))
-        else: out.append('*' + inline(m.group(2)) + '*')
+        elif m.group(2) is not None: out.append('*' + inline(m.group(2)) + '*')
+        else: out.append('_' + inline(m.group(3)) + '_')
         i = m.end()
     out.append(esc(t[i:]))
     s = ''.join(out)
@@ -102,7 +109,8 @@ def table(rows, widths=None):
            '  table.header(' + ', '.join(f'[*{inline(h)}*]' for h in head) + '),']
     for r in body:
         r = (r + [''] * n)[:n]
-        out.append('  ' + ', '.join(f'[{inline(c)}]' for c in r) + ',')
+        # several proof steps in a cell: one per line
+        out.append('  ' + ', '.join('[' + inline(c).replace('; #raw("st-', ' \\\n#raw("st-') + ']' for c in r) + ',')
     out.append(')')
     return '\n'.join(out)
 
@@ -222,7 +230,7 @@ def main():
     a = ap.parse_args()
     os.chdir(ROOT)
 
-    title, authors, coverage = paper_meta(a.paper)
+    title, authors, coverage, notation = paper_meta(a.paper)
     readme = open('README.md').read()
     rtitle, pre, sec = sections(readme)
     need = ['The main statements in Lean', 'Versions and build', 'The correspondence', 'Earlier versions',
@@ -252,6 +260,8 @@ def main():
     nprint = len(re.findall(r'^#print axioms', check_lean, re.M))
     if len(ax) != nprint: die(f'Check.out has {len(ax)} axiom lines, Check.lean {nprint} #print axioms')
 
+    # the README's preamble without its first paragraph (what the README is; the title page says it here)
+    pre_kept = '\n\n'.join(p for p in re.split(r'\n\s*\n', pre.strip()) if not p.startswith('Machine-checked proofs'))
     rev = git('rev-parse', '--short=12', 'HEAD')
     dirty = bool(git('status', '--porcelain', '--', 'SP', 'SP.lean', 'README.md', 'Check.lean', 'lakefile.toml',
                      'lake-manifest.json', 'lean-toolchain'))
@@ -274,6 +284,8 @@ def main():
 #show table: set text(size: 8.5pt)
 #show table: set par(justify: false)
 #show link: set text(fill: rgb("#1f4e8c"))
+// the paper's notation (its notation.typ)
+{notation}
 
 #align(center)[
   #v(2.5cm)
@@ -305,7 +317,7 @@ Section 1.3 of the paper (Formal verification) states:
 
 #block(inset: (left: 1.2em), stroke: (left: 1pt + luma(180)))[{coverage}]
 
-{md_to_typst(pre.strip())}
+{md_to_typst(pre_kept)}
 In this revision, {len(seen)} labels of the paper (numbered blocks, their parts and proof steps) have declarations
 (the table of @sec-map), and {len(sentences)} further tags anchor sentences of the paper's text.
 
