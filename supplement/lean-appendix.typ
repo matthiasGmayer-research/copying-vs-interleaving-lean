@@ -44,7 +44,7 @@
 
 
 #align(center)[
-  #v(2.5cm)
+  #v(1cm)
   #text(size: 20pt, weight: "bold")[Appendix: Lean formalisation]
   #v(0.6cm)
   #text(size: 12pt)[Supplementary material to]
@@ -53,17 +53,17 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("665735a907a4") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
-  350 modules · 594 declarations tagged with the paper's labels · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
+  #text(size: 10pt)[Lean repository revision #raw("a2eae2a7a71a") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  350 modules · 592 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
-#v(1fr)
+#v(1.2cm)
 #block(inset: (x: 1cm))[#set text(size: 9.5pt)
 This supplement gives what a referee needs to check the paper's claim of formal verification (Section 1.3) without
 the repository: the coverage and its exceptions, the main statements as they stand in Lean, the declaration of every
 numbered block and proof step, and the build and axiom audit. It is generated from the repository at the revision
 above. The paper's blocks are cited by their labels (such as #raw("thm-upper")), which the Lean source carries as
 tags (#raw("@[kb \"cstarpaper-<label>\"]")).]
-#pagebreak()
+#v(0.6cm)
 #outline(depth: 2)
 #pagebreak()
 
@@ -82,8 +82,9 @@ The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-c
 
 *Status.* Every numbered definition, statement and proof step of the paper's own development, apart from the comparisons in #raw("rem-measures") that rest on cited results, has a sorry-free Lean declaration (axioms #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")): the upper bound in its version U12a (#raw("SP.CstarText.U12a"), constant 2), the lower bound in its version C1/I1 (prime types, parameters of (k, L) for every L ≥ 512 k log(k + 2): #raw("SP.CstarText.C1Params") … #raw("C1Lower"), #raw("C1Coverage"), #raw("C1Sent")), and #raw("prop-scheme"), the critical-set bound, with the bound of #raw("lem-random") (#raw("SP.CstarText.MethodRev.prop_scheme")). Sentences of the text outside the numbered blocks that state a fact are tagged as well (sentence anchors, #raw("@[kb \"cstarpaper-s-…\"]")); these tags locate the declarations and claim nothing beyond the statement above. The formalisations of earlier versions are kept in the repository (see "Earlier versions" below); their superseded statements no longer carry the paper's tags.
 
-In this revision, 95 labels of the paper (numbered blocks, their parts and proof steps) have declarations
-(the table of @sec-map), and 132 further tags anchor sentences of the paper's text.
+In this revision, the table of @sec-map has a row for each of the paper's 58 numbered blocks, with the
+declarations of their 34 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper") (conventions and
+notation stated in those sections); 132 further tags anchor sentences of the paper's text.
 
 == Cited results
 
@@ -175,10 +176,12 @@ noncomputable def ZLC {α : Type} [Nonempty α] (x : List α) : ℕ :=
 ```
 
 ```lean
+-- namespace SP.CstarText.Prelim
 def IsSynchronous {Q α : Type} (P : Program Q α) : Prop :=
   ∃ φ : Q → ℕ, φ P.root = 1 ∧
     ∀ (q q' : Q) (j : ℕ), (P.δ q)[j]? = some (.inl q') → φ q' = P.arity q * φ q
 
+-- namespace SP.CstarText.Prelim
 noncomputable def sZLC {α : Type} [Nonempty α] (x : List α) : ℕ :=
   sInf {m : ℕ | ∃ (Q : Type) (P : Program Q α), IsZLP P ∧ IsSynchronous P ∧
     x <+: SP.Program.val P ∧ SP.Program.size P = m}
@@ -264,7 +267,7 @@ theorem prop_reverse :
 
 = The correspondence <sec-map>
 
-Each numbered definition, statement and proof step of the paper's own development has a Lean declaration that states it, except the comparisons of #raw("rem-measures") that rest on cited results (see below). The table lists, for each numbered block, every declaration tagged with its label (definitions, statement parts) and the declarations of its proof steps; the sentence anchors of the paper are tagged the same way (#raw("@[kb \"cstarpaper-s-…\"]")). Names are relative to the namespace #raw("SP.CstarText") unless they begin with #raw("SP"). The main results come first. One proof step is split over two declarations, of which the table lists the second: #raw("st-scheme-event") says that with probability at least 1 − |S| n³ 2^(−u) exp(6u²/D) no candidate holds, and that then every forward equation that holds in x has fewer than u² targets in S. The probability clause is #raw("Method.step_prop_scheme_2_prob") (anchor #raw("s-prop-scheme-first"); its ε is the bound 2^(−u) exp(6u²/D) of #raw("st-scheme-cand")), the consequence is #raw("Method.step_prop_scheme_2_event").
+Each numbered definition, statement and proof step of the paper's own development has a Lean declaration that states it, except the comparisons of #raw("rem-measures") that rest on cited results (see below). The table lists, for each numbered block, every declaration tagged with its label (definitions, statement parts) and the declarations of its proof steps; the sentence anchors of the paper are tagged the same way (#raw("@[kb \"cstarpaper-s-…\"]")). Names are relative to the namespace #raw("SP.CstarText") unless they begin with #raw("SP"). The main results come first. One proof step is split over two declarations, of which the table lists the second: #raw("st-scheme-event") says that with probability at least 1 − |S| n³ 2^(−u) exp(6u²/D) no candidate holds, and that then every forward equation that holds in x has fewer than u² targets in S. The probability clause is #raw("Method.step_prop_scheme_2_prob") (anchor #raw("s-prop-scheme-first"); its ε is the bound 2^(−u) exp(6u²/D) of #raw("st-scheme-cand")), the consequence is #raw("Method.step_prop_scheme_2_event"). Likewise #raw("st-conv-cov") is stated for every vertex q by #raw("UpperConv.step_conv_cov"); its clause "in particular every position of \[n\] is" is the case q = q₀, with F\_(q₀)(t') = t' (#raw("UpperConv.step_conv_cov_root"), anchor #raw("s-lem-conversion-induction")). The declaration of a proof step states the step's claim in the context of its block: the block's hypotheses, the claims of the earlier steps and, for #raw("st-struct-length"), #raw("st-struct-unique"), #raw("st-u-hit"), #raw("st-u-moment"), #raw("st-u-root"), #raw("st-ap-large") and #raw("st-ap-small"), the sub-claims of the step's own proof enter as hypotheses, which the block's declaration discharges where it applies the step (#raw("st-struct-decode")'s #raw("C1StructureRev.step_struct_c2_rev") has the hypotheses of #raw("C1Structure.step_struct_c2"), which #raw("lem-structure") applies).
 
 #table(columns: (auto, 1.3fr, 1fr), align: left, stroke: 0.4pt + luma(180), inset: 4pt,
   table.header([*paper (label)*], [*statement*], [*proof steps*]),
@@ -378,9 +381,7 @@ Dependency routes (#raw("python3 tools/deps.py README.md") runs #raw("lake env l
 
 The formalisation uses Lean 4 at the toolchain #raw("leanprover/lean4:v4.33.0-rc1") (#raw("lean-toolchain")) and Mathlib at the tag #raw("v4.33.0-rc1") (commit #raw("79d0395"), pinned in #raw("lake-manifest.json")). #raw("lake exe cache get && lake build") builds the formalisation. Then #raw("lake env lean Check.lean") prints the statements (#raw("#check")) and the axioms on which the main declarations depend; they are among #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound"). This repository is exported from the author's research project (#raw("export.sh")); module names keep its prefix #raw("SP").
 
-Pinned in this revision: toolchain #raw("leanprover/lean4:v4.33.0-rc1") (file #raw("lean-toolchain")); Mathlib
-#raw("v4.33.0-rc1") at commit #raw("79d0395a1825a6264ad5d269e35e60537518955e") (file #raw("lake-manifest.json")).
-The build: `lake exe cache get` (the Mathlib cache), `lake build` (350 modules), then `lake env lean Check.lean`.
+The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e"); the build has 350 modules.
 
 == The audit file Check.lean
 
