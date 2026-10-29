@@ -278,7 +278,8 @@ def main():
 
     # the README's preamble without its first paragraph (what the README is; the title page says it here)
     pre_kept = '\n\n'.join(p for p in re.split(r'\n\s*\n', pre.strip()) if not p.startswith('Machine-checked proofs'))
-    rev = git('rev-parse', '--short=12', 'HEAD')
+    rev = git('log', '-1', '--format=%h', '--abbrev=12', '--', 'SP', 'SP.lean', 'README.md', 'Check.lean', 'lakefile.toml',
+              'lake-manifest.json', 'lean-toolchain')   # the last commit of the inputs, not of the PDF source
     dirty = bool(git('status', '--porcelain', '--', 'SP', 'SP.lean', 'README.md', 'Check.lean', 'lakefile.toml',
                      'lake-manifest.json', 'lean-toolchain'))
     if dirty and not a.allow_dirty: die('uncommitted changes in the formalisation (commit, or --allow-dirty for a draft)')
