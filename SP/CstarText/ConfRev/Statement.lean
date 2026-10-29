@@ -177,7 +177,7 @@ with `c < a < 1/4`. Without loss of generality `0, 1 ∈ Σ`; then the binary wo
 with the same `ARC` … and at most the same `ZLC` … . They are infinitely many, hence of unbounded length, and those
 with `n^(a − c) > C` violate the inequality, as `ZLC(x) ≥ 1`." (The words of length 0, at most one, are dropped
 before choosing a long one.) -/
-@[kb "cstarpaper-cor-cstar" (part := "the paper's statement, from the paper's proofs of thm-upper and thm-lower")]
+-- (tag cstarpaper-cor-cstar retired 2026-10-30: successor SP.CstarText.CorDirect.cor_cstar, from the current main theorems)
 theorem cor_cstar_text (α : Type) [Fintype α] [Nonempty α] (h : ∃ a b : α, a ≠ b) :
     IsLeast {c : ℝ | SP.CstarPaper.AdmissibleOAlpha α c} (1 / 4 : ℝ) := by
   refine ⟨⟨2 ^ (5 / 4 : ℝ), fun x hx => SP.CstarText.UpperBound.thm_upper_paper x hx⟩, fun c hc => ?_⟩

@@ -28,7 +28,7 @@ that name a namespace are ours; the definitions are in the namespace `SP` unless
 module `SP.CstarText.Prelim` names the definitions of the paper's preliminaries (`sec-prelim`) by abbreviations of
 them. The formal statements depart from the text as follows: words are lists, `x <+: y` says that `x` is a prefix of
 `y`, a vertex set is any type required to be finite, and the alphabet is any type with an element, finite in
-`cor_cstar_text`. Some names keep earlier terms: an `ArithInterval` is an arithmetic progression (`def-interval`), a
+`cor_cstar`. Some names keep earlier terms: an `ArithInterval` is an arithmetic progression (`def-interval`), a
 `SlotGraph` is the map δ whose pairs (q, j) are the edges of a program, and `SlotGraph.Edge q q'` says that some edge
 of `q` leads to `q'`. In Lean names and part labels, *slot* means edge and *canonical interval* means lowest interval.
 In `Covers` the index ranges over t < |α|, where `def-ars` says t < min(|α|, |α'|); the two predicates agree
@@ -186,12 +186,12 @@ theorem thm_lower :
 ```
 
 ```lean
--- namespace SP.CstarText.IntroRev
-theorem cor_cstar_text (α : Type) [Fintype α] [Nonempty α] (h : ∃ a b : α, a ≠ b) :
+-- namespace SP.CstarText.CorDirect
+theorem cor_cstar (α : Type) [Fintype α] [Nonempty α] (h : ∃ a b : α, a ≠ b) :
     IsLeast {c : ℝ | SP.CstarPaper.AdmissibleOAlpha α c} (1 / 4 : ℝ)
 
--- namespace SP.CstarText.CorSzlcEvery
-theorem cor_szlc_every (a : ℝ) (ha : a < 1 / 4) : ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
+-- namespace SP.CstarText.CorDirect
+theorem cor_szlc (a : ℝ) (ha : a < 1 / 4) : ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
     ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (ZLC x : ℝ) ≤ (SP.CstarText.Prelim.sZLC x : ℝ)
 ```
 
@@ -238,8 +238,8 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 |---|---|---|
 | `thm-upper` | `U12a.thm_upper` |  |
 | `thm-lower` | `C1Lower.lossFactor`, `C1Lower.thm_lower` | `st-lower-prefix`: `C1Lower.step_lower_prefix`; `st-lower-lengths`: `C1Lower.step_lower_lengths`; `st-lower-assemble`: `C1Lower.step_lower_assemble` |
-| `cor-cstar` | `SP.CstarPaper.AdmissibleO`, `SP.CstarPaper.AdmissibleOAlpha`, `SP.CstarPaper.cor_cstar`, `SP.CstarPaper.cor_cstar_fixed_alphabet`, `Intro.cor_cstar_i`, `Intro.cor_cstar_ii`, `IntroRev.cor_cstar_text`, `IntroRev.cor_cstar` |  |
-| `cor-szlc` | `CoverageRev.no_polylog_szlc_zlc`, `CorSzlcEvery.cor_szlc_every` |  |
+| `cor-cstar` | `SP.CstarPaper.AdmissibleO`, `SP.CstarPaper.AdmissibleOAlpha`, `SP.CstarPaper.cor_cstar`, `SP.CstarPaper.cor_cstar_fixed_alphabet`, `Intro.cor_cstar_i`, `Intro.cor_cstar_ii`, `IntroRev.cor_cstar`, `CorDirect.cor_cstar` |  |
+| `cor-szlc` | `CoverageRev.no_polylog_szlc_zlc`, `CorDirect.cor_szlc` |  |
 | `prop-reverse` | `SP.ReverseUpper.zlc_le_arc`, `Reverse.prop_reverse_i`, `ReverseZ.prop_reverse_second`, `ReverseZ.prop_reverse` |  |
 | `sec-prelim`, conventions | `Prelim.log2`, `Prelim.slice` |  |
 | `def-interval` | `Prelim.ArithInterval`, `Prelim.readAt`, `Prelim.readLen`, `Prelim.def_interval_prefix`, `Prelim.def_interval_read`, `CoverageRev.interval_step_determined` |  |
@@ -301,7 +301,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 ## Earlier versions
 
 The repository also keeps the formalisations of earlier versions of the paper. They are proved; the superseded
-statements in the first five rows no longer carry the paper's tags and do not state the current results. The last
+statements in the first six rows no longer carry the paper's tags and do not state the current results. The last
 row is a second proof of the main results, with a weaker constant in the upper bound (see "The earlier
 formalisation"); its `SP.CstarPaper.cor_cstar_fixed_alphabet` states the current `cor-cstar` (a fixed alphabet) and
 `SP.CstarPaper.cor_cstar` a variant uniform over all finite alphabets, and both keep the tag of `cor-cstar`.
@@ -313,10 +313,11 @@ formalisation"); its `SP.CstarPaper.cor_cstar_fixed_alphabet` states the current
 | thm-lower with the loss exp(−C (log n)^(2/3) (log log n)^(1/3)), every length via an auxiliary family | `EveryLength.thm_lower_every` (and `EveryLength.AuxFam`) |
 | thm-lower, former form (infinitely many words) | `SCFinal.thm_lower_conf`, `SCFinal.thm_lower_strong`, `SCFinal.thm_lower`, `SCFinal.rem_loss` |
 | cor-szlc, former form (infinitely many words) | `Sentences.cor_szlc_text` |
+| cor-cstar and cor-szlc as stated now, proved from the earlier versions of the two main theorems | `IntroRev.cor_cstar_text`, `CorSzlcEvery.cor_szlc_every`, `CorSzlcEvery.s_cor_szlc_proof` |
 | Another proof of the main results (weaker constant) | `SP.CstarConst.arc_le_const`, `SP.CstarPaper.thm_lower`, `SP.CstarPaper.cor_cstar`, `SP.ReverseUpper.zlc_le_arc` |
 
-`cor-cstar` (`IntroRev.cor_cstar_text`) and `cor-szlc` (`CorSzlcEvery.cor_szlc_every`) state the paper's corollaries
-exactly; their proofs cite the earlier versions of the two main theorems, which imply the same corollaries.
+`cor-cstar` (`CorDirect.cor_cstar`) and `cor-szlc` (`CorDirect.cor_szlc`) are proved from the current
+`U12a.thm_upper` and `C1Lower.thm_lower`.
 
 ## Cited results
 

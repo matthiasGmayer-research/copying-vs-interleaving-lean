@@ -80,6 +80,7 @@ import SP.CstarText.C1Structure.Steps.S07_StructC3
 import SP.CstarText.C1Structure.Steps.S08_Labelled
 import SP.CstarText.C1StructureRev.Statement
 import SP.CstarText.ConfRev.Statement
+import SP.CstarText.CorDirect.Statement
 import SP.CstarText.CorSzlcEvery.Statement
 import SP.CstarText.CoverageRev.Statement
 import SP.CstarText.CoverageRev2.Defs

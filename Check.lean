@@ -20,8 +20,8 @@ import SP
 #check @SP.CstarText.C1Params.lem_slopes  -- lem-slopes
 #check @SP.CstarText.MethodRev.prop_scheme  -- prop-scheme (bound 2^(−u) exp(6u²/D))
 #check @SP.CstarText.C1Sent.s_conventions_strict  -- App. A Conventions: both main theorems for strict ARSs
-#check @SP.CstarText.IntroRev.cor_cstar_text  -- cor-cstar (the least exponent is 1/4)
-#check @SP.CstarText.CorSzlcEvery.cor_szlc_every  -- cor-szlc (every large length)
+#check @SP.CstarText.CorDirect.cor_cstar  -- cor-cstar (the least exponent is 1/4)
+#check @SP.CstarText.CorDirect.cor_szlc  -- cor-szlc (every large length)
 #check @SP.CstarText.Kosoy49.kosoy_arc_le_szlc  -- Kosoy's Prop. 4.9 (cited, used by cor-szlc)
 #check @SP.CstarText.ReverseZ.prop_reverse  -- prop-reverse
 #check @SP.CstarText.RemMeasures.rem_measures_grammar  -- rem-measures
@@ -57,8 +57,8 @@ import SP
 #print axioms SP.CstarText.C1Params.lem_slopes
 #print axioms SP.CstarText.MethodRev.prop_scheme
 #print axioms SP.CstarText.C1Sent.s_conventions_strict
-#print axioms SP.CstarText.IntroRev.cor_cstar_text
-#print axioms SP.CstarText.CorSzlcEvery.cor_szlc_every
+#print axioms SP.CstarText.CorDirect.cor_cstar
+#print axioms SP.CstarText.CorDirect.cor_szlc
 #print axioms SP.CstarText.Kosoy49.kosoy_arc_le_szlc
 #print axioms SP.CstarText.ReverseZ.prop_reverse
 #print axioms SP.CstarText.RemMeasures.rem_measures_grammar

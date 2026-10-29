@@ -56,8 +56,8 @@ SPEC = [
     ("upper", "SP.CstarText.U12a", "CstarText/U12a/Statement.lean", "theorem thm_upper "),
     ("lower", "SP.CstarText.C1Lower", "CstarText/C1Lower/Defs.lean", "def lossFactor "),
     ("lower", "SP.CstarText.C1Lower", "CstarText/C1Lower/Statement.lean", "theorem thm_lower "),
-    ("cors", "SP.CstarText.IntroRev", "CstarText/ConfRev/Statement.lean", "theorem cor_cstar_text "),
-    ("cors", "SP.CstarText.CorSzlcEvery", "CstarText/CorSzlcEvery/Statement.lean", "theorem cor_szlc_every "),
+    ("cors", "SP.CstarText.CorDirect", "CstarText/CorDirect/Statement.lean", "theorem cor_cstar "),
+    ("cors", "SP.CstarText.CorDirect", "CstarText/CorDirect/Statement.lean", "theorem cor_szlc "),
     ("reverse", "SP.CstarText.ReverseZ", "CstarText/ReverseZ/Statement.lean", "theorem prop_reverse "),
 ]
 

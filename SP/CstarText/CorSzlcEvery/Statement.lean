@@ -17,7 +17,7 @@ open SP
 
 /-- **cor-szlc** (main.typ @ f88bfd1): for every `a < 1/4` there is `n₀` such that for every `n ≥ n₀` some binary
 word `x` of length `n` has `n^a · ZLC(x) ≤ sZLC(x)` (real power `n^a`, `n` the length). -/
-@[kb "cstarpaper-cor-szlc" (part := "CorSzlcEvery.the statement as written (every large length)")]
+-- (tag cstarpaper-cor-szlc retired 2026-10-30: successor SP.CstarText.CorDirect.cor_szlc)
 theorem cor_szlc_every (a : ℝ) (ha : a < 1 / 4) : ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
     ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (ZLC x : ℝ) ≤ (SP.CstarText.Prelim.sZLC x : ℝ) := by
   obtain ⟨n₀, h⟩ := SP.CstarText.EveryLength.thm_lower_every_second a ha
@@ -28,7 +28,7 @@ theorem cor_szlc_every (a : ℝ) (ha : a < 1 / 4) : ∃ n₀ : ℕ, ∀ n : ℕ,
 /-- Sentence anchor `s-cor-szlc-proof` (main.typ @ f88bfd1): "`sZLC(x) ≥ ARC(x)` [Kosoy, Prop. 4.9], and
 @thm-lower" — both ingredients (Kosoy's `ARC ≤ sZLC`; the second sentence of thm-lower) and the statement of
 cor-szlc they give. -/
-@[kb "cstarpaper-s-cor-szlc-proof" (part := "CorSzlcEvery.s_cor_szlc_proof")]
+-- (tag cstarpaper-s-cor-szlc-proof retired 2026-10-30: successor SP.CstarText.CorDirect.s_cor_szlc_proof)
 theorem s_cor_szlc_proof :
     (∀ x : List Bool, (ARC x : ℝ) ≤ (SP.CstarText.Prelim.sZLC x : ℝ)) ∧
     (∀ a : ℝ, a < 1 / 4 → ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
