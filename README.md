@@ -219,12 +219,13 @@ Each numbered definition, statement and proof step of the paper's own developmen
 states it, except the comparisons of `rem-measures` that rest on cited results (see below). The table lists, for each
 numbered block, every declaration tagged with its label (definitions, statement parts) and the declarations of its
 proof steps; the sentence anchors of the paper are tagged the same way (`@[kb "cstarpaper-s-…"]`). Names are relative
-to the namespace `SP.CstarText` unless they begin with `SP`. The main results come first. One proof step is split
-over two declarations, of which the table lists the second: `st-scheme-event` says that with probability at least
+to the namespace `SP.CstarText` unless they begin with `SP`. The main results come first. Two proof steps are
+split over two declarations, of which the table lists the first named here. `st-scheme-event` says that with probability at least
 1 − |S| n³ 2^(−u) exp(6u²/D) no candidate holds, and that then every forward equation that holds in x has fewer than
-u² targets in S. The probability clause is `Method.step_prop_scheme_2_prob` (anchor `s-prop-scheme-first`; its ε is
-the bound 2^(−u) exp(6u²/D) of `st-scheme-cand`), the consequence is `Method.step_prop_scheme_2_event`. Likewise `st-conv-cov` is stated for every vertex q by
-`UpperConv.step_conv_cov`; its clause "in particular every position of [n] is" is the case q = q₀, with
+u² targets in S. The table's `Method.step_prop_scheme_2_event` is the consequence; the probability clause is
+`Method.step_prop_scheme_2_prob` (anchor `s-prop-scheme-first`; its ε is the bound 2^(−u) exp(6u²/D) of
+`st-scheme-cand`). `st-conv-cov` is stated for every vertex q by the table's `UpperConv.step_conv_cov`; its final
+clause ("in particular every position of [n] is" covered or a literal) is the case q = q₀, with
 F_(q₀)(t') = t' (`UpperConv.step_conv_cov_root`, anchor `s-lem-conversion-induction`). The declaration of a proof step
 states the step's claim in the context of its block: the block's hypotheses, the claims of the earlier steps and, for
 `st-struct-length`, `st-struct-unique`, `st-u-hit`, `st-u-moment`, `st-u-root`, `st-ap-large` and `st-ap-small`,
