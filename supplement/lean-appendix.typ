@@ -53,8 +53,8 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("53cba6a31f5c") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
-  351 modules · 592 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
+  #text(size: 10pt)[Lean repository revision #raw("eca09d64cab5") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  352 modules · 594 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
 #block(inset: (x: 1cm))[#set text(size: 9.5pt)
@@ -82,7 +82,7 @@ The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-c
 
 *Status.* Every numbered definition, statement and proof step of the paper's own development, apart from the comparisons in #raw("rem-measures") that rest on cited results, has a sorry-free Lean declaration (axioms #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")): the upper bound in its version U12a (#raw("SP.CstarText.U12a"), constant 2), the lower bound in its version C1/I1 (prime types, parameters of (k, L) for all integers k ≥ 2 and L ≥ 512 k log₂(k + 2): #raw("SP.CstarText.C1Params") … #raw("C1Lower"), #raw("C1Coverage"), #raw("C1Sent")), and #raw("prop-scheme"), the critical-set bound, with the bound of #raw("lem-random") (#raw("SP.CstarText.MethodRev.prop_scheme")). Sentences of the text outside the numbered blocks that state a fact are tagged as well (sentence anchors, #raw("@[kb \"cstarpaper-s-…\"]")); these tags locate the declarations and claim nothing beyond the statement above. The formalisations of earlier versions are kept in the repository (see "Earlier versions" below); their superseded statements no longer carry the paper's tags.
 
-In this revision, the table of @sec-map has a row for each of the paper's 58 numbered blocks, with the
+In this revision, the table of @sec-map has a row for each of the paper's 59 numbered blocks, with the
 declarations of their 34 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper") (conventions and
 notation stated in those sections); 132 further tags anchor sentences of the paper's text.
 
@@ -310,6 +310,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("thm-sc")], [#raw("C1Final.jointProb"), #raw("C1Final.SCChain"), #raw("C1Referee.thm_sc_rev")], [],
   [#raw("ex-zlp-cont")], [#raw("UpperConv.exX"), #raw("UpperConv.exEq1"), #raw("UpperConv.exEq2"), #raw("UpperConv.exEq3"), #raw("UpperConv.exL"), #raw("UpperConv.exΦ"), #raw("UpperConv.ex_cont_params"), #raw("UpperConv.ex_cont_least"), #raw("UpperConv.ex_cont_tree"), #raw("UpperConv.ex_cont_literals"), #raw("UpperConv.ex_cont_eq_root"), #raw("UpperConv.ex_cont_eq_s0"), #raw("UpperConv.ex_cont_eq_s1"), #raw("UpperConv.ex_cont_least_c_needed"), #raw("UpperConv.ex_cont_ars"), #raw("U12a.ex_cont_cut_u12a"), #raw("RefereeRev.exL4"), #raw("RefereeRev.exΦ4"), #raw("RefereeRev.ex_cont_arc_le"), #raw("CoverageRev4.ex_root_slot0")], [],
   [#raw("rem-constant")], [#raw("SP.CstarPaper.rem_constant"), #raw("ReadRev.rem_constant_all")], [],
+  [#raw("rem-arity")], [#raw("RemArity.rem_arity"), #raw("RemArity.rem_arity_two")], [],
   [#raw("lem-forward")], [#raw("Method.lem_forward"), #raw("Sentences.lem_forward_sentences")], [],
   [#raw("def-params")], [#raw("C1Params.Lk"), #raw("C1Params.X"), #raw("C1Params.B"), #raw("C1Params.W"), #raw("C1Params.u"), #raw("C1Params.e"), #raw("C1Params.M"), #raw("C1Params.g"), #raw("C1Params.Λ"), #raw("C1Params.H"), #raw("C1Params.primesP"), #raw("C1Params.IsType"), #raw("C1Params.IsGood"), #raw("C1Final.step_params_basic")], [],
   [#raw("lem-slopes")], [#raw("C1Params.goodIn"), #raw("C1Params.lem_slopes")], [#raw("st-slopes-types"): #raw("C1Params.step_slopes_types") \
@@ -378,7 +379,7 @@ Dependency routes (#raw("python3 tools/deps.py README.md") runs #raw("lake env l
 
 The formalisation uses Lean 4 at the toolchain #raw("leanprover/lean4:v4.33.0-rc1") (#raw("lean-toolchain")) and Mathlib at the tag #raw("v4.33.0-rc1") (commit #raw("79d0395"), pinned in #raw("lake-manifest.json")). #raw("lake exe cache get && lake build") builds the formalisation. Then #raw("lake env lean Check.lean") prints the statements (#raw("#check")) and the axioms on which the main declarations depend; they are among #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound"). This repository is exported from the author's research project (#raw("export.sh")); module names keep its prefix #raw("SP").
 
-The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 351 modules.
+The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 352 modules.
 
 == The audit file Check.lean
 
@@ -409,6 +410,7 @@ import SP
 #check @SP.CstarText.CorDirect.cor_szlc  -- cor-szlc (every large length)
 #check @SP.CstarText.Kosoy49.kosoy_arc_le_szlc  -- Kosoy's Prop. 4.9 (cited, used by cor-szlc)
 #check @SP.CstarText.ReverseZ.prop_reverse  -- prop-reverse
+#check @SP.CstarText.RemArity.rem_arity  -- rem-arity (ARC(x) + m_Σ ≤ 2|P| for power-of-b arities)
 #check @SP.CstarText.RemMeasures.rem_measures_grammar  -- rem-measures
 #check @SP.CstarText.RemMeasures.rem_measures_zlc  -- rem-measures
 #check @SP.CstarText.RemMeasures.rem_measures_lzc_every  -- rem-measures: LZC ≥ n^a ZLC at every large length, given LZC ≥ ARC
@@ -444,6 +446,7 @@ import SP
 #print axioms SP.CstarText.C1Sent.s_conventions_strict
 #print axioms SP.CstarText.CorDirect.cor_cstar
 #print axioms SP.CstarText.CorDirect.cor_szlc
+#print axioms SP.CstarText.RemArity.rem_arity
 #print axioms SP.CstarText.Kosoy49.kosoy_arc_le_szlc
 #print axioms SP.CstarText.ReverseZ.prop_reverse
 #print axioms SP.CstarText.RemMeasures.rem_measures_grammar
@@ -464,7 +467,7 @@ import SP
 
 == Its output
 
-All 34 declarations audited depend only on #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound")
+All 35 declarations audited depend only on #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound")
 (the output of #raw("lake env lean Check.lean") at this revision; build.py checks it).
 
 ```text
@@ -687,6 +690,14 @@ SP.CstarText.ReverseZ.prop_reverse : (∃ C,
     ∀ {α : Type} [inst : Nonempty α] (x : List α),
       2 ≤ x.length → ↑(SP.ZLC x) ≤ C * ↑x.length * ↑(SP.ARC x) / SP.log2 (↑x.length + 1)) ∧
   ∀ (n : ℕ), 2 ≤ n → ∃ x, x.length = n ∧ ↑n * ↑(SP.ARC x) / (64 * SP.log2 ↑n ^ 2) ≤ ↑(SP.ZLC x)
+@SP.CstarText.RemArity.rem_arity : ∀ {Q α : Type} (P : SP.Program Q α),
+  SP.CstarText.Prelim.IsZLP P →
+    ∀ (b : ℕ),
+      2 ≤ b →
+        (∀ (q : Q), ∃ a, P.arity q = b ^ a) →
+          ∀ (x : List α),
+            x <+: SP.CstarText.Prelim.val P →
+              1 ≤ x.length → SP.ARC x + SP.CstarText.RemArity.letterEdges P ≤ 2 * SP.CstarText.Prelim.size P
 SP.CstarText.RemMeasures.rem_measures_grammar : ∀ (m : ℕ),
   3 ≤ m →
     (∀ (w : List Bool),
@@ -768,6 +779,7 @@ SP.CstarText.Sentences.cor_szlc_text : ∀ a < 1 / 4,
 'SP.CstarText.C1Sent.s_conventions_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.CorDirect.cor_cstar' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.CorDirect.cor_szlc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SP.CstarText.RemArity.rem_arity' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.Kosoy49.kosoy_arc_le_szlc' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.ReverseZ.prop_reverse' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.RemMeasures.rem_measures_grammar' depends on axioms: [propext, Classical.choice, Quot.sound]
