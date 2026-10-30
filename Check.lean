@@ -24,6 +24,7 @@ import SP
 #check @SP.CstarText.CorDirect.cor_szlc  -- cor-szlc (every large length)
 #check @SP.CstarText.Kosoy49.kosoy_arc_le_szlc  -- Kosoy's Prop. 4.9 (cited, used by cor-szlc)
 #check @SP.CstarText.ReverseZ.prop_reverse  -- prop-reverse
+#check @SP.CstarText.RemArity.rem_arity  -- rem-arity (ARC(x) + m_Σ ≤ 2|P| for power-of-b arities)
 #check @SP.CstarText.RemMeasures.rem_measures_grammar  -- rem-measures
 #check @SP.CstarText.RemMeasures.rem_measures_zlc  -- rem-measures
 #check @SP.CstarText.RemMeasures.rem_measures_lzc_every  -- rem-measures: LZC ≥ n^a ZLC at every large length, given LZC ≥ ARC
@@ -59,6 +60,7 @@ import SP
 #print axioms SP.CstarText.C1Sent.s_conventions_strict
 #print axioms SP.CstarText.CorDirect.cor_cstar
 #print axioms SP.CstarText.CorDirect.cor_szlc
+#print axioms SP.CstarText.RemArity.rem_arity
 #print axioms SP.CstarText.Kosoy49.kosoy_arc_le_szlc
 #print axioms SP.CstarText.ReverseZ.prop_reverse
 #print axioms SP.CstarText.RemMeasures.rem_measures_grammar

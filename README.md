@@ -269,6 +269,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `thm-sc` | `C1Final.jointProb`, `C1Final.SCChain`, `C1Referee.thm_sc_rev` |  |
 | `ex-zlp-cont` | `UpperConv.exX`, `UpperConv.exEq1`, `UpperConv.exEq2`, `UpperConv.exEq3`, `UpperConv.exL`, `UpperConv.exΦ`, `UpperConv.ex_cont_params`, `UpperConv.ex_cont_least`, `UpperConv.ex_cont_tree`, `UpperConv.ex_cont_literals`, `UpperConv.ex_cont_eq_root`, `UpperConv.ex_cont_eq_s0`, `UpperConv.ex_cont_eq_s1`, `UpperConv.ex_cont_least_c_needed`, `UpperConv.ex_cont_ars`, `U12a.ex_cont_cut_u12a`, `RefereeRev.exL4`, `RefereeRev.exΦ4`, `RefereeRev.ex_cont_arc_le`, `CoverageRev4.ex_root_slot0` |  |
 | `rem-constant` | `SP.CstarPaper.rem_constant`, `ReadRev.rem_constant_all` |  |
+| `rem-arity` | `RemArity.rem_arity`, `RemArity.rem_arity_two` |  |
 | `lem-forward` | `Method.lem_forward`, `Sentences.lem_forward_sentences` |  |
 | `def-params` | `C1Params.Lk`, `C1Params.X`, `C1Params.B`, `C1Params.W`, `C1Params.u`, `C1Params.e`, `C1Params.M`, `C1Params.g`, `C1Params.Λ`, `C1Params.H`, `C1Params.primesP`, `C1Params.IsType`, `C1Params.IsGood`, `C1Final.step_params_basic` |  |
 | `lem-slopes` | `C1Params.goodIn`, `C1Params.lem_slopes` | `st-slopes-types`: `C1Params.step_slopes_types`; `st-slopes-mult`: `C1Params.step_slopes_mult`; `st-slopes-window`: `C1Params.step_slopes_window` |
