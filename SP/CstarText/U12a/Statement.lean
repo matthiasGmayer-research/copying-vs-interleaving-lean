@@ -1557,9 +1557,10 @@ theorem cnt_eq_least_of_cut {Q α : Type} (P : Program Q α) (hP : IsZLP P) {w :
   (lem_cut P hP).1 w j z h
 
 
-/-- **lem-split** (main.typ 2220–2223). "Let `μ ≥ 1` be an integer and `T ≥ μ + 2` a real number with `N ≤ 4μ(μ + 1)`
-or `4N ≤ μ² T (T − μ)`. Then `ARC(x) ≤ T m`." (`P` a ZLP with `x ⊑ val(P)`, `n = |x| ≥ 1`, as throughout §4.) -/
-@[kb "cstarpaper-lem-split"]
+/-- **lem-split, earlier one-sentence form** (cstar before the comment round of 2026-10-31). "Let `μ ≥ 1` be an integer and
+`T ≥ μ + 2` a real number with `N ≤ 4μ(μ + 1)` or `4N ≤ μ² T (T − μ)`. Then `ARC(x) ≤ T m`." (`P` a ZLP with
+`x ⊑ val(P)`, `n = |x| ≥ 1`, as throughout §4.) Equivalent to the current two-case text, `lem_split_cases`, which
+carries the paper's tag. -/
 theorem lem_split {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
     (hn : 1 ≤ x.length) (μ : ℕ) (hμ : 1 ≤ μ) (T : ℝ) (hT : (μ : ℝ) + 2 ≤ T)
     (hN : scaleN P x.length ≤ 4 * μ * (μ + 1) ∨ 4 * scaleN P x.length ≤ (μ : ℝ) ^ 2 * T * (T - μ)) :
@@ -1832,6 +1833,19 @@ theorem lem_split {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) 
   rw [hsizeR]
   nlinarith [mul_nonneg (sub_nonneg.mpr hTμ1) hms]
 
+
+/-- **lem-split** (main.typ 2519–2520, comment round 2026-10-31: two cases). "Let `μ ≥ 1` be an integer. If
+`N ≤ 4μ(μ + 1)`, then `ARC(x) ≤ (μ + 2) m`. In general, `ARC(x) ≤ T m` for every real `T ≥ μ + 2` with
+`4N ≤ μ² T (T − μ)`." (`P` a ZLP with `x ⊑ val(P)`, `n = |x| ≥ 1`, as throughout §4; `N = scaleN P n`, `m = size P`.)
+The first case is the earlier form `lem_split` at `T = μ + 2`, the second its other disjunct. -/
+@[kb "cstarpaper-lem-split"]
+theorem lem_split_cases {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
+    (hn : 1 ≤ x.length) (μ : ℕ) (hμ : 1 ≤ μ) :
+    (scaleN P x.length ≤ 4 * μ * (μ + 1) → (ARC x : ℝ) ≤ ((μ : ℝ) + 2) * size P) ∧
+      ∀ T : ℝ, (μ : ℝ) + 2 ≤ T → 4 * scaleN P x.length ≤ (μ : ℝ) ^ 2 * T * (T - μ) →
+        (ARC x : ℝ) ≤ T * size P :=
+  ⟨fun h => lem_split P hP x hx hn μ hμ _ le_rfl (Or.inl h),
+    fun T hT h => lem_split P hP x hx hn μ hμ T hT (Or.inr h)⟩
 
 /-- **thm-scale** (main.typ 1828–1829). "`ARC(x) ≤ 2^{5/4} N^{1/4} m`." -/
 @[kb "cstarpaper-thm-scale"]

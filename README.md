@@ -259,7 +259,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `lem-least` | `UpperConv.treeSlots`, `UpperConv.K`, `UpperConv.lem_least_b_prefix`, `UpperConv.lem_least_b_tree`, `UpperConv.lem_least_b_K`, `UpperConv.lem_least_b_treepath`, `UpperConv.lem_least_c`, `RefereeRev.lem_least_a_rev` |  |
 | `lem-cut` | `UpperConv.IsCutDecomp`, `U12a.BuiltFrom`, `U12a.IsCutEdgeTo`, `U12a.zetaE`, `U12a.lem_cut` |  |
 | `lem-reach` | `U12a.reach`, `U12a.lem_reach` |  |
-| `lem-split` | `U12a.lem_split` | `st-split-early`: `U12a.step_split_early`; `st-split-least`: `U12a.step_split_least`; `st-split-other`: `U12a.step_split_other` |
+| `lem-split` | `U12a.lem_split_cases` (two cases; it follows from the earlier one-sentence form U12a.lem_split, kept untagged) | `st-split-early`: `U12a.step_split_early`; `st-split-least`: `U12a.step_split_least`; `st-split-other`: `U12a.step_split_other` |
 | `def-forward` | `Method.ForwardEq`, `Method.targets`, `Method.FwdHolds`, `Method.rem_forward` |  |
 | `def-labelled` | `Method.Labelled`, `Method.Labelled.Valid`, `Method.Labelled.Outcome`, `Method.Labelled.Prob`, `Method.Labelled.bit`, `Method.Labelled.word`, `Method.Labelled.Carries`, `Method.Labelled.IsFirstPosition`, `Method.ex_labelled_valid`, `Method.ex_labelled_word`, `Method.ex_labelled_first`, `Method.ex_labelled_repeat` |  |
 | `def-req` | `Method.Labelled.firstPos`, `Method.Labelled.prec`, `Method.Labelled.Requirement`, `Method.Labelled.Requirement.Valid`, `Method.Labelled.Requirement.Holds`, `CoverageRev.ex_requirement` |  |

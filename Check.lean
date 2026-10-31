@@ -6,7 +6,7 @@ import SP
 -- The current version (upper bound U12a, lower bound C1/I1):
 #check @SP.CstarText.U12a.thm_upper  -- thm-upper: ARC(x) ≤ 2 n^(1/4) ZLC(x)
 #check @SP.CstarText.U12a.thm_scale  -- thm-scale: ARC(x) ≤ 2^(5/4) N^(1/4) m
-#check @SP.CstarText.U12a.lem_split  -- lem-split
+#check @SP.CstarText.U12a.lem_split_cases  -- lem-split (two cases)
 #check @SP.CstarText.U12a.lem_reach  -- lem-reach
 #check @SP.CstarText.U12a.lem_cut  -- lem-cut (the decomposition by cut edges)
 #check @SP.CstarText.C1Lower.thm_lower  -- thm-lower: both sentences, every length, loss exp(−C √(log n log log n))
@@ -44,7 +44,7 @@ import SP
 
 #print axioms SP.CstarText.U12a.thm_upper
 #print axioms SP.CstarText.U12a.thm_scale
-#print axioms SP.CstarText.U12a.lem_split
+#print axioms SP.CstarText.U12a.lem_split_cases
 #print axioms SP.CstarText.U12a.lem_reach
 #print axioms SP.CstarText.U12a.lem_cut
 #print axioms SP.CstarText.C1Lower.thm_lower
