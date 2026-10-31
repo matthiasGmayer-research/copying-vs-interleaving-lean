@@ -53,7 +53,7 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("eca09d64cab5") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  #text(size: 10pt)[Lean repository revision #raw("6010120a8aa1") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
   352 modules · 594 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
@@ -294,7 +294,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("lem-least")], [#raw("UpperConv.treeSlots"), #raw("UpperConv.K"), #raw("UpperConv.lem_least_b_prefix"), #raw("UpperConv.lem_least_b_tree"), #raw("UpperConv.lem_least_b_K"), #raw("UpperConv.lem_least_b_treepath"), #raw("UpperConv.lem_least_c"), #raw("RefereeRev.lem_least_a_rev")], [],
   [#raw("lem-cut")], [#raw("UpperConv.IsCutDecomp"), #raw("U12a.BuiltFrom"), #raw("U12a.IsCutEdgeTo"), #raw("U12a.zetaE"), #raw("U12a.lem_cut")], [],
   [#raw("lem-reach")], [#raw("U12a.reach"), #raw("U12a.lem_reach")], [],
-  [#raw("lem-split")], [#raw("U12a.lem_split")], [#raw("st-split-early"): #raw("U12a.step_split_early") \
+  [#raw("lem-split")], [#raw("U12a.lem_split_cases") (two cases; it follows from the earlier one-sentence form U12a.lem\_split, kept untagged)], [#raw("st-split-early"): #raw("U12a.step_split_early") \
 #raw("st-split-least"): #raw("U12a.step_split_least") \
 #raw("st-split-other"): #raw("U12a.step_split_other")],
   [#raw("def-forward")], [#raw("Method.ForwardEq"), #raw("Method.targets"), #raw("Method.FwdHolds"), #raw("Method.rem_forward")], [],
@@ -392,7 +392,7 @@ import SP
 -- The current version (upper bound U12a, lower bound C1/I1):
 #check @SP.CstarText.U12a.thm_upper  -- thm-upper: ARC(x) ≤ 2 n^(1/4) ZLC(x)
 #check @SP.CstarText.U12a.thm_scale  -- thm-scale: ARC(x) ≤ 2^(5/4) N^(1/4) m
-#check @SP.CstarText.U12a.lem_split  -- lem-split
+#check @SP.CstarText.U12a.lem_split_cases  -- lem-split (two cases)
 #check @SP.CstarText.U12a.lem_reach  -- lem-reach
 #check @SP.CstarText.U12a.lem_cut  -- lem-cut (the decomposition by cut edges)
 #check @SP.CstarText.C1Lower.thm_lower  -- thm-lower: both sentences, every length, loss exp(−C √(log n log log n))
@@ -430,7 +430,7 @@ import SP
 
 #print axioms SP.CstarText.U12a.thm_upper
 #print axioms SP.CstarText.U12a.thm_scale
-#print axioms SP.CstarText.U12a.lem_split
+#print axioms SP.CstarText.U12a.lem_split_cases
 #print axioms SP.CstarText.U12a.lem_reach
 #print axioms SP.CstarText.U12a.lem_cut
 #print axioms SP.CstarText.C1Lower.thm_lower
@@ -479,18 +479,19 @@ All 35 declarations audited depend only on #raw("propext"), #raw("Classical.choi
       x <+: SP.CstarText.Prelim.val P →
         1 ≤ x.length →
           ↑(SP.ARC x) ≤ 2 ^ (5 / 4) * SP.CstarText.UpperConv.scaleN P x.length ^ (1 / 4) * ↑(SP.CstarText.Prelim.size P)
-@SP.CstarText.U12a.lem_split : ∀ {Q α : Type} (P : SP.Program Q α),
+@SP.CstarText.U12a.lem_split_cases : ∀ {Q α : Type} (P : SP.Program Q α),
   SP.CstarText.Prelim.IsZLP P →
     ∀ (x : List α),
       x <+: SP.CstarText.Prelim.val P →
         1 ≤ x.length →
           ∀ (μ : ℕ),
             1 ≤ μ →
-              ∀ (T : ℝ),
-                ↑μ + 2 ≤ T →
-                  SP.CstarText.UpperConv.scaleN P x.length ≤ 4 * ↑μ * (↑μ + 1) ∨
-                      4 * SP.CstarText.UpperConv.scaleN P x.length ≤ ↑μ ^ 2 * T * (T - ↑μ) →
-                    ↑(SP.ARC x) ≤ T * ↑(SP.CstarText.Prelim.size P)
+              (SP.CstarText.UpperConv.scaleN P x.length ≤ 4 * ↑μ * (↑μ + 1) →
+                  ↑(SP.ARC x) ≤ (↑μ + 2) * ↑(SP.CstarText.Prelim.size P)) ∧
+                ∀ (T : ℝ),
+                  ↑μ + 2 ≤ T →
+                    4 * SP.CstarText.UpperConv.scaleN P x.length ≤ ↑μ ^ 2 * T * (T - ↑μ) →
+                      ↑(SP.ARC x) ≤ T * ↑(SP.CstarText.Prelim.size P)
 @SP.CstarText.U12a.lem_reach : ∀ {Q α : Type} (P : SP.Program Q α),
   SP.CstarText.Prelim.IsZLP P →
     ∀ (n : ℕ) (z : Q),
@@ -763,7 +764,7 @@ SP.CstarText.Sentences.cor_szlc_text : ∀ a < 1 / 4,
   {x | ↑x.length ^ a * ↑(SP.ZLC x) ≤ ↑(SP.CstarText.Prelim.sZLC x)}.Infinite
 'SP.CstarText.U12a.thm_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.U12a.thm_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.U12a.lem_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SP.CstarText.U12a.lem_split_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.U12a.lem_reach' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.U12a.lem_cut' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.C1Lower.thm_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
