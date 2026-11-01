@@ -112,16 +112,16 @@ theorem def_occ_form {Q α : Type} (P : Program Q α) (q : Q) (ρ : Occ) (js : L
 
 /-! ## lem-occ -/
 
-/-- lem-occ (a) (main.typ 330): if `x ⊑ val(P)`, `n = |x|`, `ρ ∈ occ_q` and `ρ(t) < n`, then
-`t < ℓ(q)` and `x[ρ(t)] = val(q)[t]`. -/
+/-- lem-occ (a) (main.typ 1543, comment round 2026-11-01): "If `x ⊑ val(P)`, `ρ ∈ occ_q` and `ρ(t) < |x|`, then
+`t < |val(q)|` and `x[ρ(t)] = val(q)[t]`." (The premise `x ⊑ val(P)` belongs to part (a) only.) -/
 @[kb "cstarpaper-lem-occ" (part := "a")]
 theorem lem_occ_a {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (q : Q) (ρ : Occ) (hρ : ρ ∈ occ P q) (t : ℕ) (ht : ρ t < x.length) :
     t < ell P q ∧ x[ρ t]? = (value P (.inl q))[t]? :=
   step_lem_occ_a P hP x hx q ρ hρ t ht
 
-/-- lem-occ (b) (main.typ 331): distinct root paths to the same vertex give occurrences with
-disjoint images. -/
+/-- lem-occ (b) (main.typ 1544): "Distinct root paths to the same vertex give occurrences with disjoint images."
+(About `P` alone; no word `x`.) -/
 @[kb "cstarpaper-lem-occ" (part := "b")]
 theorem lem_occ_b {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q : Q) (ρ ρ' : Occ)
     (js js' : List ℕ) (h : OccVia P q ρ js) (h' : OccVia P q ρ' js') (hne : js ≠ js') :

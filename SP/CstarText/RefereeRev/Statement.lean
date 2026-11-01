@@ -251,10 +251,10 @@ theorem lem_sc_final_b_rev (k : ℕ) (hk : 2 ≤ k) :
 
 /-! ## 3. lem-least (a) with `0 ≤ b < p` -/
 
-/-- lem-least (a), main.typ @ 71ec77c, lines 1148–1150, verbatim: "Let `rho in occ_q`, and let `zeta in occ_z` be
-the occurrence along a prefix of its root path, ending at `z`. Then `rho(t) = zeta(p t + b)` for all `t`, where `p`
-is the product of the rest of the path (from `z` to `q`) and `b` is an integer with `0 <= b < p`; and if `rho` is
-lowest at `t`, then `zeta` is lowest at `p t + b`."
+/-- lem-least (a), main.typ lines 2370–2372 (comment round 2026-11-01: one `b` for all `t`), verbatim: "Let
+`rho in occ_q`, let `zeta in occ_z` be the occurrence along a prefix of its root path, ending at `z`, and let `pi` be
+the rest of the path (from `z` to `q`). Then there is an integer `b` with `0 <= b < p(pi)` such that
+`rho(t) = zeta(p(pi) t + b)` for all `t`, and `zeta` is lowest at `p(pi) t + b` whenever `rho` is lowest at `t`."
 Same hypotheses as `UpperConv.lem_least_a` (which it supersedes; it lacks `b < p`): the root path of `ρ` is
 `js₁ ++ js₂`, `ζ` is the occurrence of `z` along the prefix `js₁`; `p = p(js₂)` from `z`; `b : ℕ` (so `0 ≤ b`).
 Proof (main.typ 1159–1162): composing `t ↦ d t + j` along `js₂`; `b < p` by induction on the number of slots
