@@ -53,8 +53,8 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("8a8028f0d48e") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
-  352 modules · 594 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
+  #text(size: 10pt)[Lean repository revision #raw("c4e1b2eb6296") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  354 modules · 642 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
 #block(inset: (x: 1cm))[#set text(size: 9.5pt)
@@ -82,7 +82,7 @@ The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-c
 
 *Status.* Every numbered definition, statement and proof step of the paper's own development, apart from the comparisons in #raw("rem-measures") that rest on cited results, has a sorry-free Lean declaration (axioms #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")): the upper bound in its version U12a (#raw("SP.CstarText.U12a"), constant 2), the lower bound in its version C1/I1 (prime types, parameters of (k, L) for all integers k ≥ 2 and L ≥ 512 k log₂(k + 2): #raw("SP.CstarText.C1Params") … #raw("C1Lower"), #raw("C1Coverage"), #raw("C1Sent")), and #raw("prop-scheme"), the critical-set bound, with the bound of #raw("lem-random") (#raw("SP.CstarText.MethodRev.prop_scheme")). Sentences of the text outside the numbered blocks that state a fact are tagged as well (sentence anchors, #raw("@[kb \"cstarpaper-s-…\"]")); these tags locate the declarations and claim nothing beyond the statement above. The formalisations of earlier versions are kept in the repository (see "Earlier versions" below); their superseded statements no longer carry the paper's tags.
 
-In this revision, the table of @sec-map has a row for each of the paper's 59 numbered blocks, with the
+In this revision, the table of @sec-map has a row for each of the paper's 68 numbered blocks, with the
 declarations of their 34 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper") (conventions and
 notation stated in those sections); 132 further tags anchor sentences of the paper's text.
 
@@ -279,24 +279,30 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("def-ars")], [#raw("Prelim.Covers"), #raw("Prelim.IsARS"), #raw("Prelim.ARC"), #raw("Prelim.literals"), #raw("Prelim.ars_determines"), #raw("Prelim.arc_le_length"), #raw("WordRev.CoversText"), #raw("WordRev.covers_iff_coversText")], [],
   [#raw("def-zip")], [#raw("Prelim.zip"), #raw("Prelim.def_zip_spec"), #raw("Prelim.zip_round_robin")], [],
   [#raw("def-zlp")], [#raw("Prelim.Program"), #raw("Prelim.IsZLP"), #raw("Prelim.value"), #raw("Prelim.val"), #raw("Prelim.ell"), #raw("Prelim.size"), #raw("Prelim.ZLC"), #raw("Prelim.IsSynchronous"), #raw("Prelim.sZLC"), #raw("Prelim.synchronous_iff_paths"), #raw("CoverageRev.zlc_prefix_mono")], [],
-  [#raw("def-path")\; paths to letters in #raw("app-upper-conv")], [#raw("Prelim.IsPath"), #raw("Prelim.IsPathTo"), #raw("Prelim.pathProduct"), #raw("Prelim.IsRootPath"), #raw("CoverageRev.every_vertex_root_path"), #raw("CoverageRev.value_zip_rule"), #raw("RefereeRev.IsPathToLetter"), #raw("RefereeRev.def_path_letter_follow"), #raw("RefereeRev.def_path_letter_slots"), #raw("CoverageRev2.descent"), #raw("CoverageRev2.descent_spec")], [],
+  [#raw("def-path")\; paths to letters in #raw("app-upper-conv")], [#raw("Prelim.IsPath"), #raw("Prelim.IsPathTo"), #raw("Prelim.pathProduct"), #raw("Prelim.IsRootPath"), #raw("CoverageRev.every_vertex_root_path"), #raw("CoverageRev.value_zip_rule"), #raw("RefereeRev.IsPathToLetter"), #raw("RefereeRev.def_path_letter_follow"), #raw("RefereeRev.def_path_letter_slots"), #raw("Comments1102.height"), #raw("Comments1102.depth_eq_height_root")], [],
   [#raw("def-occ")], [#raw("Prelim.Occ"), #raw("Prelim.OccVia"), #raw("Prelim.occ"), #raw("Prelim.def_occ_root"), #raw("Prelim.def_occ_child"), #raw("Prelim.def_occ_form")], [],
   [#raw("lem-occ")], [#raw("Prelim.lem_occ_a"), #raw("Prelim.lem_occ_b"), #raw("Prelim.lem_occ_bij")], [],
   [#raw("ex-zlp")], [#raw("Prelim.exProg"), #raw("Prelim.ex_zlp_isZLP"), #raw("Prelim.ex_zlp_values"), #raw("Prelim.ex_zlp_length"), #raw("Prelim.ex_zlp_occ"), #raw("Prelim.sync_same_step"), #raw("Prelim.ex_zlp_not_sync"), #raw("ExZlpRev.sync_iff_same_step"), #raw("ExZlpRev.gap_diff_steps")], [],
-  [#raw("sec-upper"), notation], [#raw("UpperConv.d0"), #raw("UpperConv.scaleN"), #raw("UpperConv.mT"), #raw("UpperConv.mSigma"), #raw("UpperConv.sec_upper_two_card"), #raw("CoverageRev.occ_step_dvd_d0")], [],
+  [#raw("sec-upper"), notation], [#raw("UpperConv.d0"), #raw("UpperConv.scaleN"), #raw("UpperConv.sec_upper_two_card"), #raw("CoverageRev.occ_step_dvd_d0")], [],
+  [#raw("lem-lower")], [#raw("Comments1102.lem_lower")], [],
   [#raw("thm-scale")], [#raw("U12a.thm_scale")], [],
-  [#raw("def-canonical")], [#raw("UpperConv.firstPos"), #raw("UpperConv.IsLowest"), #raw("UpperConv.canonInterval"), #raw("UpperConv.Acan"), #raw("UpperConv.vq"), #raw("UpperConv.def_canonical_first"), #raw("UpperConv.def_canonical_unique"), #raw("UpperConv.def_canonical_interval"), #raw("UpperConv.def_canonical_mono"), #raw("UpperConv.def_canonical_partition"), #raw("UpperConv.ex_canonical_firstPos"), #raw("UpperConv.ex_canonical_intervals")], [],
+  [#raw("def-canonical")], [#raw("UpperConv.firstPos"), #raw("UpperConv.IsLowest"), #raw("UpperConv.canonInterval"), #raw("UpperConv.Acan"), #raw("UpperConv.vq"), #raw("UpperConv.def_canonical_first"), #raw("UpperConv.def_canonical_unique"), #raw("UpperConv.def_canonical_interval"), #raw("UpperConv.def_canonical_mono"), #raw("UpperConv.def_canonical_partition"), #raw("UpperConv.ex_canonical_firstPos"), #raw("UpperConv.ex_canonical_intervals"), #raw("U12a.reach")], [],
   [#raw("def-pair")], [#raw("UpperConv.U"), #raw("UpperConv.chi"), #raw("UpperConv.compSet"), #raw("UpperConv.def_pair_chi")], [],
   [#raw("lem-conversion")], [#raw("UpperConv.IsInitialSeg"), #raw("UpperConv.IsPieces"), #raw("UpperConv.litSet"), #raw("UpperConv.lowLetterSlots"), #raw("UpperConv.IsConvIndex"), #raw("UpperConv.lem_conversion"), #raw("UpperConv.lem_conversion_singleton"), #raw("CoverageRev2.strict_conversion"), #raw("CoverageRev4.conv_lit_val")], [#raw("st-conv-lit"): #raw("UpperConv.step_conv_lit") \
 #raw("st-conv-eq"): #raw("UpperConv.step_conv_eq"), #raw("CoverageRev2.strict_conv_eq") \
 #raw("st-conv-cov"): #raw("UpperConv.step_conv_cov")],
-  [#raw("def-least")], [#raw("UpperConv.Precedes"), #raw("UpperConv.leastOcc"), #raw("UpperConv.IsLeastPath"), #raw("UpperConv.def_least_spec"), #raw("CoverageRev.occ_finite")], [],
-  [#raw("lem-least")], [#raw("UpperConv.treeSlots"), #raw("UpperConv.K"), #raw("UpperConv.lem_least_b_prefix"), #raw("UpperConv.lem_least_b_tree"), #raw("UpperConv.lem_least_b_K"), #raw("UpperConv.lem_least_b_treepath"), #raw("UpperConv.lem_least_c"), #raw("RefereeRev.lem_least_a_rev")], [],
-  [#raw("lem-cut")], [#raw("UpperConv.IsCutDecomp"), #raw("U12a.BuiltFrom"), #raw("U12a.IsCutEdgeTo"), #raw("U12a.zetaE"), #raw("U12a.lem_cut")], [],
-  [#raw("lem-reach")], [#raw("U12a.reach"), #raw("U12a.lem_reach")], [],
-  [#raw("lem-split")], [#raw("U12a.lem_split_cases") (two cases; it follows from the earlier one-sentence form U12a.lem\_split, kept untagged)], [#raw("st-split-early"): #raw("U12a.step_split_early") \
+  [#raw("def-least")], [#raw("UpperConv.Precedes"), #raw("UpperConv.leastOcc"), #raw("UpperConv.IsLeastPath"), #raw("UpperConv.def_least_spec"), #raw("CoverageRev.occ_finite"), #raw("Comments1102.mTree"), #raw("UpperConv.mT"), #raw("UpperConv.mSigma"), #raw("UpperConv.treeSlots"), #raw("UpperConv.K")], [],
+  [#raw("def-exit")], [#raw("U12a.BuiltFrom"), #raw("U12a.IsCutEdgeTo"), #raw("U12a.zetaE"), #raw("Comments1102.IsExitEdge"), #raw("Comments1102.edgeReach"), #raw("UpperConv.IsCutDecomp")], [],
+  [#raw("lem-least")], [#raw("UpperConv.lem_least_b_prefix"), #raw("UpperConv.lem_least_b_tree"), #raw("UpperConv.lem_least_b_K"), #raw("UpperConv.lem_least_b_treepath"), #raw("RefereeRev.lem_least_a_rev"), #raw("Comments1102.mTree_eq_mT")], [],
+  [#raw("lem-cut")], [#raw("U12a.lem_cut"), #raw("Comments1102.lem_cut")], [],
+  [#raw("lem-reach")], [#raw("U12a.lem_reach")], [],
+  [#raw("lem-split")], [#raw("U12a.lem_split_cases") (two cases; it follows from the earlier one-sentence form U12a.lem\_split, kept untagged)], [#raw("st-split-early"): #raw("U12a.step_split_early"), #raw("Comments1102.step_split_early_cost") \
 #raw("st-split-least"): #raw("U12a.step_split_least") \
 #raw("st-split-other"): #raw("U12a.step_split_other")],
+  [#raw("def-pieces")], [#raw("Comments1102.IsEarlyPiece"), #raw("Comments1102.IsLatePiece"), #raw("Comments1102.literalCharge"), #raw("Comments1102.pieceCost"), #raw("Comments1102.earlyCost"), #raw("Comments1102.lateLeastCost"), #raw("Comments1102.lateCost"), #raw("Comments1102.isSplitPieces_iff"), #raw("Comments1102.literalCharge_late"), #raw("Comments1102.charged_early_ncard")], [],
+  [#raw("lem-early")], [#raw("Comments1102.lem_early")], [],
+  [#raw("lem-late-least")], [#raw("Comments1102.lem_late_least")], [],
+  [#raw("lem-late-other")], [#raw("Comments1102.lem_late_other")], [],
   [#raw("def-forward")], [#raw("Method.ForwardEq"), #raw("Method.targets"), #raw("Method.FwdHolds"), #raw("Method.rem_forward")], [],
   [#raw("def-labelled")], [#raw("Method.Labelled"), #raw("Method.Labelled.Valid"), #raw("Method.Labelled.Outcome"), #raw("Method.Labelled.Prob"), #raw("Method.Labelled.bit"), #raw("Method.Labelled.word"), #raw("Method.Labelled.Carries"), #raw("Method.Labelled.IsFirstPosition"), #raw("Method.ex_labelled_valid"), #raw("Method.ex_labelled_word"), #raw("Method.ex_labelled_first"), #raw("Method.ex_labelled_repeat")], [],
   [#raw("def-req")], [#raw("Method.Labelled.firstPos"), #raw("Method.Labelled.prec"), #raw("Method.Labelled.Requirement"), #raw("Method.Labelled.Requirement.Valid"), #raw("Method.Labelled.Requirement.Holds"), #raw("CoverageRev.ex_requirement")], [],
@@ -307,7 +313,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
 #raw("st-scheme-event"): #raw("Method.step_prop_scheme_2_event") \
 #raw("st-scheme-bound"): #raw("Method.step_prop_scheme_3")],
   [#raw("lem-relay")], [#raw("C1Relay.lem_relay")], [],
-  [#raw("thm-sc")], [#raw("C1Final.jointProb"), #raw("C1Final.SCChain"), #raw("C1Referee.thm_sc_rev")], [],
+  [#raw("thm-sc")], [#raw("C1Final.jointProb"), #raw("C1Final.SCChain"), #raw("C1Referee.thm_sc_rev"), #raw("Comments1102.thm_sc")], [],
   [#raw("ex-zlp-cont")], [#raw("UpperConv.exX"), #raw("UpperConv.exEq1"), #raw("UpperConv.exEq2"), #raw("UpperConv.exEq3"), #raw("UpperConv.exL"), #raw("UpperConv.exΦ"), #raw("UpperConv.ex_cont_params"), #raw("UpperConv.ex_cont_least"), #raw("UpperConv.ex_cont_tree"), #raw("UpperConv.ex_cont_literals"), #raw("UpperConv.ex_cont_eq_root"), #raw("UpperConv.ex_cont_eq_s0"), #raw("UpperConv.ex_cont_eq_s1"), #raw("UpperConv.ex_cont_least_c_needed"), #raw("UpperConv.ex_cont_ars"), #raw("U12a.ex_cont_cut_u12a"), #raw("RefereeRev.exL4"), #raw("RefereeRev.exΦ4"), #raw("RefereeRev.ex_cont_arc_le"), #raw("CoverageRev4.ex_root_slot0")], [],
   [#raw("rem-constant")], [#raw("SP.CstarPaper.rem_constant"), #raw("ReadRev.rem_constant_all")], [],
   [#raw("rem-arity")], [#raw("RemArity.rem_arity"), #raw("RemArity.rem_arity_two")], [],
@@ -328,13 +334,16 @@ Each numbered definition, statement and proof step of the paper's own developmen
 #raw("st-struct-decode"): #raw("C1StructureRev.step_struct_c2_rev") \
 #raw("st-struct-unique"): #raw("C1Structure.step_struct_c3_unique")],
   [#raw("lem-cores")], [#raw("C1Cores.lem_cores_a_cols"), #raw("C1Cores.lem_cores_a_point"), #raw("C1Cores.lem_cores_a"), #raw("C1Cores.lem_cores_b"), #raw("C1Cores.lem_cores_b_chain")], [],
-  [#raw("lem-sc-final")], [#raw("C1Final.Ccol"), #raw("C1Final.colEdges"), #raw("C1Final.lem_sc_final_b_theta"), #raw("C1Final.lem_sc_final_a"), #raw("C1Referee.lem_sc_final_b_rev")], [],
-  [#raw("lem-ap")], [#raw("C1Final.HasCells"), #raw("C1Final.APGood"), #raw("C1Final.lem_ap"), #raw("C1Coverage.lem_ap_raw")], [#raw("st-ap-large"): #raw("C1Final.step_ap_large_ybar"), #raw("C1Final.step_ap_large_reduce"), #raw("C1Final.step_ap_large") \
+  [#raw("lem-sc-final")], [#raw("C1Final.Ccol"), #raw("C1Final.colEdges"), #raw("C1Final.lem_sc_final_b_theta"), #raw("C1Final.lem_sc_final_a"), #raw("C1Referee.lem_sc_final_b_rev"), #raw("Comments1102.lem_sc_final_a")], [],
+  [#raw("def-spread")], [#raw("Comments1102.IsSpread")], [],
+  [#raw("prop-relay-bound")], [#raw("Comments1102.prop_relay_bound")], [],
+  [#raw("lem-ap")], [#raw("C1Final.HasCells"), #raw("C1Final.APGood"), #raw("C1Final.lem_ap"), #raw("C1Coverage.lem_ap_raw"), #raw("Comments1102.lem_ap")], [#raw("st-ap-large"): #raw("C1Final.step_ap_large_ybar"), #raw("C1Final.step_ap_large_reduce"), #raw("C1Final.step_ap_large") \
 #raw("st-ap-small"): #raw("C1Final.step_ap_small_pigeon"), #raw("C1Final.step_ap_small_residue"), #raw("C1Final.step_ap_small")],
-  [#raw("lem-free")], [#raw("SCGadgets.Parents.numEdges"), #raw("SCGadgets.Parents.ReadsThrough"), #raw("C1Gadgets.lem_free")], [],
-  [#raw("lem-shifts")], [#raw("SCGadgets.lem_shifts"), #raw("CoverageRev3.shift_paths")], [],
+  [#raw("def-descent")], [#raw("CoverageRev2.FollowsRule"), #raw("CoverageRev2.descent"), #raw("CoverageRev2.descent_spec")], [],
+  [#raw("lem-free")], [#raw("SCGadgets.Parents.numEdges"), #raw("SCGadgets.Parents.ReadsThrough"), #raw("C1Gadgets.lem_free"), #raw("Comments1102.lem_free")], [],
+  [#raw("lem-shifts")], [#raw("SCGadgets.lem_shifts"), #raw("CoverageRev3.shift_paths"), #raw("Comments1102.shift_paths_unrestricted")], [],
   [#raw("rem-long")], [#raw("C1Cores.colk"), #raw("C1Cores.OccThrough"), #raw("C1Cores.step_long_tree"), #raw("C1Cores.step_long_slot"), #raw("C1Cores.step_long_below"), #raw("C1Cores.step_long_count"), #raw("C1Cores.step_long_formula"), #raw("C1Cores.rem_long_occ"), #raw("C1Cores.rem_long_lowest"), #raw("C1Cores.rem_long_canon"), #raw("C1Cores.rem_long_sync")], [],
-  [#raw("lem-u")], [#raw("C1LemU.hits"), #raw("C1LemU.Nhit"), #raw("C1LemU.geomExp"), #raw("C1LemU.lem_u")], [#raw("st-u-hit"): #raw("C1LemU.step_1") \
+  [#raw("lem-u")], [#raw("C1LemU.hits"), #raw("C1LemU.Nhit"), #raw("C1LemU.geomExp"), #raw("C1LemU.lem_u"), #raw("Comments1102.lem_u")], [#raw("st-u-hit"): #raw("C1LemU.step_1") \
 #raw("st-u-moment"): #raw("C1LemU.step_2_recursion"), #raw("C1LemU.step_2") \
 #raw("st-u-root"): #raw("C1LemU.step_3")],
   [#raw("lem-params")], [#raw("C1Params.SP_"), #raw("C1Params.lem_params")], [],
@@ -342,14 +351,14 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("lem-rev-upper")], [#raw("Reverse.lem_rev_upper")], [#raw("st-revup-arc"): #raw("Reverse.step_lem_rev_upper_1") \
 #raw("st-revup-cases"): #raw("Reverse.step_lem_rev_upper_2") \
 #raw("st-revup-final"): #raw("Reverse.step_lem_rev_upper_3")],
-  [#raw("def-rev-words")], [#raw("ReverseZ.Nm"), #raw("ReverseZ.zm"), #raw("ReverseZ.mOf"), #raw("ReverseZ.xn"), #raw("ReverseZ.s_def_rev_words_unique"), #raw("ReverseZ.def_rev_words_length"), #raw("ReverseZ.s_def_rev_words_blocks")], [],
+  [#raw("def-rev-words")], [#raw("ReverseZ.Nm"), #raw("ReverseZ.zm"), #raw("ReverseZ.mOf"), #raw("ReverseZ.xn"), #raw("ReverseZ.s_def_rev_words_unique"), #raw("ReverseZ.def_rev_words_length"), #raw("ReverseZ.s_def_rev_words_blocks"), #raw("Reverse.xm"), #raw("Reverse.T"), #raw("ReverseZ.blockStart")], [],
   [#raw("lem-rev-arc")], [#raw("ReverseZ.lem_rev_arc")], [],
-  [#raw("lem-sections")], [#raw("ReverseZ.lem_sections")], [#raw("st-sec-first"): #raw("ReverseZ.step_lem_sections_first") \
+  [#raw("lem-sections")], [#raw("ReverseZ.lem_sections"), #raw("Comments1102.lem_sections")], [#raw("st-sec-first"): #raw("ReverseZ.step_lem_sections_first") \
 #raw("st-sec-pair"): #raw("ReverseZ.step_lem_sections_pair") \
 #raw("st-sec-congr"): #raw("ReverseZ.step_lem_sections_congr")],
   [#raw("lem-rev-zlc")], [#raw("ReverseZ.lem_rev_zlc")], [#raw("st-rev-stop"): #raw("ReverseZ.step_lem_rev_zlc_stop") \
 #raw("st-rev-vertex"): #raw("ReverseZ.step_lem_rev_zlc_vertex")],
-  [#raw("rem-measures")], [#raw("RemMeasures.CNFGrammar"), #raw("RemMeasures.CNFGrammar.Derives"), #raw("RemMeasures.zmGrammar"), #raw("RemMeasures.rem_measures_grammar"), #raw("RemMeasures.rem_measures_grammar_exists"), #raw("RemMeasures.rem_measures_zlc"), #raw("RemMeasures.rem_measures_lzc_every")], [],
+  [#raw("rem-measures")], [#raw("RemMeasures.CNFGrammar"), #raw("RemMeasures.CNFGrammar.Derives"), #raw("RemMeasures.zmGrammar"), #raw("RemMeasures.rem_measures_grammar"), #raw("RemMeasures.rem_measures_grammar_exists"), #raw("RemMeasures.rem_measures_zlc"), #raw("RemMeasures.rem_measures_lzc_every"), #raw("Comments1102.GeneratesExactly"), #raw("Comments1102.grammarSize"), #raw("Comments1102.SubpolyBound"), #raw("Comments1102.grammarSize_le_rules"), #raw("Comments1102.grammarSize_attained"), #raw("Comments1102.rem_measures_a"), #raw("Comments1102.rem_measures_b"), #raw("Comments1102.rem_measures_c")], [],
 )
 
 == Earlier versions
@@ -379,7 +388,7 @@ Dependency routes (#raw("python3 tools/deps.py README.md") runs #raw("lake env l
 
 The formalisation uses Lean 4 at the toolchain #raw("leanprover/lean4:v4.33.0-rc1") (#raw("lean-toolchain")) and Mathlib at the tag #raw("v4.33.0-rc1") (commit #raw("79d0395"), pinned in #raw("lake-manifest.json")). #raw("lake exe cache get && lake build") builds the formalisation. Then #raw("lake env lean Check.lean") prints the statements (#raw("#check")) and the axioms on which the main declarations depend; they are among #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound"). This repository is exported from the author's research project (#raw("export.sh")); module names keep its prefix #raw("SP").
 
-The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 352 modules.
+The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 354 modules.
 
 == The audit file Check.lean
 
