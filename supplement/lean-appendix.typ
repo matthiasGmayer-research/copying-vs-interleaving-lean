@@ -53,8 +53,8 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("7651d9b9f16a") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
-  356 modules · 649 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
+  #text(size: 10pt)[Lean repository revision #raw("fd72328d098b") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  356 modules · 658 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
 #block(inset: (x: 1cm))[#set text(size: 9.5pt)
@@ -84,8 +84,8 @@ The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-c
 *Status.* Every numbered definition, statement and proof step of the paper's own development, apart from the comparisons in #raw("rem-measures") that rest on cited results, has a sorry-free Lean declaration (axioms #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")): the upper bound in its version U12a (#raw("SP.CstarText.U12a"), constant 2), the lower bound in its version C1/I1 (prime types, parameters of (k, L) for all integers k ≥ 2 and L ≥ 512 k log₂(k + 2): #raw("SP.CstarText.C1Params") … #raw("C1Lower"), #raw("C1Coverage"), #raw("C1Sent")), and #raw("prop-scheme"), the critical-set bound, with the bound of #raw("lem-random") (#raw("SP.CstarText.MethodRev.prop_scheme")). Sentences of the text outside the numbered blocks that state a fact are tagged as well (sentence anchors, #raw("@[kb \"cstarpaper-s-…\"]")); these tags locate the declarations and claim nothing beyond the statement above. The formalisations of earlier versions are kept in the repository (see "Earlier versions" below); their superseded statements no longer carry the paper's tags.
 
 In this revision, the table of @sec-map has a row for each of the paper's 68 numbered blocks, with the
-declarations of their 34 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper") (conventions and
-notation stated in those sections); 131 further tags anchor sentences of the paper's text.
+declarations of their 34 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper"), #raw("tab-relay") (conventions and
+notation stated in those sections); 133 further tags anchor sentences of the paper's text.
 
 == Cited results
 
@@ -314,6 +314,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
 #raw("st-scheme-event"): #raw("Method.step_prop_scheme_2_event") \
 #raw("st-scheme-bound"): #raw("Method.step_prop_scheme_3")],
   [#raw("lem-relay")], [#raw("C1Relay.lem_relay")], [],
+  [#raw("tab-relay")], [#raw("Final1102.relayQ"), #raw("Final1102.tab_relay"), #raw("Final1102.relay_length_theta"), #raw("Final1102.relay_length_power"), #raw("Final1102.tab_relay_Lk"), #raw("C1Coverage.why_quarter_relay")], [],
   [#raw("thm-sc")], [#raw("C1Final.jointProb"), #raw("C1Final.SCChain"), #raw("C1Referee.thm_sc_rev"), #raw("Comments1102.thm_sc")], [],
   [#raw("ex-zlp-cont")], [#raw("UpperConv.exX"), #raw("UpperConv.exEq1"), #raw("UpperConv.exEq2"), #raw("UpperConv.exEq3"), #raw("UpperConv.exL"), #raw("UpperConv.exΦ"), #raw("UpperConv.ex_cont_params"), #raw("UpperConv.ex_cont_least"), #raw("UpperConv.ex_cont_tree"), #raw("UpperConv.ex_cont_literals"), #raw("UpperConv.ex_cont_eq_root"), #raw("UpperConv.ex_cont_eq_s0"), #raw("UpperConv.ex_cont_eq_s1"), #raw("UpperConv.ex_cont_least_c_needed"), #raw("UpperConv.ex_cont_ars"), #raw("U12a.ex_cont_cut_u12a"), #raw("RefereeRev.exL4"), #raw("RefereeRev.exΦ4"), #raw("RefereeRev.ex_cont_arc_le"), #raw("CoverageRev4.ex_root_slot0")], [],
   [#raw("rem-constant")], [#raw("SP.CstarPaper.rem_constant"), #raw("ReadRev.rem_constant_all")], [],
