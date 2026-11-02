@@ -160,6 +160,7 @@ theorem step_final_b_log (k L : ℕ) (hlow : C1Params.X k L ^ (3 * (k + 1)) ≤ 
 
 /-- main.typ 1326: "with `L = Θ(k log k)`" (`L = L_k = ⌈512 k log(k + 2)⌉`, def-params) — `c₁ k log k ≤ L_k ≤ c₂ k log k`
 for all `k ≥ 2`. -/
+@[kb "cstarpaper-s-lem-sc-final-claim4" (part := "C1: C1Final.step_final_b_L: L_k = Θ(k log k)")]
 theorem step_final_b_L :
     ∃ c₁ c₂ : ℝ, 0 < c₁ ∧ 0 < c₂ ∧ ∀ k : ℕ, 2 ≤ k →
       c₁ * (k : ℝ) * SP.log2 k ≤ C1Params.Lk k ∧ (C1Params.Lk k : ℝ) ≤ c₂ * (k : ℝ) * SP.log2 k := by

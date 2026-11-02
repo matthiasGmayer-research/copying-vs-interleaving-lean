@@ -24,18 +24,18 @@ open SP.CstarText.Prelim SP.CstarText.UpperConv
 included): some root path `js` of `ρ` has a prefix `js₁` that is a root path of `ζ` (lem-cut, main.typ 2106).
 -- convention: the vertices `q`, `z` are explicit (an occurrence is an occurrence of a given vertex); root paths are
 unique (lem-occ (b)), so "some root path" is "the root path". -/
-@[kb "cstarpaper-lem-cut" (part := "built from")]
+@[kb "cstarpaper-def-exit" (part := "descendant (built from, ρ included)")]
 def BuiltFrom {Q α : Type} (P : Program Q α) (q : Q) (ρ : Occ) (z : Q) (ζ : Occ) : Prop :=
   ∃ js js₁ : List ℕ, OccVia P q ρ js ∧ OccVia P z ζ js₁ ∧ js₁ <+: js
 
 /-- `e = (w, j)` is an edge outside `𝒯` that leads to the vertex `z` (lem-cut, main.typ 2107). -/
-@[kb "cstarpaper-lem-cut" (part := "edge e ∉ 𝒯 leading to a vertex z")]
+@[kb "cstarpaper-def-exit" (part := "edge e ∉ 𝒯 leading to a vertex z")]
 def IsCutEdgeTo {Q α : Type} (P : Program Q α) (w : Q) (j : ℕ) (z : Q) : Prop :=
   (P.δ w)[j]? = some (.inl z) ∧ (w, j) ∉ treeSlots P
 
 /-- `ζ_e`, for the edge `e = (w, j)`: the occurrence (of the vertex `z` that `e` leads to) along the least path of `w`,
 followed by `e`, i.e. `t ↦ ρ*_w(d_w t + j)` (lem-cut, main.typ 2107–2108). -/
-@[kb "cstarpaper-lem-cut" (part := "ζ_e")]
+@[kb "cstarpaper-def-exit" (part := "occurrence through e: ζ_e = (ρ*_w)_j")]
 noncomputable def zetaE {Q α : Type} (P : Program Q α) (w : Q) (j : ℕ) : Occ :=
   chi P w (leastOcc P w) j
 
@@ -43,7 +43,7 @@ noncomputable def zetaE {Q α : Type} (P : Program Q α) (w : Q) (j : ℕ) : Occ
 pieces: `R_e := max(I_{ζ_e} ∪ {0})`, `R_ρ := max(I_ρ ∪ {0})`; main.typ 2145, 2165, App. A.6 st-split-other).
 -- convention: `sSup` over `ℕ` of the lowest interval; it is `max I_ρ` when `I_ρ` is non-empty (it is finite, as
 `ρ(t) < n` bounds `t`) and `0` when it is empty. -/
-@[kb "cstarpaper-lem-reach" (part := "reach R_ρ") (deviation := "sSup over ℕ (= max I_ρ, and 0 for empty I_ρ).")]
+@[kb "cstarpaper-def-canonical" (part := "reach R_ρ := max(I_ρ ∪ {0})") (deviation := "sSup over ℕ (= max I_ρ, and 0 for empty I_ρ).")]
 noncomputable def reach {Q α : Type} (P : Program Q α) (n : ℕ) (q : Q) (ρ : Occ) : ℕ :=
   sSup (canonInterval P n q ρ)
 

@@ -1371,7 +1371,7 @@ other and from `ρ*_z`. Every occurrence of a vertex `q` other than `ρ*_q` is b
 first edge of its root path outside `𝒯`; we call `e` its cut edge. No least occurrence is built from any `ζ_e`."
 Parts: (1) `ζ_e ∈ occ_z`; (2) distinct edges give distinct `ζ_e`, and `ζ_e ≠ ρ*_z`; (3) exactly one `e`, and it is the
 first edge of the root path outside `𝒯` (`IsCutDecomp`); (4) no least occurrence is built from a `ζ_e`. -/
-@[kb "cstarpaper-lem-cut"]
+@[kb "cstarpaper-lem-cut" (part := "U12a: the earlier four-part form (cut edge = exit edge)")]
 theorem lem_cut {Q α : Type} (P : Program Q α) (hP : IsZLP P) :
     (∀ (w : Q) (j : ℕ) (z : Q), IsCutEdgeTo P w j z → zetaE P w j ∈ occ P z) ∧
     (∀ (w w' : Q) (j j' : ℕ) (z : Q), IsCutEdgeTo P w j z → IsCutEdgeTo P w' j' z →

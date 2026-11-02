@@ -32,7 +32,7 @@ open SP.CstarText.SCStructure (Γ PtrBits Pk R)
 gives, for each `p < |val(P)|`, a unique root path to a letter, the _descent_ of `p`; symbol `p` of `val(P)` is that
 letter." For a ZLP and `p < |val(P)|`: the rule gives the descent (a root path to a letter, `RefereeRev.IsPathToLetter`)
 with a letter `a` that is symbol `p` of `val(P)`, and every root path to a letter that the rule gives is the descent. -/
-@[kb "cstarpaper-def-path" (part := "CoverageRev2.the descent: exists, is unique, and symbol p of val(P) is its letter")]
+@[kb "cstarpaper-def-descent" (part := "CoverageRev2.the descent: exists, is unique, and symbol p of val(P) is its letter")]
 theorem descent_spec {Q α : Type} (P : Program Q α) (hP : IsZLP P) (p : ℕ) (hp : p < (val P).length) :
     (∃ a : α, FollowsRule P P.root p (descent P p).1 (descent P p).2 a ∧
         RefereeRev.IsPathToLetter P P.root (descent P p).1 (descent P p).2 a ∧ (val P)[p]? = some a) ∧

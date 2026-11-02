@@ -32,6 +32,7 @@ open SP.CstarText.Prelim
 `FollowsRule P w p js j a` says that the rule "symbol `p` of the value of `w` is symbol `⌊p/d_w⌋` of the value of the
 child in slot `p mod d_w`", applied from `w` at `p`, then from that child at `⌊p/d_w⌋`, and so on, follows the path
 `js` and ends at slot `j` of the last vertex, which holds the letter `a`. -/
+@[kb "cstarpaper-def-descent" (part := "CoverageRev2.the rule applied repeatedly from a vertex")]
 inductive FollowsRule {Q α : Type} (P : Program Q α) : Q → ℕ → List ℕ → ℕ → α → Prop
   /-- The slot `p mod d_w` of `w` holds the letter `a`: the path is empty and ends at this slot. -/
   | letter {w : Q} {p : ℕ} {a : α} :
@@ -47,7 +48,7 @@ from the root, then slot `j` of its end), that applying the rule repeatedly from
 (`FollowsRule`). It is well defined (exists and is unique) for `p < |val(P)|`: `CoverageRev2.descent_spec`. Outside the paper's
 domain it is unspecified: `([], 0)` when no rule-generated path exists, and a rule-generated path may exist for some
 `p ≥ |val(P)|` (gate 2026-10-20). -/
-@[kb "cstarpaper-def-path" (part := "CoverageRev2.the descent of p")]
+@[kb "cstarpaper-def-descent" (part := "CoverageRev2.the descent of p")]
 noncomputable def descent {Q α : Type} (P : Program Q α) (p : ℕ) : List ℕ × ℕ :=
   if h : ∃ d : List ℕ × ℕ, ∃ a : α, FollowsRule P P.root p d.1 d.2 a then h.choose else ([], 0)
 

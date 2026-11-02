@@ -246,27 +246,33 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `def-ars` | `Prelim.Covers`, `Prelim.IsARS`, `Prelim.ARC`, `Prelim.literals`, `Prelim.ars_determines`, `Prelim.arc_le_length`, `WordRev.CoversText`, `WordRev.covers_iff_coversText` |  |
 | `def-zip` | `Prelim.zip`, `Prelim.def_zip_spec`, `Prelim.zip_round_robin` |  |
 | `def-zlp` | `Prelim.Program`, `Prelim.IsZLP`, `Prelim.value`, `Prelim.val`, `Prelim.ell`, `Prelim.size`, `Prelim.ZLC`, `Prelim.IsSynchronous`, `Prelim.sZLC`, `Prelim.synchronous_iff_paths`, `CoverageRev.zlc_prefix_mono` |  |
-| `def-path`; paths to letters in `app-upper-conv` | `Prelim.IsPath`, `Prelim.IsPathTo`, `Prelim.pathProduct`, `Prelim.IsRootPath`, `CoverageRev.every_vertex_root_path`, `CoverageRev.value_zip_rule`, `RefereeRev.IsPathToLetter`, `RefereeRev.def_path_letter_follow`, `RefereeRev.def_path_letter_slots`, `CoverageRev2.descent`, `CoverageRev2.descent_spec` |  |
+| `def-path`; paths to letters in `app-upper-conv` | `Prelim.IsPath`, `Prelim.IsPathTo`, `Prelim.pathProduct`, `Prelim.IsRootPath`, `CoverageRev.every_vertex_root_path`, `CoverageRev.value_zip_rule`, `RefereeRev.IsPathToLetter`, `RefereeRev.def_path_letter_follow`, `RefereeRev.def_path_letter_slots`, `Comments1102.height`, `Comments1102.depth_eq_height_root` |  |
 | `def-occ` | `Prelim.Occ`, `Prelim.OccVia`, `Prelim.occ`, `Prelim.def_occ_root`, `Prelim.def_occ_child`, `Prelim.def_occ_form` |  |
 | `lem-occ` | `Prelim.lem_occ_a`, `Prelim.lem_occ_b`, `Prelim.lem_occ_bij` |  |
 | `ex-zlp` | `Prelim.exProg`, `Prelim.ex_zlp_isZLP`, `Prelim.ex_zlp_values`, `Prelim.ex_zlp_length`, `Prelim.ex_zlp_occ`, `Prelim.sync_same_step`, `Prelim.ex_zlp_not_sync`, `ExZlpRev.sync_iff_same_step`, `ExZlpRev.gap_diff_steps` |  |
-| `sec-upper`, notation | `UpperConv.d0`, `UpperConv.scaleN`, `UpperConv.mT`, `UpperConv.mSigma`, `UpperConv.sec_upper_two_card`, `CoverageRev.occ_step_dvd_d0` |  |
+| `sec-upper`, notation | `UpperConv.d0`, `UpperConv.scaleN`, `UpperConv.sec_upper_two_card`, `CoverageRev.occ_step_dvd_d0` |  |
+| `lem-lower` | `Comments1102.lem_lower` |  |
 | `thm-scale` | `U12a.thm_scale` |  |
-| `def-canonical` | `UpperConv.firstPos`, `UpperConv.IsLowest`, `UpperConv.canonInterval`, `UpperConv.Acan`, `UpperConv.vq`, `UpperConv.def_canonical_first`, `UpperConv.def_canonical_unique`, `UpperConv.def_canonical_interval`, `UpperConv.def_canonical_mono`, `UpperConv.def_canonical_partition`, `UpperConv.ex_canonical_firstPos`, `UpperConv.ex_canonical_intervals` |  |
+| `def-canonical` | `UpperConv.firstPos`, `UpperConv.IsLowest`, `UpperConv.canonInterval`, `UpperConv.Acan`, `UpperConv.vq`, `UpperConv.def_canonical_first`, `UpperConv.def_canonical_unique`, `UpperConv.def_canonical_interval`, `UpperConv.def_canonical_mono`, `UpperConv.def_canonical_partition`, `UpperConv.ex_canonical_firstPos`, `UpperConv.ex_canonical_intervals`, `U12a.reach` |  |
 | `def-pair` | `UpperConv.U`, `UpperConv.chi`, `UpperConv.compSet`, `UpperConv.def_pair_chi` |  |
 | `lem-conversion` | `UpperConv.IsInitialSeg`, `UpperConv.IsPieces`, `UpperConv.litSet`, `UpperConv.lowLetterSlots`, `UpperConv.IsConvIndex`, `UpperConv.lem_conversion`, `UpperConv.lem_conversion_singleton`, `CoverageRev2.strict_conversion`, `CoverageRev4.conv_lit_val` | `st-conv-lit`: `UpperConv.step_conv_lit`; `st-conv-eq`: `UpperConv.step_conv_eq`, `CoverageRev2.strict_conv_eq`; `st-conv-cov`: `UpperConv.step_conv_cov` |
-| `def-least` | `UpperConv.Precedes`, `UpperConv.leastOcc`, `UpperConv.IsLeastPath`, `UpperConv.def_least_spec`, `CoverageRev.occ_finite` |  |
-| `lem-least` | `UpperConv.treeSlots`, `UpperConv.K`, `UpperConv.lem_least_b_prefix`, `UpperConv.lem_least_b_tree`, `UpperConv.lem_least_b_K`, `UpperConv.lem_least_b_treepath`, `UpperConv.lem_least_c`, `RefereeRev.lem_least_a_rev` |  |
-| `lem-cut` | `UpperConv.IsCutDecomp`, `U12a.BuiltFrom`, `U12a.IsCutEdgeTo`, `U12a.zetaE`, `U12a.lem_cut` |  |
-| `lem-reach` | `U12a.reach`, `U12a.lem_reach` |  |
-| `lem-split` | `U12a.lem_split_cases` (two cases; it follows from the earlier one-sentence form U12a.lem_split, kept untagged) | `st-split-early`: `U12a.step_split_early`; `st-split-least`: `U12a.step_split_least`; `st-split-other`: `U12a.step_split_other` |
+| `def-least` | `UpperConv.Precedes`, `UpperConv.leastOcc`, `UpperConv.IsLeastPath`, `UpperConv.def_least_spec`, `CoverageRev.occ_finite`, `Comments1102.mTree`, `UpperConv.mT`, `UpperConv.mSigma`, `UpperConv.treeSlots`, `UpperConv.K` |  |
+| `def-exit` | `U12a.BuiltFrom`, `U12a.IsCutEdgeTo`, `U12a.zetaE`, `Comments1102.IsExitEdge`, `Comments1102.edgeReach`, `UpperConv.IsCutDecomp` |  |
+| `lem-least` | `UpperConv.lem_least_b_prefix`, `UpperConv.lem_least_b_tree`, `UpperConv.lem_least_b_K`, `UpperConv.lem_least_b_treepath`, `RefereeRev.lem_least_a_rev`, `Comments1102.mTree_eq_mT` |  |
+| `lem-cut` | `U12a.lem_cut`, `Comments1102.lem_cut` |  |
+| `lem-reach` | `U12a.lem_reach` |  |
+| `lem-split` | `U12a.lem_split_cases` (two cases; it follows from the earlier one-sentence form U12a.lem_split, kept untagged) | `st-split-early`: `U12a.step_split_early`, `Comments1102.step_split_early_cost`; `st-split-least`: `U12a.step_split_least`; `st-split-other`: `U12a.step_split_other` |
+| `def-pieces` | `Comments1102.IsEarlyPiece`, `Comments1102.IsLatePiece`, `Comments1102.literalCharge`, `Comments1102.pieceCost`, `Comments1102.earlyCost`, `Comments1102.lateLeastCost`, `Comments1102.lateCost`, `Comments1102.isSplitPieces_iff`, `Comments1102.literalCharge_late`, `Comments1102.charged_early_ncard` |  |
+| `lem-early` | `Comments1102.lem_early` |  |
+| `lem-late-least` | `Comments1102.lem_late_least` |  |
+| `lem-late-other` | `Comments1102.lem_late_other` |  |
 | `def-forward` | `Method.ForwardEq`, `Method.targets`, `Method.FwdHolds`, `Method.rem_forward` |  |
 | `def-labelled` | `Method.Labelled`, `Method.Labelled.Valid`, `Method.Labelled.Outcome`, `Method.Labelled.Prob`, `Method.Labelled.bit`, `Method.Labelled.word`, `Method.Labelled.Carries`, `Method.Labelled.IsFirstPosition`, `Method.ex_labelled_valid`, `Method.ex_labelled_word`, `Method.ex_labelled_first`, `Method.ex_labelled_repeat` |  |
 | `def-req` | `Method.Labelled.firstPos`, `Method.Labelled.prec`, `Method.Labelled.Requirement`, `Method.Labelled.Requirement.Valid`, `Method.Labelled.Requirement.Holds`, `CoverageRev.ex_requirement` |  |
 | `lem-random` | `Method.lem_random` | `st-rand-claim`: `Method.step_lem_random_1`; `st-rand-cond`: `Method.step_lem_random_2`; `st-rand-union`: `Method.step_lem_random_3_bad`, `Method.step_lem_random_3_exp` |
 | `prop-scheme` | `MethodRev.prop_scheme` | `st-scheme-cand`: `Method.step_prop_scheme_1_count`, `Method.step_prop_scheme_1_prob`; `st-scheme-event`: `Method.step_prop_scheme_2_event`; `st-scheme-bound`: `Method.step_prop_scheme_3` |
 | `lem-relay` | `C1Relay.lem_relay` |  |
-| `thm-sc` | `C1Final.jointProb`, `C1Final.SCChain`, `C1Referee.thm_sc_rev` |  |
+| `thm-sc` | `C1Final.jointProb`, `C1Final.SCChain`, `C1Referee.thm_sc_rev`, `Comments1102.thm_sc` |  |
 | `ex-zlp-cont` | `UpperConv.exX`, `UpperConv.exEq1`, `UpperConv.exEq2`, `UpperConv.exEq3`, `UpperConv.exL`, `UpperConv.exΦ`, `UpperConv.ex_cont_params`, `UpperConv.ex_cont_least`, `UpperConv.ex_cont_tree`, `UpperConv.ex_cont_literals`, `UpperConv.ex_cont_eq_root`, `UpperConv.ex_cont_eq_s0`, `UpperConv.ex_cont_eq_s1`, `UpperConv.ex_cont_least_c_needed`, `UpperConv.ex_cont_ars`, `U12a.ex_cont_cut_u12a`, `RefereeRev.exL4`, `RefereeRev.exΦ4`, `RefereeRev.ex_cont_arc_le`, `CoverageRev4.ex_root_slot0` |  |
 | `rem-constant` | `SP.CstarPaper.rem_constant`, `ReadRev.rem_constant_all` |  |
 | `rem-arity` | `RemArity.rem_arity`, `RemArity.rem_arity_two` |  |
@@ -283,20 +289,23 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `def-critical` | `C1Cores.IsCoreCell`, `C1Cores.point`, `C1Cores.pointRC`, `C1Cores.Sprime`, `C1Cores.IsInnerCell`, `C1Cores.S`, `C1Cores.def_critical_subset`, `C1Cores.def_critical_point`, `C1Cores.Sprime_finite`, `C1Cores.S_finite`, `C1Cores.point_injective` |  |
 | `lem-structure` | `C1Structure.label`, `C1Structure.LW`, `C1Structure.ReadThroughZero`, `C1Structure.ReadThroughCol`, `C1Structure.lem_structure_a_pre`, `C1Structure.two_le_R`, `C1Structure.lem_structure_a`, `C1Structure.lem_structure_b`, `C1Structure.lem_structure_c_lengths_low`, `C1Structure.lem_structure_shifts_pre`, `C1Structure.lem_structure_c_lengths_high`, `C1Structure.lem_structure_c_read`, `C1Structure.lem_structure_c`, `C1Structure.lem_structure_labelled` | `st-struct-length`: `C1Structure.step_struct_c1`; `st-struct-decode`: `C1StructureRev.step_struct_c2_rev`; `st-struct-unique`: `C1Structure.step_struct_c3_unique` |
 | `lem-cores` | `C1Cores.lem_cores_a_cols`, `C1Cores.lem_cores_a_point`, `C1Cores.lem_cores_a`, `C1Cores.lem_cores_b`, `C1Cores.lem_cores_b_chain` |  |
-| `lem-sc-final` | `C1Final.Ccol`, `C1Final.colEdges`, `C1Final.lem_sc_final_b_theta`, `C1Final.lem_sc_final_a`, `C1Referee.lem_sc_final_b_rev` |  |
-| `lem-ap` | `C1Final.HasCells`, `C1Final.APGood`, `C1Final.lem_ap`, `C1Coverage.lem_ap_raw` | `st-ap-large`: `C1Final.step_ap_large_ybar`, `C1Final.step_ap_large_reduce`, `C1Final.step_ap_large`; `st-ap-small`: `C1Final.step_ap_small_pigeon`, `C1Final.step_ap_small_residue`, `C1Final.step_ap_small` |
-| `lem-free` | `SCGadgets.Parents.numEdges`, `SCGadgets.Parents.ReadsThrough`, `C1Gadgets.lem_free` |  |
-| `lem-shifts` | `SCGadgets.lem_shifts`, `CoverageRev3.shift_paths` |  |
+| `lem-sc-final` | `C1Final.Ccol`, `C1Final.colEdges`, `C1Final.lem_sc_final_b_theta`, `C1Final.lem_sc_final_a`, `C1Referee.lem_sc_final_b_rev`, `Comments1102.lem_sc_final_a` |  |
+| `def-spread` | `Comments1102.IsSpread` |  |
+| `prop-relay-bound` | `Comments1102.prop_relay_bound` |  |
+| `lem-ap` | `C1Final.HasCells`, `C1Final.APGood`, `C1Final.lem_ap`, `C1Coverage.lem_ap_raw`, `Comments1102.lem_ap` | `st-ap-large`: `C1Final.step_ap_large_ybar`, `C1Final.step_ap_large_reduce`, `C1Final.step_ap_large`; `st-ap-small`: `C1Final.step_ap_small_pigeon`, `C1Final.step_ap_small_residue`, `C1Final.step_ap_small` |
+| `def-descent` | `CoverageRev2.FollowsRule`, `CoverageRev2.descent`, `CoverageRev2.descent_spec` |  |
+| `lem-free` | `SCGadgets.Parents.numEdges`, `SCGadgets.Parents.ReadsThrough`, `C1Gadgets.lem_free`, `Comments1102.lem_free` |  |
+| `lem-shifts` | `SCGadgets.lem_shifts`, `CoverageRev3.shift_paths`, `Comments1102.shift_paths_unrestricted` |  |
 | `rem-long` | `C1Cores.colk`, `C1Cores.OccThrough`, `C1Cores.step_long_tree`, `C1Cores.step_long_slot`, `C1Cores.step_long_below`, `C1Cores.step_long_count`, `C1Cores.step_long_formula`, `C1Cores.rem_long_occ`, `C1Cores.rem_long_lowest`, `C1Cores.rem_long_canon`, `C1Cores.rem_long_sync` |  |
-| `lem-u` | `C1LemU.hits`, `C1LemU.Nhit`, `C1LemU.geomExp`, `C1LemU.lem_u` | `st-u-hit`: `C1LemU.step_1`; `st-u-moment`: `C1LemU.step_2_recursion`, `C1LemU.step_2`; `st-u-root`: `C1LemU.step_3` |
+| `lem-u` | `C1LemU.hits`, `C1LemU.Nhit`, `C1LemU.geomExp`, `C1LemU.lem_u`, `Comments1102.lem_u` | `st-u-hit`: `C1LemU.step_1`; `st-u-moment`: `C1LemU.step_2_recursion`, `C1LemU.step_2`; `st-u-root`: `C1LemU.step_3` |
 | `lem-params` | `C1Params.SP_`, `C1Params.lem_params` |  |
 | `def-section` | `Reverse.sec` |  |
 | `lem-rev-upper` | `Reverse.lem_rev_upper` | `st-revup-arc`: `Reverse.step_lem_rev_upper_1`; `st-revup-cases`: `Reverse.step_lem_rev_upper_2`; `st-revup-final`: `Reverse.step_lem_rev_upper_3` |
-| `def-rev-words` | `ReverseZ.Nm`, `ReverseZ.zm`, `ReverseZ.mOf`, `ReverseZ.xn`, `ReverseZ.s_def_rev_words_unique`, `ReverseZ.def_rev_words_length`, `ReverseZ.s_def_rev_words_blocks` |  |
+| `def-rev-words` | `ReverseZ.Nm`, `ReverseZ.zm`, `ReverseZ.mOf`, `ReverseZ.xn`, `ReverseZ.s_def_rev_words_unique`, `ReverseZ.def_rev_words_length`, `ReverseZ.s_def_rev_words_blocks`, `Reverse.xm`, `Reverse.T`, `ReverseZ.blockStart` |  |
 | `lem-rev-arc` | `ReverseZ.lem_rev_arc` |  |
-| `lem-sections` | `ReverseZ.lem_sections` | `st-sec-first`: `ReverseZ.step_lem_sections_first`; `st-sec-pair`: `ReverseZ.step_lem_sections_pair`; `st-sec-congr`: `ReverseZ.step_lem_sections_congr` |
+| `lem-sections` | `ReverseZ.lem_sections`, `Comments1102.lem_sections` | `st-sec-first`: `ReverseZ.step_lem_sections_first`; `st-sec-pair`: `ReverseZ.step_lem_sections_pair`; `st-sec-congr`: `ReverseZ.step_lem_sections_congr` |
 | `lem-rev-zlc` | `ReverseZ.lem_rev_zlc` | `st-rev-stop`: `ReverseZ.step_lem_rev_zlc_stop`; `st-rev-vertex`: `ReverseZ.step_lem_rev_zlc_vertex` |
-| `rem-measures` | `RemMeasures.CNFGrammar`, `RemMeasures.CNFGrammar.Derives`, `RemMeasures.zmGrammar`, `RemMeasures.rem_measures_grammar`, `RemMeasures.rem_measures_grammar_exists`, `RemMeasures.rem_measures_zlc`, `RemMeasures.rem_measures_lzc_every` |  |
+| `rem-measures` | `RemMeasures.CNFGrammar`, `RemMeasures.CNFGrammar.Derives`, `RemMeasures.zmGrammar`, `RemMeasures.rem_measures_grammar`, `RemMeasures.rem_measures_grammar_exists`, `RemMeasures.rem_measures_zlc`, `RemMeasures.rem_measures_lzc_every`, `Comments1102.GeneratesExactly`, `Comments1102.grammarSize`, `Comments1102.SubpolyBound`, `Comments1102.grammarSize_le_rules`, `Comments1102.grammarSize_attained`, `Comments1102.rem_measures_a`, `Comments1102.rem_measures_b`, `Comments1102.rem_measures_c` |  |
 <!-- /tab-lean -->
 
 ## Earlier versions

@@ -33,13 +33,13 @@ def d0 {Q α : Type} (P : Program Q α) : ℕ := P.arity P.root
 noncomputable def scaleN {Q α : Type} (P : Program Q α) (n : ℕ) : ℝ := (n : ℝ) / (d0 P : ℝ)
 
 /-- `m_𝒯 := |Q| − 1` (main.typ 378). -/
-@[kb "cstarpaper-sec-upper" (part := "notation: m_T = |Q| − 1")]
+@[kb "cstarpaper-def-least" (part := "m_T in the form |Q| − 1 (= |𝒯| by lem-least (b): Comments1102.mTree_eq_mT)")]
 noncomputable def mT {Q α : Type} (_P : Program Q α) : ℕ := Nat.card Q - 1
 
 /-- `m_Σ`, the number of slots of `P` that hold a letter (main.typ 379).
 -- convention: `Σ_q |{j : δ(q)[j] ∈ Σ}|`, a `finsum` over `Q` (finite for a ZLP); equal to
 `SP.Program.letterEdges` of `SP/CstarUpper.lean`. -/
-@[kb "cstarpaper-sec-upper" (part := "notation: m_Σ")]
+@[kb "cstarpaper-def-least" (part := "m_Σ, the number of edges to letters")]
 noncomputable def mSigma {Q α : Type} (P : Program Q α) : ℕ :=
   ∑ᶠ q : Q, ((P.δ q).filter Sum.isRight).length
 
@@ -175,7 +175,7 @@ def pathSlots {Q α : Type} (P : Program Q α) : Q → List ℕ → List (Q × �
 
 /-- The tree slots: the last slots of the least paths of the vertices `q ≠ q₀`. A slot `(w, j)` is a
 tree slot if for some `q ≠ q₀` the least path of `q` is `π ++ [j]` with `π` a root path ending at `w`. -/
-@[kb "cstarpaper-lem-least" (part := "the tree 𝒯 (its slots)")]
+@[kb "cstarpaper-def-least" (part := "tree edges 𝒯 (the last edges of the least paths)")]
 def treeSlots {Q α : Type} (P : Program Q α) : Set (Q × ℕ) :=
   {s | ∃ (q : Q) (π : List ℕ), q ≠ P.root ∧ IsLeastPath P q (π ++ [s.2]) ∧ IsPathTo P P.root π s.1}
 
@@ -185,7 +185,7 @@ def AllInTree {Q α : Type} (P : Program Q α) (z : Q) (js : List ℕ) : Prop :=
 
 /-- `K := m − m_Σ − m_𝒯` (lem-least (b); natural-number subtraction, exact as `m_Σ + m_𝒯 ≤ m` for a
 ZLP). -/
-@[kb "cstarpaper-lem-least" (part := "K = m − m_Σ − m_T")]
+@[kb "cstarpaper-def-least" (part := "K = m − m_Σ − m_T")]
 noncomputable def K {Q α : Type} (P : Program Q α) : ℕ := size P - mSigma P - mT P
 
 /-! ## lem-cut (main.typ 527–531): the cut edge -/
@@ -193,7 +193,7 @@ noncomputable def K {Q α : Type} (P : Program Q α) : ℕ := size P - mSigma P 
 /-- The root path `js` of an occurrence of `q` has the cut edge `e = (w, j)`, leading to `z`, with rest
 `π`: `js = js₁ ++ j :: π`, `js₁` a root path ending at `w` all of whose slots lie in `𝒯`, the slot
 `(w, j)` holds `z` and is not in `𝒯` (so `e` is the first slot of `js` not in `𝒯`). -/
-@[kb "cstarpaper-lem-cut" (part := "cut edge e, its vertex z, the rest π")]
+@[kb "cstarpaper-def-exit" (part := "exit edge e (first edge of the root path outside 𝒯), its vertex z, the rest π")]
 def IsCutDecomp {Q α : Type} (P : Program Q α) (js js₁ : List ℕ) (w : Q) (j : ℕ) (z : Q)
     (π : List ℕ) : Prop :=
   js = js₁ ++ j :: π ∧ IsPathTo P P.root js₁ w ∧ AllInTree P P.root js₁ ∧

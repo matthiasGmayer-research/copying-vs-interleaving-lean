@@ -198,7 +198,7 @@ theorem s_lem_ap_applicable (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * S
 the edge indices `j_i(h)`, and composing gives `p = R(Ψ_h t + ζ_h) + π_h`." Rendered as lem-free (c)'s dichotomy
 (the descent = reading through occurrences of the free levels, as there), for `p < n` with every edge without a real
 child leading to a word of length at least `n`. -/
-@[kb "cstarpaper-s-lem-free-descent" (part := "C1: both branches")]
+-- kb tag retired 2026-11-02 (comment round 11-02, cstar a925e4a; superseded by Comments1102.s_lem_free_descent, without the filler hypothesis and p < n): @[kb "cstarpaper-s-lem-free-descent" (part := "C1: both branches")]
 theorem s_lem_free_descent (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L)
     (σ : (C1Gadgets.paper k L).Geometry) (hσ : (C1Gadgets.paper k L).IsGeometry σ)
     {Q β : Type} (P : Prelim.Program Q β) (hP : Prelim.IsZLP P) (ι : SCGadgets.FNode → Q)

@@ -32,7 +32,7 @@ mean over the uniform law of def-free (`geomExp`); `u ≤ min(R, X)/4` is `4u �
 Proof structure (main.typ 1218–1246): the preamble (the sum over `u`-sets; each vertex other than the
 root is a real child of exactly one vertex), step 1 (one `u`-set), step 2 (all sets: the generating
 function), step 3 (its value at `2`); "So" chains steps 2 and 3. -/
-@[kb "cstarpaper-lem-u" (part := "C1") (deviation := "For the parents of def-slopes (C1Gadgets.paper k L, k ≥ 2). ξ h : Option \
+@[kb "cstarpaper-lem-u" (part := "C1: the moment bound 𝔼 binom(N_hit, u) ≤ exp(4/3) 2^(−u), proof auxiliary of the tail form Comments1102.lem_u") (deviation := "For the parents of def-slopes (C1Gadgets.paper k L, k ≥ 2). ξ h : Option \
 (ℕ × (Fin k → ℕ)); 𝔼 over the geometry is the counting mean over {σ | IsGeometry σ}; u ≤ min(R, X)/4 \
 is stated as 4u ≤ min(R, X).")]
 theorem lem_u (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L)

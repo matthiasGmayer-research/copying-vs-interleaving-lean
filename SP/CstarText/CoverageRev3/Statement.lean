@@ -53,7 +53,7 @@ theorem slopes_sum_pow (k : ℕ) (hk : 2 ≤ k) :
   step_slopes_sum_pow k hk
 
 /-- lem-shifts, the clause added in fix round 1 ("Moreover, the paths …"): `step_shift_paths`. -/
-@[kb "cstarpaper-lem-shifts" (part := "CoverageRev3.shift_paths")]
+@[kb "cstarpaper-lem-shifts" (part := "CoverageRev3.shift_paths: under a common length (the paper's unconditional form: Comments1102.shift_paths_unrestricted)")]
 theorem shift_paths {Q β : Type} (P : Program Q β) (hP : IsFiniteAcyclic P) (g : ℕ) (U : ℕ → Q)
     (V : ℕ → ℕ → Q) (hV : IsShiftGadget P g U V) (L : ℕ)
     (hL : ∀ z < 2 ^ g, (value P (.inl (U z))).length = L) (z : ℕ) (hz : z < 2 ^ g) :

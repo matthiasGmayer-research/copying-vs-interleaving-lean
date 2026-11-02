@@ -79,6 +79,8 @@ import SP.CstarText.C1Structure.Steps.S06_StructC2
 import SP.CstarText.C1Structure.Steps.S07_StructC3
 import SP.CstarText.C1Structure.Steps.S08_Labelled
 import SP.CstarText.C1StructureRev.Statement
+import SP.CstarText.Comments1102.Defs
+import SP.CstarText.Comments1102.Statement
 import SP.CstarText.ConfRev.Statement
 import SP.CstarText.CorDirect.Statement
 import SP.CstarText.CorSzlcEvery.Statement

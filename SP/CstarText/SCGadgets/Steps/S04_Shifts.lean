@@ -142,7 +142,7 @@ theorem step_shifts_example_node {Q β : Type} (P : Program Q β) (hP : IsFinite
 /-- main.typ 1012–1013, remark after def-shifts: "… which is `zip(val(U_z), val(U_(z+1)), val(U_(z+2)),
 val(U_(z+3)))` by the identity in the proof below" (the identity is the hypothesis `hreg`; the values
 of the `U`'s have a common length `L`). -/
-@[kb "cstarpaper-s-def-shifts-which" (part := "SCGadgets.step_shifts_example_regroup")]
+-- kb tag retired 2026-11-02 (comment round 11-02, cstar a925e4a; needs a common length and the identity as a hypothesis; superseded by Comments1102.zip_regroup_four, s_def_shifts_which): @[kb "cstarpaper-s-def-shifts-which" (part := "SCGadgets.step_shifts_example_regroup")]
 theorem step_shifts_example_regroup {Q β : Type} (P : Program Q β) (U : ℕ → Q) (L : ℕ)
     (hL : ∀ z < 4, (value P (.inl (U z))).length = L)
     (hreg : ∀ (m : ℕ) (a b : ℕ → List β), (∀ j < m, (a j).length = L ∧ (b j).length = L) →

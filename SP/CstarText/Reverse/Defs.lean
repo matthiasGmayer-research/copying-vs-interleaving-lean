@@ -35,6 +35,7 @@ def pow2Ceil (n : ℕ) : ℕ := 2 ^ Nat.clog 2 n
 `x_m[jB + i] := bit_j(i)` for `j < m`, `i < B`. Alias of the gated `SP.Reverse.xm` (position `k` is read as
 `j = k / B`, `i = k % B`). -- convention: defined for every `m`; the paper uses it for `m ≥ 3` only, and every
 statement below assumes `3 ≤ m`. -/
+@[kb "cstarpaper-def-rev-words" (part := "y_m (y_m[jB + i] = bit_j(i))")]
 abbrev xm (m : ℕ) : List Bool := SP.Reverse.xm m
 
 /-- The word `x_m := ∏_{j<m} (0^{2^j} 1^{2^j})^{B/2^{j+1}}`, `B = 2^m`, as defined in the statement of
@@ -55,6 +56,7 @@ def sec {α : Type} (x : List α) (s i : ℕ) : List α :=
 def Comparable {α : Type} (u v : List α) : Prop := u <+: v ∨ v <+: u
 
 /-- `T := B / 8` with `B = 2^m` (main.typ:1455); real-valued (an integer for `m ≥ 3`). -/
+@[kb "cstarpaper-def-rev-words" (part := "T := B/8")]
 noncomputable def T (m : ℕ) : ℝ := (2 : ℝ) ^ m / 8
 
 /-- `r := 1 + 1/(2m)` (main.typ:1455). -/

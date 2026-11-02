@@ -35,6 +35,7 @@ def xn (n : ℕ) : List Bool :=
   if n < 56 then List.replicate n false else zm (mOf n) ++ List.replicate (n - Nm (mOf n)) true
 
 /-- `a_j := (m + 1 + j) B`, the first position of block `j` of `y_m` in `z_m` (main.typ:2778–2780). -/
+@[kb "cstarpaper-def-rev-words" (part := "a_j := (m + 1 + j) B")]
 def blockStart (m j : ℕ) : ℕ := (m + 1 + j) * 2 ^ m
 
 end SP.CstarText.ReverseZ

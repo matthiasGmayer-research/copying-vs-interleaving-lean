@@ -383,7 +383,7 @@ theorem step_lem_sections_congr (m : ℕ) (hm : 3 ≤ m) (s s' i i' : ℕ) (hs :
 /-- lem-sections (main.typ:2812–2815): "If `1 ≤ s ≤ s' ≤ T`, `0 ≤ i < s`, `0 ≤ i' < s'`, and the sections
 `sect(z_m, s, i)` and `sect(z_m, s', i')` are comparable, then `(s, i) = (s', i')`." (`m ≥ 3`; `T = B/8` real.)
 Structure: steps st-sec-first, st-sec-pair, st-sec-congr. -/
-@[kb "cstarpaper-lem-sections"]
+@[kb "cstarpaper-lem-sections" (part := "ReverseZ: the case s ≤ s' (the proof's \"by symmetry let s ≤ s'\")")]
 theorem lem_sections (m : ℕ) (hm : 3 ≤ m) (s s' i i' : ℕ) (hs : 1 ≤ s) (hss : s ≤ s')
     (hs'T : (s' : ℝ) ≤ T m) (hi : i < s) (hi' : i' < s')
     (hc : Comparable (sec (zm m) s i) (sec (zm m) s' i')) : s = s' ∧ i = i' :=

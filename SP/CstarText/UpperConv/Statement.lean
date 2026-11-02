@@ -263,7 +263,7 @@ theorem lem_least_b_treepath {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q 
 
 /-- lem-least (c) (main.typ 499–500): for a piece `J` of `ρ*_q` and a slot `(q, j)` in `𝒯`, every
 comparison set of `(J, j)` is an initial segment of `U`. -/
-@[kb "cstarpaper-lem-least" (part := "c")]
+-- kb tag retired 2026-11-02 (comment round 11-02, cstar a925e4a; lem-least has no part (c); the tree-edge argument is in lem-late-least/rem-arity): @[kb "cstarpaper-lem-least" (part := "c")]
 theorem lem_least_c {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (pieces : Q → Occ → Set (Set ℕ))
     (hpieces : IsPieces P x.length pieces) (q : Q) (hA : leastOcc P q ∈ Acan P x.length q)

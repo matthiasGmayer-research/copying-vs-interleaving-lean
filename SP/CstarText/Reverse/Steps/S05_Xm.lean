@@ -87,7 +87,7 @@ theorem step_xm_length (m : ℕ) (hm : 3 ≤ m) : (xm m).length = m * 2 ^ m := b
 
 /-- main.typ:1438, "so `x_m = ∏_{j<m} (0^{2^j} 1^{2^j})^{B/2^{j+1}}`": the bit definition of App. A agrees with
 the product form of prop-reverse. -/
-@[kb "cstarpaper-s-lem-rev-upper-given" (part := "Reverse.step_xm_product")]
+@[kb "cstarpaper-s-lem-rev-upper-example" (part := "Reverse.step_xm_product: y_m = ∏_(j<m) (0^(2^j) 1^(2^j))^(B/2^(j+1))")]
 theorem step_xm_product (m : ℕ) (hm : 3 ≤ m) : xm m = xmProd m := by
   rw [s05_xm_eq_flat]
   unfold xmProd

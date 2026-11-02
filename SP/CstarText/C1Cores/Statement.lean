@@ -104,7 +104,7 @@ the first position of its raw coordinate" — the point `y_h(ω)` of a core cell
 carries the raw coordinate `(γ, κ, eh + ℓ)` of def-critical (`pointRC`), and no smaller position carries it.
 Proof structure (main.typ 1195–1196 and 1178–1179): lem-structure (c) and the first sentence give the first
 position of `(γ, κ, t)`; a core cell has `eh + 2 ≤ eh + ℓ ≤ e(h + 1) − 3`. -/
-@[kb "cstarpaper-lem-cores" (part := "C1: a: y_h(ω) is the first position of (γ, κ, eh + ℓ)")]
+@[kb "cstarpaper-lem-cores" (part := "C1: b: y_h(ω) is the first position of (γ, κ, eh + ℓ)")]
 theorem lem_cores_a_point (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) (σ : (C1Gadgets.paper k L).Geometry)
     (hσ : (C1Gadgets.paper k L).IsGeometry σ) :
     ∀ (h : Fin (C1Gadgets.paper k L).H) (ω : Cell k L), IsCoreCell k L ω →
@@ -121,7 +121,7 @@ theorem lem_cores_a_point (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.
 `eh + 2 ≤ t ≤ e(h + 1) − 3`: `p_h(γ, κ, t) < p_(h')(γ, κ, t)` for every `h' ≠ h`, and `p_h(γ, κ, t) < n`. So every
 point of `S'` is the first position of its raw coordinate" — every `p ∈ S'` is `< n` and a first position of the
 labelled word `x_k` (def-labelled; lem-structure). -/
-@[kb "cstarpaper-lem-cores" (part := "C1: a")]
+@[kb "cstarpaper-lem-cores" (part := "C1: a and b (the inequalities, and every point of S' is the first position of its raw coordinate)")]
 theorem lem_cores_a (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) (σ : (C1Gadgets.paper k L).Geometry) (hσ : (C1Gadgets.paper k L).IsGeometry σ) :
     (∀ γ ∈ Γ k L, ∀ κ < C1Params.B k L / 2, ∀ (h : Fin (C1Gadgets.paper k L).H) (t : ℕ),
       C1Params.e k L * h + 2 ≤ t → t + 3 ≤ C1Params.e k L * ((h : ℕ) + 1) →
@@ -140,7 +140,7 @@ theorem lem_cores_a (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 (
 point of `S'` of time `h + 1`" — `y_h(ω) < y_(h+1)(ω')` for all core cells `ω`, `ω'` and `h + 1 < H`.
 Proof structure (main.typ 1197–1201): the points of time `h` are below `R·U`, those of time `h + 1` are at
 least `R·L`, and `L − U` is at least a positive quantity; so (`R ≥ 0`) `y_h(ω) < R·U ≤ R·L ≤ y_(h+1)(ω')`. -/
-@[kb "cstarpaper-lem-cores" (part := "C1: b")]
+@[kb "cstarpaper-lem-cores" (part := "C1: c")]
 theorem lem_cores_b (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) (σ : (C1Gadgets.paper k L).Geometry) (hσ : (C1Gadgets.paper k L).IsGeometry σ) :
     ∀ (h : ℕ) (hh : h + 1 < (C1Gadgets.paper k L).H) (ω ω' : Cell k L), IsCoreCell k L ω → IsCoreCell k L ω' →
       point k L σ ⟨h, by omega⟩ ω < point k L σ ⟨h + 1, hh⟩ ω' := by
@@ -169,7 +169,7 @@ theorem lem_cores_b (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 (
 /-- lem-cores (b) across arbitrary times (used in lem-ap, main.typ 1289–1290: "By @lem-cores (b), every point
 of `S'` of time `f` lies strictly between `y_(h_1)(ω)` and `y_(h_(u+1))(ω)`"): for `i < j < H` and core cells
 `ω`, `ω'`, `y_i(ω) < y_j(ω')`. Glue: induction on `j`, chaining `lem_cores_b` through `ω'`. -/
-@[kb "cstarpaper-lem-cores" (part := "C1: b: across arbitrary times i < j (consequence)")]
+@[kb "cstarpaper-lem-cores" (part := "C1: c: across arbitrary times i < j (consequence)")]
 theorem lem_cores_b_chain (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) (σ : (C1Gadgets.paper k L).Geometry)
     (hσ : (C1Gadgets.paper k L).IsGeometry σ) :
     ∀ (i j : ℕ) (hij : i < j) (hj : j < (C1Gadgets.paper k L).H) (ω ω' : Cell k L), IsCoreCell k L ω →

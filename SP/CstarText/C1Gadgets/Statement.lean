@@ -44,7 +44,7 @@ at an index `t < |val(w_h)|`, and then `val(q_0)[p] = val(w_h)[t]` and `p = R(Ψ
 length at least `min(n, min_h R Ψ_h |val(w_h)|)`."
 Rendering of (c) as in the earlier `SCGadgetsRev.lem_free` (the descent = reading through occurrences of the free
 levels, TEXT DEFECT D6 there; stated for every `p < n`, the length condition `p < |val(q_0)|` inside). -/
-@[kb "cstarpaper-lem-free" (part := "C1/I1")]
+@[kb "cstarpaper-lem-free" (part := "C1/I1: (a), (b); (c) and (d) in the earlier combined form (filler hypothesis for (c)); the statement is Comments1102.lem_free")]
 theorem lem_free (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) :
     -- (a)
     (((∀ i : ℕ, 1 ≤ i → i < k → ∀ v ∈ (paper k L).verts i,
