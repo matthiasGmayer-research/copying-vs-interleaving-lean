@@ -53,8 +53,8 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("fd72328d098b") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
-  356 modules · 658 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
+  #text(size: 10pt)[Lean repository revision #raw("5ebc2c920b91") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  356 modules · 659 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
 #block(inset: (x: 1cm))[#set text(size: 9.5pt)
@@ -349,7 +349,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
 #raw("st-u-moment"): #raw("C1LemU.step_2_recursion"), #raw("C1LemU.step_2") \
 #raw("st-u-root"): #raw("C1LemU.step_3")],
   [#raw("lem-params")], [#raw("C1Params.SP_"), #raw("C1Params.lem_params")], [],
-  [#raw("def-section")], [#raw("Reverse.sec")], [],
+  [#raw("def-section")], [#raw("Reverse.sec"), #raw("Reverse.Comparable")], [],
   [#raw("lem-rev-upper")], [#raw("Reverse.lem_rev_upper")], [#raw("st-revup-arc"): #raw("Reverse.step_lem_rev_upper_1") \
 #raw("st-revup-cases"): #raw("Reverse.step_lem_rev_upper_2") \
 #raw("st-revup-final"): #raw("Reverse.step_lem_rev_upper_3")],
