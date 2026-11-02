@@ -53,6 +53,7 @@ def sec {α : Type} (x : List α) (s i : ℕ) : List α :=
   (List.range x.length).filterMap fun t => x[i + s * t]?
 
 /-- Two words are comparable if one is a prefix of the other (main.typ:1454–1455). -/
+@[kb "cstarpaper-def-section" (part := "comparable words")]
 def Comparable {α : Type} (u v : List α) : Prop := u <+: v ∨ v <+: u
 
 /-- `T := B / 8` with `B = 2^m` (main.typ:1455); real-valued (an integer for `m ≥ 3`). -/

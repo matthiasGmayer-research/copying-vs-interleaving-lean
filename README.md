@@ -300,7 +300,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `rem-long` | `C1Cores.colk`, `C1Cores.OccThrough`, `C1Cores.step_long_tree`, `C1Cores.step_long_slot`, `C1Cores.step_long_below`, `C1Cores.step_long_count`, `C1Cores.step_long_formula`, `C1Cores.rem_long_occ`, `C1Cores.rem_long_lowest`, `C1Cores.rem_long_canon`, `C1Cores.rem_long_sync` |  |
 | `lem-u` | `C1LemU.hits`, `C1LemU.Nhit`, `C1LemU.geomExp`, `C1LemU.lem_u`, `Comments1102.lem_u` | `st-u-hit`: `C1LemU.step_1`; `st-u-moment`: `C1LemU.step_2_recursion`, `C1LemU.step_2`; `st-u-root`: `C1LemU.step_3` |
 | `lem-params` | `C1Params.SP_`, `C1Params.lem_params` |  |
-| `def-section` | `Reverse.sec` |  |
+| `def-section` | `Reverse.sec`, `Reverse.Comparable` |  |
 | `lem-rev-upper` | `Reverse.lem_rev_upper` | `st-revup-arc`: `Reverse.step_lem_rev_upper_1`; `st-revup-cases`: `Reverse.step_lem_rev_upper_2`; `st-revup-final`: `Reverse.step_lem_rev_upper_3` |
 | `def-rev-words` | `ReverseZ.Nm`, `ReverseZ.zm`, `ReverseZ.mOf`, `ReverseZ.xn`, `ReverseZ.s_def_rev_words_unique`, `ReverseZ.def_rev_words_length`, `ReverseZ.s_def_rev_words_blocks`, `Reverse.xm`, `Reverse.T`, `ReverseZ.blockStart` |  |
 | `lem-rev-arc` | `ReverseZ.lem_rev_arc` |  |
