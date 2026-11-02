@@ -230,6 +230,8 @@ def labs_missing(paper_labels, seen):
 
 def paper_labels_of(path):
     s = strip_comments(open(path).read())
+    fig = os.path.join(os.path.dirname(path), 'figures.typ')   # tables and figures (tab-relay, fig-example anchors) live here
+    if os.path.exists(fig): s += '\n' + strip_comments(open(fig).read())
     return set(re.findall(r'<([a-z][a-z0-9-]*)>', s))
 
 

@@ -272,6 +272,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `lem-random` | `Method.lem_random` | `st-rand-claim`: `Method.step_lem_random_1`; `st-rand-cond`: `Method.step_lem_random_2`; `st-rand-union`: `Method.step_lem_random_3_bad`, `Method.step_lem_random_3_exp` |
 | `prop-scheme` | `MethodRev.prop_scheme` | `st-scheme-cand`: `Method.step_prop_scheme_1_count`, `Method.step_prop_scheme_1_prob`; `st-scheme-event`: `Method.step_prop_scheme_2_event`; `st-scheme-bound`: `Method.step_prop_scheme_3` |
 | `lem-relay` | `C1Relay.lem_relay` |  |
+| `tab-relay` | `Final1102.relayQ`, `Final1102.tab_relay`, `Final1102.relay_length_theta`, `Final1102.relay_length_power`, `Final1102.tab_relay_Lk`, `C1Coverage.why_quarter_relay` |  |
 | `thm-sc` | `C1Final.jointProb`, `C1Final.SCChain`, `C1Referee.thm_sc_rev`, `Comments1102.thm_sc` |  |
 | `ex-zlp-cont` | `UpperConv.exX`, `UpperConv.exEq1`, `UpperConv.exEq2`, `UpperConv.exEq3`, `UpperConv.exL`, `UpperConv.exΦ`, `UpperConv.ex_cont_params`, `UpperConv.ex_cont_least`, `UpperConv.ex_cont_tree`, `UpperConv.ex_cont_literals`, `UpperConv.ex_cont_eq_root`, `UpperConv.ex_cont_eq_s0`, `UpperConv.ex_cont_eq_s1`, `UpperConv.ex_cont_least_c_needed`, `UpperConv.ex_cont_ars`, `U12a.ex_cont_cut_u12a`, `RefereeRev.exL4`, `RefereeRev.exΦ4`, `RefereeRev.ex_cont_arc_le`, `CoverageRev4.ex_root_slot0` |  |
 | `rem-constant` | `SP.CstarPaper.rem_constant`, `ReadRev.rem_constant_all` |  |
