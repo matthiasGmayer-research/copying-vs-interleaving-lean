@@ -53,8 +53,8 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("c4e1b2eb6296") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
-  354 modules · 642 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
+  #text(size: 10pt)[Lean repository revision #raw("7651d9b9f16a") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  356 modules · 649 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
 #block(inset: (x: 1cm))[#set text(size: 9.5pt)
@@ -72,11 +72,12 @@ tags (#raw("@[kb \"cstarpaper-<label>\"]")).]
 Section 1.3 of the paper (Formal Verification) states:
 
 #block(inset: (left: 1.2em), stroke: (left: 1pt + luma(180)))[Every numbered definition, statement and proof step of this paper's own development, apart from the comparisons in
-#raw("rem-measures") that rest on cited results, is formalised and proved in Lean 4 with Mathlib, with the constants and the
-loss stated here, using only the standard axioms of Lean. Of the cited results, only Kosoy's $ARC <= sZLC$, #raw("lem-occ")
-and two Chebyshev bounds in Mathlib are formalised; formal deductions that use another cited comparison take it as a
-hypothesis.
-The README of the Lean repository gives the declarations of each numbered block and proof step.]
+#raw("rem-measures") that rest on cited results, is formalised and proved in Lean 4 #raw("lean4") with Mathlib #raw("mathlib"), with the constants and the
+loss stated here, using only the standard axioms of Lean; of the cited results, only Kosoy's $ARC <= sZLC$, #raw("lem-occ")
+and two Chebyshev bounds in Mathlib are formalised, and formal deductions that use another cited comparison take it as
+a hypothesis.
+The Lean repository, whose README gives the declarations of each numbered block and proof step, is provided as
+(private) supplementary material.]
 
 The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-cut"), #raw("st-split-early"), ...), not by their numbers, which change while the paper is revised. The Lean source tags each declaration with the label of the block it formalises (#raw("@[kb \"cstarpaper-<label>\"]")), and each tag records how the formal statement departs from the text.
 
@@ -84,7 +85,7 @@ The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-c
 
 In this revision, the table of @sec-map has a row for each of the paper's 68 numbered blocks, with the
 declarations of their 34 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper") (conventions and
-notation stated in those sections); 132 further tags anchor sentences of the paper's text.
+notation stated in those sections); 131 further tags anchor sentences of the paper's text.
 
 == Cited results
 
@@ -322,15 +323,15 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("lem-slopes")], [#raw("C1Params.goodIn"), #raw("C1Params.lem_slopes")], [#raw("st-slopes-types"): #raw("C1Params.step_slopes_types") \
 #raw("st-slopes-mult"): #raw("C1Params.step_slopes_mult") \
 #raw("st-slopes-window"): #raw("C1Params.step_slopes_window")],
-  [#raw("def-slopes")], [#raw("C1Params.goodWindow"), #raw("C1Params.s"), #raw("C1Params.IsLexLeastType"), #raw("C1Params.typeOf"), #raw("C1Params.Ψ"), #raw("C1Params.a"), #raw("C1Params.Ψstar"), #raw("C1Params.Δ"), #raw("C1Params.def_slopes_enough"), #raw("C1Params.def_slopes_type"), #raw("C1Params.def_slopes_a"), #raw("C1Params.def_slopes_psi")], [],
+  [#raw("def-slopes")], [#raw("C1Params.goodWindow"), #raw("C1Params.s"), #raw("C1Params.IsLexLeastType"), #raw("C1Params.typeOf"), #raw("C1Params.Ψ"), #raw("C1Params.a"), #raw("C1Params.Ψstar"), #raw("C1Params.Δ"), #raw("C1Params.def_slopes_enough"), #raw("C1Params.def_slopes_type"), #raw("C1Params.def_slopes_a"), #raw("C1Params.def_slopes_psi"), #raw("Final1102.def_slopes_type_primes")], [],
   [#raw("def-free")], [#raw("SCGadgets.Parents"), #raw("SCGadgets.arity"), #raw("SCGadgets.Parents.verts"), #raw("SCGadgets.Parents.realChildren"), #raw("SCGadgets.Parents.parentsOf"), #raw("SCGadgets.Parents.R"), #raw("SCGadgets.Parents.anc"), #raw("SCGadgets.Parents.Geometry"), #raw("SCGadgets.Parents.IsGeometry"), #raw("SCGadgets.Parents.π"), #raw("SCGadgets.Parents.jd"), #raw("SCGadgets.Parents.geomProb"), #raw("SCGadgets.Parents.ζ"), #raw("SCGadgets.Parents.graph"), #raw("SCGadgets.Parents.IsFreeLevelsOf"), #raw("C1Gadgets.paper"), #raw("C1Gadgets.verts_eq")], [],
   [#raw("def-shifts")], [#raw("SCGadgets.IsShiftGadget"), #raw("SCGadgets.ShiftGadgetFresh"), #raw("SCGadgets.shiftG"), #raw("SCGadgets.def_shifts_count"), #raw("SCGadgets.def_shifts_example")], [],
   [#raw("def-slots")], [#raw("C1Structure.c"), #raw("C1Structure.Γ"), #raw("C1Structure.η"), #raw("C1Structure.q"), #raw("C1Structure.def_sc_eta")], [],
-  [#raw("lem-slots")], [#raw("C1Structure.step_struct_b_distinct"), #raw("C1Structure.lem_structure_a_c"), #raw("C1Structure.lem_structure_a_cbound"), #raw("C1Structure.lem_structure_b_q"), #raw("C1Slots.lem_slots"), #raw("C1Slots.lem_slots_b")], [],
+  [#raw("lem-slots")], [#raw("C1Structure.step_struct_b_distinct"), #raw("C1Structure.lem_structure_a_c"), #raw("C1Structure.lem_structure_a_cbound"), #raw("C1Structure.lem_structure_b_q"), #raw("C1Slots.lem_slots"), #raw("C1Slots.lem_slots_b"), #raw("C1Structure.lem_structure_b")], [],
   [#raw("def-sc")], [#raw("C1Structure.Dict"), #raw("C1Structure.n"), #raw("C1Structure.J"), #raw("C1Structure.PtrBits"), #raw("C1Structure.IsVertex"), #raw("C1Structure.IsZeroWord"), #raw("C1Structure.U"), #raw("C1Structure.V"), #raw("C1Structure.G"), #raw("C1Structure.parentChild"), #raw("C1Structure.rawδ"), #raw("C1Structure.pre"), #raw("C1Structure.Pk"), #raw("C1Structure.x"), #raw("C1Structure.def_sc_closed"), #raw("C1Structure.def_sc_zero"), #raw("C1Structure.def_sc_free_levels"), #raw("C1Slots.def_sc_slot")], [],
   [#raw("def-raw")], [#raw("C1Structure.Cell"), #raw("C1Structure.RC"), #raw("C1Structure.pos"), #raw("C1Structure.cellOf"), #raw("C1Structure.timeOf"), #raw("C1Cores.step_pi_lt_R")], [],
   [#raw("def-critical")], [#raw("C1Cores.IsCoreCell"), #raw("C1Cores.point"), #raw("C1Cores.pointRC"), #raw("C1Cores.Sprime"), #raw("C1Cores.IsInnerCell"), #raw("C1Cores.S"), #raw("C1Cores.def_critical_subset"), #raw("C1Cores.def_critical_point"), #raw("C1Cores.Sprime_finite"), #raw("C1Cores.S_finite"), #raw("C1Cores.point_injective")], [],
-  [#raw("lem-structure")], [#raw("C1Structure.label"), #raw("C1Structure.LW"), #raw("C1Structure.ReadThroughZero"), #raw("C1Structure.ReadThroughCol"), #raw("C1Structure.lem_structure_a_pre"), #raw("C1Structure.two_le_R"), #raw("C1Structure.lem_structure_a"), #raw("C1Structure.lem_structure_b"), #raw("C1Structure.lem_structure_c_lengths_low"), #raw("C1Structure.lem_structure_shifts_pre"), #raw("C1Structure.lem_structure_c_lengths_high"), #raw("C1Structure.lem_structure_c_read"), #raw("C1Structure.lem_structure_c"), #raw("C1Structure.lem_structure_labelled")], [#raw("st-struct-length"): #raw("C1Structure.step_struct_c1") \
+  [#raw("lem-structure")], [#raw("C1Structure.label"), #raw("C1Structure.LW"), #raw("C1Structure.ReadThroughZero"), #raw("C1Structure.ReadThroughCol"), #raw("C1Structure.lem_structure_a_pre"), #raw("C1Structure.two_le_R"), #raw("C1Structure.lem_structure_a"), #raw("C1Structure.lem_structure_c_lengths_low"), #raw("C1Structure.lem_structure_shifts_pre"), #raw("C1Structure.lem_structure_c_lengths_high"), #raw("C1Structure.lem_structure_c_read"), #raw("C1Structure.lem_structure_c"), #raw("C1Structure.lem_structure_labelled")], [#raw("st-struct-length"): #raw("C1Structure.step_struct_c1") \
 #raw("st-struct-decode"): #raw("C1StructureRev.step_struct_c2_rev") \
 #raw("st-struct-unique"): #raw("C1Structure.step_struct_c3_unique")],
   [#raw("lem-cores")], [#raw("C1Cores.lem_cores_a_cols"), #raw("C1Cores.lem_cores_a_point"), #raw("C1Cores.lem_cores_a"), #raw("C1Cores.lem_cores_b"), #raw("C1Cores.lem_cores_b_chain")], [],
@@ -358,7 +359,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
 #raw("st-sec-congr"): #raw("ReverseZ.step_lem_sections_congr")],
   [#raw("lem-rev-zlc")], [#raw("ReverseZ.lem_rev_zlc")], [#raw("st-rev-stop"): #raw("ReverseZ.step_lem_rev_zlc_stop") \
 #raw("st-rev-vertex"): #raw("ReverseZ.step_lem_rev_zlc_vertex")],
-  [#raw("rem-measures")], [#raw("RemMeasures.CNFGrammar"), #raw("RemMeasures.CNFGrammar.Derives"), #raw("RemMeasures.zmGrammar"), #raw("RemMeasures.rem_measures_grammar"), #raw("RemMeasures.rem_measures_grammar_exists"), #raw("RemMeasures.rem_measures_zlc"), #raw("RemMeasures.rem_measures_lzc_every"), #raw("Comments1102.GeneratesExactly"), #raw("Comments1102.grammarSize"), #raw("Comments1102.SubpolyBound"), #raw("Comments1102.grammarSize_le_rules"), #raw("Comments1102.grammarSize_attained"), #raw("Comments1102.rem_measures_a"), #raw("Comments1102.rem_measures_b"), #raw("Comments1102.rem_measures_c")], [],
+  [#raw("rem-measures")], [#raw("RemMeasures.CNFGrammar"), #raw("RemMeasures.CNFGrammar.Derives"), #raw("RemMeasures.zmGrammar"), #raw("RemMeasures.rem_measures_grammar"), #raw("RemMeasures.rem_measures_grammar_exists"), #raw("RemMeasures.rem_measures_zlc"), #raw("RemMeasures.rem_measures_lzc_every"), #raw("Comments1102.GeneratesExactly"), #raw("Comments1102.grammarSize"), #raw("Comments1102.SubpolyBound"), #raw("Comments1102.grammarSize_le_rules"), #raw("Comments1102.grammarSize_attained"), #raw("Comments1102.rem_measures_a"), #raw("Comments1102.rem_measures_b"), #raw("Comments1102.rem_measures_c"), #raw("Final1102.rem_measures_a_nonempty"), #raw("Final1102.rem_measures_b_nonempty"), #raw("Final1102.rem_measures_c_nonempty"), #raw("Final1102.rem_measures_c_measures_nonempty")], [],
 )
 
 == Earlier versions
@@ -388,7 +389,7 @@ Dependency routes (#raw("python3 tools/deps.py README.md") runs #raw("lake env l
 
 The formalisation uses Lean 4 at the toolchain #raw("leanprover/lean4:v4.33.0-rc1") (#raw("lean-toolchain")) and Mathlib at the tag #raw("v4.33.0-rc1") (commit #raw("79d0395"), pinned in #raw("lake-manifest.json")). #raw("lake exe cache get && lake build") builds the formalisation. Then #raw("lake env lean Check.lean") prints the statements (#raw("#check")) and the axioms on which the main declarations depend; they are among #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound"). This repository is exported from the author's research project (#raw("export.sh")); module names keep its prefix #raw("SP").
 
-The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 354 modules.
+The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 356 modules.
 
 == The audit file Check.lean
 
