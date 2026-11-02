@@ -186,6 +186,8 @@ import SP.CstarText.EveryLength.Steps.S15_lower_lengths
 import SP.CstarText.EveryLength.Steps.S16_lower_assemble
 import SP.CstarText.EveryLength.Steps.S17_lower_second
 import SP.CstarText.ExZlpRev.Statement
+import SP.CstarText.Final1102.Defs
+import SP.CstarText.Final1102.Statement
 import SP.CstarText.Intro.Statement
 import SP.CstarText.Intro.Steps.S01_CorCstarLower
 import SP.CstarText.Intro.Steps.S02_CorCstarAlphabet

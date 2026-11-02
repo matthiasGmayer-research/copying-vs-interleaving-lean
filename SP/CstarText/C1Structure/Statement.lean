@@ -128,7 +128,7 @@ theorem lem_structure_b_q (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.
 `⌊q_h(γ)/a_h⌋ + κ < B` for all `κ < B/2`" — for every parent `h` and every geometry `σ`.
 Proof structure (main.typ 1103–1111): `q ∈ ℕ`; `q` increasing on `Γ`; range `< a_h`; so distinct residues;
 `a_h ≥ 4`; `q/a_h < B/8 + 1/2` by (a); so `⌊q/a_h⌋ + κ < B`. -/
-@[kb "cstarpaper-lem-structure" (part := "C1: b")]
+@[kb "cstarpaper-lem-slots" (part := "C1: b, as C1Structure.lem_structure_b (the earlier lem-structure (b), now a claim of lem-slots (b))")]
 theorem lem_structure_b (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) (σ : (C1Gadgets.paper k L).Geometry)
     (hσ : (C1Gadgets.paper k L).IsGeometry σ) (h : Fin (C1Gadgets.paper k L).H) :
     (∀ γ ∈ Γ k L, ∀ γ' ∈ Γ k L,
@@ -167,7 +167,7 @@ theorem def_sc_free_levels (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP
 
 /-- Proof of lem-structure (c), step 1 (main.typ 1116): "The dictionary words and `Z_A` have length
 `H + 1`, the columns and `Z_v` length `e(H + 1)`" (in the program as built). -/
-@[kb "cstarpaper-lem-structure" (part := "C1: c: lengths of A_a, Z_A, columns, Z_v (proof)")]
+@[kb "cstarpaper-lem-structure" (part := "C1: b: lengths of A_a, Z_A, columns, Z_v (proof)")]
 theorem lem_structure_c_lengths_low (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) (σ : (C1Gadgets.paper k L).Geometry) (ω : PtrBits k L) :
     (∀ a < Dict k L, (value (pre k L σ ω) (.inl (lift k L (.dict a)))).length = C1Params.H k L + 1) ∧
       (value (pre k L σ ω) (.inl (lift k L .zA))).length = C1Params.H k L + 1 ∧
@@ -179,7 +179,7 @@ theorem lem_structure_c_lengths_low (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : 
 
 /-- lem-shifts for the gadget of `γ ∈ Γ`, in the program as built (TEXT GAP fix: lem-shifts is applied
 before the deletion), as used in the proof of lem-structure (c) (main.typ 1117, 1129). -/
-@[kb "cstarpaper-lem-structure" (part := "C1: c: lem-shifts in the program before the deletion (proof; TEXT GAP)")]
+@[kb "cstarpaper-lem-structure" (part := "C1: b: lem-shifts in the program before the deletion (proof; TEXT GAP)")]
 theorem lem_structure_shifts_pre (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) (σ : (C1Gadgets.paper k L).Geometry) (ω : PtrBits k L)
     (γ : ℕ) (hγ : γ ∈ Γ k L) (z : ℕ) :
     value (pre k L σ ω) (.inl (lift k L (G k L γ z))) =
@@ -197,7 +197,7 @@ theorem lem_structure_shifts_pre (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ
 
 /-- Proof of lem-structure (c), step 1 (main.typ 1116–1117): "the gadget vertices and `Z_G` length
 `B e (H + 1)` (@lem-shifts), and `w_h` length `a_h B e (H + 1)`" (in the program as built). -/
-@[kb "cstarpaper-lem-structure" (part := "C1: c: lengths of G^γ_z, Z_G, w_h (proof)")]
+@[kb "cstarpaper-lem-structure" (part := "C1: b: lengths of G^γ_z, Z_G, w_h (proof)")]
 theorem lem_structure_c_lengths_high (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) (σ : (C1Gadgets.paper k L).Geometry) (ω : PtrBits k L) :
     (∀ γ ∈ Γ k L, ∀ z : ℕ, (value (pre k L σ ω) (.inl (lift k L (G k L γ z)))).length =
         C1Params.B k L * C1Params.e k L * (C1Params.H k L + 1)) ∧
@@ -212,7 +212,7 @@ theorem lem_structure_c_lengths_high (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k :
 /-- Proof of lem-structure (c), step 3 (main.typ 1139–1141): "a position `p_h(γ, κ, t) < n` with
 `t < e(H + 1)` is read in this way through `v_(γ,κ)`: the zip rule at the root, the free levels, `w_h`,
 `G^γ_z` and the column retraces these steps" — read through `v_(γ,κ)` at `t`, and through the parent `w_h`. -/
-@[kb "cstarpaper-lem-structure" (part := "C1: c: p_h(γ, κ, t) < n is read through v_(γ,κ) (proof)")]
+@[kb "cstarpaper-lem-structure" (part := "C1: b: p_h(γ, κ, t) < n is read through v_(γ,κ) (proof)")]
 theorem lem_structure_c_read (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) (σ : (C1Gadgets.paper k L).Geometry)
     (hσ : (C1Gadgets.paper k L).IsGeometry σ) (ω : PtrBits k L) :
     ∀ (v : RC k L) (h : Fin (C1Gadgets.paper k L).H) (p : ℕ), pos k L σ h v.1 v.2.1 v.2.2 = (p : ℤ) → p < n k L →
@@ -231,7 +231,7 @@ that equals no `p_h(γ, κ, t)` has `x_k[p] = 0` and is read through a zero word
 occurrences, `ReadThroughZero`). `Y_(β(γ,κ,ℓ), t)` is `ω.2 (ω.1 (γ, κ, ℓ)) t`.
 Proof structure (main.typ 1112–1142): step 1 (length), step 2 (decoding, st-struct-decode), step 3
 (uniqueness; its converse). -/
-@[kb "cstarpaper-lem-structure" (part := "C1: c")]
+@[kb "cstarpaper-lem-structure" (part := "C1: b")]
 theorem lem_structure_c (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) (σ : (C1Gadgets.paper k L).Geometry)
     (hσ : (C1Gadgets.paper k L).IsGeometry σ) (ω : PtrBits k L) :
     n k L ≤ (Prelim.val (Pk k L σ ω)).length ∧

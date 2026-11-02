@@ -253,7 +253,7 @@ theorem steps_differ_ge_d0 {Q α : Type} (P : Program Q α) (hP : IsZLP P) (z : 
 /-- Sentence anchor `s-fig-example-middle` (fig-example, the middle panel): "under each position of `x`, the
 occurrence `s t + i` of `q` that writes it and the index `t`" — positions `0, …, 6` are written by `4t, 2t+1, 4t+2,
 2t+1, 4t, 2t+1, 4t+2` at the indices `0, 0, 0, 1, 1, 2, 1`, and by no other occurrence of `q` or index. -/
--- kb tag retired 2026-10-29 (anchor no longer in the paper): @[kb "cstarpaper-s-fig-example-middle"]
+@[kb "cstarpaper-s-fig-example-middle"]
 theorem fig_example_table :
     ∀ i : Fin 7, figOcc i ∈ occ exProg .q ∧ figOcc i (figIdx i) = i ∧
       ∀ ρ' ∈ occ exProg .q, ∀ t' : ℕ, ρ' t' = i → ρ' = figOcc i ∧ t' = figIdx i :=

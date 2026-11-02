@@ -135,7 +135,7 @@ theorem cols_nonleast (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2
 `B s_(H−1)/8`." All clauses, for every `k ≥ 2` and `L`: the slopes `s_h` (`h < H`) are distinct and lie in the window
 `[M, M + W)` (the C1 window; `μ₀` of the old statement is `M`), and `c_h < B s_(H−1)/8` (lem-slots (a), re-stated
 here). -/
-@[kb "cstarpaper-sec-sc" (part := "C1: C1Coverage.why the construction stops at 1/4")]
+@[kb "cstarpaper-tab-relay" (part := "C1: C1Coverage.why_quarter_relay: supporting facts (n = R B s_(H−1) E (H + 1), slopes in [M, M + W), W = B/8, M = 8EW², R ≥ 1, H⁴ < n)")]
 theorem why_quarter_relay (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) :
     C1Structure.n k L = C1Structure.R k L * C1Params.B k L * C1Params.s k L (C1Params.H k L - 1) *
         (C1Params.e k L * (C1Params.H k L + 1)) ∧
