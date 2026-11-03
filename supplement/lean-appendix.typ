@@ -53,7 +53,7 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("60cc5227492d") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  #text(size: 10pt)[Lean repository revision #raw("76629495903f") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
   359 modules · 656 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
@@ -296,7 +296,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("lem-least")], [#raw("UpperConv.lem_least_b_prefix"), #raw("UpperConv.lem_least_b_tree"), #raw("UpperConv.lem_least_b_treepath"), #raw("RefereeRev.lem_least_a_rev"), #raw("Comments1102.mTree_eq_mT")], [],
   [#raw("lem-cut")], [#raw("U12a.lem_cut"), #raw("Comments1102.lem_cut")], [],
   [#raw("lem-reach")], [#raw("U12a.lem_reach")], [],
-  [#raw("lem-split")], [#raw("U12a.lem_split_cases") (two cases; it follows from the earlier one-sentence form U12a.lem\_split, kept untagged)], [#raw("st-split-literals"): none of its own, the step is part of the proof of U12a.lem\_split\_cases \
+  [#raw("lem-split")], [#raw("Relock1103K.lem_split_max") (one condition, a max; it follows from the two-case form U12a.lem\_split\_cases, kept untagged)], [#raw("st-split-literals"): none of its own, the step is part of the proof of U12a.lem\_split\_cases, from which Relock1103K.lem\_split\_max follows \
 #raw("st-split-edges"): none of its own, as before \
 #raw("st-split-groups"): none of its own, as before (steps of the paper's proof since cstar d181469; the earlier steps st-split-early, st-split-least, st-split-other are the blocks lem-early, lem-late-least, lem-late-other below)],
   [#raw("def-pieces")], [#raw("Comments1102.IsEarlyPiece"), #raw("Comments1102.IsLatePiece"), #raw("Comments1102.literalCharge"), #raw("Comments1102.pieceCost"), #raw("Comments1102.earlyCost"), #raw("Comments1102.lateLeastCost"), #raw("Comments1102.lateCost"), #raw("Comments1102.isSplitPieces_iff"), #raw("Comments1102.literalCharge_late"), #raw("Comments1102.charged_early_ncard")], [],
