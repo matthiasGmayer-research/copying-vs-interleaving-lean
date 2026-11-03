@@ -21,28 +21,28 @@ open SP SP.CstarText.Reverse
 
 /-- The step of the node `js` of the unfolding: `d_q s` for the child occurrence or letter on an edge of the
 occurrence `ρ` of `q` of step `s`, and `1` at the root. -/
-@[kb "cstarpaper-s-lem-rev-zlc-rev" (part := "the unfolding: steps, expanded occurrences, nodes, leaves 𝓕")]
+@[kb "cstarpaper-s-lem-rev-zlc-rev" (part := "the step of a node of the unfolding")]
 def unfoldStep {Q α : Type} (P : Program Q α) (js : List ℕ) : ℕ := (P.pathOcc P.root js).step
 
 /-- The node `js` is an expanded occurrence: it ends at a vertex, and its occurrence has step `s ≤ T` (`T = B/8`,
 `B = 2^m`). -/
-@[kb "cstarpaper-s-lem-rev-zlc-rev" (part := "the unfolding: steps, expanded occurrences, nodes, leaves 𝓕")]
+@[kb "cstarpaper-s-lem-rev-zlc-rev" (part := "expanded nodes")]
 def IsExpanded {Q α : Type} (P : Program Q α) (m : ℕ) (js : List ℕ) : Prop :=
   (∃ q : Q, P.follow (.inl P.root) js = some (.inl q)) ∧ (unfoldStep P js : ℝ) ≤ T m
 
 /-- `js` is a node of the unfolding of `P` from the root: following `js` from the root reaches a vertex or a letter,
 and every node strictly above it (every proper prefix of `js`) is expanded. -/
-@[kb "cstarpaper-s-lem-rev-zlc-rev" (part := "the unfolding: steps, expanded occurrences, nodes, leaves 𝓕")]
+@[kb "cstarpaper-s-lem-rev-zlc-rev" (part := "the nodes of the unfolding")]
 def IsUnfoldNode {Q α : Type} (P : Program Q α) (m : ℕ) (js : List ℕ) : Prop :=
   (P.follow (.inl P.root) js).isSome ∧ ∀ js' : List ℕ, js' <+: js → js' ≠ js → IsExpanded P m js'
 
 /-- `js` is a leaf of the unfolding: a node that is not expanded (an occurrence not expanded, or a letter). -/
-@[kb "cstarpaper-s-lem-rev-zlc-rev" (part := "the unfolding: steps, expanded occurrences, nodes, leaves 𝓕")]
+@[kb "cstarpaper-s-lem-rev-zlc-rev" (part := "the leaves")]
 def IsLeaf {Q α : Type} (P : Program Q α) (m : ℕ) (js : List ℕ) : Prop :=
   IsUnfoldNode P m js ∧ ¬ IsExpanded P m js
 
 /-- The set `𝓕` of the leaves of the unfolding. -/
-@[kb "cstarpaper-s-lem-rev-zlc-rev" (part := "the unfolding: steps, expanded occurrences, nodes, leaves 𝓕")]
+@[kb "cstarpaper-s-lem-rev-zlc-rev" (part := "the set 𝓕 of leaves")]
 def leaves {Q α : Type} (P : Program Q α) (m : ℕ) : Set (List ℕ) := {js | IsLeaf P m js}
 
 end SP.CstarText.Simplify1103
