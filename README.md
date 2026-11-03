@@ -264,7 +264,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `lem-split` | `U12a.lem_split_cases` (two cases; it follows from the earlier one-sentence form U12a.lem_split, kept untagged) | `st-split-literals`: none of its own, the step is part of the proof of U12a.lem_split_cases; `st-split-edges`: none of its own, as before; `st-split-groups`: none of its own, as before (steps of the paper's proof since cstar d181469; the earlier steps st-split-early, st-split-least, st-split-other are the blocks lem-early, lem-late-least, lem-late-other below) |
 | `def-pieces` | `Comments1102.IsEarlyPiece`, `Comments1102.IsLatePiece`, `Comments1102.literalCharge`, `Comments1102.pieceCost`, `Comments1102.earlyCost`, `Comments1102.lateLeastCost`, `Comments1102.lateCost`, `Comments1102.isSplitPieces_iff`, `Comments1102.literalCharge_late`, `Comments1102.charged_early_ncard` |  |
 | `lem-early` | `Comments1102.lem_early` |  |
-| `lem-late-least` | `Relock1103K.lem_late_least_noK`, `Relock1103K.mSigma_le_size` |  |
+| `lem-late-least` | `Relock1103K.lem_late_least_noK` |  |
 | `lem-late-other` | `Comments1102.lem_late_other` |  |
 | `def-forward` | `Method.ForwardEq`, `Method.targets`, `Method.FwdHolds`, `Method.rem_forward` |  |
 | `def-labelled` | `Method.Labelled`, `Method.Labelled.Valid`, `Method.Labelled.Outcome`, `Method.Labelled.Prob`, `Method.Labelled.bit`, `Method.Labelled.word`, `Method.Labelled.Carries`, `Method.Labelled.IsFirstPosition`, `Method.ex_labelled_valid`, `Method.ex_labelled_word`, `Method.ex_labelled_first`, `Method.ex_labelled_repeat` |  |
