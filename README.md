@@ -271,7 +271,6 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `def-req` | `Method.Labelled.firstPos`, `Method.Labelled.prec`, `Method.Labelled.Requirement`, `Method.Labelled.Requirement.Valid`, `Method.Labelled.Requirement.Holds`, `CoverageRev.ex_requirement` |  |
 | `lem-random` | `Method.lem_random` | `st-rand-claim`: `Method.step_lem_random_1`; `st-rand-cond`: `Method.step_lem_random_2`; `st-rand-union`: `Method.step_lem_random_3_bad`, `Method.step_lem_random_3_exp` |
 | `prop-scheme` | `MethodRev.prop_scheme` | `st-scheme-cand`: `Method.step_prop_scheme_1_count`, `Method.step_prop_scheme_1_prob`; `st-scheme-event`: `Method.step_prop_scheme_2_event`; `st-scheme-bound`: `Method.step_prop_scheme_3` |
-| `lem-relay` | `C1Relay.lem_relay` |  |
 | `tab-relay` | `Final1102.relayQ`, `Final1102.tab_relay`, `Final1102.relay_length_theta`, `Final1102.relay_length_power`, `Final1102.tab_relay_Lk`, `C1Coverage.why_quarter_relay` |  |
 | `thm-sc` | `C1Final.jointProb`, `C1Final.SCChain`, `C1Referee.thm_sc_rev`, `Comments1102.thm_sc` |  |
 | `ex-zlp-cont` | `UpperConv.exX`, `UpperConv.exEq1`, `UpperConv.exEq2`, `UpperConv.exEq3`, `UpperConv.exL`, `UpperConv.exΦ`, `UpperConv.ex_cont_params`, `UpperConv.ex_cont_least`, `UpperConv.ex_cont_tree`, `UpperConv.ex_cont_literals`, `UpperConv.ex_cont_eq_root`, `UpperConv.ex_cont_eq_s0`, `UpperConv.ex_cont_eq_s1`, `UpperConv.ex_cont_least_c_needed`, `UpperConv.ex_cont_ars`, `U12a.ex_cont_cut_u12a`, `RefereeRev.exL4`, `RefereeRev.exΦ4`, `RefereeRev.ex_cont_arc_le`, `CoverageRev4.ex_root_slot0` |  |
@@ -301,11 +300,11 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `lem-u` | `C1LemU.hits`, `C1LemU.Nhit`, `C1LemU.geomExp`, `C1LemU.lem_u`, `Comments1102.lem_u` | `st-u-hit`: `C1LemU.step_1`; `st-u-moment`: `C1LemU.step_2_recursion`, `C1LemU.step_2`; `st-u-root`: `C1LemU.step_3` |
 | `lem-params` | `C1Params.SP_`, `C1Params.lem_params` |  |
 | `def-section` | `Reverse.sec`, `Reverse.Comparable` |  |
-| `lem-rev-upper` | `Reverse.lem_rev_upper` | `st-revup-arc`: `Reverse.step_lem_rev_upper_1`; `st-revup-cases`: `Reverse.step_lem_rev_upper_2`; `st-revup-final`: `Reverse.step_lem_rev_upper_3` |
+| `lem-rev-upper` | `Reverse.lem_rev_upper` | `st-revup-arc`: `Reverse.step_lem_rev_upper_1`; `st-revup-cases`: `Simplify1103.step_revup_cases`; `st-revup-final`: `Simplify1103.step_revup_final` |
 | `def-rev-words` | `ReverseZ.Nm`, `ReverseZ.zm`, `ReverseZ.mOf`, `ReverseZ.xn`, `ReverseZ.s_def_rev_words_unique`, `ReverseZ.def_rev_words_length`, `ReverseZ.s_def_rev_words_blocks`, `Reverse.xm`, `Reverse.T`, `ReverseZ.blockStart` |  |
 | `lem-rev-arc` | `ReverseZ.lem_rev_arc` |  |
 | `lem-sections` | `ReverseZ.lem_sections`, `Comments1102.lem_sections` | `st-sec-first`: `ReverseZ.step_lem_sections_first`; `st-sec-pair`: `ReverseZ.step_lem_sections_pair`; `st-sec-congr`: `ReverseZ.step_lem_sections_congr` |
-| `lem-rev-zlc` | `ReverseZ.lem_rev_zlc` | `st-rev-stop`: `ReverseZ.step_lem_rev_zlc_stop`; `st-rev-vertex`: `ReverseZ.step_lem_rev_zlc_vertex` |
+| `lem-rev-zlc` | `ReverseZ.lem_rev_zlc` |  |
 | `rem-measures` | `RemMeasures.CNFGrammar`, `RemMeasures.CNFGrammar.Derives`, `RemMeasures.zmGrammar`, `RemMeasures.rem_measures_grammar`, `RemMeasures.rem_measures_grammar_exists`, `RemMeasures.rem_measures_zlc`, `RemMeasures.rem_measures_lzc_every`, `Comments1102.GeneratesExactly`, `Comments1102.grammarSize`, `Comments1102.SubpolyBound`, `Comments1102.grammarSize_le_rules`, `Comments1102.grammarSize_attained`, `Comments1102.rem_measures_a`, `Comments1102.rem_measures_b`, `Comments1102.rem_measures_c`, `Final1102.rem_measures_a_nonempty`, `Final1102.rem_measures_b_nonempty`, `Final1102.rem_measures_c_nonempty`, `Final1102.rem_measures_c_measures_nonempty` |  |
 <!-- /tab-lean -->
 

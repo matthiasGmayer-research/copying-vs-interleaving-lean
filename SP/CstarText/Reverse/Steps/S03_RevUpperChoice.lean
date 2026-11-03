@@ -34,7 +34,7 @@ set_option maxHeartbeats 1600000 in
 absolute constant `C₀` (lem-rev-upper's statement); the constant does not depend on `x`, hence the order
 `∃ C₀, ∀ x`. Hypothesis `h2` = the claim of step 2 (D3-fixed form, see `step_lem_rev_upper_2`), for every
 word. Logarithms base 2. -/
-@[kb "cstarpaper-st-revup-final" (deviation := "the claim of st-revup-cases (for every word) enters as hypothesis h2; stated as ∃ C₀ > 0, ∀ x")]
+-- kb tag retired 2026-11-03 (cstar 4adb346 simplify check; see Simplify1103): @[kb "cstarpaper-st-revup-final" (deviation := "the claim of st-revup-cases (for every word) enters as hypothesis h2; stated as ∃ C₀ > 0, ∀ x")]
 theorem step_lem_rev_upper_3
     (h2 : ∀ {α : Type} [Nonempty α] (x : List α), 2 ≤ x.length →
       (numSymbols x = 1 → (ZLC x : ℝ) ≤ 2 * ((⌈SP.log2 (x.length : ℝ)⌉ : ℤ) : ℝ)) ∧

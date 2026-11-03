@@ -599,9 +599,9 @@ private theorem Lk_ge_2048 (k : ℕ) (hk : 2 ≤ k) : (2048 : ℝ) ≤ C1Params.
   unfold C1Params.Lk
   nlinarith [mul_nonneg (sub_nonneg.2 hk') (by linarith : (0 : ℝ) ≤ SP.log2 ((k : ℝ) + 2))]
 
-/-- **s-lengths-least.** "The words are very long: `n ≥ 2^{18432}` for every `k` (lem-relay (d))" — for every `k ≥ 2` and
+/-- **s-lengths-least.** "For L = L_k, the words are very long: `n ≥ 2^{18432}` for every `k` (lem-sc-final (b))" — for every `k ≥ 2` and
 every `L ≥ L_k`. -/
-@[kb "cstarpaper-s-lengths-least" (part := "C1/I1")]
+-- kb tag retired 2026-11-03 (cstar 4adb346: the sentence says L = L_k; see Simplify1103.s_lengths_least_Lk): @[kb "cstarpaper-s-lengths-least" (part := "C1/I1")]
 theorem s_lengths_least (k L : ℕ) (hk : 2 ≤ k) (hL : C1Params.Lk k ≤ L) : 2 ^ 18432 ≤ N k L := by
   have hL' : (2048 : ℝ) ≤ L := (Lk_ge_2048 k hk).trans (by exact_mod_cast hL)
   have hk' : (2 : ℝ) ≤ k := by exact_mod_cast hk

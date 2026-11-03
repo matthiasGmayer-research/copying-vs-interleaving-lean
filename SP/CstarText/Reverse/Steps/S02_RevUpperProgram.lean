@@ -693,7 +693,7 @@ with `N ≥ n`."
 tree of zips for a word of length `ℓ` has `ℓ − 1` vertices of arity 2, no vertex if `ℓ = 1` — gives
 `2(ℓ−1)d^ℓ`, which step 3 needs at `ℓ = 1`).
 Context: `x ∈ Σ^n`, `n ≥ 2`, `d` distinct symbols. Logarithms base 2. -/
-@[kb "cstarpaper-st-revup-cases"]
+-- kb tag retired 2026-11-03 (cstar 4adb346 simplify check; see Simplify1103): @[kb "cstarpaper-st-revup-cases"]
 theorem step_lem_rev_upper_2 {α : Type} [Nonempty α] (x : List α) (hn : 2 ≤ x.length) :
     (numSymbols x = 1 → (ZLC x : ℝ) ≤ 2 * ((⌈SP.log2 (x.length : ℝ)⌉ : ℤ) : ℝ)) ∧
     (2 ≤ numSymbols x → ∀ ℓ : ℕ, IsPow2 ℓ → ℓ ≤ pow2Ceil x.length →

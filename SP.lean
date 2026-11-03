@@ -308,6 +308,8 @@ import SP.CstarText.Sentences.LemForward
 import SP.CstarText.Sentences.LemLeast
 import SP.CstarText.Sentences.LemPaths
 import SP.CstarText.Sentences.ThmScale
+import SP.CstarText.Simplify1103.Defs
+import SP.CstarText.Simplify1103.Statement
 import SP.CstarText.U12a.Defs
 import SP.CstarText.U12a.ExampleStatement
 import SP.CstarText.U12a.Statement

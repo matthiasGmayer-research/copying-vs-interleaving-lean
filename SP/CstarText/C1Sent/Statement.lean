@@ -118,8 +118,8 @@ private theorem scf_total (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.
     (by positivity) (lem_ap k L hk hL) hcond
   exact ⟨htot, hn1⟩
 
-/-- **s-thm-sc-failure** (proof of thm-sc). "With lem-relay (b), the failure probability is at most
-`4 n^{−7} + exp(6) n^{−6} ≤ (4 + exp(6)) n^{−6} ≤ 408 n^{−6}`" (the failure of the chain of thm-sc, under the joint law). -/
+/-- **s-thm-sc-failure** (proof of thm-sc). "With lem-ap (a), the failure probability is at most
+`4 n^{−7} + exp(6) n^{−6} ≤ 408 n^{−6}`" (the intermediate `(4 + exp(6)) n^{−6}` is proved on the way) (the failure of the chain of thm-sc, under the joint law). -/
 @[kb "cstarpaper-s-thm-sc-failure" (part := "C1: the failure probability")]
 theorem s_thm_sc_failure (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) :
     1 - jointProb k L (SCChain k L) ≤

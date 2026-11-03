@@ -828,7 +828,7 @@ theorem s_lem_rev_zlc_one (m : ℕ) (hm : 3 ≤ m) {Q : Type} (P : Program Q Boo
 /-- main.typ:2869–2881, step st-rev-stop. Claim: "Every path from the root to a letter is stopped, and the sum of
 `1/s` over the stopped occurrences is `1`." A stopped occurrence is `Reverse.IsStopped P m q ρ`: `ρ ∈ occ_q` with
 `s ≤ T < d_q s` (the first such vertex of its path, automatically). -/
-@[kb "cstarpaper-st-rev-stop"]
+-- kb tag retired 2026-11-03 (cstar 4adb346 simplify check; see Simplify1103): @[kb "cstarpaper-st-rev-stop"]
 theorem step_lem_rev_zlc_stop (m : ℕ) (hm : 3 ≤ m) {Q : Type} (P : Program Q Bool) (hP : P.IsZLP)
     (hx : zm m <+: P.val) :
     (∀ (js : List ℕ) (a : Bool), P.follow (.inl P.root) js = some (.inr a) →
@@ -868,7 +868,7 @@ theorem step_lem_rev_zlc_stop (m : ℕ) (hm : 3 ≤ m) {Q : Type} (P : Program Q
 
 /-- main.typ:2885–2888, step st-rev-vertex. Claim: "For each vertex `q`, the sum of `1/s` over the stopped
 occurrences of `q` is less than `d_q/T`." -/
-@[kb "cstarpaper-st-rev-vertex"]
+-- kb tag retired 2026-11-03 (cstar 4adb346 simplify check; see Simplify1103): @[kb "cstarpaper-st-rev-vertex"]
 theorem step_lem_rev_zlc_vertex (m : ℕ) (hm : 3 ≤ m) {Q : Type} (P : Program Q Bool) (hP : P.IsZLP)
     (hx : zm m <+: P.val) (q : Q) (F : Finset Occ) (hF : ∀ ρ ∈ F, IsStopped P m q ρ) :
     ∑ ρ ∈ F, (1 : ℝ) / (ρ.step : ℝ) < (P.arity q : ℝ) / T m := by
@@ -889,7 +889,7 @@ theorem step_lem_rev_zlc_vertex (m : ℕ) (hm : 3 ≤ m) {Q : Type} (P : Program
 
 /-- main.typ:2892–2893: "Summing @st-rev-vertex over the vertices and using @st-rev-stop, `1 ≤ |P|/T`, that is
 `|P| ≥ B/8`." Hypotheses: the two steps. -/
-@[kb "cstarpaper-s-lem-rev-zlc-rev"]
+-- kb tag retired 2026-11-03 (cstar 4adb346 simplify check; see Simplify1103): @[kb "cstarpaper-s-lem-rev-zlc-rev"]
 theorem s_lem_rev_zlc_rev (m : ℕ) (hm : 3 ≤ m) {Q : Type} (P : Program Q Bool) (hP : P.IsZLP)
     (h1 : ∃ F : Finset (Q × Occ), (∀ p : Q × Occ, p ∈ F ↔ IsStopped P m p.1 p.2) ∧
       ∑ p ∈ F, (1 : ℝ) / (p.2.step : ℝ) = 1)

@@ -1147,7 +1147,7 @@ theorem s_lem_slopes_multiple (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) *
   · exact ⟨hMs, hs2, α, hα, hαP, s / ∏ i, α i, hsd, hdiv.symm⟩
 
 /-- **s-lem-slopes-collide.** "`k! Σ_α 1/Ψ(α) ≥ S_𝐏^k − binom(k, 2) S_𝐏^{k−1}/X`" (the sum over the types). -/
-@[kb "cstarpaper-s-lem-slopes-collide" (part := "C1")]
+-- kb tag retired 2026-11-03 (cstar 4adb346 simplify check; see Simplify1103): @[kb "cstarpaper-s-lem-slopes-collide" (part := "C1")]
 theorem s_lem_slopes_collide (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) :
     SP_ k L ^ k - (k.choose 2 : ℝ) * SP_ k L ^ (k - 1) / X k L ≤
       (k.factorial : ℝ) * ∑ T ∈ typeSets k L, (1 : ℝ) / (∏ p ∈ T, p : ℕ) := by
@@ -1194,7 +1194,7 @@ theorem step_slopes_types (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.
 − 8 · 4^k/X) ≥ W S_𝐏^k/(2 k!)`, as `binom(k, 2)/(X S_𝐏) + 8 · 4^k/X ≤ (2k²L + 8 · 4^k)/X ≤ 1/2`: by lem-params (c),
 `1/S_𝐏 ≤ 4L`, and `2(2k²L + 8 · 4^k) = 4k²L + 2^{2k+4} ≤ 2^{2k+4} u² + 2^{2k+4} u² ≤ 2^{5k+9} u² ≤ X` by lem-params (b)
 (as `k²L ≤ u²`, since `u ≥ L` and `u ≥ k²`)." -/
-@[kb "cstarpaper-s-lem-slopes-claim" (part := "C1")]
+-- kb tag retired 2026-11-03 (cstar 4adb346 simplify check; see Simplify1103): @[kb "cstarpaper-s-lem-slopes-claim" (part := "C1")]
 theorem s_lem_slopes_claim (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * SP.log2 ((k : ℝ) + 2) ≤ L) (μ : ℕ)
     (hμ : M k L ≤ μ) (hμW : μ + W k L ≤ 2 * M k L) :
     (W k L : ℝ) * SP_ k L ^ k / k.factorial *
