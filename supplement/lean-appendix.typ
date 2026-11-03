@@ -53,7 +53,7 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("1e895ea03a90") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  #text(size: 10pt)[Lean repository revision #raw("fe6f156cd440") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
   358 modules · 662 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
