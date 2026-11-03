@@ -1,7 +1,7 @@
 # Lean 4 formalisation for "Copying along Arithmetic Progressions Cannot Simulate Interleaving with Polylogarithmic Loss"
 
 Machine-checked proofs (Lean 4 + Mathlib; the only axioms are `propext`, `Classical.choice` and `Quot.sound`) for the
-paper by Matthias G. Mayer. The formalisation along the paper's text is the namespace `SP.CstarText` (one directory
+paper by Matthias G. Mayer. The formalisation along the paper's text is the namespace `CopyingInterleaving.Paper` (one directory
 per part of the paper). This README gives the correspondence between the paper and the Lean: the main statements
 verbatim (below), the versions, and the declaration of every numbered block and proof step.
 
@@ -11,10 +11,10 @@ it formalises (`@[kb "cstarpaper-<label>"]`), and each tag records how the forma
 
 **Status.** Every numbered definition, statement and proof step of the paper's own development, apart from the
 comparisons in `rem-measures` that rest on cited results, has a sorry-free Lean declaration (axioms `propext`,
-`Classical.choice`, `Quot.sound`): the upper bound in its version U12a (`SP.CstarText.U12a`, constant 2), the lower
-bound in its version C1/I1 (prime types, parameters of (k, L) for all integers k ≥ 2 and L ≥ 512 k log₂(k + 2): `SP.CstarText.C1Params`
+`Classical.choice`, `Quot.sound`): the upper bound in its version U12a (`CopyingInterleaving.Paper.U12a`, constant 2), the lower
+bound in its version C1/I1 (prime types, parameters of (k, L) for all integers k ≥ 2 and L ≥ 512 k log₂(k + 2): `CopyingInterleaving.Paper.C1Params`
 … `C1Lower`, `C1Coverage`, `C1Sent`), and `prop-scheme`, the critical-set bound, with the bound of `lem-random`
-(`SP.CstarText.MethodRev.prop_scheme`). Sentences of the text outside the numbered blocks that state a fact are tagged
+(`CopyingInterleaving.Paper.MethodRev.prop_scheme`). Sentences of the text outside the numbered blocks that state a fact are tagged
 as well (sentence anchors, `@[kb "cstarpaper-s-…"]`); these tags locate the declarations and claim nothing beyond the
 statement above. The formalisations of earlier versions are kept in the repository (see "Earlier versions" below);
 their superseded statements no longer carry the paper's tags.
@@ -24,8 +24,8 @@ their superseded statements no longer carry the paper's tags.
 
 The following declarations are copied from this revision of the repository, without their documentation comments,
 their tags and their proofs (`python3 tools/listings.py` extracts them; `--check README.md` compares). The comments
-that name a namespace are ours; the definitions are in the namespace `SP` unless such a comment says otherwise. The
-module `SP.CstarText.Prelim` names the definitions of the paper's preliminaries (`sec-prelim`) by abbreviations of
+that name a namespace are ours; the definitions are in the namespace `CopyingInterleaving` unless such a comment says otherwise. The
+module `CopyingInterleaving.Paper.Prelim` names the definitions of the paper's preliminaries (`sec-prelim`) by abbreviations of
 them. The formal statements depart from the text as follows: words are lists, `x <+: y` says that `x` is a prefix of
 `y`, a vertex set is any type required to be finite, and the alphabet is any type with an element, finite in
 `cor_cstar`. Some names keep earlier terms: an `ArithInterval` is an arithmetic progression (`def-interval`), a
@@ -112,15 +112,15 @@ noncomputable def ZLC {α : Type} [Nonempty α] (x : List α) : ℕ :=
 ```
 
 ```lean
--- namespace SP.CstarText.Prelim
+-- namespace CopyingInterleaving.Paper.Prelim
 def IsSynchronous {Q α : Type} (P : Program Q α) : Prop :=
   ∃ φ : Q → ℕ, φ P.root = 1 ∧
     ∀ (q q' : Q) (j : ℕ), (P.δ q)[j]? = some (.inl q') → φ q' = P.arity q * φ q
 
--- namespace SP.CstarText.Prelim
+-- namespace CopyingInterleaving.Paper.Prelim
 noncomputable def sZLC {α : Type} [Nonempty α] (x : List α) : ℕ :=
   sInf {m : ℕ | ∃ (Q : Type) (P : Program Q α), IsZLP P ∧ IsSynchronous P ∧
-    x <+: SP.Program.val P ∧ SP.Program.size P = m}
+    x <+: CopyingInterleaving.Program.val P ∧ CopyingInterleaving.Program.size P = m}
 ```
 
 Occurrences (`def-occ`):
@@ -150,15 +150,15 @@ formalise the free levels, the pointers and the bits, and the geometry):
 ```lean
 noncomputable def log2 (x : ℝ) : ℝ := Real.logb 2 x
 
--- namespace SP.CstarPaper
+-- namespace CopyingInterleaving.Statements
 def AdmissibleOAlpha (α : Type) [Nonempty α] (c : ℝ) : Prop :=
   ∃ C : ℝ, ∀ x : List α, 1 ≤ x.length → (ARC x : ℝ) ≤ C * (x.length : ℝ) ^ c * ZLC x
 
--- namespace SP.CstarText.C1Structure
+-- namespace CopyingInterleaving.Paper.C1Structure
 noncomputable def n (k L : ℕ) : ℕ :=
   R k L * C1Params.B k L * C1Params.s k L (C1Params.H k L - 1) * C1Params.e k L * (C1Params.H k L + 1)
 
--- namespace SP.CstarText.C1Structure
+-- namespace CopyingInterleaving.Paper.C1Structure
 noncomputable def x (k L : ℕ) (σ : (C1Gadgets.paper k L).Geometry) (ω : PtrBits k L) : List Bool :=
   Prelim.slice (Prelim.val (Pk k L σ ω)) 0 (n k L)
 ```
@@ -167,41 +167,41 @@ The main statements: `thm-upper` (constant 2); `thm-lower` (every length), with 
 exp(−C √(log n log log n)) of its first sentence; `cor-cstar`; `cor-szlc`; and `prop-reverse`:
 
 ```lean
--- namespace SP.CstarText.U12a
+-- namespace CopyingInterleaving.Paper.U12a
 theorem thm_upper {α : Type} [Nonempty α] (x : List α) (hn : 1 ≤ x.length) :
     (ARC x : ℝ) ≤ 2 * (x.length : ℝ) ^ (1 / 4 : ℝ) * (ZLC x : ℝ)
 ```
 
 ```lean
--- namespace SP.CstarText.C1Lower
+-- namespace CopyingInterleaving.Paper.C1Lower
 def lossFactor (C : ℝ) (n : ℕ) : ℝ :=
-  (n : ℝ) ^ ((1 : ℝ) / 4) * Real.exp (-(C * Real.sqrt (SP.log2 (n : ℝ) * SP.log2 (SP.log2 (n : ℝ)))))
+  (n : ℝ) ^ ((1 : ℝ) / 4) * Real.exp (-(C * Real.sqrt (CopyingInterleaving.log2 (n : ℝ) * CopyingInterleaving.log2 (CopyingInterleaving.log2 (n : ℝ)))))
 
--- namespace SP.CstarText.C1Lower
+-- namespace CopyingInterleaving.Paper.C1Lower
 theorem thm_lower :
     (∃ C : ℝ, 0 < C ∧ ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
-      ∃ x : List Bool, x.length = n ∧ lossFactor C n * (SP.ZLC x : ℝ) ≤ (SP.ARC x : ℝ)) ∧
+      ∃ x : List Bool, x.length = n ∧ lossFactor C n * (CopyingInterleaving.ZLC x : ℝ) ≤ (CopyingInterleaving.ARC x : ℝ)) ∧
     ∀ a : ℝ, a < 1 / 4 → ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
-      ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (SP.ZLC x : ℝ) ≤ (SP.ARC x : ℝ)
+      ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (CopyingInterleaving.ZLC x : ℝ) ≤ (CopyingInterleaving.ARC x : ℝ)
 ```
 
 ```lean
--- namespace SP.CstarText.CorDirect
+-- namespace CopyingInterleaving.Paper.CorDirect
 theorem cor_cstar (α : Type) [Fintype α] [Nonempty α] (h : ∃ a b : α, a ≠ b) :
-    IsLeast {c : ℝ | SP.CstarPaper.AdmissibleOAlpha α c} (1 / 4 : ℝ)
+    IsLeast {c : ℝ | CopyingInterleaving.Statements.AdmissibleOAlpha α c} (1 / 4 : ℝ)
 
--- namespace SP.CstarText.CorDirect
+-- namespace CopyingInterleaving.Paper.CorDirect
 theorem cor_szlc (a : ℝ) (ha : a < 1 / 4) : ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
-    ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (ZLC x : ℝ) ≤ (SP.CstarText.Prelim.sZLC x : ℝ)
+    ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (ZLC x : ℝ) ≤ (CopyingInterleaving.Paper.Prelim.sZLC x : ℝ)
 ```
 
 ```lean
--- namespace SP.CstarText.ReverseZ
+-- namespace CopyingInterleaving.Paper.ReverseZ
 theorem prop_reverse :
     (∃ C : ℝ, ∀ {α : Type} [Nonempty α] (x : List α), 2 ≤ x.length →
-      (ZLC x : ℝ) ≤ C * x.length * ARC x / SP.log2 ((x.length : ℝ) + 1)) ∧
+      (ZLC x : ℝ) ≤ C * x.length * ARC x / CopyingInterleaving.log2 ((x.length : ℝ) + 1)) ∧
     ∀ n : ℕ, 2 ≤ n → ∃ x : List Bool, x.length = n ∧
-      (n : ℝ) * ARC x / (64 * SP.log2 n ^ 2) ≤ (ZLC x : ℝ)
+      (n : ℝ) * ARC x / (64 * CopyingInterleaving.log2 n ^ 2) ≤ (ZLC x : ℝ)
 ```
 
 <!-- app-lean-map -->
@@ -211,7 +211,7 @@ The formalisation uses Lean 4 at the toolchain `leanprover/lean4:v4.33.0-rc1` (`
 tag `v4.33.0-rc1` (commit `79d0395`, pinned in `lake-manifest.json`). `lake exe cache get && lake build` builds the
 formalisation. Then `lake env lean Check.lean` prints the statements (`#check`) and the axioms on which the main
 declarations depend; they are among `propext`, `Classical.choice` and `Quot.sound`. This repository is exported from
-the author's research project (`export.sh`); module names keep its prefix `SP`.
+the author's research project (`export.sh`); the export renames the research project's root namespace `SP` to `CopyingInterleaving` and its `CstarText` to `Paper` (the recorded map is `rename_map.py`, applied by `export.sh`); the revision-history modules keep their names. To build: `git clone git@github.com:matthiasGmayer-research/copying-vs-interleaving-lean.git`, then the commands above (the Lake package is `copying-vs-interleaving-lean`, the library `CopyingInterleaving`).
 
 ## The correspondence
 
@@ -219,7 +219,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
 states it, except the comparisons of `rem-measures` that rest on cited results (see below). The table lists, for each
 numbered block, every declaration tagged with its label (definitions, statement parts) and the declarations of its
 proof steps; the sentence anchors of the paper are tagged the same way (`@[kb "cstarpaper-s-…"]`). Names are relative
-to the namespace `SP.CstarText` unless they begin with `SP`. The main results come first. Two proof steps are
+to the namespace `CopyingInterleaving.Paper` unless they begin with `CopyingInterleaving`. The main results come first. Two proof steps are
 split over two declarations, of which the table lists the first named here. `st-scheme-event` says that with probability at least
 1 − |S| n³ 2^(−u) exp(6u²/D) no candidate holds, and that then every forward equation that holds in x has fewer than
 u² targets in S. The table's `Method.step_prop_scheme_2_event` is the consequence; the probability clause is
@@ -238,9 +238,9 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 |---|---|---|
 | `thm-upper` | `U12a.thm_upper` |  |
 | `thm-lower` | `C1Lower.lossFactor`, `C1Lower.thm_lower` | `st-lower-prefix`: `C1Lower.step_lower_prefix`; `st-lower-lengths`: `C1Lower.step_lower_lengths`; `st-lower-assemble`: `C1Lower.step_lower_assemble` |
-| `cor-cstar` | `SP.CstarPaper.AdmissibleO`, `SP.CstarPaper.AdmissibleOAlpha`, `SP.CstarPaper.cor_cstar`, `SP.CstarPaper.cor_cstar_fixed_alphabet`, `Intro.cor_cstar_i`, `Intro.cor_cstar_ii`, `IntroRev.cor_cstar`, `CorDirect.cor_cstar` |  |
+| `cor-cstar` | `CopyingInterleaving.Statements.AdmissibleO`, `CopyingInterleaving.Statements.AdmissibleOAlpha`, `CopyingInterleaving.Statements.cor_cstar`, `CopyingInterleaving.Statements.cor_cstar_fixed_alphabet`, `Intro.cor_cstar_i`, `Intro.cor_cstar_ii`, `IntroRev.cor_cstar`, `CorDirect.cor_cstar` |  |
 | `cor-szlc` | `CoverageRev.no_polylog_szlc_zlc`, `CorDirect.cor_szlc` |  |
-| `prop-reverse` | `SP.ReverseUpper.zlc_le_arc`, `Reverse.prop_reverse_i`, `ReverseZ.prop_reverse_second`, `ReverseZ.prop_reverse` |  |
+| `prop-reverse` | `CopyingInterleaving.ReverseUpper.zlc_le_arc`, `Reverse.prop_reverse_i`, `ReverseZ.prop_reverse_second`, `ReverseZ.prop_reverse` |  |
 | `sec-prelim`, conventions | `Prelim.log2`, `Prelim.slice` |  |
 | `def-interval` | `Prelim.ArithInterval`, `Prelim.readAt`, `Prelim.readLen`, `Prelim.def_interval_prefix`, `Prelim.def_interval_read`, `CoverageRev.interval_step_determined` |  |
 | `def-ars` | `Prelim.Covers`, `Prelim.IsARS`, `Prelim.ARC`, `Prelim.literals`, `Prelim.ars_determines`, `Prelim.arc_le_length`, `WordRev.CoversText`, `WordRev.covers_iff_coversText` |  |
@@ -274,7 +274,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `tab-relay` | `Final1102.relayQ`, `Final1102.tab_relay`, `Final1102.relay_length_theta`, `Final1102.relay_length_power`, `Final1102.tab_relay_Lk`, `C1Coverage.why_quarter_relay` |  |
 | `thm-sc` | `C1Final.jointProb`, `C1Final.SCChain`, `C1Referee.thm_sc_rev`, `Comments1102.thm_sc` |  |
 | `ex-zlp-cont` | `UpperConv.exX`, `UpperConv.exEq1`, `UpperConv.exEq2`, `UpperConv.exEq3`, `UpperConv.exL`, `UpperConv.exΦ`, `UpperConv.ex_cont_params`, `UpperConv.ex_cont_least`, `UpperConv.ex_cont_tree`, `UpperConv.ex_cont_literals`, `UpperConv.ex_cont_eq_root`, `UpperConv.ex_cont_eq_s0`, `UpperConv.ex_cont_eq_s1`, `UpperConv.ex_cont_least_c_needed`, `UpperConv.ex_cont_ars`, `U12a.ex_cont_cut_u12a`, `RefereeRev.exL4`, `RefereeRev.exΦ4`, `RefereeRev.ex_cont_arc_le`, `CoverageRev4.ex_root_slot0` |  |
-| `rem-constant` | `SP.CstarPaper.rem_constant`, `ReadRev.rem_constant_all` |  |
+| `rem-constant` | `CopyingInterleaving.Statements.rem_constant`, `ReadRev.rem_constant_all` |  |
 | `rem-arity` | `RemArity.rem_arity`, `RemArity.rem_arity_two` |  |
 | `lem-forward` | `Method.lem_forward`, `Sentences.lem_forward_sentences` |  |
 | `def-params` | `C1Params.Lk`, `C1Params.X`, `C1Params.B`, `C1Params.W`, `C1Params.u`, `C1Params.e`, `C1Params.M`, `C1Params.g`, `C1Params.Λ`, `C1Params.H`, `C1Params.primesP`, `C1Params.IsType`, `C1Params.IsGood`, `C1Final.step_params_basic` |  |
@@ -313,8 +313,8 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 The repository also keeps the formalisations of earlier versions of the paper. They are proved; the superseded
 statements in the first six rows no longer carry the paper's tags and do not state the current results. The last
 row is a second proof of the main results, with a weaker constant in the upper bound (see "The earlier
-formalisation"); its `SP.CstarPaper.cor_cstar_fixed_alphabet` states the current `cor-cstar` (a fixed alphabet) and
-`SP.CstarPaper.cor_cstar` a variant uniform over all finite alphabets, and both keep the tag of `cor-cstar`.
+formalisation"); its `CopyingInterleaving.Statements.cor_cstar_fixed_alphabet` states the current `cor-cstar` (a fixed alphabet) and
+`CopyingInterleaving.Statements.cor_cstar` a variant uniform over all finite alphabets, and both keep the tag of `cor-cstar`.
 
 | earlier version | Lean |
 |---|---|
@@ -324,7 +324,7 @@ formalisation"); its `SP.CstarPaper.cor_cstar_fixed_alphabet` states the current
 | thm-lower, former form (infinitely many words) | `SCFinal.thm_lower_conf`, `SCFinal.thm_lower_strong`, `SCFinal.thm_lower`, `SCFinal.rem_loss` |
 | cor-szlc, former form (infinitely many words) | `Sentences.cor_szlc_text` |
 | cor-cstar and cor-szlc as stated now, proved from the earlier versions of the two main theorems | `IntroRev.cor_cstar_text`, `CorSzlcEvery.cor_szlc_every`, `CorSzlcEvery.s_cor_szlc_proof` |
-| Another proof of the main results (weaker constant) | `SP.CstarConst.arc_le_const`, `SP.CstarPaper.thm_lower`, `SP.CstarPaper.cor_cstar`, `SP.ReverseUpper.zlc_le_arc` |
+| Another proof of the main results (weaker constant) | `CopyingInterleaving.Constants.arc_le_const`, `CopyingInterleaving.Statements.thm_lower`, `CopyingInterleaving.Statements.cor_cstar`, `CopyingInterleaving.ReverseUpper.zlc_le_arc` |
 
 `cor-cstar` (`CorDirect.cor_cstar`) and `cor-szlc` (`CorDirect.cor_szlc`) are proved from the current
 `U12a.thm_upper` and `C1Lower.thm_lower`.
@@ -332,7 +332,7 @@ formalisation"); its `SP.CstarPaper.cor_cstar_fixed_alphabet` states the current
 ## Cited results
 
 The following cited results are formalised: Kosoy's ARC ≤ sZLC (Prop. 4.9 of Kosoy's paper), used in the proof of `cor-szlc`
-and in `ex-zlp-cont`, as `SP.CstarText.Kosoy49.kosoy_arc_le_szlc`; Kosoy's lemma on occurrences (App. E.3), `lem-occ`, as
+and in `ex-zlp-cont`, as `CopyingInterleaving.Paper.Kosoy49.kosoy_arc_le_szlc`; Kosoy's lemma on occurrences (App. E.3), `lem-occ`, as
 `Prelim.lem_occ_a` and `Prelim.lem_occ_b`; and the two Chebyshev bounds on the sum of ln p over primes used in
 `lem-params`, which are in Mathlib (`Chebyshev.theta_le_log4_mul_x`, `Chebyshev.theta_ge`). Kosoy's ARC ≤ LZC (Prop. 4.3), Rytter's bound (Thm. 1) and
 the polylogarithmic comparisons of measures cited in the introduction, used in `rem-measures`, are cited and not
@@ -343,19 +343,19 @@ prediction in the introduction, and are not formalised.
 ## The earlier formalisation
 
 The repository also contains a second formalisation of the main results, by a different route
-(`SP.CstarConst.arc_le_const`, `SP.CstarPaper.thm_lower`, `SP.CstarPaper.cor_cstar`, `SP.ReverseUpper.zlc_le_arc`).
-`SP.CstarText.IntroRev.cor_cstar` proves `cor-cstar` along the paper's proof steps but cites those earlier proofs of
+(`CopyingInterleaving.Constants.arc_le_const`, `CopyingInterleaving.Statements.thm_lower`, `CopyingInterleaving.Statements.cor_cstar`, `CopyingInterleaving.ReverseUpper.zlc_le_arc`).
+`CopyingInterleaving.Paper.IntroRev.cor_cstar` proves `cor-cstar` along the paper's proof steps but cites those earlier proofs of
 the two theorems. The declarations of the correspondence use from it only helper lemmas on occurrences, paths, and the
-construction and validity of equations (module `SP.CstarUpper`), and `SP.CstarPaper.rem_constant`, which states the
+construction and validity of equations (module `CopyingInterleaving.Upper`), and `CopyingInterleaving.Statements.rem_constant`, which states the
 computation of `rem-constant` for the word aa directly.
 
 Dependency routes (`python3 tools/deps.py README.md` runs `lake env lean tools/Deps.lean` on every name of the
 correspondence table, 388 names): the declarations of the current version depend on no theorem of the earlier
 formalisations, with two qualifications. The upper bound (`U12a.*`, hence `thm_upper`) uses untagged helper lemmas of
-`SP/CstarUpper.lean` and `UpperConv` (basic facts on occurrences, paths and lowest intervals, and the two-equation
-construction of the conversion, `SP.Program.exists_equations`/`equation_valid`). `cor-cstar`'s declarations, the
-earlier proof of `prop-reverse` (`SP.ReverseUpper.zlc_le_arc`) and `rem-constant` (`SP.CstarPaper.rem_constant`, the
+`CopyingInterleaving/Upper.lean` and `UpperConv` (basic facts on occurrences, paths and lowest intervals, and the two-equation
+construction of the conversion, `CopyingInterleaving.Program.exists_equations`/`equation_valid`). `cor-cstar`'s declarations, the
+earlier proof of `prop-reverse` (`CopyingInterleaving.ReverseUpper.zlc_le_arc`) and `rem-constant` (`CopyingInterleaving.Statements.rem_constant`, the
 computation for the word aa) use earlier declarations. The lower bound (`C1Params` … `C1Lower`, `C1Sent`), `cor-szlc`
-and `prop-reverse` (`ReverseZ`) use only `SP.CstarText` and the definitions of `SP/Setting.lean` with their basic
+and `prop-reverse` (`ReverseZ`) use only `CopyingInterleaving.Paper` and the definitions of `CopyingInterleaving/Setting.lean` with their basic
 lemmas. The basic definitions (arithmetic repetition systems,
-ARC, zipline programs, ZLC, occurrences) are in `SP/Setting.lean`.
+ARC, zipline programs, ZLC, occurrences) are in `CopyingInterleaving/Setting.lean`.

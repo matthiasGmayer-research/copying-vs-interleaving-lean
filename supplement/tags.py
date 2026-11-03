@@ -7,7 +7,7 @@ DECL = re.compile(r'^(?:@\[[^\]]*\]\s*)*(?:private |protected |noncomputable |pa
                   r'(theorem|lemma|def|abbrev|structure|inductive|class|instance|opaque|axiom)\s+([^\s:({\[]+)')
 TAG = re.compile(r'kb "cstarpaper-([^"]+)"')
 
-def scan(root='SP'):
+def scan(root='CopyingInterleaving'):
     tags = {}
     for d, _, fs in os.walk(root):
         for f in sorted(fs):

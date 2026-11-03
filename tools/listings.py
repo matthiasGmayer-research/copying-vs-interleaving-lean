@@ -9,7 +9,7 @@ usage:
 Extraction: each declaration is copied verbatim from its source file, from its first line (after the docstring and
 the attributes) to the end of the declaration header: for a theorem up to `:=` (the proof is dropped), for a
 definition or structure up to the first blank line, without one-line field docstrings. A comment
-`-- namespace N` precedes declarations outside the namespace `SP` (the paper's convention).
+`-- namespace N` precedes declarations outside the namespace `CopyingInterleaving` (the paper's convention).
 
 Check: the listings in the paper are split into declaration units (a unit starts at a declaration keyword, with the
 namespace comment before it); each unit is compared, whitespace-normalised, with the extracted unit of the same
@@ -18,12 +18,12 @@ declaration, and extracted declarations that the paper does not list. Exit statu
 """
 import argparse, difflib, os, re, sys
 
-ROOT = os.environ.get("LISTINGS_ROOT") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "SP")
+ROOT = os.environ.get("LISTINGS_ROOT") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "CopyingInterleaving")
 
 S = "Setting.lean"
-PRELIM = "CstarText/Prelim/Defs.lean"
-SCSTRUCT = "CstarText/SCStructure/Defs.lean"
-# (block, namespace comment or None, source file relative to SP/, start of the declaration's first line)
+PRELIM = "Paper/Prelim/Defs.lean"
+SCSTRUCT = "Paper/SCStructure/Defs.lean"
+# (block, namespace comment or None, source file relative to CopyingInterleaving/, start of the declaration's first line)
 SPEC = [
     ("arcs", None, S, "structure ArithInterval where"),
     ("arcs", None, S, "def ArithInterval.apply"),
@@ -43,22 +43,22 @@ SPEC = [
     ("zlp", None, S, "noncomputable def Program.val "),
     ("zlp", None, S, "noncomputable def Program.size "),
     ("zlp", None, S, "noncomputable def ZLC "),
-    ("sync", "SP.CstarText.Prelim", PRELIM, "def IsSynchronous "),
-    ("sync", "SP.CstarText.Prelim", PRELIM, "noncomputable def sZLC "),
+    ("sync", "CopyingInterleaving.Paper.Prelim", PRELIM, "def IsSynchronous "),
+    ("sync", "CopyingInterleaving.Paper.Prelim", PRELIM, "noncomputable def sZLC "),
     ("occ", None, S, "structure Occ where"),
     ("occ", None, S, "instance : CoeFun Occ"),
     ("occ", None, S, "inductive Program.OccVia "),
     ("occ", None, S, "def Program.occ "),
     ("misc", None, S, "noncomputable def log2 "),
-    ("misc", "SP.CstarPaper", "CstarPaper/Statement.lean", "def AdmissibleOAlpha "),
-    ("misc", "SP.CstarText.C1Structure", "CstarText/C1Structure/Defs.lean", "noncomputable def n (k L"),
-    ("misc", "SP.CstarText.C1Structure", "CstarText/C1Structure/Defs.lean", "noncomputable def x (k L"),
-    ("upper", "SP.CstarText.U12a", "CstarText/U12a/Statement.lean", "theorem thm_upper "),
-    ("lower", "SP.CstarText.C1Lower", "CstarText/C1Lower/Defs.lean", "def lossFactor "),
-    ("lower", "SP.CstarText.C1Lower", "CstarText/C1Lower/Statement.lean", "theorem thm_lower "),
-    ("cors", "SP.CstarText.CorDirect", "CstarText/CorDirect/Statement.lean", "theorem cor_cstar "),
-    ("cors", "SP.CstarText.CorDirect", "CstarText/CorDirect/Statement.lean", "theorem cor_szlc "),
-    ("reverse", "SP.CstarText.ReverseZ", "CstarText/ReverseZ/Statement.lean", "theorem prop_reverse "),
+    ("misc", "CopyingInterleaving.Statements", "Statements/Statement.lean", "def AdmissibleOAlpha "),
+    ("misc", "CopyingInterleaving.Paper.C1Structure", "Paper/C1Structure/Defs.lean", "noncomputable def n (k L"),
+    ("misc", "CopyingInterleaving.Paper.C1Structure", "Paper/C1Structure/Defs.lean", "noncomputable def x (k L"),
+    ("upper", "CopyingInterleaving.Paper.U12a", "Paper/U12a/Statement.lean", "theorem thm_upper "),
+    ("lower", "CopyingInterleaving.Paper.C1Lower", "Paper/C1Lower/Defs.lean", "def lossFactor "),
+    ("lower", "CopyingInterleaving.Paper.C1Lower", "Paper/C1Lower/Statement.lean", "theorem thm_lower "),
+    ("cors", "CopyingInterleaving.Paper.CorDirect", "Paper/CorDirect/Statement.lean", "theorem cor_cstar "),
+    ("cors", "CopyingInterleaving.Paper.CorDirect", "Paper/CorDirect/Statement.lean", "theorem cor_szlc "),
+    ("reverse", "CopyingInterleaving.Paper.ReverseZ", "Paper/ReverseZ/Statement.lean", "theorem prop_reverse "),
 ]
 
 DECL = re.compile(r"^(?:noncomputable |private |protected )*(theorem|lemma|def|structure|instance|inductive|abbrev|class)\b")
@@ -105,8 +105,8 @@ def unit_ns(unit):
 
 
 def decl_name(unit, ns=None):
-    """The declaration's name, qualified by its namespace (the unit's comment, else `ns`), e.g. `SP.ARC`."""
-    ns = unit_ns(unit) or ns or "SP"
+    """The declaration's name, qualified by its namespace (the unit's comment, else `ns`), e.g. `CopyingInterleaving.ARC`."""
+    ns = unit_ns(unit) or ns or "CopyingInterleaving"
     for l in unit.splitlines():
         m = DECL.match(l)
         if m:
@@ -128,7 +128,7 @@ def paper_units(main):
     ma, mb = ("<!-- app-lean-main -->", "<!-- app-lean-map -->") if "<!-- app-lean-main -->" in src else ("<app-lean-main>", "<app-lean-map>")
     a = src.index(ma)
     b = src.index(mb, a)
-    units = []  # (unit, namespace in force: the last namespace comment of the block, else SP)
+    units = []  # (unit, namespace in force: the last namespace comment of the block, else CopyingInterleaving)
     for blk in re.findall(r"```lean\n(.*?)```", src[a:b], re.S):
         cur, ns = [], None
         def push():

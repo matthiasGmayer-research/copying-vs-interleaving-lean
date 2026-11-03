@@ -191,7 +191,7 @@ def sections(md):
 # ---------------------------------------------------------------- the check of the correspondence table
 
 def full(n):
-    return n if n.startswith('SP.') else 'SP.CstarText.' + n
+    return n if n.startswith('CopyingInterleaving.') else 'CopyingInterleaving.Paper.' + n
 
 
 def check_table(readme, tags, paper_labels):
@@ -258,7 +258,7 @@ def main():
         if k not in sec: die(f'README.md has no section "## {k}"')
     extra = [k for k in sec if k not in need]
 
-    tags = {k: [n for n, _ in v] for k, v in tagscan.scan('SP').items()}
+    tags = {k: [n for n, _ in v] for k, v in tagscan.scan('CopyingInterleaving').items()}
     labels = paper_labels_of(a.paper)
     problems, seen = check_table(readme, tags, labels)
     if problems:
@@ -270,8 +270,8 @@ def main():
     mathlib = next(p for p in json.load(open('lake-manifest.json'))['packages'] if p['name'] == 'mathlib')
     if not os.path.exists('Check.out'): die('Check.out missing: run `lake env lean Check.lean > Check.out`')
     check_lean, check_out = open('Check.lean').read(), open('Check.out').read()
-    if os.path.getmtime('Check.out') < max(os.path.getmtime(p) for p in ['Check.lean', 'SP.lean']):
-        die('Check.out is older than Check.lean/SP.lean: rerun `lake env lean Check.lean > Check.out`')
+    if os.path.getmtime('Check.out') < max(os.path.getmtime(p) for p in ['Check.lean', 'CopyingInterleaving.lean']):
+        die('Check.out is older than Check.lean/CopyingInterleaving.lean: rerun `lake env lean Check.lean > Check.out`')
     ax = re.findall(r"^'([^']+)' depends on axioms: \[([^\]]*)\]", check_out, re.M)
     bad = [(n, x) for n, x in ax if set(map(str.strip, x.split(','))) - {'propext', 'Classical.choice', 'Quot.sound'}]
     if bad or 'error' in check_out or 'sorry' in check_out:
@@ -281,12 +281,12 @@ def main():
 
     # the README's preamble without its first paragraph (what the README is; the title page says it here)
     pre_kept = '\n\n'.join(p for p in re.split(r'\n\s*\n', pre.strip()) if not p.startswith('Machine-checked proofs'))
-    rev = git('log', '-1', '--format=%h', '--abbrev=12', '--', 'SP', 'SP.lean', 'README.md', 'Check.lean', 'lakefile.toml',
+    rev = git('log', '-1', '--format=%h', '--abbrev=12', '--', 'CopyingInterleaving', 'CopyingInterleaving.lean', 'README.md', 'Check.lean', 'lakefile.toml',
               'lake-manifest.json', 'lean-toolchain')   # the last commit of the inputs, not of the PDF source
-    dirty = bool(git('status', '--porcelain', '--', 'SP', 'SP.lean', 'README.md', 'Check.lean', 'lakefile.toml',
+    dirty = bool(git('status', '--porcelain', '--', 'CopyingInterleaving', 'CopyingInterleaving.lean', 'README.md', 'Check.lean', 'lakefile.toml',
                      'lake-manifest.json', 'lean-toolchain'))
     if dirty and not a.allow_dirty: die('uncommitted changes in the formalisation (commit, or --allow-dirty for a draft)')
-    nmod = sum(1 for l in open('SP.lean') if l.startswith('import '))
+    nmod = sum(1 for l in open('CopyingInterleaving.lean') if l.startswith('import '))
     ndecl = sum(len(v) for k, v in tags.items() if k in labels)
     numbered = ('thm-', 'lem-', 'cor-', 'prop-', 'def-', 'ex-', 'rem-')
     nsteps = len([l for l in seen if l.startswith('st-')])

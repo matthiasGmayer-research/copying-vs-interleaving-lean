@@ -2,10 +2,10 @@
 """Run the dependency-route check of tools/Deps.lean on every declaration named in the correspondence table of README.md (formerly the paper's App. F.2).
 
 usage: tools/deps.py README.md [--lean-dir DIR]
-Reads the names in backquotes from the table `tab-lean` of README.md (or of a .typ) (relative to SP.CstarText unless they begin
+Reads the names in backquotes from the table `tab-lean` of README.md (or of a .typ) (relative to CopyingInterleaving.Paper unless they begin
 with SP.), writes a copy of tools/Deps.lean with these targets to a temporary file in DIR (default: this repository)
 and runs `lake env lean` on it in DIR. Prints one line per declaration: its route and, if it uses theorems outside
-SP.CstarText, which. Unknown names are reported by Lean as errors.
+CopyingInterleaving.Paper, which. Unknown names are reported by Lean as errors.
 """
 import argparse, os, re, subprocess, sys, tempfile
 
@@ -28,7 +28,7 @@ def table_names(main):
             n = n.strip().rstrip(",")
             if not re.match(r"^[\w.'αβγδεζηθικλμνξοπρστυφχψωΓΔΘΛΞΠΣΦΨΩ₀-₉]+$", n):
                 continue
-            full = n if n.startswith("SP.") else "SP.CstarText." + n
+            full = n if n.startswith("CopyingInterleaving.") else "CopyingInterleaving.Paper." + n
             if full not in names:
                 names.append(full)
     return names

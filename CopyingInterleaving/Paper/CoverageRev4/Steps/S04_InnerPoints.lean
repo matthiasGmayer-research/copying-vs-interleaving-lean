@@ -1,0 +1,23 @@
+import CopyingInterleaving.Paper.CoverageRev4.Defs
+
+namespace CopyingInterleaving.Paper.CoverageRev4
+
+open CopyingInterleaving.Paper.SCGadgets (paper)
+open CopyingInterleaving.Paper.SCStructure (Cell)
+open CopyingInterleaving.Paper.SCCores (point IsInnerCell)
+
+/-- Proof of lem-sc-final (a) (main.typ @ 9c57fdb), the new sentence before `s-lem-sc-final-inner`: "The points of all
+inner cells are pairwise distinct (@lem-structure (b), as they lie below `n` by @lem-cores (a))". For a geometry in the
+support: every point `y_h(ω)` of an inner cell is a position `p < n`, and `y_h(ω) = y_(h')(ω')` for inner cells
+`ω, ω'` gives `h = h'` and `ω = ω'`. -/
+theorem step_inner_points (k : ℕ) (hk : 2 ≤ k) (σ : (paper k).Geometry) (hσ : (paper k).IsGeometry σ) :
+    (∀ (h : Fin (paper k).H) (ω : Cell k), IsInnerCell k ω →
+      ∃ p : ℕ, point k σ h ω = (p : ℤ) ∧ p < SCStructure.n k) ∧
+    ∀ (h h' : Fin (paper k).H) (ω ω' : Cell k), IsInnerCell k ω → IsInnerCell k ω' →
+      point k σ h ω = point k σ h' ω' → h = h' ∧ ω = ω' := by
+  refine ⟨fun h ω hω => ?_, fun h h' ω ω' hω hω' heq => ?_⟩
+  · obtain ⟨p, hp, hpn, -⟩ := SCCores.lem_cores_a_point k hk σ hσ h ω hω.1
+    exact ⟨p, hp, hpn⟩
+  · exact SCCores.point_injective k hk σ hσ h h' ω ω' hω.1 hω'.1 heq
+
+end CopyingInterleaving.Paper.CoverageRev4
