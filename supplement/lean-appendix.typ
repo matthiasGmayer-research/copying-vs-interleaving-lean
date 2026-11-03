@@ -53,8 +53,8 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("fe6f156cd440") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
-  358 modules · 662 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
+  #text(size: 10pt)[Lean repository revision #raw("b13868cc068d") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  358 modules · 658 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
 #block(inset: (x: 1cm))[#set text(size: 9.5pt)
@@ -79,12 +79,12 @@ a hypothesis.
 The Lean repository, whose README gives the declarations of each numbered block and proof step, is provided as
 (private) supplementary material.]
 
-The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-cut"), #raw("st-split-early"), ...), not by their numbers, which change while the paper is revised. The Lean source tags each declaration with the label of the block it formalises (#raw("@[kb \"cstarpaper-<label>\"]")), and each tag records how the formal statement departs from the text.
+The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-cut"), #raw("lem-early"), ...), not by their numbers, which change while the paper is revised. The Lean source tags each declaration with the label of the block it formalises (#raw("@[kb \"cstarpaper-<label>\"]")), and each tag records how the formal statement departs from the text.
 
 *Status.* Every numbered definition, statement and proof step of the paper's own development, apart from the comparisons in #raw("rem-measures") that rest on cited results, has a sorry-free Lean declaration (axioms #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")): the upper bound in its version U12a (#raw("SP.CstarText.U12a"), constant 2), the lower bound in its version C1/I1 (prime types, parameters of (k, L) for all integers k ≥ 2 and L ≥ 512 k log₂(k + 2): #raw("SP.CstarText.C1Params") … #raw("C1Lower"), #raw("C1Coverage"), #raw("C1Sent")), and #raw("prop-scheme"), the critical-set bound, with the bound of #raw("lem-random") (#raw("SP.CstarText.MethodRev.prop_scheme")). Sentences of the text outside the numbered blocks that state a fact are tagged as well (sentence anchors, #raw("@[kb \"cstarpaper-s-…\"]")); these tags locate the declarations and claim nothing beyond the statement above. The formalisations of earlier versions are kept in the repository (see "Earlier versions" below); their superseded statements no longer carry the paper's tags.
 
 In this revision, the table of @sec-map has a row for each of the paper's 67 numbered blocks, with the
-declarations of their 32 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper"), #raw("tab-relay") (conventions and
+declarations of their 29 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper"), #raw("tab-relay") (conventions and
 notation stated in those sections); 133 further tags anchor sentences of the paper's text.
 
 == Cited results
@@ -297,9 +297,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("lem-least")], [#raw("UpperConv.lem_least_b_prefix"), #raw("UpperConv.lem_least_b_tree"), #raw("UpperConv.lem_least_b_K"), #raw("UpperConv.lem_least_b_treepath"), #raw("RefereeRev.lem_least_a_rev"), #raw("Comments1102.mTree_eq_mT")], [],
   [#raw("lem-cut")], [#raw("U12a.lem_cut"), #raw("Comments1102.lem_cut")], [],
   [#raw("lem-reach")], [#raw("U12a.lem_reach")], [],
-  [#raw("lem-split")], [#raw("U12a.lem_split_cases") (two cases; it follows from the earlier one-sentence form U12a.lem\_split, kept untagged)], [#raw("st-split-early"): #raw("U12a.step_split_early"), #raw("Comments1102.step_split_early_cost") \
-#raw("st-split-least"): #raw("U12a.step_split_least") \
-#raw("st-split-other"): #raw("U12a.step_split_other")],
+  [#raw("lem-split")], [#raw("U12a.lem_split_cases") (two cases; it follows from the earlier one-sentence form U12a.lem\_split, kept untagged)], [(retired steps #raw("st-split-*"), claims now the nodes below: #raw("U12a.step_split_early"), #raw("Comments1102.step_split_early_cost"), #raw("U12a.step_split_least"), #raw("U12a.step_split_other"))],
   [#raw("def-pieces")], [#raw("Comments1102.IsEarlyPiece"), #raw("Comments1102.IsLatePiece"), #raw("Comments1102.literalCharge"), #raw("Comments1102.pieceCost"), #raw("Comments1102.earlyCost"), #raw("Comments1102.lateLeastCost"), #raw("Comments1102.lateCost"), #raw("Comments1102.isSplitPieces_iff"), #raw("Comments1102.literalCharge_late"), #raw("Comments1102.charged_early_ncard")], [],
   [#raw("lem-early")], [#raw("Comments1102.lem_early")], [],
   [#raw("lem-late-least")], [#raw("Comments1102.lem_late_least")], [],
