@@ -441,7 +441,7 @@ theorem lem_early {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) 
   exact hle
 
 /-- st-split-early (main.typ @ a925e4a, line 4312), with the cost of def-pieces: the claim of the step is lem-early. -/
-@[kb "cstarpaper-st-split-early" (part := "Comments1102: with the literal-charge cost of def-pieces (= lem-early)")]
+-- kb tag retired 2026-11-03 (cstar 4e60793: one proof per lemma; claim = node of lem-early): @[kb "cstarpaper-st-split-early" (part := "Comments1102: with the literal-charge cost of def-pieces (= lem-early)")]
 theorem step_split_early_cost {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
     (hn : 1 ≤ x.length) (μ : ℕ) (hμ : 1 ≤ μ) (pcs : Q → Occ → Set (Set ℕ)) (hpcs : IsSplitPieces P x.length μ pcs)
     (L : Finset (α × ℕ)) (Φ : Finset (SP.ArithInterval × SP.ArithInterval))

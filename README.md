@@ -5,7 +5,7 @@ paper by Matthias G. Mayer. The formalisation along the paper's text is the name
 per part of the paper). This README gives the correspondence between the paper and the Lean: the main statements
 verbatim (below), the versions, and the declaration of every numbered block and proof step.
 
-The paper is cited by the **labels** of its blocks (`thm-upper`, `lem-cut`, `st-split-early`, ...), not by their
+The paper is cited by the **labels** of its blocks (`thm-upper`, `lem-cut`, `lem-early`, ...), not by their
 numbers, which change while the paper is revised. The Lean source tags each declaration with the label of the block
 it formalises (`@[kb "cstarpaper-<label>"]`), and each tag records how the formal statement departs from the text.
 
@@ -261,7 +261,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `lem-least` | `UpperConv.lem_least_b_prefix`, `UpperConv.lem_least_b_tree`, `UpperConv.lem_least_b_K`, `UpperConv.lem_least_b_treepath`, `RefereeRev.lem_least_a_rev`, `Comments1102.mTree_eq_mT` |  |
 | `lem-cut` | `U12a.lem_cut`, `Comments1102.lem_cut` |  |
 | `lem-reach` | `U12a.lem_reach` |  |
-| `lem-split` | `U12a.lem_split_cases` (two cases; it follows from the earlier one-sentence form U12a.lem_split, kept untagged) | `st-split-early`: `U12a.step_split_early`, `Comments1102.step_split_early_cost`; `st-split-least`: `U12a.step_split_least`; `st-split-other`: `U12a.step_split_other` |
+| `lem-split` | `U12a.lem_split_cases` (two cases; it follows from the earlier one-sentence form U12a.lem_split, kept untagged) | (retired steps `st-split-*`, claims now the nodes below: `U12a.step_split_early`, `Comments1102.step_split_early_cost`, `U12a.step_split_least`, `U12a.step_split_other`) |
 | `def-pieces` | `Comments1102.IsEarlyPiece`, `Comments1102.IsLatePiece`, `Comments1102.literalCharge`, `Comments1102.pieceCost`, `Comments1102.earlyCost`, `Comments1102.lateLeastCost`, `Comments1102.lateCost`, `Comments1102.isSplitPieces_iff`, `Comments1102.literalCharge_late`, `Comments1102.charged_early_ncard` |  |
 | `lem-early` | `Comments1102.lem_early` |  |
 | `lem-late-least` | `Comments1102.lem_late_least` |  |

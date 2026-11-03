@@ -51,7 +51,7 @@ noncomputable def idxCost {Q : Type}
 
 /-- **st-split-early** (App. A.6). "The early pieces cost at most `μ (m − m_𝒯)`": the literals and the equations of the
 early pieces number at most `μ (m − m_𝒯)`, for the ARS of lem-conversion with these pieces. -/
-@[kb "cstarpaper-st-split-early" (part := "U12a")]
+-- kb tag retired 2026-11-03 (cstar 4e60793: one proof per lemma; claim = node of lem-early): @[kb "cstarpaper-st-split-early" (part := "U12a")]
 theorem step_split_early {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
     (hn : 1 ≤ x.length) (μ : ℕ) (hμ : 1 ≤ μ) (pcs : Q → Occ → Set (Set ℕ)) (hpcs : IsSplitPieces P x.length μ pcs)
     (L : Finset (α × ℕ)) (Φ : Finset (SP.ArithInterval × SP.ArithInterval))
@@ -290,7 +290,7 @@ theorem step_split_early {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : Li
   omega
 
 /-- **st-split-least** (App. A.6). "The late pieces of the least occurrences cost at most `2 (m_𝒯 + K)`." -/
-@[kb "cstarpaper-st-split-least" (part := "U12a")]
+-- kb tag retired 2026-11-03 (cstar 4e60793: one proof per lemma; claim = node of lem-late-least): @[kb "cstarpaper-st-split-least" (part := "U12a")]
 theorem step_split_least {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
     (hn : 1 ≤ x.length) (μ : ℕ) (hμ : 1 ≤ μ) (pcs : Q → Occ → Set (Set ℕ)) (hpcs : IsSplitPieces P x.length μ pcs)
     (L : Finset (α × ℕ)) (Φ : Finset (SP.ArithInterval × SP.ArithInterval))
@@ -510,7 +510,7 @@ private theorem oth_arith (μ d R : ℕ) (hμ : 1 ≤ μ) (hd : 2 ≤ d) (own ch
 
 /-- **st-split-other** (App. A.6). "Let `ρ` be an occurrence of a vertex `q` and `R_ρ := max(I_ρ ∪ {0})`. The late
 pieces of the occurrences built from `ρ` cost nothing if `R_ρ < μ d_q`, at most `4 (R_ρ/μ − 1)` otherwise." -/
-@[kb "cstarpaper-st-split-other" (part := "U12a")]
+-- kb tag retired 2026-11-03 (cstar 4e60793: one proof per lemma; claim = node of lem-late-other): @[kb "cstarpaper-st-split-other" (part := "U12a")]
 theorem step_split_other {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
     (hn : 1 ≤ x.length) (μ : ℕ) (hμ : 1 ≤ μ) (pcs : Q → Occ → Set (Set ℕ)) (hpcs : IsSplitPieces P x.length μ pcs)
     (L : Finset (α × ℕ)) (Φ : Finset (SP.ArithInterval × SP.ArithInterval))
