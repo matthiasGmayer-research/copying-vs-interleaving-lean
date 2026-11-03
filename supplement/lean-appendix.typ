@@ -53,7 +53,7 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("bf6d44b7a6d3") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  #text(size: 10pt)[Lean repository revision #raw("1e895ea03a90") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
   358 modules · 662 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
@@ -410,7 +410,6 @@ import SP
 #check @SP.CstarText.C1Lower.step_lower_lengths  -- st-lower-lengths
 #check @SP.CstarText.C1Lower.step_lower_assemble  -- st-lower-assemble
 #check @SP.CstarText.C1Referee.thm_sc_rev  -- thm-sc (the relay words, failure 408 n^(−6))
-#check @SP.CstarText.C1Relay.lem_relay  -- lem-relay (properties of the relay words)
 #check @SP.CstarText.C1Params.lem_params  -- lem-params (every L ≥ 512 k log(k+2))
 #check @SP.CstarText.C1Params.lem_slopes  -- lem-slopes
 #check @SP.CstarText.MethodRev.prop_scheme  -- prop-scheme (bound 2^(−u) exp(6u²/D))
@@ -448,7 +447,6 @@ import SP
 #print axioms SP.CstarText.C1Lower.step_lower_lengths
 #print axioms SP.CstarText.C1Lower.step_lower_assemble
 #print axioms SP.CstarText.C1Referee.thm_sc_rev
-#print axioms SP.CstarText.C1Relay.lem_relay
 #print axioms SP.CstarText.C1Params.lem_params
 #print axioms SP.CstarText.C1Params.lem_slopes
 #print axioms SP.CstarText.MethodRev.prop_scheme
@@ -476,7 +474,7 @@ import SP
 
 == Its output
 
-All 35 declarations audited depend only on #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound")
+All 34 declarations audited depend only on #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound")
 (the output of #raw("lake env lean Check.lean") at this revision; build.py checks it).
 
 ```text
@@ -584,56 +582,6 @@ SP.CstarText.C1Referee.thm_sc_rev : ∀ (k L : ℕ),
               (SP.CstarText.C1Structure.x k L σ pb).length = SP.CstarText.C1Structure.n k L) ∧
         1 - 408 * ↑(SP.CstarText.C1Structure.n k L) ^ (-6) ≤
           SP.CstarText.C1Final.jointProb k L (SP.CstarText.C1Final.SCChain k L)
-SP.CstarText.C1Relay.lem_relay : ∀ (k L : ℕ),
-  2 ≤ k →
-    512 * ↑k * SP.log2 (↑k + 2) ≤ ↑L →
-      (∀ (σ : (SP.CstarText.C1Gadgets.paper k L).Geometry),
-          (SP.CstarText.C1Gadgets.paper k L).IsGeometry σ →
-            ∀ (ω : SP.CstarText.C1Structure.PtrBits k L),
-              SP.CstarText.Prelim.IsZLP (SP.CstarText.C1Structure.Pk k L σ ω) ∧
-                SP.CstarText.C1Structure.x k L σ ω <+: SP.CstarText.Prelim.val (SP.CstarText.C1Structure.Pk k L σ ω) ∧
-                  (SP.CstarText.C1Structure.x k L σ ω).length = SP.CstarText.C1Structure.n k L ∧
-                    SP.CstarText.C1Structure.x k L σ ω = (SP.CstarText.C1Structure.LW k L σ).word ω) ∧
-        (∀ (σ : (SP.CstarText.C1Gadgets.paper k L).Geometry),
-            (SP.CstarText.C1Gadgets.paper k L).IsGeometry σ →
-              (SP.CstarText.C1Structure.LW k L σ).Valid ∧
-                (SP.CstarText.C1Structure.LW k L σ).R₀ = SP.CstarText.C1Params.H k L + 1 ∧
-                  (SP.CstarText.C1Structure.LW k L σ).D = SP.CstarText.C1Params.u k L ^ 2 ∧
-                    (∀ (p : ℕ) (v : SP.CstarText.C1Structure.RC k L),
-                        (SP.CstarText.C1Structure.LW k L σ).Carries p v ↔
-                          p < SP.CstarText.C1Structure.n k L ∧
-                            ∃ h, SP.CstarText.C1Structure.pos k L σ h ↑v.1 ↑v.2.1 ↑v.2.2 = ↑p) ∧
-                      SP.CstarText.C1Cores.S k L σ ⊆ SP.CstarText.C1Cores.Sprime k L σ ∧
-                        ∀ p ∈ SP.CstarText.C1Cores.Sprime k L σ, p < SP.CstarText.C1Structure.n k L) ∧
-          (∀ (σ : (SP.CstarText.C1Gadgets.paper k L).Geometry),
-              (SP.CstarText.C1Gadgets.paper k L).IsGeometry σ →
-                ∀ p ∈ SP.CstarText.C1Cores.Sprime k L σ, (SP.CstarText.C1Structure.LW k L σ).IsFirstPosition p) ∧
-            (1 - 4 * ↑(SP.CstarText.C1Structure.n k L) ^ (-7) ≤
-                (SP.CstarText.C1Gadgets.paper k L).geomProb fun σ =>
-                  ∀ (P : Set ℤ),
-                    SP.IsAP P →
-                      SP.CstarText.C1Params.u k L ^ 2 ≤ {p | p ∈ SP.CstarText.C1Cores.S k L σ ∧ ↑p ∈ P}.ncard →
-                        ∃ pos v,
-                          (∀ (i : Fin (SP.CstarText.C1Params.u k L)),
-                              pos i ∈ SP.CstarText.C1Cores.Sprime k L σ ∧
-                                ↑(pos i) ∈ P ∧ (SP.CstarText.C1Structure.LW k L σ).Carries (pos i) (v i)) ∧
-                            ∀ (i j : Fin (SP.CstarText.C1Params.u k L)),
-                              i ≠ j →
-                                SP.CstarText.C1Structure.cellOf k L (v i) ≠ SP.CstarText.C1Structure.cellOf k L (v j)) ∧
-              (∀ (σ : (SP.CstarText.C1Gadgets.paper k L).Geometry),
-                  (SP.CstarText.C1Gadgets.paper k L).IsGeometry σ →
-                    ∀ (ω : SP.CstarText.C1Structure.PtrBits k L),
-                      ↑(SP.CstarText.C1Params.H k L) *
-                            ↑(SP.CstarText.Prelim.size (SP.CstarText.C1Structure.Pk k L σ ω)) /
-                          12 ≤
-                        ↑(SP.CstarText.C1Cores.S k L σ).ncard) ∧
-                SP.CstarText.C1Params.X k L ^ (3 * (k + 1)) ≤ SP.CstarText.C1Structure.n k L ∧
-                  SP.CstarText.C1Structure.n k L ≤ SP.CstarText.C1Params.X k L ^ (4 * k + 6) ∧
-                    10 * SP.log2 ↑(SP.CstarText.C1Structure.n k L) ≤ ↑(SP.CstarText.C1Params.u k L) ∧
-                      ↑(SP.CstarText.C1Params.u k L) ≤ 16 * SP.log2 ↑(SP.CstarText.C1Structure.n k L) ∧
-                        ↑(SP.CstarText.C1Params.B k L) * ↑(SP.CstarText.C1Params.X k L) ^ (-1 / 32) ≤
-                            ↑(SP.CstarText.C1Params.H k L) ∧
-                          12 * ↑(SP.CstarText.C1Params.u k L) ^ 2 < ↑(SP.CstarText.C1Params.X k L) ^ (1 / 32)
 SP.CstarText.C1Params.lem_params : ∀ (k L : ℕ),
   2 ≤ k →
     512 * ↑k * SP.log2 (↑k + 2) ≤ ↑L →
@@ -782,7 +730,6 @@ SP.CstarText.Sentences.cor_szlc_text : ∀ a < 1 / 4,
 'SP.CstarText.C1Lower.step_lower_lengths' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.C1Lower.step_lower_assemble' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.C1Referee.thm_sc_rev' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.C1Relay.lem_relay' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.C1Params.lem_params' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.C1Params.lem_slopes' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SP.CstarText.MethodRev.prop_scheme' depends on axioms: [propext, Classical.choice, Quot.sound]
