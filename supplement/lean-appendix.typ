@@ -53,7 +53,7 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("b13868cc068d") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  #text(size: 10pt)[Lean repository revision #raw("2b0331f873f2") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
   358 modules · 658 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
@@ -76,25 +76,24 @@ Section 1.3 of the paper (Formal Verification) states:
 loss stated here, using only the standard axioms of Lean; of the cited results, only Kosoy's $ARC <= sZLC$, #raw("lem-occ")
 and two Chebyshev bounds in Mathlib are formalised, and formal deductions that use another cited comparison take it as
 a hypothesis.
-The Lean repository, whose README gives the declarations of each numbered block and proof step, is provided as
-(private) supplementary material.]
+The README of the Lean repository #raw("copying-interleaving-lean") gives the declarations of each numbered block and proof step.]
 
 The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-cut"), #raw("lem-early"), ...), not by their numbers, which change while the paper is revised. The Lean source tags each declaration with the label of the block it formalises (#raw("@[kb \"cstarpaper-<label>\"]")), and each tag records how the formal statement departs from the text.
 
-*Status.* Every numbered definition, statement and proof step of the paper's own development, apart from the comparisons in #raw("rem-measures") that rest on cited results, has a sorry-free Lean declaration (axioms #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")): the upper bound in its version U12a (#raw("SP.CstarText.U12a"), constant 2), the lower bound in its version C1/I1 (prime types, parameters of (k, L) for all integers k ≥ 2 and L ≥ 512 k log₂(k + 2): #raw("SP.CstarText.C1Params") … #raw("C1Lower"), #raw("C1Coverage"), #raw("C1Sent")), and #raw("prop-scheme"), the critical-set bound, with the bound of #raw("lem-random") (#raw("SP.CstarText.MethodRev.prop_scheme")). Sentences of the text outside the numbered blocks that state a fact are tagged as well (sentence anchors, #raw("@[kb \"cstarpaper-s-…\"]")); these tags locate the declarations and claim nothing beyond the statement above. The formalisations of earlier versions are kept in the repository (see "Earlier versions" below); their superseded statements no longer carry the paper's tags.
+*Status.* Every numbered definition, statement and proof step of the paper's own development, apart from the comparisons in #raw("rem-measures") that rest on cited results, has a sorry-free Lean declaration (axioms #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")): the upper bound in its version U12a (#raw("CopyingInterleaving.Paper.U12a"), constant 2), the lower bound in its version C1/I1 (prime types, parameters of (k, L) for all integers k ≥ 2 and L ≥ 512 k log₂(k + 2): #raw("CopyingInterleaving.Paper.C1Params") … #raw("C1Lower"), #raw("C1Coverage"), #raw("C1Sent")), and #raw("prop-scheme"), the critical-set bound, with the bound of #raw("lem-random") (#raw("CopyingInterleaving.Paper.MethodRev.prop_scheme")). Sentences of the text outside the numbered blocks that state a fact are tagged as well (sentence anchors, #raw("@[kb \"cstarpaper-s-…\"]")); these tags locate the declarations and claim nothing beyond the statement above. The formalisations of earlier versions are kept in the repository (see "Earlier versions" below); their superseded statements no longer carry the paper's tags.
 
 In this revision, the table of @sec-map has a row for each of the paper's 67 numbered blocks, with the
-declarations of their 29 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper"), #raw("tab-relay") (conventions and
+declarations of their 34 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper"), #raw("tab-relay") (conventions and
 notation stated in those sections); 133 further tags anchor sentences of the paper's text.
 
 == Cited results
 
-The following cited results are formalised: Kosoy's ARC ≤ sZLC (Prop. 4.9 of Kosoy's paper), used in the proof of #raw("cor-szlc") and in #raw("ex-zlp-cont"), as #raw("SP.CstarText.Kosoy49.kosoy_arc_le_szlc")\; Kosoy's lemma on occurrences (App. E.3), #raw("lem-occ"), as #raw("Prelim.lem_occ_a") and #raw("Prelim.lem_occ_b")\; and the two Chebyshev bounds on the sum of ln p over primes used in #raw("lem-params"), which are in Mathlib (#raw("Chebyshev.theta_le_log4_mul_x"), #raw("Chebyshev.theta_ge")). Kosoy's ARC ≤ LZC (Prop. 4.3), Rytter's bound (Thm. 1) and the polylogarithmic comparisons of measures cited in the introduction, used in #raw("rem-measures"), are cited and not formalised; where a sentence of the paper derives something from one of them, the Lean takes the cited result as a hypothesis. Kosoy's Prop. 4.7, Lemma E.2 and Thm. 4.11 appear only in comparisons and in the consequences for prediction in the introduction, and are not formalised.
+The following cited results are formalised: Kosoy's ARC ≤ sZLC (Prop. 4.9 of Kosoy's paper), used in the proof of #raw("cor-szlc") and in #raw("ex-zlp-cont"), as #raw("CopyingInterleaving.Paper.Kosoy49.kosoy_arc_le_szlc")\; Kosoy's lemma on occurrences (App. E.3), #raw("lem-occ"), as #raw("Prelim.lem_occ_a") and #raw("Prelim.lem_occ_b")\; and the two Chebyshev bounds on the sum of ln p over primes used in #raw("lem-params"), which are in Mathlib (#raw("Chebyshev.theta_le_log4_mul_x"), #raw("Chebyshev.theta_ge")). Kosoy's ARC ≤ LZC (Prop. 4.3), Rytter's bound (Thm. 1) and the polylogarithmic comparisons of measures cited in the introduction, used in #raw("rem-measures"), are cited and not formalised; where a sentence of the paper derives something from one of them, the Lean takes the cited result as a hypothesis. Kosoy's Prop. 4.7, Lemma E.2 and Thm. 4.11 appear only in comparisons and in the consequences for prediction in the introduction, and are not formalised.
 
 
 = The main statements in Lean <sec-main>
 
-The following declarations are copied from this revision of the repository, without their documentation comments, their tags and their proofs (#raw("python3 tools/listings.py") extracts them; #raw("--check README.md") compares). The comments that name a namespace are ours; the definitions are in the namespace #raw("SP") unless such a comment says otherwise. The module #raw("SP.CstarText.Prelim") names the definitions of the paper's preliminaries (#raw("sec-prelim")) by abbreviations of them. The formal statements depart from the text as follows: words are lists, #raw("x <+: y") says that #raw("x") is a prefix of #raw("y"), a vertex set is any type required to be finite, and the alphabet is any type with an element, finite in #raw("cor_cstar"). Some names keep earlier terms: an #raw("ArithInterval") is an arithmetic progression (#raw("def-interval")), a #raw("SlotGraph") is the map δ whose pairs (q, j) are the edges of a program, and #raw("SlotGraph.Edge q q'") says that some edge of #raw("q") leads to #raw("q'"). In Lean names and part labels, _slot_ means edge and _canonical interval_ means lowest interval. In #raw("Covers") the index ranges over t \< |α|, where #raw("def-ars") says t \< min(|α|, |α'|); the two predicates agree when |α| = |α'| (#raw("WordRev.covers_iff_coversText"), where #raw("WordRev.CoversText") is the text's predicate), and #raw("IsARS") requires |α| = |α'| of every equation, so ARSs, ARC and every result about them are the text's.
+The following declarations are copied from this revision of the repository, without their documentation comments, their tags and their proofs (#raw("python3 tools/listings.py") extracts them; #raw("--check README.md") compares). The comments that name a namespace are ours; the definitions are in the namespace #raw("CopyingInterleaving") unless such a comment says otherwise. The module #raw("CopyingInterleaving.Paper.Prelim") names the definitions of the paper's preliminaries (#raw("sec-prelim")) by abbreviations of them. The formal statements depart from the text as follows: words are lists, #raw("x <+: y") says that #raw("x") is a prefix of #raw("y"), a vertex set is any type required to be finite, and the alphabet is any type with an element, finite in #raw("cor_cstar"). Some names keep earlier terms: an #raw("ArithInterval") is an arithmetic progression (#raw("def-interval")), a #raw("SlotGraph") is the map δ whose pairs (q, j) are the edges of a program, and #raw("SlotGraph.Edge q q'") says that some edge of #raw("q") leads to #raw("q'"). In Lean names and part labels, _slot_ means edge and _canonical interval_ means lowest interval. In #raw("Covers") the index ranges over t \< |α|, where #raw("def-ars") says t \< min(|α|, |α'|); the two predicates agree when |α| = |α'| (#raw("WordRev.covers_iff_coversText"), where #raw("WordRev.CoversText") is the text's predicate), and #raw("IsARS") requires |α| = |α'| of every equation, so ARSs, ARC and every result about them are the text's.
 
 Arithmetic repetition systems (#raw("def-interval"), #raw("def-ars")):
 
@@ -173,15 +172,15 @@ noncomputable def ZLC {α : Type} [Nonempty α] (x : List α) : ℕ :=
 ```
 
 ```lean
--- namespace SP.CstarText.Prelim
+-- namespace CopyingInterleaving.Paper.Prelim
 def IsSynchronous {Q α : Type} (P : Program Q α) : Prop :=
   ∃ φ : Q → ℕ, φ P.root = 1 ∧
     ∀ (q q' : Q) (j : ℕ), (P.δ q)[j]? = some (.inl q') → φ q' = P.arity q * φ q
 
--- namespace SP.CstarText.Prelim
+-- namespace CopyingInterleaving.Paper.Prelim
 noncomputable def sZLC {α : Type} [Nonempty α] (x : List α) : ℕ :=
   sInf {m : ℕ | ∃ (Q : Type) (P : Program Q α), IsZLP P ∧ IsSynchronous P ∧
-    x <+: SP.Program.val P ∧ SP.Program.size P = m}
+    x <+: CopyingInterleaving.Program.val P ∧ CopyingInterleaving.Program.size P = m}
 ```
 
 Occurrences (#raw("def-occ")):
@@ -209,15 +208,15 @@ The base-2 logarithm, the exponents c for which the inequality of #raw("cor-csta
 ```lean
 noncomputable def log2 (x : ℝ) : ℝ := Real.logb 2 x
 
--- namespace SP.CstarPaper
+-- namespace CopyingInterleaving.Statements
 def AdmissibleOAlpha (α : Type) [Nonempty α] (c : ℝ) : Prop :=
   ∃ C : ℝ, ∀ x : List α, 1 ≤ x.length → (ARC x : ℝ) ≤ C * (x.length : ℝ) ^ c * ZLC x
 
--- namespace SP.CstarText.C1Structure
+-- namespace CopyingInterleaving.Paper.C1Structure
 noncomputable def n (k L : ℕ) : ℕ :=
   R k L * C1Params.B k L * C1Params.s k L (C1Params.H k L - 1) * C1Params.e k L * (C1Params.H k L + 1)
 
--- namespace SP.CstarText.C1Structure
+-- namespace CopyingInterleaving.Paper.C1Structure
 noncomputable def x (k L : ℕ) (σ : (C1Gadgets.paper k L).Geometry) (ω : PtrBits k L) : List Bool :=
   Prelim.slice (Prelim.val (Pk k L σ ω)) 0 (n k L)
 ```
@@ -225,46 +224,46 @@ noncomputable def x (k L : ℕ) (σ : (C1Gadgets.paper k L).Geometry) (ω : PtrB
 The main statements: #raw("thm-upper") (constant 2); #raw("thm-lower") (every length), with #raw("lossFactor"), the factor exp(−C √(log n log log n)) of its first sentence; #raw("cor-cstar")\; #raw("cor-szlc")\; and #raw("prop-reverse"):
 
 ```lean
--- namespace SP.CstarText.U12a
+-- namespace CopyingInterleaving.Paper.U12a
 theorem thm_upper {α : Type} [Nonempty α] (x : List α) (hn : 1 ≤ x.length) :
     (ARC x : ℝ) ≤ 2 * (x.length : ℝ) ^ (1 / 4 : ℝ) * (ZLC x : ℝ)
 ```
 
 ```lean
--- namespace SP.CstarText.C1Lower
+-- namespace CopyingInterleaving.Paper.C1Lower
 def lossFactor (C : ℝ) (n : ℕ) : ℝ :=
-  (n : ℝ) ^ ((1 : ℝ) / 4) * Real.exp (-(C * Real.sqrt (SP.log2 (n : ℝ) * SP.log2 (SP.log2 (n : ℝ)))))
+  (n : ℝ) ^ ((1 : ℝ) / 4) * Real.exp (-(C * Real.sqrt (CopyingInterleaving.log2 (n : ℝ) * CopyingInterleaving.log2 (CopyingInterleaving.log2 (n : ℝ)))))
 
--- namespace SP.CstarText.C1Lower
+-- namespace CopyingInterleaving.Paper.C1Lower
 theorem thm_lower :
     (∃ C : ℝ, 0 < C ∧ ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
-      ∃ x : List Bool, x.length = n ∧ lossFactor C n * (SP.ZLC x : ℝ) ≤ (SP.ARC x : ℝ)) ∧
+      ∃ x : List Bool, x.length = n ∧ lossFactor C n * (CopyingInterleaving.ZLC x : ℝ) ≤ (CopyingInterleaving.ARC x : ℝ)) ∧
     ∀ a : ℝ, a < 1 / 4 → ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
-      ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (SP.ZLC x : ℝ) ≤ (SP.ARC x : ℝ)
+      ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (CopyingInterleaving.ZLC x : ℝ) ≤ (CopyingInterleaving.ARC x : ℝ)
 ```
 
 ```lean
--- namespace SP.CstarText.CorDirect
+-- namespace CopyingInterleaving.Paper.CorDirect
 theorem cor_cstar (α : Type) [Fintype α] [Nonempty α] (h : ∃ a b : α, a ≠ b) :
-    IsLeast {c : ℝ | SP.CstarPaper.AdmissibleOAlpha α c} (1 / 4 : ℝ)
+    IsLeast {c : ℝ | CopyingInterleaving.Statements.AdmissibleOAlpha α c} (1 / 4 : ℝ)
 
--- namespace SP.CstarText.CorDirect
+-- namespace CopyingInterleaving.Paper.CorDirect
 theorem cor_szlc (a : ℝ) (ha : a < 1 / 4) : ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
-    ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (ZLC x : ℝ) ≤ (SP.CstarText.Prelim.sZLC x : ℝ)
+    ∃ x : List Bool, x.length = n ∧ (n : ℝ) ^ a * (ZLC x : ℝ) ≤ (CopyingInterleaving.Paper.Prelim.sZLC x : ℝ)
 ```
 
 ```lean
--- namespace SP.CstarText.ReverseZ
+-- namespace CopyingInterleaving.Paper.ReverseZ
 theorem prop_reverse :
     (∃ C : ℝ, ∀ {α : Type} [Nonempty α] (x : List α), 2 ≤ x.length →
-      (ZLC x : ℝ) ≤ C * x.length * ARC x / SP.log2 ((x.length : ℝ) + 1)) ∧
+      (ZLC x : ℝ) ≤ C * x.length * ARC x / CopyingInterleaving.log2 ((x.length : ℝ) + 1)) ∧
     ∀ n : ℕ, 2 ≤ n → ∃ x : List Bool, x.length = n ∧
-      (n : ℝ) * ARC x / (64 * SP.log2 n ^ 2) ≤ (ZLC x : ℝ)
+      (n : ℝ) * ARC x / (64 * CopyingInterleaving.log2 n ^ 2) ≤ (ZLC x : ℝ)
 ```
 
 = The correspondence <sec-map>
 
-Each numbered definition, statement and proof step of the paper's own development has a Lean declaration that states it, except the comparisons of #raw("rem-measures") that rest on cited results (see below). The table lists, for each numbered block, every declaration tagged with its label (definitions, statement parts) and the declarations of its proof steps; the sentence anchors of the paper are tagged the same way (#raw("@[kb \"cstarpaper-s-…\"]")). Names are relative to the namespace #raw("SP.CstarText") unless they begin with #raw("SP"). The main results come first. Two proof steps are split over two declarations, of which the table lists the first named here. #raw("st-scheme-event") says that with probability at least 1 − |S| n³ 2^(−u) exp(6u²/D) no candidate holds, and that then every forward equation that holds in x has fewer than u² targets in S. The table's #raw("Method.step_prop_scheme_2_event") is the consequence; the probability clause is #raw("Method.step_prop_scheme_2_prob") (anchor #raw("s-prop-scheme-first")\; its ε is the bound 2^(−u) exp(6u²/D) of #raw("st-scheme-cand")). #raw("st-conv-cov") is stated for every vertex q by the table's #raw("UpperConv.step_conv_cov")\; its final clause ("in particular every position of \[n\] is" covered or a literal) is the case q = q₀, with F\_(q₀)(t') = t' (#raw("UpperConv.step_conv_cov_root"), anchor #raw("s-lem-conversion-induction")). The declaration of a proof step states the step's claim in the context of its block: the block's hypotheses, the claims of the earlier steps and, for #raw("st-struct-length"), #raw("st-struct-unique"), #raw("st-u-hit"), #raw("st-u-moment"), #raw("st-u-root"), #raw("st-ap-large") and #raw("st-ap-small"), the sub-claims of the step's own proof enter as hypotheses, which the block's declaration discharges where it applies the step (#raw("st-struct-decode")'s #raw("C1StructureRev.step_struct_c2_rev") has the hypotheses of #raw("C1Structure.step_struct_c2"), which #raw("lem-structure") applies).
+Each numbered definition, statement and proof step of the paper's own development has a Lean declaration that states it, except the comparisons of #raw("rem-measures") that rest on cited results (see below). The table lists, for each numbered block, every declaration tagged with its label (definitions, statement parts) and the declarations of its proof steps; the sentence anchors of the paper are tagged the same way (#raw("@[kb \"cstarpaper-s-…\"]")). Names are relative to the namespace #raw("CopyingInterleaving.Paper") unless they begin with #raw("CopyingInterleaving"). The main results come first. Two proof steps are split over two declarations, of which the table lists the first named here. #raw("st-scheme-event") says that with probability at least 1 − |S| n³ 2^(−u) exp(6u²/D) no candidate holds, and that then every forward equation that holds in x has fewer than u² targets in S. The table's #raw("Method.step_prop_scheme_2_event") is the consequence; the probability clause is #raw("Method.step_prop_scheme_2_prob") (anchor #raw("s-prop-scheme-first")\; its ε is the bound 2^(−u) exp(6u²/D) of #raw("st-scheme-cand")). #raw("st-conv-cov") is stated for every vertex q by the table's #raw("UpperConv.step_conv_cov")\; its final clause ("in particular every position of \[n\] is" covered or a literal) is the case q = q₀, with F\_(q₀)(t') = t' (#raw("UpperConv.step_conv_cov_root"), anchor #raw("s-lem-conversion-induction")). The declaration of a proof step states the step's claim in the context of its block: the block's hypotheses, the claims of the earlier steps and, for #raw("st-struct-length"), #raw("st-struct-unique"), #raw("st-u-hit"), #raw("st-u-moment"), #raw("st-u-root"), #raw("st-ap-large") and #raw("st-ap-small"), the sub-claims of the step's own proof enter as hypotheses, which the block's declaration discharges where it applies the step (#raw("st-struct-decode")'s #raw("C1StructureRev.step_struct_c2_rev") has the hypotheses of #raw("C1Structure.step_struct_c2"), which #raw("lem-structure") applies).
 
 #table(columns: (auto, 1.3fr, 1fr), align: left, stroke: 0.4pt + luma(180), inset: 4pt,
   table.header([*paper (label)*], [*statement*], [*proof steps*]),
@@ -272,9 +271,9 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("thm-lower")], [#raw("C1Lower.lossFactor"), #raw("C1Lower.thm_lower")], [#raw("st-lower-prefix"): #raw("C1Lower.step_lower_prefix") \
 #raw("st-lower-lengths"): #raw("C1Lower.step_lower_lengths") \
 #raw("st-lower-assemble"): #raw("C1Lower.step_lower_assemble")],
-  [#raw("cor-cstar")], [#raw("SP.CstarPaper.AdmissibleO"), #raw("SP.CstarPaper.AdmissibleOAlpha"), #raw("SP.CstarPaper.cor_cstar"), #raw("SP.CstarPaper.cor_cstar_fixed_alphabet"), #raw("Intro.cor_cstar_i"), #raw("Intro.cor_cstar_ii"), #raw("IntroRev.cor_cstar"), #raw("CorDirect.cor_cstar")], [],
+  [#raw("cor-cstar")], [#raw("CopyingInterleaving.Statements.AdmissibleO"), #raw("CopyingInterleaving.Statements.AdmissibleOAlpha"), #raw("CopyingInterleaving.Statements.cor_cstar"), #raw("CopyingInterleaving.Statements.cor_cstar_fixed_alphabet"), #raw("Intro.cor_cstar_i"), #raw("Intro.cor_cstar_ii"), #raw("IntroRev.cor_cstar"), #raw("CorDirect.cor_cstar")], [],
   [#raw("cor-szlc")], [#raw("CoverageRev.no_polylog_szlc_zlc"), #raw("CorDirect.cor_szlc")], [],
-  [#raw("prop-reverse")], [#raw("SP.ReverseUpper.zlc_le_arc"), #raw("Reverse.prop_reverse_i"), #raw("ReverseZ.prop_reverse_second"), #raw("ReverseZ.prop_reverse")], [],
+  [#raw("prop-reverse")], [#raw("CopyingInterleaving.ReverseUpper.zlc_le_arc"), #raw("Reverse.prop_reverse_i"), #raw("ReverseZ.prop_reverse_second"), #raw("ReverseZ.prop_reverse")], [],
   [#raw("sec-prelim"), conventions], [#raw("Prelim.log2"), #raw("Prelim.slice")], [],
   [#raw("def-interval")], [#raw("Prelim.ArithInterval"), #raw("Prelim.readAt"), #raw("Prelim.readLen"), #raw("Prelim.def_interval_prefix"), #raw("Prelim.def_interval_read"), #raw("CoverageRev.interval_step_determined")], [],
   [#raw("def-ars")], [#raw("Prelim.Covers"), #raw("Prelim.IsARS"), #raw("Prelim.ARC"), #raw("Prelim.literals"), #raw("Prelim.ars_determines"), #raw("Prelim.arc_le_length"), #raw("WordRev.CoversText"), #raw("WordRev.covers_iff_coversText")], [],
@@ -297,7 +296,9 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("lem-least")], [#raw("UpperConv.lem_least_b_prefix"), #raw("UpperConv.lem_least_b_tree"), #raw("UpperConv.lem_least_b_K"), #raw("UpperConv.lem_least_b_treepath"), #raw("RefereeRev.lem_least_a_rev"), #raw("Comments1102.mTree_eq_mT")], [],
   [#raw("lem-cut")], [#raw("U12a.lem_cut"), #raw("Comments1102.lem_cut")], [],
   [#raw("lem-reach")], [#raw("U12a.lem_reach")], [],
-  [#raw("lem-split")], [#raw("U12a.lem_split_cases") (two cases; it follows from the earlier one-sentence form U12a.lem\_split, kept untagged)], [(retired steps #raw("st-split-*"), claims now the nodes below: #raw("U12a.step_split_early"), #raw("Comments1102.step_split_early_cost"), #raw("U12a.step_split_least"), #raw("U12a.step_split_other"))],
+  [#raw("lem-split")], [#raw("U12a.lem_split_cases") (two cases; it follows from the earlier one-sentence form U12a.lem\_split, kept untagged)], [#raw("st-split-literals"): none of its own, the step is part of the proof of U12a.lem\_split\_cases \
+#raw("st-split-edges"): none of its own, as before \
+#raw("st-split-groups"): none of its own, as before (steps of the paper's proof since cstar d181469; the earlier steps st-split-early, st-split-least, st-split-other are the blocks lem-early, lem-late-least, lem-late-other below)],
   [#raw("def-pieces")], [#raw("Comments1102.IsEarlyPiece"), #raw("Comments1102.IsLatePiece"), #raw("Comments1102.literalCharge"), #raw("Comments1102.pieceCost"), #raw("Comments1102.earlyCost"), #raw("Comments1102.lateLeastCost"), #raw("Comments1102.lateCost"), #raw("Comments1102.isSplitPieces_iff"), #raw("Comments1102.literalCharge_late"), #raw("Comments1102.charged_early_ncard")], [],
   [#raw("lem-early")], [#raw("Comments1102.lem_early")], [],
   [#raw("lem-late-least")], [#raw("Comments1102.lem_late_least")], [],
@@ -314,7 +315,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("tab-relay")], [#raw("Final1102.relayQ"), #raw("Final1102.tab_relay"), #raw("Final1102.relay_length_theta"), #raw("Final1102.relay_length_power"), #raw("Final1102.tab_relay_Lk"), #raw("C1Coverage.why_quarter_relay")], [],
   [#raw("thm-sc")], [#raw("C1Final.jointProb"), #raw("C1Final.SCChain"), #raw("C1Referee.thm_sc_rev"), #raw("Comments1102.thm_sc")], [],
   [#raw("ex-zlp-cont")], [#raw("UpperConv.exX"), #raw("UpperConv.exEq1"), #raw("UpperConv.exEq2"), #raw("UpperConv.exEq3"), #raw("UpperConv.exL"), #raw("UpperConv.exΦ"), #raw("UpperConv.ex_cont_params"), #raw("UpperConv.ex_cont_least"), #raw("UpperConv.ex_cont_tree"), #raw("UpperConv.ex_cont_literals"), #raw("UpperConv.ex_cont_eq_root"), #raw("UpperConv.ex_cont_eq_s0"), #raw("UpperConv.ex_cont_eq_s1"), #raw("UpperConv.ex_cont_least_c_needed"), #raw("UpperConv.ex_cont_ars"), #raw("U12a.ex_cont_cut_u12a"), #raw("RefereeRev.exL4"), #raw("RefereeRev.exΦ4"), #raw("RefereeRev.ex_cont_arc_le"), #raw("CoverageRev4.ex_root_slot0")], [],
-  [#raw("rem-constant")], [#raw("SP.CstarPaper.rem_constant"), #raw("ReadRev.rem_constant_all")], [],
+  [#raw("rem-constant")], [#raw("CopyingInterleaving.Statements.rem_constant"), #raw("ReadRev.rem_constant_all")], [],
   [#raw("rem-arity")], [#raw("RemArity.rem_arity"), #raw("RemArity.rem_arity_two")], [],
   [#raw("lem-forward")], [#raw("Method.lem_forward"), #raw("Sentences.lem_forward_sentences")], [],
   [#raw("def-params")], [#raw("C1Params.Lk"), #raw("C1Params.X"), #raw("C1Params.B"), #raw("C1Params.W"), #raw("C1Params.u"), #raw("C1Params.e"), #raw("C1Params.M"), #raw("C1Params.g"), #raw("C1Params.Λ"), #raw("C1Params.H"), #raw("C1Params.primesP"), #raw("C1Params.IsType"), #raw("C1Params.IsGood"), #raw("C1Final.step_params_basic")], [],
@@ -355,13 +356,14 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("lem-sections")], [#raw("ReverseZ.lem_sections"), #raw("Comments1102.lem_sections")], [#raw("st-sec-first"): #raw("ReverseZ.step_lem_sections_first") \
 #raw("st-sec-pair"): #raw("ReverseZ.step_lem_sections_pair") \
 #raw("st-sec-congr"): #raw("ReverseZ.step_lem_sections_congr")],
-  [#raw("lem-rev-zlc")], [#raw("ReverseZ.lem_rev_zlc")], [],
+  [#raw("lem-rev-zlc")], [#raw("ReverseZ.lem_rev_zlc")], [#raw("st-rev-one"): none of its own, its claim is the fact on which Simplify1103.s\_lem\_rev\_zlc\_rev stands (tagged with the sentence anchor s-lem-rev-zlc-rev) \
+#raw("st-rev-leaves"): none of its own, as before],
   [#raw("rem-measures")], [#raw("RemMeasures.CNFGrammar"), #raw("RemMeasures.CNFGrammar.Derives"), #raw("RemMeasures.zmGrammar"), #raw("RemMeasures.rem_measures_grammar"), #raw("RemMeasures.rem_measures_grammar_exists"), #raw("RemMeasures.rem_measures_zlc"), #raw("RemMeasures.rem_measures_lzc_every"), #raw("Comments1102.GeneratesExactly"), #raw("Comments1102.grammarSize"), #raw("Comments1102.SubpolyBound"), #raw("Comments1102.grammarSize_le_rules"), #raw("Comments1102.grammarSize_attained"), #raw("Comments1102.rem_measures_a"), #raw("Comments1102.rem_measures_b"), #raw("Comments1102.rem_measures_c"), #raw("Final1102.rem_measures_a_nonempty"), #raw("Final1102.rem_measures_b_nonempty"), #raw("Final1102.rem_measures_c_nonempty"), #raw("Final1102.rem_measures_c_measures_nonempty")], [],
 )
 
 == Earlier versions
 
-The repository also keeps the formalisations of earlier versions of the paper. They are proved; the superseded statements in the first six rows no longer carry the paper's tags and do not state the current results. The last row is a second proof of the main results, with a weaker constant in the upper bound (see "The earlier formalisation"); its #raw("SP.CstarPaper.cor_cstar_fixed_alphabet") states the current #raw("cor-cstar") (a fixed alphabet) and #raw("SP.CstarPaper.cor_cstar") a variant uniform over all finite alphabets, and both keep the tag of #raw("cor-cstar").
+The repository also keeps the formalisations of earlier versions of the paper. They are proved; the superseded statements in the first six rows no longer carry the paper's tags and do not state the current results. The last row is a second proof of the main results, with a weaker constant in the upper bound (see "The earlier formalisation"); its #raw("CopyingInterleaving.Statements.cor_cstar_fixed_alphabet") states the current #raw("cor-cstar") (a fixed alphabet) and #raw("CopyingInterleaving.Statements.cor_cstar") a variant uniform over all finite alphabets, and both keep the tag of #raw("cor-cstar").
 
 #table(columns: (1fr, 1fr), align: left, stroke: 0.4pt + luma(180), inset: 4pt,
   table.header([*earlier version*], [*Lean*]),
@@ -371,103 +373,103 @@ The repository also keeps the formalisations of earlier versions of the paper. T
   [thm-lower, former form (infinitely many words)], [#raw("SCFinal.thm_lower_conf"), #raw("SCFinal.thm_lower_strong"), #raw("SCFinal.thm_lower"), #raw("SCFinal.rem_loss")],
   [cor-szlc, former form (infinitely many words)], [#raw("Sentences.cor_szlc_text")],
   [cor-cstar and cor-szlc as stated now, proved from the earlier versions of the two main theorems], [#raw("IntroRev.cor_cstar_text"), #raw("CorSzlcEvery.cor_szlc_every"), #raw("CorSzlcEvery.s_cor_szlc_proof")],
-  [Another proof of the main results (weaker constant)], [#raw("SP.CstarConst.arc_le_const"), #raw("SP.CstarPaper.thm_lower"), #raw("SP.CstarPaper.cor_cstar"), #raw("SP.ReverseUpper.zlc_le_arc")],
+  [Another proof of the main results (weaker constant)], [#raw("CopyingInterleaving.Constants.arc_le_const"), #raw("CopyingInterleaving.Statements.thm_lower"), #raw("CopyingInterleaving.Statements.cor_cstar"), #raw("CopyingInterleaving.ReverseUpper.zlc_le_arc")],
 )
 
 #raw("cor-cstar") (#raw("CorDirect.cor_cstar")) and #raw("cor-szlc") (#raw("CorDirect.cor_szlc")) are proved from the current #raw("U12a.thm_upper") and #raw("C1Lower.thm_lower").
 
 == The earlier formalisation
 
-The repository also contains a second formalisation of the main results, by a different route (#raw("SP.CstarConst.arc_le_const"), #raw("SP.CstarPaper.thm_lower"), #raw("SP.CstarPaper.cor_cstar"), #raw("SP.ReverseUpper.zlc_le_arc")). #raw("SP.CstarText.IntroRev.cor_cstar") proves #raw("cor-cstar") along the paper's proof steps but cites those earlier proofs of the two theorems. The declarations of the correspondence use from it only helper lemmas on occurrences, paths, and the construction and validity of equations (module #raw("SP.CstarUpper")), and #raw("SP.CstarPaper.rem_constant"), which states the computation of #raw("rem-constant") for the word aa directly.
+The repository also contains a second formalisation of the main results, by a different route (#raw("CopyingInterleaving.Constants.arc_le_const"), #raw("CopyingInterleaving.Statements.thm_lower"), #raw("CopyingInterleaving.Statements.cor_cstar"), #raw("CopyingInterleaving.ReverseUpper.zlc_le_arc")). #raw("CopyingInterleaving.Paper.IntroRev.cor_cstar") proves #raw("cor-cstar") along the paper's proof steps but cites those earlier proofs of the two theorems. The declarations of the correspondence use from it only helper lemmas on occurrences, paths, and the construction and validity of equations (module #raw("CopyingInterleaving.Upper")), and #raw("CopyingInterleaving.Statements.rem_constant"), which states the computation of #raw("rem-constant") for the word aa directly.
 
-Dependency routes (#raw("python3 tools/deps.py README.md") runs #raw("lake env lean tools/Deps.lean") on every name of the correspondence table, 388 names): the declarations of the current version depend on no theorem of the earlier formalisations, with two qualifications. The upper bound (#raw("U12a.*"), hence #raw("thm_upper")) uses untagged helper lemmas of #raw("SP/CstarUpper.lean") and #raw("UpperConv") (basic facts on occurrences, paths and lowest intervals, and the two-equation construction of the conversion, #raw("SP.Program.exists_equations")/#raw("equation_valid")). #raw("cor-cstar")'s declarations, the earlier proof of #raw("prop-reverse") (#raw("SP.ReverseUpper.zlc_le_arc")) and #raw("rem-constant") (#raw("SP.CstarPaper.rem_constant"), the computation for the word aa) use earlier declarations. The lower bound (#raw("C1Params") … #raw("C1Lower"), #raw("C1Sent")), #raw("cor-szlc") and #raw("prop-reverse") (#raw("ReverseZ")) use only #raw("SP.CstarText") and the definitions of #raw("SP/Setting.lean") with their basic lemmas. The basic definitions (arithmetic repetition systems, ARC, zipline programs, ZLC, occurrences) are in #raw("SP/Setting.lean").
+Dependency routes (#raw("python3 tools/deps.py README.md") runs #raw("lake env lean tools/Deps.lean") on every name of the correspondence table, 388 names): the declarations of the current version depend on no theorem of the earlier formalisations, with two qualifications. The upper bound (#raw("U12a.*"), hence #raw("thm_upper")) uses untagged helper lemmas of #raw("CopyingInterleaving/Upper.lean") and #raw("UpperConv") (basic facts on occurrences, paths and lowest intervals, and the two-equation construction of the conversion, #raw("CopyingInterleaving.Program.exists_equations")/#raw("equation_valid")). #raw("cor-cstar")'s declarations, the earlier proof of #raw("prop-reverse") (#raw("CopyingInterleaving.ReverseUpper.zlc_le_arc")) and #raw("rem-constant") (#raw("CopyingInterleaving.Statements.rem_constant"), the computation for the word aa) use earlier declarations. The lower bound (#raw("C1Params") … #raw("C1Lower"), #raw("C1Sent")), #raw("cor-szlc") and #raw("prop-reverse") (#raw("ReverseZ")) use only #raw("CopyingInterleaving.Paper") and the definitions of #raw("CopyingInterleaving/Setting.lean") with their basic lemmas. The basic definitions (arithmetic repetition systems, ARC, zipline programs, ZLC, occurrences) are in #raw("CopyingInterleaving/Setting.lean").
 
 = Build and axiom audit <sec-audit>
 
-The formalisation uses Lean 4 at the toolchain #raw("leanprover/lean4:v4.33.0-rc1") (#raw("lean-toolchain")) and Mathlib at the tag #raw("v4.33.0-rc1") (commit #raw("79d0395"), pinned in #raw("lake-manifest.json")). #raw("lake exe cache get && lake build") builds the formalisation. Then #raw("lake env lean Check.lean") prints the statements (#raw("#check")) and the axioms on which the main declarations depend; they are among #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound"). This repository is exported from the author's research project (#raw("export.sh")); module names keep its prefix #raw("SP").
+The formalisation uses Lean 4 at the toolchain #raw("leanprover/lean4:v4.33.0-rc1") (#raw("lean-toolchain")) and Mathlib at the tag #raw("v4.33.0-rc1") (commit #raw("79d0395"), pinned in #raw("lake-manifest.json")). #raw("lake exe cache get && lake build") builds the formalisation. Then #raw("lake env lean Check.lean") prints the statements (#raw("#check")) and the axioms on which the main declarations depend; they are among #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound"). This repository is exported from the author's research project (#raw("export.sh")); the export renames the research project's root namespace #raw("SP") to #raw("CopyingInterleaving") and its #raw("CstarText") to #raw("Paper") (the recorded map is #raw("rename_map.py"), applied by #raw("export.sh")); the revision-history modules keep their names. To build: #raw("git clone git@github.com:matthiasGmayer-research/copying-vs-interleaving-lean.git"), then the commands above (the Lake package is #raw("copying-vs-interleaving-lean"), the library #raw("CopyingInterleaving")).
 
 The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 358 modules.
 
 == The audit file Check.lean
 
 ```lean
-import SP
+import CopyingInterleaving
 -- The paper's main declarations (labels of the paper, not numbers): their statements (#check) and their axioms
 -- (#print axioms; expected: propext, Classical.choice, Quot.sound). Run: `lake env lean Check.lean` (after `lake build`).
 -- The exact source text of the declarations listed in README.md ("The main statements in Lean"): `python3 tools/listings.py`.
 
 -- The current version (upper bound U12a, lower bound C1/I1):
-#check @SP.CstarText.U12a.thm_upper  -- thm-upper: ARC(x) ≤ 2 n^(1/4) ZLC(x)
-#check @SP.CstarText.U12a.thm_scale  -- thm-scale: ARC(x) ≤ 2^(5/4) N^(1/4) m
-#check @SP.CstarText.U12a.lem_split_cases  -- lem-split (two cases)
-#check @SP.CstarText.U12a.lem_reach  -- lem-reach
-#check @SP.CstarText.U12a.lem_cut  -- lem-cut (the decomposition by cut edges)
-#check @SP.CstarText.C1Lower.thm_lower  -- thm-lower: both sentences, every length, loss exp(−C √(log n log log n))
-#check @SP.CstarText.C1Lower.s_lower_strong  -- thm-lower, the constants C = 2.76 ln 2 < 1.92, n₀ = N_(2, L_2)
-#check @SP.CstarText.C1Lower.step_lower_prefix  -- st-lower-prefix
-#check @SP.CstarText.C1Lower.step_lower_lengths  -- st-lower-lengths
-#check @SP.CstarText.C1Lower.step_lower_assemble  -- st-lower-assemble
-#check @SP.CstarText.C1Referee.thm_sc_rev  -- thm-sc (the relay words, failure 408 n^(−6))
-#check @SP.CstarText.C1Params.lem_params  -- lem-params (every L ≥ 512 k log(k+2))
-#check @SP.CstarText.C1Params.lem_slopes  -- lem-slopes
-#check @SP.CstarText.MethodRev.prop_scheme  -- prop-scheme (bound 2^(−u) exp(6u²/D))
-#check @SP.CstarText.C1Sent.s_conventions_strict  -- App. A Conventions: both main theorems for strict ARSs
-#check @SP.CstarText.CorDirect.cor_cstar  -- cor-cstar (the least exponent is 1/4)
-#check @SP.CstarText.CorDirect.cor_szlc  -- cor-szlc (every large length)
-#check @SP.CstarText.Kosoy49.kosoy_arc_le_szlc  -- Kosoy's Prop. 4.9 (cited, used by cor-szlc)
-#check @SP.CstarText.ReverseZ.prop_reverse  -- prop-reverse
-#check @SP.CstarText.RemArity.rem_arity  -- rem-arity (ARC(x) + m_Σ ≤ 2|P| for power-of-b arities)
-#check @SP.CstarText.RemMeasures.rem_measures_grammar  -- rem-measures
-#check @SP.CstarText.RemMeasures.rem_measures_zlc  -- rem-measures
-#check @SP.CstarText.RemMeasures.rem_measures_lzc_every  -- rem-measures: LZC ≥ n^a ZLC at every large length, given LZC ≥ ARC
-#check @SP.CstarText.U12a.s_why_quarter_length  -- no word with ARC ≥ H ZLC is shorter than H^4/16
-#check @SP.CstarText.ReadRev.rem_constant_all  -- rem-constant: every valid C is ≥ 2^(−1/4)
-#check @SP.CstarText.ExZlpRev.sync_iff_same_step  -- ex-zlp-cont: synchronous iff one step per vertex
-#check @SP.CstarText.ExZlpRev.gap_diff_steps  -- ex-zlp-cont: the conclusion
-#check @SP.CstarText.CoverageRev2.descent_spec  -- the descent of a position
+#check @CopyingInterleaving.Paper.U12a.thm_upper  -- thm-upper: ARC(x) ≤ 2 n^(1/4) ZLC(x)
+#check @CopyingInterleaving.Paper.U12a.thm_scale  -- thm-scale: ARC(x) ≤ 2^(5/4) N^(1/4) m
+#check @CopyingInterleaving.Paper.U12a.lem_split_cases  -- lem-split (two cases)
+#check @CopyingInterleaving.Paper.U12a.lem_reach  -- lem-reach
+#check @CopyingInterleaving.Paper.U12a.lem_cut  -- lem-cut (the decomposition by cut edges)
+#check @CopyingInterleaving.Paper.C1Lower.thm_lower  -- thm-lower: both sentences, every length, loss exp(−C √(log n log log n))
+#check @CopyingInterleaving.Paper.C1Lower.s_lower_strong  -- thm-lower, the constants C = 2.76 ln 2 < 1.92, n₀ = N_(2, L_2)
+#check @CopyingInterleaving.Paper.C1Lower.step_lower_prefix  -- st-lower-prefix
+#check @CopyingInterleaving.Paper.C1Lower.step_lower_lengths  -- st-lower-lengths
+#check @CopyingInterleaving.Paper.C1Lower.step_lower_assemble  -- st-lower-assemble
+#check @CopyingInterleaving.Paper.C1Referee.thm_sc_rev  -- thm-sc (the relay words, failure 408 n^(−6))
+#check @CopyingInterleaving.Paper.C1Params.lem_params  -- lem-params (every L ≥ 512 k log(k+2))
+#check @CopyingInterleaving.Paper.C1Params.lem_slopes  -- lem-slopes
+#check @CopyingInterleaving.Paper.MethodRev.prop_scheme  -- prop-scheme (bound 2^(−u) exp(6u²/D))
+#check @CopyingInterleaving.Paper.C1Sent.s_conventions_strict  -- App. A Conventions: both main theorems for strict ARSs
+#check @CopyingInterleaving.Paper.CorDirect.cor_cstar  -- cor-cstar (the least exponent is 1/4)
+#check @CopyingInterleaving.Paper.CorDirect.cor_szlc  -- cor-szlc (every large length)
+#check @CopyingInterleaving.Paper.Kosoy49.kosoy_arc_le_szlc  -- Kosoy's Prop. 4.9 (cited, used by cor-szlc)
+#check @CopyingInterleaving.Paper.ReverseZ.prop_reverse  -- prop-reverse
+#check @CopyingInterleaving.Paper.RemArity.rem_arity  -- rem-arity (ARC(x) + m_Σ ≤ 2|P| for power-of-b arities)
+#check @CopyingInterleaving.Paper.RemMeasures.rem_measures_grammar  -- rem-measures
+#check @CopyingInterleaving.Paper.RemMeasures.rem_measures_zlc  -- rem-measures
+#check @CopyingInterleaving.Paper.RemMeasures.rem_measures_lzc_every  -- rem-measures: LZC ≥ n^a ZLC at every large length, given LZC ≥ ARC
+#check @CopyingInterleaving.Paper.U12a.s_why_quarter_length  -- no word with ARC ≥ H ZLC is shorter than H^4/16
+#check @CopyingInterleaving.Paper.ReadRev.rem_constant_all  -- rem-constant: every valid C is ≥ 2^(−1/4)
+#check @CopyingInterleaving.Paper.ExZlpRev.sync_iff_same_step  -- ex-zlp-cont: synchronous iff one step per vertex
+#check @CopyingInterleaving.Paper.ExZlpRev.gap_diff_steps  -- ex-zlp-cont: the conclusion
+#check @CopyingInterleaving.Paper.CoverageRev2.descent_spec  -- the descent of a position
 
 -- Earlier versions of the main results (kept; they do not formalise the current statements):
-#check @SP.CstarText.UpperBound.thm_upper_paper  -- earlier constant 2^(5/4)
-#check @SP.CstarConst.arc_le_const  -- another proof, weaker constant
-#check @SP.CstarText.EveryLength.thm_lower_every  -- earlier loss exp(−C (log n)^(2/3) (log log n)^(1/3))
-#check @SP.CstarText.SCFinal.thm_lower_conf  -- former form (infinitely many words)
-#check @SP.CstarPaper.thm_lower  -- another proof
-#check @SP.CstarText.Sentences.cor_szlc_text  -- former form of cor-szlc
+#check @CopyingInterleaving.Paper.UpperBound.thm_upper_paper  -- earlier constant 2^(5/4)
+#check @CopyingInterleaving.Constants.arc_le_const  -- another proof, weaker constant
+#check @CopyingInterleaving.Paper.EveryLength.thm_lower_every  -- earlier loss exp(−C (log n)^(2/3) (log log n)^(1/3))
+#check @CopyingInterleaving.Paper.SCFinal.thm_lower_conf  -- former form (infinitely many words)
+#check @CopyingInterleaving.Statements.thm_lower  -- another proof
+#check @CopyingInterleaving.Paper.Sentences.cor_szlc_text  -- former form of cor-szlc
 
-#print axioms SP.CstarText.U12a.thm_upper
-#print axioms SP.CstarText.U12a.thm_scale
-#print axioms SP.CstarText.U12a.lem_split_cases
-#print axioms SP.CstarText.U12a.lem_reach
-#print axioms SP.CstarText.U12a.lem_cut
-#print axioms SP.CstarText.C1Lower.thm_lower
-#print axioms SP.CstarText.C1Lower.s_lower_strong
-#print axioms SP.CstarText.C1Lower.step_lower_prefix
-#print axioms SP.CstarText.C1Lower.step_lower_lengths
-#print axioms SP.CstarText.C1Lower.step_lower_assemble
-#print axioms SP.CstarText.C1Referee.thm_sc_rev
-#print axioms SP.CstarText.C1Params.lem_params
-#print axioms SP.CstarText.C1Params.lem_slopes
-#print axioms SP.CstarText.MethodRev.prop_scheme
-#print axioms SP.CstarText.C1Sent.s_conventions_strict
-#print axioms SP.CstarText.CorDirect.cor_cstar
-#print axioms SP.CstarText.CorDirect.cor_szlc
-#print axioms SP.CstarText.RemArity.rem_arity
-#print axioms SP.CstarText.Kosoy49.kosoy_arc_le_szlc
-#print axioms SP.CstarText.ReverseZ.prop_reverse
-#print axioms SP.CstarText.RemMeasures.rem_measures_grammar
-#print axioms SP.CstarText.RemMeasures.rem_measures_zlc
-#print axioms SP.CstarText.RemMeasures.rem_measures_lzc_every
-#print axioms SP.CstarText.U12a.s_why_quarter_length
-#print axioms SP.CstarText.ReadRev.rem_constant_all
-#print axioms SP.CstarText.ExZlpRev.sync_iff_same_step
-#print axioms SP.CstarText.ExZlpRev.gap_diff_steps
-#print axioms SP.CstarText.CoverageRev2.descent_spec
-#print axioms SP.CstarText.UpperBound.thm_upper_paper
-#print axioms SP.CstarConst.arc_le_const
-#print axioms SP.CstarText.EveryLength.thm_lower_every
-#print axioms SP.CstarText.SCFinal.thm_lower_conf
-#print axioms SP.CstarPaper.thm_lower
-#print axioms SP.CstarText.Sentences.cor_szlc_text
+#print axioms CopyingInterleaving.Paper.U12a.thm_upper
+#print axioms CopyingInterleaving.Paper.U12a.thm_scale
+#print axioms CopyingInterleaving.Paper.U12a.lem_split_cases
+#print axioms CopyingInterleaving.Paper.U12a.lem_reach
+#print axioms CopyingInterleaving.Paper.U12a.lem_cut
+#print axioms CopyingInterleaving.Paper.C1Lower.thm_lower
+#print axioms CopyingInterleaving.Paper.C1Lower.s_lower_strong
+#print axioms CopyingInterleaving.Paper.C1Lower.step_lower_prefix
+#print axioms CopyingInterleaving.Paper.C1Lower.step_lower_lengths
+#print axioms CopyingInterleaving.Paper.C1Lower.step_lower_assemble
+#print axioms CopyingInterleaving.Paper.C1Referee.thm_sc_rev
+#print axioms CopyingInterleaving.Paper.C1Params.lem_params
+#print axioms CopyingInterleaving.Paper.C1Params.lem_slopes
+#print axioms CopyingInterleaving.Paper.MethodRev.prop_scheme
+#print axioms CopyingInterleaving.Paper.C1Sent.s_conventions_strict
+#print axioms CopyingInterleaving.Paper.CorDirect.cor_cstar
+#print axioms CopyingInterleaving.Paper.CorDirect.cor_szlc
+#print axioms CopyingInterleaving.Paper.RemArity.rem_arity
+#print axioms CopyingInterleaving.Paper.Kosoy49.kosoy_arc_le_szlc
+#print axioms CopyingInterleaving.Paper.ReverseZ.prop_reverse
+#print axioms CopyingInterleaving.Paper.RemMeasures.rem_measures_grammar
+#print axioms CopyingInterleaving.Paper.RemMeasures.rem_measures_zlc
+#print axioms CopyingInterleaving.Paper.RemMeasures.rem_measures_lzc_every
+#print axioms CopyingInterleaving.Paper.U12a.s_why_quarter_length
+#print axioms CopyingInterleaving.Paper.ReadRev.rem_constant_all
+#print axioms CopyingInterleaving.Paper.ExZlpRev.sync_iff_same_step
+#print axioms CopyingInterleaving.Paper.ExZlpRev.gap_diff_steps
+#print axioms CopyingInterleaving.Paper.CoverageRev2.descent_spec
+#print axioms CopyingInterleaving.Paper.UpperBound.thm_upper_paper
+#print axioms CopyingInterleaving.Constants.arc_le_const
+#print axioms CopyingInterleaving.Paper.EveryLength.thm_lower_every
+#print axioms CopyingInterleaving.Paper.SCFinal.thm_lower_conf
+#print axioms CopyingInterleaving.Statements.thm_lower
+#print axioms CopyingInterleaving.Paper.Sentences.cor_szlc_text
 ```
 
 == Its output
@@ -476,132 +478,160 @@ All 34 declarations audited depend only on #raw("propext"), #raw("Classical.choi
 (the output of #raw("lake env lean Check.lean") at this revision; build.py checks it).
 
 ```text
-@SP.CstarText.U12a.thm_upper : ∀ {α : Type} [inst : Nonempty α] (x : List α),
-  1 ≤ x.length → ↑(SP.ARC x) ≤ 2 * ↑x.length ^ (1 / 4) * ↑(SP.ZLC x)
-@SP.CstarText.U12a.thm_scale : ∀ {Q α : Type} (P : SP.Program Q α),
-  SP.CstarText.Prelim.IsZLP P →
+@CopyingInterleaving.Paper.U12a.thm_upper : ∀ {α : Type} [inst : Nonempty α] (x : List α),
+  1 ≤ x.length → ↑(CopyingInterleaving.ARC x) ≤ 2 * ↑x.length ^ (1 / 4) * ↑(CopyingInterleaving.ZLC x)
+@CopyingInterleaving.Paper.U12a.thm_scale : ∀ {Q α : Type} (P : CopyingInterleaving.Program Q α),
+  CopyingInterleaving.Paper.Prelim.IsZLP P →
     ∀ (x : List α),
-      x <+: SP.CstarText.Prelim.val P →
+      x <+: CopyingInterleaving.Paper.Prelim.val P →
         1 ≤ x.length →
-          ↑(SP.ARC x) ≤ 2 ^ (5 / 4) * SP.CstarText.UpperConv.scaleN P x.length ^ (1 / 4) * ↑(SP.CstarText.Prelim.size P)
-@SP.CstarText.U12a.lem_split_cases : ∀ {Q α : Type} (P : SP.Program Q α),
-  SP.CstarText.Prelim.IsZLP P →
+          ↑(CopyingInterleaving.ARC x) ≤
+            2 ^ (5 / 4) * CopyingInterleaving.Paper.UpperConv.scaleN P x.length ^ (1 / 4) *
+              ↑(CopyingInterleaving.Paper.Prelim.size P)
+@CopyingInterleaving.Paper.U12a.lem_split_cases : ∀ {Q α : Type} (P : CopyingInterleaving.Program Q α),
+  CopyingInterleaving.Paper.Prelim.IsZLP P →
     ∀ (x : List α),
-      x <+: SP.CstarText.Prelim.val P →
+      x <+: CopyingInterleaving.Paper.Prelim.val P →
         1 ≤ x.length →
           ∀ (μ : ℕ),
             1 ≤ μ →
-              (SP.CstarText.UpperConv.scaleN P x.length ≤ 4 * ↑μ * (↑μ + 1) →
-                  ↑(SP.ARC x) ≤ (↑μ + 2) * ↑(SP.CstarText.Prelim.size P)) ∧
+              (CopyingInterleaving.Paper.UpperConv.scaleN P x.length ≤ 4 * ↑μ * (↑μ + 1) →
+                  ↑(CopyingInterleaving.ARC x) ≤ (↑μ + 2) * ↑(CopyingInterleaving.Paper.Prelim.size P)) ∧
                 ∀ (T : ℝ),
                   ↑μ + 2 ≤ T →
-                    4 * SP.CstarText.UpperConv.scaleN P x.length ≤ ↑μ ^ 2 * T * (T - ↑μ) →
-                      ↑(SP.ARC x) ≤ T * ↑(SP.CstarText.Prelim.size P)
-@SP.CstarText.U12a.lem_reach : ∀ {Q α : Type} (P : SP.Program Q α),
-  SP.CstarText.Prelim.IsZLP P →
+                    4 * CopyingInterleaving.Paper.UpperConv.scaleN P x.length ≤ ↑μ ^ 2 * T * (T - ↑μ) →
+                      ↑(CopyingInterleaving.ARC x) ≤ T * ↑(CopyingInterleaving.Paper.Prelim.size P)
+@CopyingInterleaving.Paper.U12a.lem_reach : ∀ {Q α : Type} (P : CopyingInterleaving.Program Q α),
+  CopyingInterleaving.Paper.Prelim.IsZLP P →
     ∀ (n : ℕ) (z : Q),
       z ≠ P.root →
-        ∀ (S : Finset SP.Occ),
+        ∀ (S : Finset CopyingInterleaving.Occ),
           S.Nonempty →
-            (∀ ρ ∈ S, ρ ∈ SP.CstarText.UpperConv.Acan P n z ∧ ρ ≠ SP.CstarText.UpperConv.leastOcc P z) →
-              ↑(∑ ρ ∈ S, SP.CstarText.U12a.reach P n z ρ) * (↑(∑ ρ ∈ S, SP.CstarText.U12a.reach P n z ρ) + 2) <
-                ↑S.card * SP.CstarText.UpperConv.scaleN P n
-@SP.CstarText.U12a.lem_cut : ∀ {Q α : Type} (P : SP.Program Q α),
-  SP.CstarText.Prelim.IsZLP P →
+            (∀ ρ ∈ S,
+                ρ ∈ CopyingInterleaving.Paper.UpperConv.Acan P n z ∧
+                  ρ ≠ CopyingInterleaving.Paper.UpperConv.leastOcc P z) →
+              ↑(∑ ρ ∈ S, CopyingInterleaving.Paper.U12a.reach P n z ρ) *
+                  (↑(∑ ρ ∈ S, CopyingInterleaving.Paper.U12a.reach P n z ρ) + 2) <
+                ↑S.card * CopyingInterleaving.Paper.UpperConv.scaleN P n
+@CopyingInterleaving.Paper.U12a.lem_cut : ∀ {Q α : Type} (P : CopyingInterleaving.Program Q α),
+  CopyingInterleaving.Paper.Prelim.IsZLP P →
     (∀ (w : Q) (j : ℕ) (z : Q),
-        SP.CstarText.U12a.IsCutEdgeTo P w j z → SP.CstarText.U12a.zetaE P w j ∈ SP.CstarText.Prelim.occ P z) ∧
+        CopyingInterleaving.Paper.U12a.IsCutEdgeTo P w j z →
+          CopyingInterleaving.Paper.U12a.zetaE P w j ∈ CopyingInterleaving.Paper.Prelim.occ P z) ∧
       (∀ (w w' : Q) (j j' : ℕ) (z : Q),
-          SP.CstarText.U12a.IsCutEdgeTo P w j z →
-            SP.CstarText.U12a.IsCutEdgeTo P w' j' z →
-              ((w, j) ≠ (w', j') → SP.CstarText.U12a.zetaE P w j ≠ SP.CstarText.U12a.zetaE P w' j') ∧
-                SP.CstarText.U12a.zetaE P w j ≠ SP.CstarText.UpperConv.leastOcc P z) ∧
+          CopyingInterleaving.Paper.U12a.IsCutEdgeTo P w j z →
+            CopyingInterleaving.Paper.U12a.IsCutEdgeTo P w' j' z →
+              ((w, j) ≠ (w', j') →
+                  CopyingInterleaving.Paper.U12a.zetaE P w j ≠ CopyingInterleaving.Paper.U12a.zetaE P w' j') ∧
+                CopyingInterleaving.Paper.U12a.zetaE P w j ≠ CopyingInterleaving.Paper.UpperConv.leastOcc P z) ∧
         (∀ (q : Q),
-            ∀ ρ ∈ SP.CstarText.Prelim.occ P q,
-              ρ ≠ SP.CstarText.UpperConv.leastOcc P q →
+            ∀ ρ ∈ CopyingInterleaving.Paper.Prelim.occ P q,
+              ρ ≠ CopyingInterleaving.Paper.UpperConv.leastOcc P q →
                 ∃ w j z,
-                  SP.CstarText.U12a.IsCutEdgeTo P w j z ∧
-                    SP.CstarText.U12a.BuiltFrom P q ρ z (SP.CstarText.U12a.zetaE P w j) ∧
+                  CopyingInterleaving.Paper.U12a.IsCutEdgeTo P w j z ∧
+                    CopyingInterleaving.Paper.U12a.BuiltFrom P q ρ z (CopyingInterleaving.Paper.U12a.zetaE P w j) ∧
                       (∀ (w' : Q) (j' : ℕ) (z' : Q),
-                          SP.CstarText.U12a.IsCutEdgeTo P w' j' z' →
-                            SP.CstarText.U12a.BuiltFrom P q ρ z' (SP.CstarText.U12a.zetaE P w' j') → w' = w ∧ j' = j) ∧
+                          CopyingInterleaving.Paper.U12a.IsCutEdgeTo P w' j' z' →
+                            CopyingInterleaving.Paper.U12a.BuiltFrom P q ρ z'
+                                (CopyingInterleaving.Paper.U12a.zetaE P w' j') →
+                              w' = w ∧ j' = j) ∧
                         ∀ (js : List ℕ),
-                          SP.CstarText.Prelim.OccVia P q ρ js →
-                            ∃ js₁ π, SP.CstarText.UpperConv.IsCutDecomp P js js₁ w j z π) ∧
+                          CopyingInterleaving.Paper.Prelim.OccVia P q ρ js →
+                            ∃ js₁ π, CopyingInterleaving.Paper.UpperConv.IsCutDecomp P js js₁ w j z π) ∧
           ∀ (q w : Q) (j : ℕ) (z : Q),
-            SP.CstarText.U12a.IsCutEdgeTo P w j z →
-              ¬SP.CstarText.U12a.BuiltFrom P q (SP.CstarText.UpperConv.leastOcc P q) z (SP.CstarText.U12a.zetaE P w j)
-SP.CstarText.C1Lower.thm_lower : (∃ C,
+            CopyingInterleaving.Paper.U12a.IsCutEdgeTo P w j z →
+              ¬CopyingInterleaving.Paper.U12a.BuiltFrom P q (CopyingInterleaving.Paper.UpperConv.leastOcc P q) z
+                  (CopyingInterleaving.Paper.U12a.zetaE P w j)
+CopyingInterleaving.Paper.C1Lower.thm_lower : (∃ C,
     0 < C ∧
-      ∃ n₀, ∀ (n : ℕ), n₀ ≤ n → ∃ x, x.length = n ∧ SP.CstarText.C1Lower.lossFactor C n * ↑(SP.ZLC x) ≤ ↑(SP.ARC x)) ∧
-  ∀ a < 1 / 4, ∃ n₀, ∀ (n : ℕ), n₀ ≤ n → ∃ x, x.length = n ∧ ↑n ^ a * ↑(SP.ZLC x) ≤ ↑(SP.ARC x)
-SP.CstarText.C1Lower.s_lower_strong : 2.76 * Real.log 2 < 1.92 ∧
+      ∃ n₀,
+        ∀ (n : ℕ),
+          n₀ ≤ n →
+            ∃ x,
+              x.length = n ∧
+                CopyingInterleaving.Paper.C1Lower.lossFactor C n * ↑(CopyingInterleaving.ZLC x) ≤
+                  ↑(CopyingInterleaving.ARC x)) ∧
+  ∀ a < 1 / 4,
+    ∃ n₀, ∀ (n : ℕ), n₀ ≤ n → ∃ x, x.length = n ∧ ↑n ^ a * ↑(CopyingInterleaving.ZLC x) ≤ ↑(CopyingInterleaving.ARC x)
+CopyingInterleaving.Paper.C1Lower.s_lower_strong : 2.76 * Real.log 2 < 1.92 ∧
   ∀ (n : ℕ),
-    SP.CstarText.C1Lower.N 2 (SP.CstarText.C1Params.Lk 2) ≤ n →
-      ∃ x, x.length = n ∧ SP.CstarText.C1Lower.lossFactor (2.76 * Real.log 2) n * ↑(SP.ZLC x) ≤ ↑(SP.ARC x)
-SP.CstarText.C1Lower.step_lower_prefix : ∀ (k L : ℕ),
+    CopyingInterleaving.Paper.C1Lower.N 2 (CopyingInterleaving.Paper.C1Params.Lk 2) ≤ n →
+      ∃ x,
+        x.length = n ∧
+          CopyingInterleaving.Paper.C1Lower.lossFactor (2.76 * Real.log 2) n * ↑(CopyingInterleaving.ZLC x) ≤
+            ↑(CopyingInterleaving.ARC x)
+CopyingInterleaving.Paper.C1Lower.step_lower_prefix : ∀ (k L : ℕ),
   2 ≤ k →
-    512 * ↑k * SP.log2 (↑k + 2) ≤ ↑L →
+    512 * ↑k * CopyingInterleaving.log2 (↑k + 2) ≤ ↑L →
       ∃ σ pb,
-        (SP.CstarText.C1Gadgets.paper k L).IsGeometry σ ∧
-          ∀ m ≤ SP.CstarText.C1Lower.N k L,
-            2 ≤ ↑m * ↑(SP.CstarText.C1Params.H k L) / ↑(SP.CstarText.C1Lower.N k L) →
-              ↑m * ↑(SP.CstarText.C1Params.H k L) /
-                      (24 * ↑(SP.CstarText.C1Lower.N k L) * ↑(SP.CstarText.C1Params.u k L) ^ 2) *
-                    ↑(SP.ZLC (List.take m (SP.CstarText.C1Structure.x k L σ pb))) ≤
-                  ↑(SP.ARC (List.take m (SP.CstarText.C1Structure.x k L σ pb))) ∧
-                ↑m / (2 * ↑(SP.CstarText.C1Lower.N k L)) *
-                    ↑(SP.CstarText.C1Lower.N k L) ^ SP.CstarText.C1Final.scExp k L ≤
-                  ↑m * ↑(SP.CstarText.C1Params.H k L) /
-                    (24 * ↑(SP.CstarText.C1Lower.N k L) * ↑(SP.CstarText.C1Params.u k L) ^ 2)
-SP.CstarText.C1Lower.step_lower_lengths : ∀ (k L : ℕ),
+        (CopyingInterleaving.Paper.C1Gadgets.paper k L).IsGeometry σ ∧
+          ∀ m ≤ CopyingInterleaving.Paper.C1Lower.N k L,
+            2 ≤ ↑m * ↑(CopyingInterleaving.Paper.C1Params.H k L) / ↑(CopyingInterleaving.Paper.C1Lower.N k L) →
+              ↑m * ↑(CopyingInterleaving.Paper.C1Params.H k L) /
+                      (24 * ↑(CopyingInterleaving.Paper.C1Lower.N k L) *
+                        ↑(CopyingInterleaving.Paper.C1Params.u k L) ^ 2) *
+                    ↑(CopyingInterleaving.ZLC (List.take m (CopyingInterleaving.Paper.C1Structure.x k L σ pb))) ≤
+                  ↑(CopyingInterleaving.ARC (List.take m (CopyingInterleaving.Paper.C1Structure.x k L σ pb))) ∧
+                ↑m / (2 * ↑(CopyingInterleaving.Paper.C1Lower.N k L)) *
+                    ↑(CopyingInterleaving.Paper.C1Lower.N k L) ^ CopyingInterleaving.Paper.C1Final.scExp k L ≤
+                  ↑m * ↑(CopyingInterleaving.Paper.C1Params.H k L) /
+                    (24 * ↑(CopyingInterleaving.Paper.C1Lower.N k L) * ↑(CopyingInterleaving.Paper.C1Params.u k L) ^ 2)
+CopyingInterleaving.Paper.C1Lower.step_lower_lengths : ∀ (k L : ℕ),
   2 ≤ k →
-    SP.CstarText.C1Params.Lk k ≤ L →
-      (4 * ↑k + 4) * ↑L ≤ SP.log2 ↑(SP.CstarText.C1Lower.N k L) ∧
-        SP.log2 ↑(SP.CstarText.C1Lower.N k L) ≤ (4 * ↑k + 6) * ↑L ∧
-          (SP.CstarText.C1Params.Lk k < L →
-            SP.CstarText.C1Lower.N k L <
-              2 ^ (4 * k + 5) * SP.CstarText.C1Params.Λ k (L - 1) * SP.CstarText.C1Lower.N k (L - 1))
-SP.CstarText.C1Lower.step_lower_assemble : ∀ (n : ℕ),
-  SP.CstarText.C1Lower.N 2 (SP.CstarText.C1Params.Lk 2) ≤ n →
+    CopyingInterleaving.Paper.C1Params.Lk k ≤ L →
+      (4 * ↑k + 4) * ↑L ≤ CopyingInterleaving.log2 ↑(CopyingInterleaving.Paper.C1Lower.N k L) ∧
+        CopyingInterleaving.log2 ↑(CopyingInterleaving.Paper.C1Lower.N k L) ≤ (4 * ↑k + 6) * ↑L ∧
+          (CopyingInterleaving.Paper.C1Params.Lk k < L →
+            CopyingInterleaving.Paper.C1Lower.N k L <
+              2 ^ (4 * k + 5) * CopyingInterleaving.Paper.C1Params.Λ k (L - 1) *
+                CopyingInterleaving.Paper.C1Lower.N k (L - 1))
+CopyingInterleaving.Paper.C1Lower.step_lower_assemble : ∀ (n : ℕ),
+  CopyingInterleaving.Paper.C1Lower.N 2 (CopyingInterleaving.Paper.C1Params.Lk 2) ≤ n →
     ∃ k L σ pb,
       2 ≤ k ∧
-        SP.CstarText.C1Params.Lk k ≤ L ∧
-          (SP.CstarText.C1Gadgets.paper k L).IsGeometry σ ∧
-            n ≤ (SP.CstarText.C1Structure.x k L σ pb).length ∧
-              ↑n ^ (1 / 4) * 2 ^ (-(2.76 * √(SP.log2 ↑n * SP.log2 (SP.log2 ↑n)))) *
-                  ↑(SP.ZLC (List.take n (SP.CstarText.C1Structure.x k L σ pb))) ≤
-                ↑(SP.ARC (List.take n (SP.CstarText.C1Structure.x k L σ pb)))
-SP.CstarText.C1Referee.thm_sc_rev : ∀ (k L : ℕ),
+        CopyingInterleaving.Paper.C1Params.Lk k ≤ L ∧
+          (CopyingInterleaving.Paper.C1Gadgets.paper k L).IsGeometry σ ∧
+            n ≤ (CopyingInterleaving.Paper.C1Structure.x k L σ pb).length ∧
+              ↑n ^ (1 / 4) *
+                    2 ^
+                      (-(2.76 *
+                          √(CopyingInterleaving.log2 ↑n * CopyingInterleaving.log2 (CopyingInterleaving.log2 ↑n)))) *
+                  ↑(CopyingInterleaving.ZLC (List.take n (CopyingInterleaving.Paper.C1Structure.x k L σ pb))) ≤
+                ↑(CopyingInterleaving.ARC (List.take n (CopyingInterleaving.Paper.C1Structure.x k L σ pb)))
+CopyingInterleaving.Paper.C1Referee.thm_sc_rev : ∀ (k L : ℕ),
   2 ≤ k →
-    512 * ↑k * SP.log2 (↑k + 2) ≤ ↑L →
-      (∀ (σ : (SP.CstarText.C1Gadgets.paper k L).Geometry),
-          (SP.CstarText.C1Gadgets.paper k L).IsGeometry σ →
-            ∀ (pb : SP.CstarText.C1Structure.PtrBits k L),
-              (SP.CstarText.C1Structure.x k L σ pb).length = SP.CstarText.C1Structure.n k L) ∧
-        1 - 408 * ↑(SP.CstarText.C1Structure.n k L) ^ (-6) ≤
-          SP.CstarText.C1Final.jointProb k L (SP.CstarText.C1Final.SCChain k L)
-SP.CstarText.C1Params.lem_params : ∀ (k L : ℕ),
+    512 * ↑k * CopyingInterleaving.log2 (↑k + 2) ≤ ↑L →
+      (∀ (σ : (CopyingInterleaving.Paper.C1Gadgets.paper k L).Geometry),
+          (CopyingInterleaving.Paper.C1Gadgets.paper k L).IsGeometry σ →
+            ∀ (pb : CopyingInterleaving.Paper.C1Structure.PtrBits k L),
+              (CopyingInterleaving.Paper.C1Structure.x k L σ pb).length = CopyingInterleaving.Paper.C1Structure.n k L) ∧
+        1 - 408 * ↑(CopyingInterleaving.Paper.C1Structure.n k L) ^ (-6) ≤
+          CopyingInterleaving.Paper.C1Final.jointProb k L (CopyingInterleaving.Paper.C1Final.SCChain k L)
+CopyingInterleaving.Paper.C1Params.lem_params : ∀ (k L : ℕ),
   2 ≤ k →
-    512 * ↑k * SP.log2 (↑k + 2) ≤ ↑L →
-      (SP.log2 ↑(SP.CstarText.C1Params.Λ k L) < ↑L / 32 ∧
-          SP.log2 (12 * ↑(SP.CstarText.C1Params.u k L) ^ 2) < ↑L / 32 ∧
-            ↑(SP.CstarText.C1Params.B k L) * ↑(SP.CstarText.C1Params.X k L) ^ (-(1 / 32)) ≤
-              ↑(SP.CstarText.C1Params.H k L)) ∧
-        (2 * (4 * SP.CstarText.C1Params.X k L) ^ k ≤ SP.CstarText.C1Params.M k L ∧
-            ↑(4 * SP.CstarText.C1Params.X k L) ^ k ≤ ↑(SP.CstarText.C1Params.B k L) / 4 ∧
-              2 ^ (5 * k + 9) * SP.CstarText.C1Params.u k L ^ 2 ≤ SP.CstarText.C1Params.X k L ∧
-                ↑(SP.CstarText.C1Params.u k L) ≤ ↑(SP.CstarText.C1Params.X k L) ^ (31 / 32) / 4 ∧
-                  400 ≤ SP.CstarText.C1Params.e k L ∧ 20 ≤ L) ∧
-          ↑(SP.CstarText.C1Params.primesP k L).card ≤ ↑(SP.CstarText.C1Params.X k L) / 2 ∧
-            1 / (4 * ↑L) ≤ SP.CstarText.C1Params.SP_ k L
-SP.CstarText.C1Params.lem_slopes : ∀ (k L : ℕ),
+    512 * ↑k * CopyingInterleaving.log2 (↑k + 2) ≤ ↑L →
+      (CopyingInterleaving.log2 ↑(CopyingInterleaving.Paper.C1Params.Λ k L) < ↑L / 32 ∧
+          CopyingInterleaving.log2 (12 * ↑(CopyingInterleaving.Paper.C1Params.u k L) ^ 2) < ↑L / 32 ∧
+            ↑(CopyingInterleaving.Paper.C1Params.B k L) * ↑(CopyingInterleaving.Paper.C1Params.X k L) ^ (-(1 / 32)) ≤
+              ↑(CopyingInterleaving.Paper.C1Params.H k L)) ∧
+        (2 * (4 * CopyingInterleaving.Paper.C1Params.X k L) ^ k ≤ CopyingInterleaving.Paper.C1Params.M k L ∧
+            ↑(4 * CopyingInterleaving.Paper.C1Params.X k L) ^ k ≤ ↑(CopyingInterleaving.Paper.C1Params.B k L) / 4 ∧
+              2 ^ (5 * k + 9) * CopyingInterleaving.Paper.C1Params.u k L ^ 2 ≤
+                  CopyingInterleaving.Paper.C1Params.X k L ∧
+                ↑(CopyingInterleaving.Paper.C1Params.u k L) ≤
+                    ↑(CopyingInterleaving.Paper.C1Params.X k L) ^ (31 / 32) / 4 ∧
+                  400 ≤ CopyingInterleaving.Paper.C1Params.e k L ∧ 20 ≤ L) ∧
+          ↑(CopyingInterleaving.Paper.C1Params.primesP k L).card ≤ ↑(CopyingInterleaving.Paper.C1Params.X k L) / 2 ∧
+            1 / (4 * ↑L) ≤ CopyingInterleaving.Paper.C1Params.SP_ k L
+CopyingInterleaving.Paper.C1Params.lem_slopes : ∀ (k L : ℕ),
   2 ≤ k →
-    512 * ↑k * SP.log2 (↑k + 2) ≤ ↑L →
+    512 * ↑k * CopyingInterleaving.log2 (↑k + 2) ≤ ↑L →
       ∀ (μ : ℕ),
-        SP.CstarText.C1Params.M k L ≤ μ →
-          μ + SP.CstarText.C1Params.W k L ≤ 2 * SP.CstarText.C1Params.M k L →
-            ↑(SP.CstarText.C1Params.B k L) / ↑(SP.CstarText.C1Params.Λ k L) ≤ ↑(SP.CstarText.C1Params.goodIn k L μ)
-SP.CstarText.MethodRev.prop_scheme : ∀ (W : SP.CstarText.Method.Labelled),
+        CopyingInterleaving.Paper.C1Params.M k L ≤ μ →
+          μ + CopyingInterleaving.Paper.C1Params.W k L ≤ 2 * CopyingInterleaving.Paper.C1Params.M k L →
+            ↑(CopyingInterleaving.Paper.C1Params.B k L) / ↑(CopyingInterleaving.Paper.C1Params.Λ k L) ≤
+              ↑(CopyingInterleaving.Paper.C1Params.goodIn k L μ)
+CopyingInterleaving.Paper.MethodRev.prop_scheme : ∀ (W : CopyingInterleaving.Paper.Method.Labelled),
   W.Valid →
     ∀ (fix : W.RC → W.RC → Prop),
       IsStrictTotalOrder W.RC fix →
@@ -612,20 +642,21 @@ SP.CstarText.MethodRev.prop_scheme : ∀ (W : SP.CstarText.Method.Labelled),
                 ∀ (u : ℕ),
                   2 ≤ u →
                     (∀ (P : Set ℤ),
-                        SP.IsAP P →
+                        CopyingInterleaving.IsAP P →
                           u ^ 2 ≤ {p | p ∈ S ∧ ↑p ∈ P}.ncard →
                             ∃ pos v,
                               (∀ (i : Fin u), pos i ∈ S' ∧ ↑(pos i) ∈ P ∧ W.Carries (pos i) (v i)) ∧
                                 ∀ (i j : Fin u), i ≠ j → W.cell (v i) ≠ W.cell (v j)) →
                       1 - ↑S.card * ↑W.n ^ 3 * (2 ^ (-↑u) * Real.exp (6 * ↑u ^ 2 / ↑W.D)) ≤
                         W.Prob fun ω =>
-                          (∀ (A B : SP.ArithInterval),
-                              SP.CstarText.Method.ForwardEq (W.word ω) A B →
-                                SP.CstarText.Method.FwdHolds (W.word ω) A B →
-                                  {i | i ∈ S ∧ i ∈ SP.CstarText.Method.targets B}.ncard < u ^ 2) ∧
-                            ↑S.card / (↑u ^ 2 - 1) ≤ ↑(SP.ARC (W.word ω))
-SP.CstarText.C1Sent.s_conventions_strict : (∀ (α : Type) [inst : Nonempty α] (x : List α),
-    1 ≤ x.length → ↑(SP.CstarText.CoverageRev2.strictARC x) ≤ 2 * ↑x.length ^ (1 / 4) * ↑(SP.ZLC x)) ∧
+                          (∀ (A B : CopyingInterleaving.ArithInterval),
+                              CopyingInterleaving.Paper.Method.ForwardEq (W.word ω) A B →
+                                CopyingInterleaving.Paper.Method.FwdHolds (W.word ω) A B →
+                                  {i | i ∈ S ∧ i ∈ CopyingInterleaving.Paper.Method.targets B}.ncard < u ^ 2) ∧
+                            ↑S.card / (↑u ^ 2 - 1) ≤ ↑(CopyingInterleaving.ARC (W.word ω))
+CopyingInterleaving.Paper.C1Sent.s_conventions_strict : (∀ (α : Type) [inst : Nonempty α] (x : List α),
+    1 ≤ x.length →
+      ↑(CopyingInterleaving.Paper.CoverageRev2.strictARC x) ≤ 2 * ↑x.length ^ (1 / 4) * ↑(CopyingInterleaving.ZLC x)) ∧
   (∃ C,
       0 < C ∧
         ∃ n₀,
@@ -633,122 +664,161 @@ SP.CstarText.C1Sent.s_conventions_strict : (∀ (α : Type) [inst : Nonempty α]
             n₀ ≤ n →
               ∃ x,
                 x.length = n ∧
-                  SP.CstarText.C1Lower.lossFactor C n * ↑(SP.ZLC x) ≤ ↑(SP.CstarText.CoverageRev2.strictARC x)) ∧
+                  CopyingInterleaving.Paper.C1Lower.lossFactor C n * ↑(CopyingInterleaving.ZLC x) ≤
+                    ↑(CopyingInterleaving.Paper.CoverageRev2.strictARC x)) ∧
     ∀ a < 1 / 4,
-      ∃ n₀, ∀ (n : ℕ), n₀ ≤ n → ∃ x, x.length = n ∧ ↑n ^ a * ↑(SP.ZLC x) ≤ ↑(SP.CstarText.CoverageRev2.strictARC x)
-SP.CstarText.CorDirect.cor_cstar : ∀ (α : Type) [Fintype α] [inst : Nonempty α],
-  (∃ a b, a ≠ b) → IsLeast {c | SP.CstarPaper.AdmissibleOAlpha α c} (1 / 4)
-SP.CstarText.CorDirect.cor_szlc : ∀ a < 1 / 4,
-  ∃ n₀, ∀ (n : ℕ), n₀ ≤ n → ∃ x, x.length = n ∧ ↑n ^ a * ↑(SP.ZLC x) ≤ ↑(SP.CstarText.Prelim.sZLC x)
-@SP.CstarText.Kosoy49.kosoy_arc_le_szlc : ∀ {α : Type} [inst : Nonempty α] (x : List α),
-  SP.ARC x ≤ SP.CstarText.Prelim.sZLC x
-SP.CstarText.ReverseZ.prop_reverse : (∃ C,
+      ∃ n₀,
+        ∀ (n : ℕ),
+          n₀ ≤ n →
+            ∃ x,
+              x.length = n ∧
+                ↑n ^ a * ↑(CopyingInterleaving.ZLC x) ≤ ↑(CopyingInterleaving.Paper.CoverageRev2.strictARC x)
+CopyingInterleaving.Paper.CorDirect.cor_cstar : ∀ (α : Type) [Fintype α] [inst : Nonempty α],
+  (∃ a b, a ≠ b) → IsLeast {c | CopyingInterleaving.Statements.AdmissibleOAlpha α c} (1 / 4)
+CopyingInterleaving.Paper.CorDirect.cor_szlc : ∀ a < 1 / 4,
+  ∃ n₀,
+    ∀ (n : ℕ),
+      n₀ ≤ n → ∃ x, x.length = n ∧ ↑n ^ a * ↑(CopyingInterleaving.ZLC x) ≤ ↑(CopyingInterleaving.Paper.Prelim.sZLC x)
+@CopyingInterleaving.Paper.Kosoy49.kosoy_arc_le_szlc : ∀ {α : Type} [inst : Nonempty α] (x : List α),
+  CopyingInterleaving.ARC x ≤ CopyingInterleaving.Paper.Prelim.sZLC x
+CopyingInterleaving.Paper.ReverseZ.prop_reverse : (∃ C,
     ∀ {α : Type} [inst : Nonempty α] (x : List α),
-      2 ≤ x.length → ↑(SP.ZLC x) ≤ C * ↑x.length * ↑(SP.ARC x) / SP.log2 (↑x.length + 1)) ∧
-  ∀ (n : ℕ), 2 ≤ n → ∃ x, x.length = n ∧ ↑n * ↑(SP.ARC x) / (64 * SP.log2 ↑n ^ 2) ≤ ↑(SP.ZLC x)
-@SP.CstarText.RemArity.rem_arity : ∀ {Q α : Type} (P : SP.Program Q α),
-  SP.CstarText.Prelim.IsZLP P →
+      2 ≤ x.length →
+        ↑(CopyingInterleaving.ZLC x) ≤
+          C * ↑x.length * ↑(CopyingInterleaving.ARC x) / CopyingInterleaving.log2 (↑x.length + 1)) ∧
+  ∀ (n : ℕ),
+    2 ≤ n →
+      ∃ x,
+        x.length = n ∧
+          ↑n * ↑(CopyingInterleaving.ARC x) / (64 * CopyingInterleaving.log2 ↑n ^ 2) ≤ ↑(CopyingInterleaving.ZLC x)
+@CopyingInterleaving.Paper.RemArity.rem_arity : ∀ {Q α : Type} (P : CopyingInterleaving.Program Q α),
+  CopyingInterleaving.Paper.Prelim.IsZLP P →
     ∀ (b : ℕ),
       2 ≤ b →
         (∀ (q : Q), ∃ a, P.arity q = b ^ a) →
           ∀ (x : List α),
-            x <+: SP.CstarText.Prelim.val P →
-              1 ≤ x.length → SP.ARC x + SP.CstarText.RemArity.letterEdges P ≤ 2 * SP.CstarText.Prelim.size P
-SP.CstarText.RemMeasures.rem_measures_grammar : ∀ (m : ℕ),
+            x <+: CopyingInterleaving.Paper.Prelim.val P →
+              1 ≤ x.length →
+                CopyingInterleaving.ARC x + CopyingInterleaving.Paper.RemArity.letterEdges P ≤
+                  2 * CopyingInterleaving.Paper.Prelim.size P
+CopyingInterleaving.Paper.RemMeasures.rem_measures_grammar : ∀ (m : ℕ),
   3 ≤ m →
     (∀ (w : List Bool),
-        (SP.CstarText.RemMeasures.zmGrammar m).Derives (SP.CstarText.RemMeasures.zmGrammar m).start w ↔
-          w = SP.CstarText.ReverseZ.zm m) ∧
-      (SP.CstarText.RemMeasures.zmGrammar m).rules.card * 2 =
-          m ^ 2 + 7 * m + 4 + 2 * (Nat.log 2 m + SP.CstarText.RemMeasures.nu m) ∧
-        ↑(SP.CstarText.RemMeasures.zmGrammar m).rules.card ≤ SP.log2 ↑(SP.CstarText.ReverseZ.zm m).length ^ 2
-SP.CstarText.RemMeasures.rem_measures_zlc : ∀ (m : ℕ),
+        (CopyingInterleaving.Paper.RemMeasures.zmGrammar m).Derives
+            (CopyingInterleaving.Paper.RemMeasures.zmGrammar m).start w ↔
+          w = CopyingInterleaving.Paper.ReverseZ.zm m) ∧
+      (CopyingInterleaving.Paper.RemMeasures.zmGrammar m).rules.card * 2 =
+          m ^ 2 + 7 * m + 4 + 2 * (Nat.log 2 m + CopyingInterleaving.Paper.RemMeasures.nu m) ∧
+        ↑(CopyingInterleaving.Paper.RemMeasures.zmGrammar m).rules.card ≤
+          CopyingInterleaving.log2 ↑(CopyingInterleaving.Paper.ReverseZ.zm m).length ^ 2
+CopyingInterleaving.Paper.RemMeasures.rem_measures_zlc : ∀ (m : ℕ),
   3 ≤ m →
-    2 ^ m / 8 ≤ ↑(SP.ZLC (SP.CstarText.ReverseZ.zm m)) ∧
-      ↑(SP.CstarText.ReverseZ.zm m).length / (16 * SP.log2 ↑(SP.CstarText.ReverseZ.zm m).length) ≤ 2 ^ m / 8
-SP.CstarText.RemMeasures.rem_measures_lzc_every : ∀ (LZC : List Bool → ℕ),
-  (∀ (x : List Bool), SP.ARC x ≤ LZC x) →
-    ∀ a < 1 / 4, ∃ n₀, ∀ (n : ℕ), n₀ ≤ n → ∃ x, x.length = n ∧ ↑n ^ a * ↑(SP.ZLC x) ≤ ↑(LZC x)
-@SP.CstarText.U12a.s_why_quarter_length : ∀ {α : Type} [inst : Nonempty α] (x : List α) (H : ℝ),
-  0 < H → H * ↑(SP.ZLC x) ≤ ↑(SP.ARC x) → H ^ 4 / 16 ≤ ↑x.length
-@SP.CstarText.ReadRev.rem_constant_all : ∀ {α : Type} [inst : Nonempty α] (C : ℝ),
-  (∀ (x : List α), 1 ≤ x.length → ↑(SP.ARC x) ≤ C * ↑x.length ^ (1 / 4) * ↑(SP.ZLC x)) → 2 ^ (-(1 / 4)) ≤ C
-@SP.CstarText.ExZlpRev.sync_iff_same_step : ∀ {Q α : Type} (P : SP.Program Q α),
-  SP.CstarText.Prelim.IsZLP P →
-    (SP.CstarText.Prelim.IsSynchronous P ↔
-      ∀ (q : Q) (ρ ρ' : SP.Occ), ρ ∈ SP.CstarText.Prelim.occ P q → ρ' ∈ SP.CstarText.Prelim.occ P q → ρ.step = ρ'.step)
-@SP.CstarText.ExZlpRev.gap_diff_steps : ∀ {α : Type} [inst : Nonempty α] (x : List α),
-  SP.ZLC x < SP.ARC x →
-    ∀ {Q : Type} (P : SP.Program Q α),
-      SP.CstarText.Prelim.IsZLP P →
-        x <+: SP.CstarText.Prelim.val P →
-          SP.CstarText.Prelim.size P = SP.ZLC x →
-            ¬SP.CstarText.Prelim.IsSynchronous P ∧
-              ∃ q ρ ρ', ρ ∈ SP.CstarText.Prelim.occ P q ∧ ρ' ∈ SP.CstarText.Prelim.occ P q ∧ ρ.step ≠ ρ'.step
-@SP.CstarText.CoverageRev2.descent_spec : ∀ {Q α : Type} (P : SP.Program Q α),
-  SP.CstarText.Prelim.IsZLP P →
-    ∀ p < (SP.CstarText.Prelim.val P).length,
+    2 ^ m / 8 ≤ ↑(CopyingInterleaving.ZLC (CopyingInterleaving.Paper.ReverseZ.zm m)) ∧
+      ↑(CopyingInterleaving.Paper.ReverseZ.zm m).length /
+          (16 * CopyingInterleaving.log2 ↑(CopyingInterleaving.Paper.ReverseZ.zm m).length) ≤
+        2 ^ m / 8
+CopyingInterleaving.Paper.RemMeasures.rem_measures_lzc_every : ∀ (LZC : List Bool → ℕ),
+  (∀ (x : List Bool), CopyingInterleaving.ARC x ≤ LZC x) →
+    ∀ a < 1 / 4, ∃ n₀, ∀ (n : ℕ), n₀ ≤ n → ∃ x, x.length = n ∧ ↑n ^ a * ↑(CopyingInterleaving.ZLC x) ≤ ↑(LZC x)
+@CopyingInterleaving.Paper.U12a.s_why_quarter_length : ∀ {α : Type} [inst : Nonempty α] (x : List α) (H : ℝ),
+  0 < H → H * ↑(CopyingInterleaving.ZLC x) ≤ ↑(CopyingInterleaving.ARC x) → H ^ 4 / 16 ≤ ↑x.length
+@CopyingInterleaving.Paper.ReadRev.rem_constant_all : ∀ {α : Type} [inst : Nonempty α] (C : ℝ),
+  (∀ (x : List α),
+      1 ≤ x.length → ↑(CopyingInterleaving.ARC x) ≤ C * ↑x.length ^ (1 / 4) * ↑(CopyingInterleaving.ZLC x)) →
+    2 ^ (-(1 / 4)) ≤ C
+@CopyingInterleaving.Paper.ExZlpRev.sync_iff_same_step : ∀ {Q α : Type} (P : CopyingInterleaving.Program Q α),
+  CopyingInterleaving.Paper.Prelim.IsZLP P →
+    (CopyingInterleaving.Paper.Prelim.IsSynchronous P ↔
+      ∀ (q : Q) (ρ ρ' : CopyingInterleaving.Occ),
+        ρ ∈ CopyingInterleaving.Paper.Prelim.occ P q → ρ' ∈ CopyingInterleaving.Paper.Prelim.occ P q → ρ.step = ρ'.step)
+@CopyingInterleaving.Paper.ExZlpRev.gap_diff_steps : ∀ {α : Type} [inst : Nonempty α] (x : List α),
+  CopyingInterleaving.ZLC x < CopyingInterleaving.ARC x →
+    ∀ {Q : Type} (P : CopyingInterleaving.Program Q α),
+      CopyingInterleaving.Paper.Prelim.IsZLP P →
+        x <+: CopyingInterleaving.Paper.Prelim.val P →
+          CopyingInterleaving.Paper.Prelim.size P = CopyingInterleaving.ZLC x →
+            ¬CopyingInterleaving.Paper.Prelim.IsSynchronous P ∧
+              ∃ q ρ ρ',
+                ρ ∈ CopyingInterleaving.Paper.Prelim.occ P q ∧
+                  ρ' ∈ CopyingInterleaving.Paper.Prelim.occ P q ∧ ρ.step ≠ ρ'.step
+@CopyingInterleaving.Paper.CoverageRev2.descent_spec : ∀ {Q α : Type} (P : CopyingInterleaving.Program Q α),
+  CopyingInterleaving.Paper.Prelim.IsZLP P →
+    ∀ p < (CopyingInterleaving.Paper.Prelim.val P).length,
       (∃ a,
-          SP.CstarText.CoverageRev2.FollowsRule P P.root p (SP.CstarText.CoverageRev2.descent P p).1
-              (SP.CstarText.CoverageRev2.descent P p).2 a ∧
-            SP.CstarText.RefereeRev.IsPathToLetter P P.root (SP.CstarText.CoverageRev2.descent P p).1
-                (SP.CstarText.CoverageRev2.descent P p).2 a ∧
-              (SP.CstarText.Prelim.val P)[p]? = some a) ∧
+          CopyingInterleaving.Paper.CoverageRev2.FollowsRule P P.root p
+              (CopyingInterleaving.Paper.CoverageRev2.descent P p).1
+              (CopyingInterleaving.Paper.CoverageRev2.descent P p).2 a ∧
+            CopyingInterleaving.Paper.RefereeRev.IsPathToLetter P P.root
+                (CopyingInterleaving.Paper.CoverageRev2.descent P p).1
+                (CopyingInterleaving.Paper.CoverageRev2.descent P p).2 a ∧
+              (CopyingInterleaving.Paper.Prelim.val P)[p]? = some a) ∧
         ∀ (js : List ℕ) (j : ℕ) (a : α),
-          SP.CstarText.CoverageRev2.FollowsRule P P.root p js j a → (js, j) = SP.CstarText.CoverageRev2.descent P p
-@SP.CstarText.UpperBound.thm_upper_paper : ∀ {α : Type} [inst : Nonempty α] (x : List α),
-  1 ≤ x.length → ↑(SP.ARC x) ≤ 2 ^ (5 / 4) * ↑x.length ^ (1 / 4) * ↑(SP.ZLC x)
-@SP.CstarConst.arc_le_const : ∀ {α : Type} [inst : Nonempty α] (x : List α),
-  1 ≤ x.length → ↑(SP.ARC x) ≤ 2 ^ (5 / 4) * ↑x.length ^ (1 / 4) * ↑(SP.ZLC x)
-SP.CstarText.EveryLength.thm_lower_every : (∃ C,
+          CopyingInterleaving.Paper.CoverageRev2.FollowsRule P P.root p js j a →
+            (js, j) = CopyingInterleaving.Paper.CoverageRev2.descent P p
+@CopyingInterleaving.Paper.UpperBound.thm_upper_paper : ∀ {α : Type} [inst : Nonempty α] (x : List α),
+  1 ≤ x.length → ↑(CopyingInterleaving.ARC x) ≤ 2 ^ (5 / 4) * ↑x.length ^ (1 / 4) * ↑(CopyingInterleaving.ZLC x)
+@CopyingInterleaving.Constants.arc_le_const : ∀ {α : Type} [inst : Nonempty α] (x : List α),
+  1 ≤ x.length → ↑(CopyingInterleaving.ARC x) ≤ 2 ^ (5 / 4) * ↑x.length ^ (1 / 4) * ↑(CopyingInterleaving.ZLC x)
+CopyingInterleaving.Paper.EveryLength.thm_lower_every : (∃ C,
     0 < C ∧
       ∃ n₀,
-        ∀ (n : ℕ), n₀ ≤ n → ∃ x, x.length = n ∧ SP.CstarText.EveryLength.lossFactor C n * ↑(SP.ZLC x) ≤ ↑(SP.ARC x)) ∧
-  ∀ a < 1 / 4, ∃ n₀, ∀ (n : ℕ), n₀ ≤ n → ∃ x, x.length = n ∧ ↑n ^ a * ↑(SP.ZLC x) ≤ ↑(SP.ARC x)
-SP.CstarText.SCFinal.thm_lower_conf : (∃ C,
+        ∀ (n : ℕ),
+          n₀ ≤ n →
+            ∃ x,
+              x.length = n ∧
+                CopyingInterleaving.Paper.EveryLength.lossFactor C n * ↑(CopyingInterleaving.ZLC x) ≤
+                  ↑(CopyingInterleaving.ARC x)) ∧
+  ∀ a < 1 / 4,
+    ∃ n₀, ∀ (n : ℕ), n₀ ≤ n → ∃ x, x.length = n ∧ ↑n ^ a * ↑(CopyingInterleaving.ZLC x) ≤ ↑(CopyingInterleaving.ARC x)
+CopyingInterleaving.Paper.SCFinal.thm_lower_conf : (∃ C,
     0 < C ∧
       {x |
           4 ≤ x.length ∧
             ↑x.length ^ (1 / 4) *
-                  Real.exp (-(C * SP.log2 ↑x.length ^ (2 / 3) * SP.log2 (SP.log2 ↑x.length) ^ (1 / 3))) *
-                ↑(SP.ZLC x) ≤
-              ↑(SP.ARC x)}.Infinite) ∧
-  ∀ a < 1 / 4, {x | ↑x.length ^ a * ↑(SP.ZLC x) ≤ ↑(SP.ARC x)}.Infinite
-SP.CstarPaper.thm_lower : ∀ a < 1 / 4, {x | 1 ≤ x.length ∧ ↑x.length ^ a * ↑(SP.ZLC x) ≤ ↑(SP.ARC x)}.Infinite
-SP.CstarText.Sentences.cor_szlc_text : ∀ a < 1 / 4,
-  {x | ↑x.length ^ a * ↑(SP.ZLC x) ≤ ↑(SP.CstarText.Prelim.sZLC x)}.Infinite
-'SP.CstarText.U12a.thm_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.U12a.thm_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.U12a.lem_split_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.U12a.lem_reach' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.U12a.lem_cut' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.C1Lower.thm_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.C1Lower.s_lower_strong' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.C1Lower.step_lower_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.C1Lower.step_lower_lengths' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.C1Lower.step_lower_assemble' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.C1Referee.thm_sc_rev' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.C1Params.lem_params' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.C1Params.lem_slopes' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.MethodRev.prop_scheme' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.C1Sent.s_conventions_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.CorDirect.cor_cstar' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.CorDirect.cor_szlc' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.RemArity.rem_arity' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.Kosoy49.kosoy_arc_le_szlc' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.ReverseZ.prop_reverse' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.RemMeasures.rem_measures_grammar' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.RemMeasures.rem_measures_zlc' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.RemMeasures.rem_measures_lzc_every' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.U12a.s_why_quarter_length' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.ReadRev.rem_constant_all' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.ExZlpRev.sync_iff_same_step' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.ExZlpRev.gap_diff_steps' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.CoverageRev2.descent_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.UpperBound.thm_upper_paper' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarConst.arc_le_const' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.EveryLength.thm_lower_every' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.SCFinal.thm_lower_conf' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarPaper.thm_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
-'SP.CstarText.Sentences.cor_szlc_text' depends on axioms: [propext, Classical.choice, Quot.sound]
+                  Real.exp
+                    (-(C * CopyingInterleaving.log2 ↑x.length ^ (2 / 3) *
+                        CopyingInterleaving.log2 (CopyingInterleaving.log2 ↑x.length) ^ (1 / 3))) *
+                ↑(CopyingInterleaving.ZLC x) ≤
+              ↑(CopyingInterleaving.ARC x)}.Infinite) ∧
+  ∀ a < 1 / 4, {x | ↑x.length ^ a * ↑(CopyingInterleaving.ZLC x) ≤ ↑(CopyingInterleaving.ARC x)}.Infinite
+CopyingInterleaving.Statements.thm_lower : ∀ a < 1 / 4,
+  {x | 1 ≤ x.length ∧ ↑x.length ^ a * ↑(CopyingInterleaving.ZLC x) ≤ ↑(CopyingInterleaving.ARC x)}.Infinite
+CopyingInterleaving.Paper.Sentences.cor_szlc_text : ∀ a < 1 / 4,
+  {x | ↑x.length ^ a * ↑(CopyingInterleaving.ZLC x) ≤ ↑(CopyingInterleaving.Paper.Prelim.sZLC x)}.Infinite
+'CopyingInterleaving.Paper.U12a.thm_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.U12a.thm_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.U12a.lem_split_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.U12a.lem_reach' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.U12a.lem_cut' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.C1Lower.thm_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.C1Lower.s_lower_strong' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.C1Lower.step_lower_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.C1Lower.step_lower_lengths' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.C1Lower.step_lower_assemble' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.C1Referee.thm_sc_rev' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.C1Params.lem_params' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.C1Params.lem_slopes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.MethodRev.prop_scheme' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.C1Sent.s_conventions_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.CorDirect.cor_cstar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.CorDirect.cor_szlc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.RemArity.rem_arity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.Kosoy49.kosoy_arc_le_szlc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.ReverseZ.prop_reverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.RemMeasures.rem_measures_grammar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.RemMeasures.rem_measures_zlc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.RemMeasures.rem_measures_lzc_every' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CopyingInterleaving.Paper.U12a.s_why_quarter_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.ReadRev.rem_constant_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.ExZlpRev.sync_iff_same_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.ExZlpRev.gap_diff_steps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.CoverageRev2.descent_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.UpperBound.thm_upper_paper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Constants.arc_le_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.EveryLength.thm_lower_every' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.SCFinal.thm_lower_conf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Statements.thm_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.Sentences.cor_szlc_text' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
