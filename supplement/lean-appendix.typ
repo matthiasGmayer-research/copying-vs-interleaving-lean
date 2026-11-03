@@ -53,8 +53,8 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("5ebc2c920b91") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
-  356 modules · 659 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
+  #text(size: 10pt)[Lean repository revision #raw("bf6d44b7a6d3") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  358 modules · 662 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
 #block(inset: (x: 1cm))[#set text(size: 9.5pt)
@@ -83,8 +83,8 @@ The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-c
 
 *Status.* Every numbered definition, statement and proof step of the paper's own development, apart from the comparisons in #raw("rem-measures") that rest on cited results, has a sorry-free Lean declaration (axioms #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")): the upper bound in its version U12a (#raw("SP.CstarText.U12a"), constant 2), the lower bound in its version C1/I1 (prime types, parameters of (k, L) for all integers k ≥ 2 and L ≥ 512 k log₂(k + 2): #raw("SP.CstarText.C1Params") … #raw("C1Lower"), #raw("C1Coverage"), #raw("C1Sent")), and #raw("prop-scheme"), the critical-set bound, with the bound of #raw("lem-random") (#raw("SP.CstarText.MethodRev.prop_scheme")). Sentences of the text outside the numbered blocks that state a fact are tagged as well (sentence anchors, #raw("@[kb \"cstarpaper-s-…\"]")); these tags locate the declarations and claim nothing beyond the statement above. The formalisations of earlier versions are kept in the repository (see "Earlier versions" below); their superseded statements no longer carry the paper's tags.
 
-In this revision, the table of @sec-map has a row for each of the paper's 68 numbered blocks, with the
-declarations of their 34 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper"), #raw("tab-relay") (conventions and
+In this revision, the table of @sec-map has a row for each of the paper's 67 numbered blocks, with the
+declarations of their 32 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper"), #raw("tab-relay") (conventions and
 notation stated in those sections); 133 further tags anchor sentences of the paper's text.
 
 == Cited results
@@ -313,7 +313,6 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("prop-scheme")], [#raw("MethodRev.prop_scheme")], [#raw("st-scheme-cand"): #raw("Method.step_prop_scheme_1_count"), #raw("Method.step_prop_scheme_1_prob") \
 #raw("st-scheme-event"): #raw("Method.step_prop_scheme_2_event") \
 #raw("st-scheme-bound"): #raw("Method.step_prop_scheme_3")],
-  [#raw("lem-relay")], [#raw("C1Relay.lem_relay")], [],
   [#raw("tab-relay")], [#raw("Final1102.relayQ"), #raw("Final1102.tab_relay"), #raw("Final1102.relay_length_theta"), #raw("Final1102.relay_length_power"), #raw("Final1102.tab_relay_Lk"), #raw("C1Coverage.why_quarter_relay")], [],
   [#raw("thm-sc")], [#raw("C1Final.jointProb"), #raw("C1Final.SCChain"), #raw("C1Referee.thm_sc_rev"), #raw("Comments1102.thm_sc")], [],
   [#raw("ex-zlp-cont")], [#raw("UpperConv.exX"), #raw("UpperConv.exEq1"), #raw("UpperConv.exEq2"), #raw("UpperConv.exEq3"), #raw("UpperConv.exL"), #raw("UpperConv.exΦ"), #raw("UpperConv.ex_cont_params"), #raw("UpperConv.ex_cont_least"), #raw("UpperConv.ex_cont_tree"), #raw("UpperConv.ex_cont_literals"), #raw("UpperConv.ex_cont_eq_root"), #raw("UpperConv.ex_cont_eq_s0"), #raw("UpperConv.ex_cont_eq_s1"), #raw("UpperConv.ex_cont_least_c_needed"), #raw("UpperConv.ex_cont_ars"), #raw("U12a.ex_cont_cut_u12a"), #raw("RefereeRev.exL4"), #raw("RefereeRev.exΦ4"), #raw("RefereeRev.ex_cont_arc_le"), #raw("CoverageRev4.ex_root_slot0")], [],
@@ -351,15 +350,14 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("lem-params")], [#raw("C1Params.SP_"), #raw("C1Params.lem_params")], [],
   [#raw("def-section")], [#raw("Reverse.sec"), #raw("Reverse.Comparable")], [],
   [#raw("lem-rev-upper")], [#raw("Reverse.lem_rev_upper")], [#raw("st-revup-arc"): #raw("Reverse.step_lem_rev_upper_1") \
-#raw("st-revup-cases"): #raw("Reverse.step_lem_rev_upper_2") \
-#raw("st-revup-final"): #raw("Reverse.step_lem_rev_upper_3")],
+#raw("st-revup-cases"): #raw("Simplify1103.step_revup_cases") \
+#raw("st-revup-final"): #raw("Simplify1103.step_revup_final")],
   [#raw("def-rev-words")], [#raw("ReverseZ.Nm"), #raw("ReverseZ.zm"), #raw("ReverseZ.mOf"), #raw("ReverseZ.xn"), #raw("ReverseZ.s_def_rev_words_unique"), #raw("ReverseZ.def_rev_words_length"), #raw("ReverseZ.s_def_rev_words_blocks"), #raw("Reverse.xm"), #raw("Reverse.T"), #raw("ReverseZ.blockStart")], [],
   [#raw("lem-rev-arc")], [#raw("ReverseZ.lem_rev_arc")], [],
   [#raw("lem-sections")], [#raw("ReverseZ.lem_sections"), #raw("Comments1102.lem_sections")], [#raw("st-sec-first"): #raw("ReverseZ.step_lem_sections_first") \
 #raw("st-sec-pair"): #raw("ReverseZ.step_lem_sections_pair") \
 #raw("st-sec-congr"): #raw("ReverseZ.step_lem_sections_congr")],
-  [#raw("lem-rev-zlc")], [#raw("ReverseZ.lem_rev_zlc")], [#raw("st-rev-stop"): #raw("ReverseZ.step_lem_rev_zlc_stop") \
-#raw("st-rev-vertex"): #raw("ReverseZ.step_lem_rev_zlc_vertex")],
+  [#raw("lem-rev-zlc")], [#raw("ReverseZ.lem_rev_zlc")], [],
   [#raw("rem-measures")], [#raw("RemMeasures.CNFGrammar"), #raw("RemMeasures.CNFGrammar.Derives"), #raw("RemMeasures.zmGrammar"), #raw("RemMeasures.rem_measures_grammar"), #raw("RemMeasures.rem_measures_grammar_exists"), #raw("RemMeasures.rem_measures_zlc"), #raw("RemMeasures.rem_measures_lzc_every"), #raw("Comments1102.GeneratesExactly"), #raw("Comments1102.grammarSize"), #raw("Comments1102.SubpolyBound"), #raw("Comments1102.grammarSize_le_rules"), #raw("Comments1102.grammarSize_attained"), #raw("Comments1102.rem_measures_a"), #raw("Comments1102.rem_measures_b"), #raw("Comments1102.rem_measures_c"), #raw("Final1102.rem_measures_a_nonempty"), #raw("Final1102.rem_measures_b_nonempty"), #raw("Final1102.rem_measures_c_nonempty"), #raw("Final1102.rem_measures_c_measures_nonempty")], [],
 )
 
@@ -390,7 +388,7 @@ Dependency routes (#raw("python3 tools/deps.py README.md") runs #raw("lake env l
 
 The formalisation uses Lean 4 at the toolchain #raw("leanprover/lean4:v4.33.0-rc1") (#raw("lean-toolchain")) and Mathlib at the tag #raw("v4.33.0-rc1") (commit #raw("79d0395"), pinned in #raw("lake-manifest.json")). #raw("lake exe cache get && lake build") builds the formalisation. Then #raw("lake env lean Check.lean") prints the statements (#raw("#check")) and the axioms on which the main declarations depend; they are among #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound"). This repository is exported from the author's research project (#raw("export.sh")); module names keep its prefix #raw("SP").
 
-The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 356 modules.
+The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 358 modules.
 
 == The audit file Check.lean
 

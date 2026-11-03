@@ -15,7 +15,6 @@ import SP
 #check @SP.CstarText.C1Lower.step_lower_lengths  -- st-lower-lengths
 #check @SP.CstarText.C1Lower.step_lower_assemble  -- st-lower-assemble
 #check @SP.CstarText.C1Referee.thm_sc_rev  -- thm-sc (the relay words, failure 408 n^(−6))
-#check @SP.CstarText.C1Relay.lem_relay  -- lem-relay (properties of the relay words)
 #check @SP.CstarText.C1Params.lem_params  -- lem-params (every L ≥ 512 k log(k+2))
 #check @SP.CstarText.C1Params.lem_slopes  -- lem-slopes
 #check @SP.CstarText.MethodRev.prop_scheme  -- prop-scheme (bound 2^(−u) exp(6u²/D))
@@ -53,7 +52,6 @@ import SP
 #print axioms SP.CstarText.C1Lower.step_lower_lengths
 #print axioms SP.CstarText.C1Lower.step_lower_assemble
 #print axioms SP.CstarText.C1Referee.thm_sc_rev
-#print axioms SP.CstarText.C1Relay.lem_relay
 #print axioms SP.CstarText.C1Params.lem_params
 #print axioms SP.CstarText.C1Params.lem_slopes
 #print axioms SP.CstarText.MethodRev.prop_scheme
