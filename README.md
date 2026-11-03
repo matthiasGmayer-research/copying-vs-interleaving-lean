@@ -261,7 +261,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `lem-least` | `UpperConv.lem_least_b_prefix`, `UpperConv.lem_least_b_tree`, `UpperConv.lem_least_b_K`, `UpperConv.lem_least_b_treepath`, `RefereeRev.lem_least_a_rev`, `Comments1102.mTree_eq_mT` |  |
 | `lem-cut` | `U12a.lem_cut`, `Comments1102.lem_cut` |  |
 | `lem-reach` | `U12a.lem_reach` |  |
-| `lem-split` | `U12a.lem_split_cases` (two cases; it follows from the earlier one-sentence form U12a.lem_split, kept untagged) | (retired steps `st-split-*`, claims now the nodes below: `U12a.step_split_early`, `Comments1102.step_split_early_cost`, `U12a.step_split_least`, `U12a.step_split_other`) |
+| `lem-split` | `U12a.lem_split_cases` (two cases; it follows from the earlier one-sentence form U12a.lem_split, kept untagged) | `st-split-literals`: none of its own, the step is part of the proof of U12a.lem_split_cases; `st-split-edges`: none of its own, as before; `st-split-groups`: none of its own, as before (steps of the paper's proof since cstar d181469; the earlier steps st-split-early, st-split-least, st-split-other are the blocks lem-early, lem-late-least, lem-late-other below) |
 | `def-pieces` | `Comments1102.IsEarlyPiece`, `Comments1102.IsLatePiece`, `Comments1102.literalCharge`, `Comments1102.pieceCost`, `Comments1102.earlyCost`, `Comments1102.lateLeastCost`, `Comments1102.lateCost`, `Comments1102.isSplitPieces_iff`, `Comments1102.literalCharge_late`, `Comments1102.charged_early_ncard` |  |
 | `lem-early` | `Comments1102.lem_early` |  |
 | `lem-late-least` | `Comments1102.lem_late_least` |  |
@@ -304,7 +304,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `def-rev-words` | `ReverseZ.Nm`, `ReverseZ.zm`, `ReverseZ.mOf`, `ReverseZ.xn`, `ReverseZ.s_def_rev_words_unique`, `ReverseZ.def_rev_words_length`, `ReverseZ.s_def_rev_words_blocks`, `Reverse.xm`, `Reverse.T`, `ReverseZ.blockStart` |  |
 | `lem-rev-arc` | `ReverseZ.lem_rev_arc` |  |
 | `lem-sections` | `ReverseZ.lem_sections`, `Comments1102.lem_sections` | `st-sec-first`: `ReverseZ.step_lem_sections_first`; `st-sec-pair`: `ReverseZ.step_lem_sections_pair`; `st-sec-congr`: `ReverseZ.step_lem_sections_congr` |
-| `lem-rev-zlc` | `ReverseZ.lem_rev_zlc` |  |
+| `lem-rev-zlc` | `ReverseZ.lem_rev_zlc` | `st-rev-one`: none of its own, its claim is the fact on which Simplify1103.s_lem_rev_zlc_rev stands (tagged with the sentence anchor s-lem-rev-zlc-rev); `st-rev-leaves`: none of its own, as before |
 | `rem-measures` | `RemMeasures.CNFGrammar`, `RemMeasures.CNFGrammar.Derives`, `RemMeasures.zmGrammar`, `RemMeasures.rem_measures_grammar`, `RemMeasures.rem_measures_grammar_exists`, `RemMeasures.rem_measures_zlc`, `RemMeasures.rem_measures_lzc_every`, `Comments1102.GeneratesExactly`, `Comments1102.grammarSize`, `Comments1102.SubpolyBound`, `Comments1102.grammarSize_le_rules`, `Comments1102.grammarSize_attained`, `Comments1102.rem_measures_a`, `Comments1102.rem_measures_b`, `Comments1102.rem_measures_c`, `Final1102.rem_measures_a_nonempty`, `Final1102.rem_measures_b_nonempty`, `Final1102.rem_measures_c_nonempty`, `Final1102.rem_measures_c_measures_nonempty` |  |
 <!-- /tab-lean -->
 
