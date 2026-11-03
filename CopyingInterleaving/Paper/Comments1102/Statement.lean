@@ -453,7 +453,7 @@ theorem step_split_early_cost {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x
 /-- **lem-late-least** (main.typ @ a925e4a, block ending line 2634): "The late pieces of the least occurrences cost at
 most `2 (m_𝒯 + K)`" — `lateLeastCost` (their equations; their literal charge is `0`, `literalCharge_late`), with
 `m_𝒯 = |𝒯|` (`mTree`) and `K` of def-least. From `U12a.step_split_least`. -/
-@[kb "cstarpaper-lem-late-least" (part := "Comments1102")]
+-- kb tag retired 2026-11-03 (cstar cbd45c4: K removed, lem-late-least states 2 (m − m_Σ); see Relock1103K.lem_late_least_noK): @[kb "cstarpaper-lem-late-least" (part := "Comments1102")]
 theorem lem_late_least {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
     (hn : 1 ≤ x.length) (μ : ℕ) (hμ : 1 ≤ μ) (pcs : Q → Occ → Set (Set ℕ)) (hpcs : IsSplitPieces P x.length μ pcs)
     (L : Finset (α × ℕ)) (Φ : Finset (CopyingInterleaving.ArithInterval × CopyingInterleaving.ArithInterval))

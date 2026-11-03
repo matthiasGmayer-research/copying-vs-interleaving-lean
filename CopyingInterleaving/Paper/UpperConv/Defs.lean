@@ -183,9 +183,9 @@ def treeSlots {Q α : Type} (P : Program Q α) : Set (Q × ℕ) :=
 def AllInTree {Q α : Type} (P : Program Q α) (z : Q) (js : List ℕ) : Prop :=
   ∀ s ∈ pathSlots P z js, s ∈ treeSlots P
 
-/-- `K := m − m_Σ − m_𝒯` (lem-least (b); natural-number subtraction, exact as `m_Σ + m_𝒯 ≤ m` for a
+/-- `K := m − m_Σ − m_𝒯` (no longer in the paper since cstar cbd45c4; formerly def-least / lem-least (b); natural-number subtraction, exact as `m_Σ + m_𝒯 ≤ m` for a
 ZLP). -/
-@[kb "cstarpaper-def-least" (part := "K = m − m_Σ − m_T")]
+-- kb tag retired 2026-11-03 (cstar cbd45c4: def-least no longer defines K; K is an internal abbreviation of older proofs): @[kb "cstarpaper-def-least" (part := "K = m − m_Σ − m_T")]
 noncomputable def K {Q α : Type} (P : Program Q α) : ℕ := size P - mSigma P - mT P
 
 /-! ## lem-cut (main.typ 527–531): the cut edge -/

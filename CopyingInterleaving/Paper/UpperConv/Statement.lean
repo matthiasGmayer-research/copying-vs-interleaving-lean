@@ -248,7 +248,7 @@ theorem lem_least_b_tree {Q α : Type} (P : Program Q α) (hP : IsZLP P) :
 
 /-- lem-least (b) (main.typ 497–498): exactly `K = m − m_Σ − m_𝒯` slots that hold a vertex lie outside
 `𝒯`. -/
-@[kb "cstarpaper-lem-least" (part := "b: K vertex slots outside 𝒯")]
+-- kb tag retired 2026-11-03 (cstar cbd45c4: K removed; lem-least (b) has no K count, used internally by RemArity/C1Sent): @[kb "cstarpaper-lem-least" (part := "b: K vertex slots outside 𝒯")]
 theorem lem_least_b_K {Q α : Type} (P : Program Q α) (hP : IsZLP P) :
     {s : Q × ℕ | s ∈ vertexSlots P ∧ s ∉ treeSlots P}.ncard = K P :=
   step_lem_least_b_K P hP
@@ -317,7 +317,7 @@ theorem ex_cont_params :
 theorem ex_cont_least : leastOcc exProg .q = ⟨2, 1⟩ := step_ex_cont_least
 
 /-- ex-zlp-cont (main.typ 558–559): `𝒯` is the two slots of the root, `K = 2`: the two slots of `s`. -/
-@[kb "cstarpaper-ex-zlp-cont" (part := "tree and K")]
+-- kb tag retired 2026-11-03 (cstar cbd45c4: the example no longer names K; see Relock1103K.ex_cont_tree_noK): @[kb "cstarpaper-ex-zlp-cont" (part := "tree and K")]
 theorem ex_cont_tree :
     treeSlots exProg = {(.q0, 0), (.q0, 1)} ∧ K exProg = 2 ∧
       {s : ExV × ℕ | s ∈ vertexSlots exProg ∧ s ∉ treeSlots exProg} = {(.s, 0), (.s, 1)} :=

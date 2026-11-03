@@ -220,6 +220,7 @@ import CopyingInterleaving.Paper.Prelim.Steps.S07_ExZlp
 import CopyingInterleaving.Paper.ReadRev.Statement
 import CopyingInterleaving.Paper.RefereeRev.Statement
 import CopyingInterleaving.Paper.RelayRev.Statement
+import CopyingInterleaving.Paper.Relock1103K.Statement
 import CopyingInterleaving.Paper.RemArity.Statement
 import CopyingInterleaving.Paper.RemMeasures.Defs
 import CopyingInterleaving.Paper.RemMeasures.Every

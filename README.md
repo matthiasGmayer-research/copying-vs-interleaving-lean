@@ -256,15 +256,15 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `def-canonical` | `UpperConv.firstPos`, `UpperConv.IsLowest`, `UpperConv.canonInterval`, `UpperConv.Acan`, `UpperConv.vq`, `UpperConv.def_canonical_first`, `UpperConv.def_canonical_unique`, `UpperConv.def_canonical_interval`, `UpperConv.def_canonical_mono`, `UpperConv.def_canonical_partition`, `UpperConv.ex_canonical_firstPos`, `UpperConv.ex_canonical_intervals`, `U12a.reach` |  |
 | `def-pair` | `UpperConv.U`, `UpperConv.chi`, `UpperConv.compSet`, `UpperConv.def_pair_chi` |  |
 | `lem-conversion` | `UpperConv.IsInitialSeg`, `UpperConv.IsPieces`, `UpperConv.litSet`, `UpperConv.lowLetterSlots`, `UpperConv.IsConvIndex`, `UpperConv.lem_conversion`, `UpperConv.lem_conversion_singleton`, `CoverageRev2.strict_conversion`, `CoverageRev4.conv_lit_val` | `st-conv-lit`: `UpperConv.step_conv_lit`; `st-conv-eq`: `UpperConv.step_conv_eq`, `CoverageRev2.strict_conv_eq`; `st-conv-cov`: `UpperConv.step_conv_cov` |
-| `def-least` | `UpperConv.Precedes`, `UpperConv.leastOcc`, `UpperConv.IsLeastPath`, `UpperConv.def_least_spec`, `CoverageRev.occ_finite`, `Comments1102.mTree`, `UpperConv.mT`, `UpperConv.mSigma`, `UpperConv.treeSlots`, `UpperConv.K` |  |
+| `def-least` | `UpperConv.Precedes`, `UpperConv.leastOcc`, `UpperConv.IsLeastPath`, `UpperConv.def_least_spec`, `CoverageRev.occ_finite`, `Comments1102.mTree`, `UpperConv.mT`, `UpperConv.mSigma`, `UpperConv.treeSlots` |  |
 | `def-exit` | `U12a.BuiltFrom`, `U12a.IsCutEdgeTo`, `U12a.zetaE`, `Comments1102.IsExitEdge`, `Comments1102.edgeReach`, `UpperConv.IsCutDecomp` |  |
-| `lem-least` | `UpperConv.lem_least_b_prefix`, `UpperConv.lem_least_b_tree`, `UpperConv.lem_least_b_K`, `UpperConv.lem_least_b_treepath`, `RefereeRev.lem_least_a_rev`, `Comments1102.mTree_eq_mT` |  |
+| `lem-least` | `UpperConv.lem_least_b_prefix`, `UpperConv.lem_least_b_tree`, `UpperConv.lem_least_b_treepath`, `RefereeRev.lem_least_a_rev`, `Comments1102.mTree_eq_mT` |  |
 | `lem-cut` | `U12a.lem_cut`, `Comments1102.lem_cut` |  |
 | `lem-reach` | `U12a.lem_reach` |  |
 | `lem-split` | `U12a.lem_split_cases` (two cases; it follows from the earlier one-sentence form U12a.lem_split, kept untagged) | `st-split-literals`: none of its own, the step is part of the proof of U12a.lem_split_cases; `st-split-edges`: none of its own, as before; `st-split-groups`: none of its own, as before (steps of the paper's proof since cstar d181469; the earlier steps st-split-early, st-split-least, st-split-other are the blocks lem-early, lem-late-least, lem-late-other below) |
 | `def-pieces` | `Comments1102.IsEarlyPiece`, `Comments1102.IsLatePiece`, `Comments1102.literalCharge`, `Comments1102.pieceCost`, `Comments1102.earlyCost`, `Comments1102.lateLeastCost`, `Comments1102.lateCost`, `Comments1102.isSplitPieces_iff`, `Comments1102.literalCharge_late`, `Comments1102.charged_early_ncard` |  |
 | `lem-early` | `Comments1102.lem_early` |  |
-| `lem-late-least` | `Comments1102.lem_late_least` |  |
+| `lem-late-least` | `Relock1103K.lem_late_least_noK`, `Relock1103K.mSigma_le_size` |  |
 | `lem-late-other` | `Comments1102.lem_late_other` |  |
 | `def-forward` | `Method.ForwardEq`, `Method.targets`, `Method.FwdHolds`, `Method.rem_forward` |  |
 | `def-labelled` | `Method.Labelled`, `Method.Labelled.Valid`, `Method.Labelled.Outcome`, `Method.Labelled.Prob`, `Method.Labelled.bit`, `Method.Labelled.word`, `Method.Labelled.Carries`, `Method.Labelled.IsFirstPosition`, `Method.ex_labelled_valid`, `Method.ex_labelled_word`, `Method.ex_labelled_first`, `Method.ex_labelled_repeat` |  |
@@ -273,7 +273,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `prop-scheme` | `MethodRev.prop_scheme` | `st-scheme-cand`: `Method.step_prop_scheme_1_count`, `Method.step_prop_scheme_1_prob`; `st-scheme-event`: `Method.step_prop_scheme_2_event`; `st-scheme-bound`: `Method.step_prop_scheme_3` |
 | `tab-relay` | `Final1102.relayQ`, `Final1102.tab_relay`, `Final1102.relay_length_theta`, `Final1102.relay_length_power`, `Final1102.tab_relay_Lk`, `C1Coverage.why_quarter_relay` |  |
 | `thm-sc` | `C1Final.jointProb`, `C1Final.SCChain`, `C1Referee.thm_sc_rev`, `Comments1102.thm_sc` |  |
-| `ex-zlp-cont` | `UpperConv.exX`, `UpperConv.exEq1`, `UpperConv.exEq2`, `UpperConv.exEq3`, `UpperConv.exL`, `UpperConv.exΦ`, `UpperConv.ex_cont_params`, `UpperConv.ex_cont_least`, `UpperConv.ex_cont_tree`, `UpperConv.ex_cont_literals`, `UpperConv.ex_cont_eq_root`, `UpperConv.ex_cont_eq_s0`, `UpperConv.ex_cont_eq_s1`, `UpperConv.ex_cont_least_c_needed`, `UpperConv.ex_cont_ars`, `U12a.ex_cont_cut_u12a`, `RefereeRev.exL4`, `RefereeRev.exΦ4`, `RefereeRev.ex_cont_arc_le`, `CoverageRev4.ex_root_slot0` |  |
+| `ex-zlp-cont` | `UpperConv.exX`, `UpperConv.exEq1`, `UpperConv.exEq2`, `UpperConv.exEq3`, `UpperConv.exL`, `UpperConv.exΦ`, `UpperConv.ex_cont_params`, `UpperConv.ex_cont_least`, `Relock1103K.ex_cont_tree_noK`, `UpperConv.ex_cont_literals`, `UpperConv.ex_cont_eq_root`, `UpperConv.ex_cont_eq_s0`, `UpperConv.ex_cont_eq_s1`, `UpperConv.ex_cont_least_c_needed`, `UpperConv.ex_cont_ars`, `U12a.ex_cont_cut_u12a`, `RefereeRev.exL4`, `RefereeRev.exΦ4`, `RefereeRev.ex_cont_arc_le`, `CoverageRev4.ex_root_slot0` |  |
 | `rem-constant` | `CopyingInterleaving.Statements.rem_constant`, `ReadRev.rem_constant_all` |  |
 | `rem-arity` | `RemArity.rem_arity`, `RemArity.rem_arity_two` |  |
 | `lem-forward` | `Method.lem_forward`, `Sentences.lem_forward_sentences` |  |
