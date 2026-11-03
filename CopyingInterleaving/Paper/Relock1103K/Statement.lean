@@ -12,6 +12,9 @@ internal abbreviation of the older proofs; it is no longer tagged.
 * lem-late-least: `lem_late_least_noK` (`2 (m − m_Σ)` in place of `2 (m_𝒯 + K)`).
 * ex-zlp-cont: `ex_cont_tree_noK` ("so the two edges of `q_1` are the edges outside `𝒯` that lead to a vertex").
 
+Lean-lock re-check 6 (cstar 8f87e8d, user 2026-11-03: "ok then take the max form"): lem-split stated with ONE condition
+(a maximum) in place of its two cases: `lem_split_max` (the earlier `U12a.lem_split_cases` stays; its tag is retired).
+
 `m := |P|` is `size P` (main.typ, opening of §4 / App. A: "`m := |P|`"). The subtraction `size P − mSigma P` is
 natural subtraction; it is exact, as `m_Σ ≤ m` (`mSigma_le_size`, from `U12a.cnt_size_eq`).
 -/
@@ -57,5 +60,22 @@ theorem ex_cont_tree_noK :
     treeSlots exProg = {(.q0, 0), (.q0, 1)} ∧
       {s : ExV × ℕ | s ∈ vertexSlots exProg ∧ s ∉ treeSlots exProg} = {(.s, 0), (.s, 1)} :=
   ⟨ex_cont_tree.1, ex_cont_tree.2.2⟩
+
+/-- **lem-split** (main.typ @ 8f87e8d, "Adding up"): "Let `μ ≥ 1` be an integer and `λ ≥ μ + 2` real. If
+`N ≤ max{4μ(μ + 1), μ² λ (λ − μ)/4}`, then `ARC(x) ≤ λ m`." (`P` a ZLP with `x ⊑ val(P)`, `n = |x| ≥ 1`, as
+throughout §4; `N = n/d₀` is the real number `UpperConv.scaleN`, `m = |P|` is `size P`; the Lean's `lam` is `λ`.)
+From the earlier two-case form `U12a.lem_split_cases`: below the first term its first case gives
+`ARC(x) ≤ (μ + 2) m ≤ λ m`; below the second, `4N ≤ μ² λ (λ − μ)` and its second case applies. -/
+@[kb "cstarpaper-lem-split" (part := "Relock1103K: one condition")]
+theorem lem_split_max {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
+    (hn : 1 ≤ x.length) (μ : ℕ) (hμ : 1 ≤ μ) (lam : ℝ) (hlam : (μ : ℝ) + 2 ≤ lam)
+    (hN : scaleN P x.length ≤ max (4 * (μ : ℝ) * (μ + 1)) ((μ : ℝ) ^ 2 * lam * (lam - μ) / 4)) :
+    (ARC x : ℝ) ≤ lam * size P := by
+  obtain ⟨h1, h2⟩ := lem_split_cases P hP x hx hn μ hμ
+  rcases le_max_iff.mp hN with h | h
+  · have hA := h1 (by exact_mod_cast h)
+    have hm : (0 : ℝ) ≤ size P := Nat.cast_nonneg _
+    nlinarith
+  · exact h2 lam hlam (by linarith)
 
 end CopyingInterleaving.Paper.Relock1103K

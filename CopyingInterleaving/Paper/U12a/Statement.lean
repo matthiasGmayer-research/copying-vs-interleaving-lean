@@ -1838,7 +1838,7 @@ theorem lem_split {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) 
 `N ≤ 4μ(μ + 1)`, then `ARC(x) ≤ (μ + 2) m`. In general, `ARC(x) ≤ T m` for every real `T ≥ μ + 2` with
 `4N ≤ μ² T (T − μ)`." (`P` a ZLP with `x ⊑ val(P)`, `n = |x| ≥ 1`, as throughout §4; `N = scaleN P n`, `m = size P`.)
 The first case is the earlier form `lem_split` at `T = μ + 2`, the second its other disjunct. -/
-@[kb "cstarpaper-lem-split"]
+-- kb tag retired 2026-11-03 (cstar 8f87e8d, lem-split with one condition: Relock1103K.lem_split_max): @[kb "cstarpaper-lem-split"]
 theorem lem_split_cases {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
     (hn : 1 ≤ x.length) (μ : ℕ) (hμ : 1 ≤ μ) :
     (scaleN P x.length ≤ 4 * μ * (μ + 1) → (ARC x : ℝ) ≤ ((μ : ℝ) + 2) * size P) ∧
