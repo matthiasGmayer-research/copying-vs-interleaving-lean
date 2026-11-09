@@ -53,8 +53,8 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("76629495903f") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
-  359 modules · 656 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
+  #text(size: 10pt)[Lean repository revision #raw("5ff1bf19f8ba") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  360 modules · 658 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
 #block(inset: (x: 1cm))[#set text(size: 9.5pt)
@@ -71,20 +71,20 @@ tags (#raw("@[kb \"cstarpaper-<label>\"]")).]
 
 Section 1.3 of the paper (Formal Verification) states:
 
-#block(inset: (left: 1.2em), stroke: (left: 1pt + luma(180)))[Every numbered definition, statement and proof step of this paper's own development, apart from the comparisons in
-#raw("rem-measures") that rest on cited results, is formalised and proved in Lean 4 #raw("lean4") with Mathlib #raw("mathlib"), with the constants and the
-loss stated here, using only the standard axioms of Lean; of the cited results, only Kosoy's $ARC <= sZLC$, #raw("lem-occ")
-and two Chebyshev bounds in Mathlib are formalised, and formal deductions that use another cited comparison take it as
-a hypothesis.
+#block(inset: (left: 1.2em), stroke: (left: 1pt + luma(180)))[Every numbered definition, statement and proof step of this paper's own development is formalised and proved in
+Lean 4 #raw("lean4") with Mathlib #raw("mathlib"), using only the standard axioms of
+Lean. The exception is the comparisons in #raw("rem-measures") that rest on cited results. Of the cited results, only
+Kosoy's $ARC <= sZLC$, #raw("lem-occ") and two Chebyshev bounds in Mathlib are formalised; formal deductions that use another
+cited comparison take it as a hypothesis.
 The README of the Lean repository #raw("copying-interleaving-lean") gives the declarations of each numbered block and proof step.]
 
 The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-cut"), #raw("lem-early"), ...), not by their numbers, which change while the paper is revised. The Lean source tags each declaration with the label of the block it formalises (#raw("@[kb \"cstarpaper-<label>\"]")), and each tag records how the formal statement departs from the text.
 
 *Status.* Every numbered definition, statement and proof step of the paper's own development, apart from the comparisons in #raw("rem-measures") that rest on cited results, has a sorry-free Lean declaration (axioms #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")): the upper bound in its version U12a (#raw("CopyingInterleaving.Paper.U12a"), constant 2), the lower bound in its version C1/I1 (prime types, parameters of (k, L) for all integers k ≥ 2 and L ≥ 512 k log₂(k + 2): #raw("CopyingInterleaving.Paper.C1Params") … #raw("C1Lower"), #raw("C1Coverage"), #raw("C1Sent")), and #raw("prop-scheme"), the critical-set bound, with the bound of #raw("lem-random") (#raw("CopyingInterleaving.Paper.MethodRev.prop_scheme")). Sentences of the text outside the numbered blocks that state a fact are tagged as well (sentence anchors, #raw("@[kb \"cstarpaper-s-…\"]")); these tags locate the declarations and claim nothing beyond the statement above. The formalisations of earlier versions are kept in the repository (see "Earlier versions" below); their superseded statements no longer carry the paper's tags.
 
-In this revision, the table of @sec-map has a row for each of the paper's 67 numbered blocks, with the
+In this revision, the table of @sec-map has a row for each of the paper's 69 numbered blocks, with the
 declarations of their 34 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper"), #raw("tab-relay") (conventions and
-notation stated in those sections); 133 further tags anchor sentences of the paper's text.
+notation stated in those sections); 132 further tags anchor sentences of the paper's text.
 
 == Cited results
 
@@ -271,6 +271,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("thm-lower")], [#raw("C1Lower.lossFactor"), #raw("C1Lower.thm_lower")], [#raw("st-lower-prefix"): #raw("C1Lower.step_lower_prefix") \
 #raw("st-lower-lengths"): #raw("C1Lower.step_lower_lengths") \
 #raw("st-lower-assemble"): #raw("C1Lower.step_lower_assemble")],
+  [#raw("rem-regime")], [#raw("Relock1109.rem_regime_upper")], [the uniform statement, the k → ∞ form and the asymptotic form are not formalised yet (pending, sorry, not exported)],
   [#raw("cor-cstar")], [#raw("CopyingInterleaving.Statements.AdmissibleO"), #raw("CopyingInterleaving.Statements.AdmissibleOAlpha"), #raw("CopyingInterleaving.Statements.cor_cstar"), #raw("CopyingInterleaving.Statements.cor_cstar_fixed_alphabet"), #raw("Intro.cor_cstar_i"), #raw("Intro.cor_cstar_ii"), #raw("IntroRev.cor_cstar"), #raw("CorDirect.cor_cstar")], [],
   [#raw("cor-szlc")], [#raw("CoverageRev.no_polylog_szlc_zlc"), #raw("CorDirect.cor_szlc")], [],
   [#raw("prop-reverse")], [#raw("CopyingInterleaving.ReverseUpper.zlc_le_arc"), #raw("Reverse.prop_reverse_i"), #raw("ReverseZ.prop_reverse_second"), #raw("ReverseZ.prop_reverse")], [],
@@ -280,26 +281,27 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("def-zip")], [#raw("Prelim.zip"), #raw("Prelim.def_zip_spec"), #raw("Prelim.zip_round_robin")], [],
   [#raw("def-zlp")], [#raw("Prelim.Program"), #raw("Prelim.IsZLP"), #raw("Prelim.value"), #raw("Prelim.val"), #raw("Prelim.ell"), #raw("Prelim.size"), #raw("Prelim.ZLC"), #raw("Prelim.IsSynchronous"), #raw("Prelim.sZLC"), #raw("Prelim.synchronous_iff_paths"), #raw("CoverageRev.zlc_prefix_mono")], [],
   [#raw("def-path")\; paths to letters in #raw("app-upper-conv")], [#raw("Prelim.IsPath"), #raw("Prelim.IsPathTo"), #raw("Prelim.pathProduct"), #raw("Prelim.IsRootPath"), #raw("CoverageRev.every_vertex_root_path"), #raw("CoverageRev.value_zip_rule"), #raw("RefereeRev.IsPathToLetter"), #raw("RefereeRev.def_path_letter_follow"), #raw("RefereeRev.def_path_letter_slots"), #raw("Comments1102.height"), #raw("Comments1102.depth_eq_height_root")], [],
-  [#raw("def-occ")], [#raw("Prelim.Occ"), #raw("Prelim.OccVia"), #raw("Prelim.occ"), #raw("Prelim.def_occ_root"), #raw("Prelim.def_occ_child"), #raw("Prelim.def_occ_form")], [],
+  [#raw("def-occ")], [#raw("Prelim.Occ"), #raw("Prelim.OccVia"), #raw("Prelim.occ"), #raw("Prelim.def_occ_root"), #raw("Prelim.def_occ_child"), #raw("Prelim.def_occ_form"), #raw("Relock1109.childOcc"), #raw("Relock1109.def_occ_child"), #raw("U12a.BuiltFrom")], [],
   [#raw("lem-occ")], [#raw("Prelim.lem_occ_a"), #raw("Prelim.lem_occ_b"), #raw("Prelim.lem_occ_bij")], [],
   [#raw("ex-zlp")], [#raw("Prelim.exProg"), #raw("Prelim.ex_zlp_isZLP"), #raw("Prelim.ex_zlp_values"), #raw("Prelim.ex_zlp_length"), #raw("Prelim.ex_zlp_occ"), #raw("Prelim.sync_same_step"), #raw("Prelim.ex_zlp_not_sync"), #raw("ExZlpRev.sync_iff_same_step"), #raw("ExZlpRev.gap_diff_steps")], [],
   [#raw("sec-upper"), notation], [#raw("UpperConv.d0"), #raw("UpperConv.scaleN"), #raw("UpperConv.sec_upper_two_card"), #raw("CoverageRev.occ_step_dvd_d0")], [],
   [#raw("lem-lower")], [#raw("Comments1102.lem_lower")], [],
   [#raw("thm-scale")], [#raw("U12a.thm_scale")], [],
-  [#raw("def-canonical")], [#raw("UpperConv.firstPos"), #raw("UpperConv.IsLowest"), #raw("UpperConv.canonInterval"), #raw("UpperConv.Acan"), #raw("UpperConv.vq"), #raw("UpperConv.def_canonical_first"), #raw("UpperConv.def_canonical_unique"), #raw("UpperConv.def_canonical_interval"), #raw("UpperConv.def_canonical_mono"), #raw("UpperConv.def_canonical_partition"), #raw("UpperConv.ex_canonical_firstPos"), #raw("UpperConv.ex_canonical_intervals"), #raw("U12a.reach")], [],
+  [#raw("def-canonical")], [#raw("UpperConv.firstPos"), #raw("UpperConv.IsLowest"), #raw("UpperConv.canonInterval"), #raw("UpperConv.vq"), #raw("UpperConv.def_canonical_first"), #raw("UpperConv.def_canonical_unique"), #raw("UpperConv.def_canonical_interval"), #raw("UpperConv.def_canonical_mono"), #raw("UpperConv.def_canonical_partition"), #raw("UpperConv.ex_canonical_firstPos"), #raw("UpperConv.ex_canonical_intervals"), #raw("U12a.reach")], [],
   [#raw("def-pair")], [#raw("UpperConv.U"), #raw("UpperConv.chi"), #raw("UpperConv.compSet"), #raw("UpperConv.def_pair_chi")], [],
-  [#raw("lem-conversion")], [#raw("UpperConv.IsInitialSeg"), #raw("UpperConv.IsPieces"), #raw("UpperConv.litSet"), #raw("UpperConv.lowLetterSlots"), #raw("UpperConv.IsConvIndex"), #raw("UpperConv.lem_conversion"), #raw("UpperConv.lem_conversion_singleton"), #raw("CoverageRev2.strict_conversion"), #raw("CoverageRev4.conv_lit_val")], [#raw("st-conv-lit"): #raw("UpperConv.step_conv_lit") \
+  [#raw("lem-conversion")], [#raw("UpperConv.IsInitialSeg"), #raw("UpperConv.IsPieces"), #raw("UpperConv.litSet"), #raw("UpperConv.lowLetterSlots"), #raw("UpperConv.IsConvIndex"), #raw("UpperConv.lem_conversion_singleton"), #raw("CoverageRev2.strict_conversion"), #raw("CoverageRev4.conv_lit_val"), #raw("Relock1109.pieceLits"), #raw("Relock1109.lem_conversion_list")], [#raw("st-conv-lit"): #raw("UpperConv.step_conv_lit") \
 #raw("st-conv-eq"): #raw("UpperConv.step_conv_eq"), #raw("CoverageRev2.strict_conv_eq") \
 #raw("st-conv-cov"): #raw("UpperConv.step_conv_cov")],
   [#raw("def-least")], [#raw("UpperConv.Precedes"), #raw("UpperConv.leastOcc"), #raw("UpperConv.IsLeastPath"), #raw("UpperConv.def_least_spec"), #raw("CoverageRev.occ_finite"), #raw("Comments1102.mTree"), #raw("UpperConv.mT"), #raw("UpperConv.mSigma"), #raw("UpperConv.treeSlots")], [],
-  [#raw("def-exit")], [#raw("U12a.BuiltFrom"), #raw("U12a.IsCutEdgeTo"), #raw("U12a.zetaE"), #raw("Comments1102.IsExitEdge"), #raw("Comments1102.edgeReach"), #raw("UpperConv.IsCutDecomp")], [],
+  [#raw("def-exit")], [#raw("U12a.IsCutEdgeTo"), #raw("U12a.zetaE"), #raw("Comments1102.IsExitEdge"), #raw("Comments1102.edgeReach"), #raw("UpperConv.IsCutDecomp")], [],
   [#raw("lem-least")], [#raw("UpperConv.lem_least_b_prefix"), #raw("UpperConv.lem_least_b_tree"), #raw("UpperConv.lem_least_b_treepath"), #raw("RefereeRev.lem_least_a_rev"), #raw("Comments1102.mTree_eq_mT")], [],
   [#raw("lem-cut")], [#raw("U12a.lem_cut"), #raw("Comments1102.lem_cut")], [],
   [#raw("lem-reach")], [#raw("U12a.lem_reach")], [],
-  [#raw("lem-split")], [#raw("Relock1103K.lem_split_max") (one condition, a max; it follows from the two-case form U12a.lem\_split\_cases, kept untagged)], [#raw("st-split-literals"): none of its own, the step is part of the proof of U12a.lem\_split\_cases, from which Relock1103K.lem\_split\_max follows \
+  [#raw("lem-split")], [#raw("Relock1109.lem_split_single")], [#raw("st-split-literals"): none of its own, the step is part of the proof of U12a.lem\_split\_cases, from which Relock1103K.lem\_split\_max (retired tag) and Relock1109.lem\_split\_single follow \
 #raw("st-split-edges"): none of its own, as before \
 #raw("st-split-groups"): none of its own, as before (steps of the paper's proof since cstar d181469; the earlier steps st-split-early, st-split-least, st-split-other are the blocks lem-early, lem-late-least, lem-late-other below)],
-  [#raw("def-pieces")], [#raw("Comments1102.IsEarlyPiece"), #raw("Comments1102.IsLatePiece"), #raw("Comments1102.literalCharge"), #raw("Comments1102.pieceCost"), #raw("Comments1102.earlyCost"), #raw("Comments1102.lateLeastCost"), #raw("Comments1102.lateCost"), #raw("Comments1102.isSplitPieces_iff"), #raw("Comments1102.literalCharge_late"), #raw("Comments1102.charged_early_ncard")], [],
+  [#raw("lem-split-small")], [#raw("Relock1109.lem_split_small")], [],
+  [#raw("def-pieces")], [#raw("Comments1102.IsEarlyPiece"), #raw("Comments1102.IsLatePiece"), #raw("Comments1102.earlyCost"), #raw("Comments1102.lateLeastCost"), #raw("Comments1102.lateCost"), #raw("Comments1102.isSplitPieces_iff"), #raw("Comments1102.literalCharge_late"), #raw("Comments1102.charged_early_ncard"), #raw("Relock1109.literalCount"), #raw("Relock1109.pieceCostText"), #raw("Relock1109.pieceCostText_eq")], [],
   [#raw("lem-early")], [#raw("Comments1102.lem_early")], [],
   [#raw("lem-late-least")], [#raw("Relock1103K.lem_late_least_noK")], [],
   [#raw("lem-late-other")], [#raw("Comments1102.lem_late_other")], [],
@@ -313,10 +315,10 @@ Each numbered definition, statement and proof step of the paper's own developmen
 #raw("st-scheme-event"): #raw("Method.step_prop_scheme_2_event") \
 #raw("st-scheme-bound"): #raw("Method.step_prop_scheme_3")],
   [#raw("tab-relay")], [#raw("Final1102.relayQ"), #raw("Final1102.tab_relay"), #raw("Final1102.relay_length_theta"), #raw("Final1102.relay_length_power"), #raw("Final1102.tab_relay_Lk"), #raw("C1Coverage.why_quarter_relay")], [],
-  [#raw("thm-sc")], [#raw("C1Final.jointProb"), #raw("C1Final.SCChain"), #raw("C1Referee.thm_sc_rev"), #raw("Comments1102.thm_sc")], [],
-  [#raw("ex-zlp-cont")], [#raw("UpperConv.exX"), #raw("UpperConv.exEq1"), #raw("UpperConv.exEq2"), #raw("UpperConv.exEq3"), #raw("UpperConv.exL"), #raw("UpperConv.exΦ"), #raw("UpperConv.ex_cont_params"), #raw("UpperConv.ex_cont_least"), #raw("Relock1103K.ex_cont_tree_noK"), #raw("UpperConv.ex_cont_literals"), #raw("UpperConv.ex_cont_eq_root"), #raw("UpperConv.ex_cont_eq_s0"), #raw("UpperConv.ex_cont_eq_s1"), #raw("UpperConv.ex_cont_least_c_needed"), #raw("UpperConv.ex_cont_ars"), #raw("U12a.ex_cont_cut_u12a"), #raw("RefereeRev.exL4"), #raw("RefereeRev.exΦ4"), #raw("RefereeRev.ex_cont_arc_le"), #raw("CoverageRev4.ex_root_slot0")], [],
+  [#raw("thm-sc")], [#raw("C1Final.jointProb"), #raw("C1Final.SCChain"), #raw("C1Referee.thm_sc_rev"), #raw("Relock1109.thm_sc_chain")], [],
+  [#raw("ex-zlp-cont")], [#raw("UpperConv.exX"), #raw("UpperConv.exEq1"), #raw("UpperConv.exEq2"), #raw("UpperConv.exEq3"), #raw("UpperConv.exL"), #raw("UpperConv.exΦ"), #raw("UpperConv.ex_cont_params"), #raw("UpperConv.ex_cont_least"), #raw("Relock1103K.ex_cont_tree_noK"), #raw("UpperConv.ex_cont_literals"), #raw("UpperConv.ex_cont_eq_root"), #raw("UpperConv.ex_cont_eq_s0"), #raw("UpperConv.ex_cont_eq_s1"), #raw("UpperConv.ex_cont_least_c_needed"), #raw("UpperConv.ex_cont_ars"), #raw("U12a.ex_cont_cut_u12a"), #raw("CoverageRev4.ex_root_slot0")], [],
   [#raw("rem-constant")], [#raw("CopyingInterleaving.Statements.rem_constant"), #raw("ReadRev.rem_constant_all")], [],
-  [#raw("rem-arity")], [#raw("RemArity.rem_arity"), #raw("RemArity.rem_arity_two")], [],
+  [#raw("rem-arity")], [#raw("Relock1109.rem_arity_nonroot"), #raw("Relock1109.rem_arity_nonroot_two")], [],
   [#raw("lem-forward")], [#raw("Method.lem_forward"), #raw("Sentences.lem_forward_sentences")], [],
   [#raw("def-params")], [#raw("C1Params.Lk"), #raw("C1Params.X"), #raw("C1Params.B"), #raw("C1Params.W"), #raw("C1Params.u"), #raw("C1Params.e"), #raw("C1Params.M"), #raw("C1Params.g"), #raw("C1Params.Λ"), #raw("C1Params.H"), #raw("C1Params.primesP"), #raw("C1Params.IsType"), #raw("C1Params.IsGood"), #raw("C1Final.step_params_basic")], [],
   [#raw("lem-slopes")], [#raw("C1Params.goodIn"), #raw("C1Params.lem_slopes")], [#raw("st-slopes-types"): #raw("C1Params.step_slopes_types") \
@@ -328,7 +330,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("def-slots")], [#raw("C1Structure.c"), #raw("C1Structure.Γ"), #raw("C1Structure.η"), #raw("C1Structure.q"), #raw("C1Structure.def_sc_eta")], [],
   [#raw("lem-slots")], [#raw("C1Structure.step_struct_b_distinct"), #raw("C1Structure.lem_structure_a_c"), #raw("C1Structure.lem_structure_a_cbound"), #raw("C1Structure.lem_structure_b_q"), #raw("C1Slots.lem_slots"), #raw("C1Slots.lem_slots_b"), #raw("C1Structure.lem_structure_b")], [],
   [#raw("def-sc")], [#raw("C1Structure.Dict"), #raw("C1Structure.n"), #raw("C1Structure.J"), #raw("C1Structure.PtrBits"), #raw("C1Structure.IsVertex"), #raw("C1Structure.IsZeroWord"), #raw("C1Structure.U"), #raw("C1Structure.V"), #raw("C1Structure.G"), #raw("C1Structure.parentChild"), #raw("C1Structure.rawδ"), #raw("C1Structure.pre"), #raw("C1Structure.Pk"), #raw("C1Structure.x"), #raw("C1Structure.def_sc_closed"), #raw("C1Structure.def_sc_zero"), #raw("C1Structure.def_sc_free_levels"), #raw("C1Slots.def_sc_slot")], [],
-  [#raw("def-raw")], [#raw("C1Structure.Cell"), #raw("C1Structure.RC"), #raw("C1Structure.pos"), #raw("C1Structure.cellOf"), #raw("C1Structure.timeOf"), #raw("C1Cores.step_pi_lt_R")], [],
+  [#raw("def-raw")], [#raw("C1Structure.Cell"), #raw("C1Structure.RC"), #raw("C1Structure.pos"), #raw("C1Structure.cellOf"), #raw("C1Structure.timeOf"), #raw("C1Cores.step_pi_lt_R"), #raw("Relock1109.def_raw_carries")], [],
   [#raw("def-critical")], [#raw("C1Cores.IsCoreCell"), #raw("C1Cores.point"), #raw("C1Cores.pointRC"), #raw("C1Cores.Sprime"), #raw("C1Cores.IsInnerCell"), #raw("C1Cores.S"), #raw("C1Cores.def_critical_subset"), #raw("C1Cores.def_critical_point"), #raw("C1Cores.Sprime_finite"), #raw("C1Cores.S_finite"), #raw("C1Cores.point_injective")], [],
   [#raw("lem-structure")], [#raw("C1Structure.label"), #raw("C1Structure.LW"), #raw("C1Structure.ReadThroughZero"), #raw("C1Structure.ReadThroughCol"), #raw("C1Structure.lem_structure_a_pre"), #raw("C1Structure.two_le_R"), #raw("C1Structure.lem_structure_a"), #raw("C1Structure.lem_structure_c_lengths_low"), #raw("C1Structure.lem_structure_shifts_pre"), #raw("C1Structure.lem_structure_c_lengths_high"), #raw("C1Structure.lem_structure_c_read"), #raw("C1Structure.lem_structure_c"), #raw("C1Structure.lem_structure_labelled")], [#raw("st-struct-length"): #raw("C1Structure.step_struct_c1") \
 #raw("st-struct-decode"): #raw("C1StructureRev.step_struct_c2_rev") \
@@ -388,7 +390,7 @@ Dependency routes (#raw("python3 tools/deps.py README.md") runs #raw("lake env l
 
 The formalisation uses Lean 4 at the toolchain #raw("leanprover/lean4:v4.33.0-rc1") (#raw("lean-toolchain")) and Mathlib at the tag #raw("v4.33.0-rc1") (commit #raw("79d0395"), pinned in #raw("lake-manifest.json")). #raw("lake exe cache get && lake build") builds the formalisation. Then #raw("lake env lean Check.lean") prints the statements (#raw("#check")) and the axioms on which the main declarations depend; they are among #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound"). This repository is exported from the author's research project (#raw("export.sh")); the export renames the research project's root namespace #raw("SP") to #raw("CopyingInterleaving") and its #raw("CstarText") to #raw("Paper") (the recorded map is #raw("rename_map.py"), applied by #raw("export.sh")); the revision-history modules keep their names. To build: #raw("git clone git@github.com:matthiasGmayer-research/copying-vs-interleaving-lean.git"), then the commands above (the Lake package is #raw("copying-vs-interleaving-lean"), the library #raw("CopyingInterleaving")).
 
-The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 359 modules.
+The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 360 modules.
 
 == The audit file Check.lean
 
