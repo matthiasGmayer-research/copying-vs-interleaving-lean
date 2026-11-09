@@ -241,7 +241,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `rem-regime` | `Relock1109.rem_regime_upper` | the uniform statement, the k → ∞ form and the asymptotic form are not formalised yet (pending, sorry, not exported) |
 | `cor-cstar` | `CopyingInterleaving.Statements.AdmissibleO`, `CopyingInterleaving.Statements.AdmissibleOAlpha`, `CopyingInterleaving.Statements.cor_cstar`, `CopyingInterleaving.Statements.cor_cstar_fixed_alphabet`, `Intro.cor_cstar_i`, `Intro.cor_cstar_ii`, `IntroRev.cor_cstar`, `CorDirect.cor_cstar` |  |
 | `cor-szlc` | `CoverageRev.no_polylog_szlc_zlc`, `CorDirect.cor_szlc` |  |
-| `prop-reverse` | `CopyingInterleaving.ReverseUpper.zlc_le_arc`, `Reverse.prop_reverse_i`, `ReverseZ.prop_reverse_second`, `ReverseZ.prop_reverse` |  |
+| `prop-reverse` | `ReverseZ.prop_reverse_second`, `Relock1111.prop_reverse_a`, `Relock1111.prop_reverse` |  |
 | `sec-prelim`, conventions | `Prelim.log2`, `Prelim.slice` |  |
 | `def-interval` | `Prelim.ArithInterval`, `Prelim.readAt`, `Prelim.readLen`, `Prelim.def_interval_prefix`, `Prelim.def_interval_read`, `CoverageRev.interval_step_determined` |  |
 | `def-ars` | `Prelim.Covers`, `Prelim.IsARS`, `Prelim.ARC`, `Prelim.literals`, `Prelim.ars_determines`, `Prelim.arc_le_length`, `WordRev.CoversText`, `WordRev.covers_iff_coversText` |  |
@@ -263,7 +263,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `lem-cut` | `U12a.lem_cut`, `Comments1102.lem_cut` |  |
 | `lem-reach` | `U12a.lem_reach` |  |
 | `lem-split` | `Relock1109.lem_split_single` | `st-split-literals`: none of its own, the step is part of the proof of U12a.lem_split_cases, from which Relock1103K.lem_split_max (retired tag) and Relock1109.lem_split_single follow; `st-split-edges`: none of its own, as before; `st-split-groups`: none of its own, as before (steps of the paper's proof since cstar d181469; the earlier steps st-split-early, st-split-least, st-split-other are the blocks lem-early, lem-late-least, lem-late-other below) |
-| `lem-split-small` | `Relock1109.lem_split_small` |  |
+| `lem-split-small` | `Relock1111.lem_split_small` |  |
 | `def-pieces` | `Comments1102.IsEarlyPiece`, `Comments1102.IsLatePiece`, `Comments1102.earlyCost`, `Comments1102.lateLeastCost`, `Comments1102.lateCost`, `Comments1102.isSplitPieces_iff`, `Comments1102.literalCharge_late`, `Comments1102.charged_early_ncard`, `Relock1109.literalCount`, `Relock1109.pieceCostText`, `Relock1109.pieceCostText_eq` |  |
 | `lem-early` | `Comments1102.lem_early` |  |
 | `lem-late-least` | `Relock1103K.lem_late_least_noK` |  |
@@ -278,7 +278,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `ex-zlp-cont` | `UpperConv.exX`, `UpperConv.exEq1`, `UpperConv.exEq2`, `UpperConv.exEq3`, `UpperConv.exL`, `UpperConv.exΦ`, `UpperConv.ex_cont_params`, `UpperConv.ex_cont_least`, `Relock1103K.ex_cont_tree_noK`, `UpperConv.ex_cont_literals`, `UpperConv.ex_cont_eq_root`, `UpperConv.ex_cont_eq_s0`, `UpperConv.ex_cont_eq_s1`, `UpperConv.ex_cont_least_c_needed`, `UpperConv.ex_cont_ars`, `U12a.ex_cont_cut_u12a`, `CoverageRev4.ex_root_slot0` |  |
 | `rem-constant` | `CopyingInterleaving.Statements.rem_constant`, `ReadRev.rem_constant_all` |  |
 | `rem-arity` | `Relock1109.rem_arity_nonroot`, `Relock1109.rem_arity_nonroot_two` |  |
-| `lem-forward` | `Method.lem_forward`, `Sentences.lem_forward_sentences` |  |
+| `lem-forward` | `Relock1111.lem_forward` |  |
 | `def-params` | `C1Params.Lk`, `C1Params.X`, `C1Params.B`, `C1Params.W`, `C1Params.u`, `C1Params.e`, `C1Params.M`, `C1Params.g`, `C1Params.Λ`, `C1Params.H`, `C1Params.primesP`, `C1Params.IsType`, `C1Params.IsGood`, `C1Final.step_params_basic` |  |
 | `lem-slopes` | `C1Params.goodIn`, `C1Params.lem_slopes` | `st-slopes-types`: `C1Params.step_slopes_types`; `st-slopes-mult`: `C1Params.step_slopes_mult`; `st-slopes-window`: `C1Params.step_slopes_window` |
 | `def-slopes` | `C1Params.goodWindow`, `C1Params.s`, `C1Params.IsLexLeastType`, `C1Params.typeOf`, `C1Params.Ψ`, `C1Params.a`, `C1Params.Ψstar`, `C1Params.Δ`, `C1Params.def_slopes_enough`, `C1Params.def_slopes_type`, `C1Params.def_slopes_a`, `C1Params.def_slopes_psi`, `Final1102.def_slopes_type_primes` |  |
@@ -302,7 +302,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 | `lem-u` | `C1LemU.hits`, `C1LemU.Nhit`, `C1LemU.geomExp`, `C1LemU.lem_u`, `Comments1102.lem_u` | `st-u-hit`: `C1LemU.step_1`; `st-u-moment`: `C1LemU.step_2_recursion`, `C1LemU.step_2`; `st-u-root`: `C1LemU.step_3` |
 | `lem-params` | `C1Params.SP_`, `C1Params.lem_params` |  |
 | `def-section` | `Reverse.sec`, `Reverse.Comparable` |  |
-| `lem-rev-upper` | `Reverse.lem_rev_upper` | `st-revup-arc`: `Reverse.step_lem_rev_upper_1`; `st-revup-cases`: `Simplify1103.step_revup_cases`; `st-revup-final`: `Simplify1103.step_revup_final` |
+| `lem-rev-upper` | `Relock1111.lem_rev_upper` | `st-revup-arc`: `Reverse.step_lem_rev_upper_1`; `st-revup-cases`: `Simplify1103.step_revup_cases`; `st-revup-final`: `Simplify1103.step_revup_final` |
 | `def-rev-words` | `ReverseZ.Nm`, `ReverseZ.zm`, `ReverseZ.mOf`, `ReverseZ.xn`, `ReverseZ.s_def_rev_words_unique`, `ReverseZ.def_rev_words_length`, `ReverseZ.s_def_rev_words_blocks`, `Reverse.xm`, `Reverse.T`, `ReverseZ.blockStart` |  |
 | `lem-rev-arc` | `ReverseZ.lem_rev_arc` |  |
 | `lem-sections` | `ReverseZ.lem_sections`, `Comments1102.lem_sections` | `st-sec-first`: `ReverseZ.step_lem_sections_first`; `st-sec-pair`: `ReverseZ.step_lem_sections_pair`; `st-sec-congr`: `ReverseZ.step_lem_sections_congr` |

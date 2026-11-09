@@ -35,7 +35,7 @@ open CopyingInterleaving
 `ZLC(x) ≤ C₀ n/log(n+1) · ARC(x)`." Logarithms base 2.
 -- convention: `Σ` is any non-empty type (finiteness unused: the word has finitely many symbols); `0 < C₀` added
 (an absolute constant; harmless, as `ZLC ≥ 2`). Structure line: steps 1–3, then "Finally `log(d+1) ≤ d ≤ ARC`". -/
-@[kb "cstarpaper-lem-rev-upper"]
+-- kb tag retired 2026-11-09 (cstar 528e353, read-check relock: last clause now ZLC ≤ C₀ n log(ARC + 1)/log(n + 1), Relock1111.lem_rev_upper): @[kb "cstarpaper-lem-rev-upper"]
 theorem lem_rev_upper : ∃ C₀ : ℝ, 0 < C₀ ∧ ∀ {α : Type} [Nonempty α] (x : List α), 2 ≤ x.length →
     (ZLC x : ℝ) ≤ C₀ * x.length * CopyingInterleaving.log2 ((numSymbols x : ℝ) + 1) / CopyingInterleaving.log2 ((x.length : ℝ) + 1) ∧
     numSymbols x ≤ ARC x ∧
@@ -118,7 +118,7 @@ theorem lem_rev_zlc (m : ℕ) (hm : 3 ≤ m) :
 /-- prop-reverse, first statement (main.typ:142–143): "There is a constant `C` with
 `ZLC(x) ≤ C n/log(n+1) · ARC(x)` for every word `x ∈ Σ^n`, `n ≥ 2`." Proof: "The first statement is
 lem-rev-upper." Logarithm base 2. Coexists with `CopyingInterleaving.ReverseUpper.zlc_le_arc` (natural log, other route). -/
-@[kb "cstarpaper-prop-reverse" (part := "first statement: ZLC ≤ C n/log(n+1) ARC, paper route (Paper)")]
+-- kb tag retired 2026-11-09 (cstar 528e353, read-check relock: (a) now ZLC ≤ C n log(ARC + 1)/log(n + 1), Relock1111.prop_reverse_a): @[kb "cstarpaper-prop-reverse" (part := "first statement: ZLC ≤ C n/log(n+1) ARC, paper route (Paper)")]
 theorem prop_reverse_i : ∃ C : ℝ, ∀ {α : Type} [Nonempty α] (x : List α), 2 ≤ x.length →
     (ZLC x : ℝ) ≤ C * x.length / CopyingInterleaving.log2 ((x.length : ℝ) + 1) * ARC x := by
   obtain ⟨C, -, h⟩ := lem_rev_upper

@@ -20,7 +20,7 @@ open CopyingInterleaving
 `T := {t : α(t) < α'(t) < n}`. Then `T` is an interval `[t₀, t₁)` of integers, `x[α(t)] = x[α'(t)]` for
 all `t ∈ T`, and `α'(T)` is the set of the positions covered by `(α, α')`.
 convention: "positions covered" are positions of `x` (`i < n`). -/
-@[kb "cstarpaper-lem-forward"]
+-- kb tag retired 2026-11-09 (cstar 528e353, read-check relock: lem-forward now for any progressions with |α| = |α'| and x[α] = x[α'], restriction is a forward equation; Relock1111.lem_forward): @[kb "cstarpaper-lem-forward"]
 theorem lem_forward {α : Type} (x : List α) (L : Finset (α × ℕ))
     (Φ : Finset (ArithInterval × ArithInterval)) (hARS : IsARS x L Φ)
     (A B : ArithInterval) (hAB : (A, B) ∈ Φ) :

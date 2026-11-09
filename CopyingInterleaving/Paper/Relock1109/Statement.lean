@@ -207,7 +207,7 @@ theorem lem_split_single {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : Li
 
 /-- **lem-split-small** (main.typ @ 44b0700, "Small `N`", App. A.5): "Let `μ ≥ 1` be an integer and `λ ≥ μ + 2`
 real. If `N ≤ 4μ(μ + 1)`, then `ARC(x) ≤ λ m`." From `Relock1103K.lem_split_max`. -/
-@[kb "cstarpaper-lem-split-small" (part := "Relock1109: N ≤ 4μ(μ + 1)")]
+-- kb tag retired 2026-11-09 (cstar 528e353, read-check relock: λ dropped, superseded by Relock1111.lem_split_small): @[kb "cstarpaper-lem-split-small" (part := "Relock1109: N ≤ 4μ(μ + 1)")]
 theorem lem_split_small {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
     (hn : 1 ≤ x.length) (μ : ℕ) (hμ : 1 ≤ μ) (lam : ℝ) (hlam : (μ : ℝ) + 2 ≤ lam)
     (hN : scaleN P x.length ≤ 4 * (μ : ℝ) * (μ + 1)) :

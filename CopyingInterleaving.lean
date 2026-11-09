@@ -222,6 +222,7 @@ import CopyingInterleaving.Paper.RefereeRev.Statement
 import CopyingInterleaving.Paper.RelayRev.Statement
 import CopyingInterleaving.Paper.Relock1103K.Statement
 import CopyingInterleaving.Paper.Relock1109.Statement
+import CopyingInterleaving.Paper.Relock1111.Statement
 import CopyingInterleaving.Paper.RemArity.Statement
 import CopyingInterleaving.Paper.RemMeasures.Defs
 import CopyingInterleaving.Paper.RemMeasures.Every

@@ -191,7 +191,7 @@ theorem s_lem_forward_covered {α : Type} (x : List α) (A B : ArithInterval) :
   · rintro ⟨t, ⟨ht, hlt, hi⟩, rfl⟩; exact ⟨hi, t, ht, hlt, rfl⟩
 
 /-- lem-forward from the sentences of its proof (the statement of `Method.lem_forward`). -/
-@[kb "cstarpaper-lem-forward" (part := "from the sentences of the proof")]
+-- kb tag retired 2026-11-09 (cstar 528e353, read-check relock: ARS form superseded by Relock1111.lem_forward): @[kb "cstarpaper-lem-forward" (part := "from the sentences of the proof")]
 theorem lem_forward_sentences {α : Type} (x : List α) (L : Finset (α × ℕ))
     (Φ : Finset (ArithInterval × ArithInterval)) (hARS : IsARS x L Φ)
     (A B : ArithInterval) (hAB : (A, B) ∈ Φ) :

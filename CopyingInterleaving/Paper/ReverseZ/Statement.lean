@@ -22,7 +22,7 @@ open CopyingInterleaving CopyingInterleaving.Paper.Reverse
 /-! ## The proof of prop-reverse (main.typ:2904–2915) -/
 
 /-- main.typ:2905: "The first statement is @lem-rev-upper." (`Reverse.prop_reverse_i`, from lem-rev-upper.) -/
-@[kb "cstarpaper-s-prop-reverse-first"]
+-- kb tag retired 2026-11-09 (cstar 528e353, read-check relock: Relock1111.s_prop_reverse_first): @[kb "cstarpaper-s-prop-reverse-first"]
 theorem s_prop_reverse_first : ∃ C : ℝ, ∀ {α : Type} [Nonempty α] (x : List α), 2 ≤ x.length →
     (ZLC x : ℝ) ≤ C * x.length / CopyingInterleaving.log2 ((x.length : ℝ) + 1) * ARC x :=
   CopyingInterleaving.Paper.Reverse.prop_reverse_i
@@ -202,7 +202,7 @@ length `n` with `ZLC(x) ≥ n ARC(x)/(64 log² n)`." Logarithms base 2.
 -- convention: the alphabet of the first statement is any non-empty type (finiteness is not needed), which only
 strengthens it. Proof: "The first statement is @lem-rev-upper" (`Reverse.prop_reverse_i`), the second
 `prop_reverse_second`. -/
-@[kb "cstarpaper-prop-reverse"]
+-- kb tag retired 2026-11-09 (cstar 528e353, read-check relock: (a) strengthened, Relock1111.prop_reverse): @[kb "cstarpaper-prop-reverse"]
 theorem prop_reverse :
     (∃ C : ℝ, ∀ {α : Type} [Nonempty α] (x : List α), 2 ≤ x.length →
       (ZLC x : ℝ) ≤ C * x.length * ARC x / CopyingInterleaving.log2 ((x.length : ℝ) + 1)) ∧
