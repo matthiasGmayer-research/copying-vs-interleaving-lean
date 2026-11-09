@@ -783,7 +783,7 @@ satisfies, for every outcome, `|S|/(u² − 1) ≥ H/(12u²) |𝒫_k| ≥ n^(1/4
 For `(k, L)` (def-sc; `x_k = x_(k, L_k)` in §5). "Every outcome": every geometry and all pointers and bits; the law is
 `C1Final.jointProb`. The deterministic part is the local `hdet` of `C1Referee.thm_sc_rev` (Codex lock analysis,
 kernel-checked); the probabilistic part projects `C1Final.SCChain`. -/
-@[kb "cstarpaper-thm-sc" (part := "Comments1102: deterministic chain for every outcome, ARC bound with probability")]
+-- kb tag retired 2026-11-09 (cstar 44b0700: the whole chain with probability; Relock1109.thm_sc_chain): @[kb "cstarpaper-thm-sc" (part := "Comments1102: deterministic chain for every outcome, ARC bound with probability")]
 theorem thm_sc (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * CopyingInterleaving.log2 ((k : ℝ) + 2) ≤ L) :
     (∀ σ : (C1Gadgets.paper k L).Geometry, (C1Gadgets.paper k L).IsGeometry σ → ∀ pb : PtrBits k L,
       (C1Structure.x k L σ pb).length = C1Structure.n k L ∧

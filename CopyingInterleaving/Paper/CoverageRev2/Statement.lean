@@ -275,7 +275,7 @@ theorem why_sqrt (s sstar i istar n : ℝ) (hs : sstar < s) (hi : 0 ≤ i) (hist
 
 /-- Sentence anchor `s-zip-example` (§1, main.typ @ 3d254b5 line 192): "the zip of the words `ab` and `cd` is `acbd`,
 whereas their concatenation is `abcd`". -/
-@[kb "cstarpaper-s-zip-example"]
+-- kb tag retired 2026-11-09 (cstar 44b0700: anchor s-zip-example removed): @[kb "cstarpaper-s-zip-example"]
 theorem zip_example {α : Type} (a b c d : α) :
     zip [[a, b], [c, d]] = [a, c, b, d] ∧ [a, b] ++ [c, d] = [a, b, c, d] :=
   step_zip_example a b c d

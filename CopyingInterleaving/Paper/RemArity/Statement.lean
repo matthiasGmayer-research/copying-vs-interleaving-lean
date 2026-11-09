@@ -260,7 +260,7 @@ end helpers
 
 /-- The arity remark: if every arity of a ZLP `P` is a power of one integer `b ≥ 2`, then every nonempty
 prefix `x` of `val(P)` has `ARC(x) ≤ 2|P| − m_Σ`, stated as `ARC(x) + m_Σ ≤ 2|P|`. -/
-@[kb "cstarpaper-rem-arity" (part := "RemArity.ARC(x) ≤ 2|P| − m_Σ")]
+-- kb tag retired 2026-11-09 (cstar 44b0700: weaker hypothesis; Relock1109.rem_arity_nonroot): @[kb "cstarpaper-rem-arity" (part := "RemArity.ARC(x) ≤ 2|P| − m_Σ")]
 theorem rem_arity {Q α : Type} (P : Program Q α) (hP : IsZLP P) (b : ℕ) (hb : 2 ≤ b)
     (hpow : ∀ q : Q, ∃ a : ℕ, P.arity q = b ^ a) (x : List α) (hx : x <+: val P)
     (hn : 1 ≤ x.length) :
@@ -268,7 +268,7 @@ theorem rem_arity {Q α : Type} (P : Program Q α) (hP : IsZLP P) (b : ℕ) (hb 
   rem_arity_aux P hP b hb hpow x hx hn
 
 /-- The weaker form `ARC(x) ≤ 2|P|`. -/
-@[kb "cstarpaper-rem-arity" (part := "RemArity.ARC(x) ≤ 2|P|")]
+-- kb tag retired 2026-11-09 (cstar 44b0700: weaker hypothesis; Relock1109.rem_arity_nonroot_two): @[kb "cstarpaper-rem-arity" (part := "RemArity.ARC(x) ≤ 2|P|")]
 theorem rem_arity_two {Q α : Type} (P : Program Q α) (hP : IsZLP P) (b : ℕ) (hb : 2 ≤ b)
     (hpow : ∀ q : Q, ∃ a : ℕ, P.arity q = b ^ a) (x : List α) (hx : x <+: val P)
     (hn : 1 ≤ x.length) :

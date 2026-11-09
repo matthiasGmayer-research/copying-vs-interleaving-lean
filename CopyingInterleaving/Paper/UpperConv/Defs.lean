@@ -70,7 +70,7 @@ abbrev canonInterval {Q α : Type} (P : Program Q α) (n : ℕ) (q : Q) (ρ : Oc
 
 /-- `A_q`, the occurrences of `q` with a non-empty canonical interval (`CopyingInterleaving.Program.Acan`:
 `ρ ∈ occ_q` and `ρ(t) = F_q(t) < n` for some `t`). -/
-@[kb "cstarpaper-def-canonical" (part := "A_q")]
+-- kb tag retired 2026-11-09 (cstar 44b0700: def-canonical no longer defines A_q): @[kb "cstarpaper-def-canonical" (part := "A_q")]
 abbrev Acan {Q α : Type} (P : Program Q α) (n : ℕ) (q : Q) : Set Occ :=
   CopyingInterleaving.Program.Acan P n q
 

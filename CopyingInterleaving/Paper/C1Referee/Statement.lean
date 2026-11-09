@@ -108,7 +108,7 @@ for every outcome, and the chain `C1Final.SCChain` has probability at least `1 �
 `C1Final.jointProb` (the geometry, the pointers and the bits independent and uniform).
 Proof (main.typ 2337–2346): as for `C1Final.thm_sc`; the failure bound `4 n^(−7) + e^6 n^(−6)` (lem-ap and
 prop-scheme, `step_jointProb_total`) is then bounded by `step_sc_fail_num_rev`. -/
-@[kb "cstarpaper-thm-sc" (part := "C1: the whole chain as one event of probability ≥ 1 − 408 n^(−6) (implies the probabilistic part; the statement is Comments1102.thm_sc)")]
+@[kb "cstarpaper-thm-sc" (part := "C1: the whole chain as one event of probability ≥ 1 − 408 n^(−6) (the statement is Relock1109.thm_sc_chain)")]
 theorem thm_sc_rev (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * CopyingInterleaving.log2 ((k : ℝ) + 2) ≤ L) :
     (∀ σ : (C1Gadgets.paper k L).Geometry, (C1Gadgets.paper k L).IsGeometry σ → ∀ pb : PtrBits k L,
         (C1Structure.x k L σ pb).length = C1Structure.n k L) ∧

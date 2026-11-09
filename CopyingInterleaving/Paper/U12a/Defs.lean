@@ -24,7 +24,8 @@ open CopyingInterleaving.Paper.Prelim CopyingInterleaving.Paper.UpperConv
 included): some root path `js` of `ρ` has a prefix `js₁` that is a root path of `ζ` (lem-cut, main.typ 2106).
 -- convention: the vertices `q`, `z` are explicit (an occurrence is an occurrence of a given vertex); root paths are
 unique (lem-occ (b)), so "some root path" is "the root path". -/
-@[kb "cstarpaper-def-exit" (part := "descendant (built from, ρ included)")]
+-- kb tag moved 2026-11-09 (cstar 44b0700: descendants are defined in def-occ): @[kb "cstarpaper-def-exit" (part := "descendant (built from, ρ included)")]
+@[kb "cstarpaper-def-occ" (part := "descendant (built from, ρ included)")]
 def BuiltFrom {Q α : Type} (P : Program Q α) (q : Q) (ρ : Occ) (z : Q) (ζ : Occ) : Prop :=
   ∃ js js₁ : List ℕ, OccVia P q ρ js ∧ OccVia P z ζ js₁ ∧ js₁ <+: js
 

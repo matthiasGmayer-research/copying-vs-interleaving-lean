@@ -314,13 +314,13 @@ theorem lem_least_a_rev {Q α : Type} (P : Program Q α) (hP : IsZLP P) (q z : Q
 /-! ## 4. ex-zlp-cont: `ARC(x) ≤ 4` -/
 
 /-- The literals `(a, 0)`, `(b, 3)` of the size-4 ARS of ex-zlp-cont (main.typ @ 71ec77c, line 1255). -/
-@[kb "cstarpaper-ex-zlp-cont" (part := "ARC(x) ≤ 4: the literals of the smaller ARS")]
+-- kb tag retired 2026-11-09 (cstar 44b0700: the size-4 ARS sentence was cut): @[kb "cstarpaper-ex-zlp-cont" (part := "ARC(x) ≤ 4: the literals of the smaller ARS")]
 def exL4 : Finset (Prelim.ExL × ℕ) := {(.a, 0), (.b, 3)}
 
 /-- The equations of the size-4 ARS of ex-zlp-cont (main.typ @ 71ec77c, lines 1255–1256): `x[t] = x[t + 1]` for
 `t < 2` (records `(σ, τ, ℓ) = (0, 1, 2)`, `(1, 1, 2)`) and `x[3 + t] = x[4 + t]` for `t < 3` (records
 `(3, 1, 3)`, `(4, 1, 3)`). -/
-@[kb "cstarpaper-ex-zlp-cont" (part := "ARC(x) ≤ 4: the equations of the smaller ARS")]
+-- kb tag retired 2026-11-09 (cstar 44b0700: the size-4 ARS sentence was cut): @[kb "cstarpaper-ex-zlp-cont" (part := "ARC(x) ≤ 4: the equations of the smaller ARS")]
 def exΦ4 : Finset (CopyingInterleaving.ArithInterval × CopyingInterleaving.ArithInterval) :=
   {(⟨0, 1, 2, le_rfl, by norm_num⟩, ⟨1, 1, 2, le_rfl, by norm_num⟩),
    (⟨3, 1, 3, le_rfl, by norm_num⟩, ⟨4, 1, 3, le_rfl, by norm_num⟩)}
@@ -330,7 +330,7 @@ literals `(a, 0)`, `(b, 3)` and the equations `x[t] = x[t + 1]` for `t < 2` and 
 form an ARS. So the conversion is not optimal on this word."
 `x = val(P) = aaabbbb` is `UpperConv.exX`; the conversion's ARS is `(UpperConv.exL, UpperConv.exΦ)` (size 6:
 `UpperConv.ex_cont_ars`). "Not optimal": `ARC(x)` is below the size of the conversion's ARS. -/
-@[kb "cstarpaper-ex-zlp-cont" (part := "ARC(x) ≤ 4: the conversion is not optimal")]
+-- kb tag retired 2026-11-09 (cstar 44b0700: the size-4 ARS sentence was cut): @[kb "cstarpaper-ex-zlp-cont" (part := "ARC(x) ≤ 4: the conversion is not optimal")]
 theorem ex_cont_arc_le :
     CopyingInterleaving.IsARS UpperConv.exX exL4 exΦ4 ∧ exL4.card + exΦ4.card = 4 ∧ CopyingInterleaving.ARC UpperConv.exX ≤ 4 ∧
       CopyingInterleaving.ARC UpperConv.exX < UpperConv.exL.card + UpperConv.exΦ.card := by
@@ -444,7 +444,7 @@ theorem step_prop_xm_arc_ge_two (m : ℕ) (hm : 3 ≤ m) :
 /-- main.typ @ 71ec77c, lines 801–802 (s-def-zip-zip), verbatim: "So the zip reads its arguments round-robin and
 stops just before the first request of a missing symbol; for example, `zip(a b, c) = a c b`." The example, for any
 symbols `a, b, c` (the round-robin clause is the unchanged `Prelim.step_zip_round_robin`). -/
-@[kb "cstarpaper-s-def-zip-zip" (part := "RefereeRev.step_zip_example")]
+-- kb tag retired 2026-11-09 (cstar 44b0700: new example; Relock1109.s_def_zip_zip_example): @[kb "cstarpaper-s-def-zip-zip" (part := "RefereeRev.step_zip_example")]
 theorem step_zip_example {α : Type} (a b c : α) : Prelim.zip [[a, b], [c]] = [a, c, b] := by
   show CopyingInterleaving.zip [[a, b], [c]] = [a, c, b]
   simp [CopyingInterleaving.zip]

@@ -142,7 +142,7 @@ holds the letter `a` and has `F_q(j) < n` (the literal places of the proof, main
 (`ρ ∈ A_q`, `J` a piece of `ρ`, `δ(q)[j] = q'`, `U ≠ ∅`); the equations `E(q, ρ, J, j, q')` "for" `(J, j)` cover
 `χ(t)` for every `t` in a comparison set of `(J, j)` (st-conv-eq), with the stated bound on each `|E(…)|`. The "in
 particular" clause is `lem_conversion_singleton`. -/
-@[kb "cstarpaper-lem-conversion"]
+-- kb tag retired 2026-11-09 (cstar 44b0700: lem-conversion lists the literals per piece and edge; Relock1109.lem_conversion_list): @[kb "cstarpaper-lem-conversion"]
 theorem lem_conversion {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α)
     (hx : x <+: val P) (hn : 1 ≤ x.length) (pieces : Q → Occ → Set (Set ℕ))
     (hpieces : IsPieces P x.length pieces) :

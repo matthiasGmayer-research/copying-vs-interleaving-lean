@@ -66,7 +66,7 @@ theorem ex_cont_tree_noK :
 throughout §4; `N = n/d₀` is the real number `UpperConv.scaleN`, `m = |P|` is `size P`; the Lean's `lam` is `λ`.)
 From the earlier two-case form `U12a.lem_split_cases`: below the first term its first case gives
 `ARC(x) ≤ (μ + 2) m ≤ λ m`; below the second, `4N ≤ μ² λ (λ − μ)` and its second case applies. -/
-@[kb "cstarpaper-lem-split" (part := "Relock1103K: one condition")]
+-- kb tag retired 2026-11-09 (cstar 44b0700: lem-split and lem-split-small; Relock1109.lem_split_single, lem_split_small): @[kb "cstarpaper-lem-split" (part := "Relock1103K: one condition")]
 theorem lem_split_max {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
     (hn : 1 ≤ x.length) (μ : ℕ) (hμ : 1 ≤ μ) (lam : ℝ) (hlam : (μ : ℝ) + 2 ≤ lam)
     (hN : scaleN P x.length ≤ max (4 * (μ : ℝ) * (μ + 1)) ((μ : ℝ) ^ 2 * lam * (lam - μ) / 4)) :

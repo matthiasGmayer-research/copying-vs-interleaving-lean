@@ -70,7 +70,7 @@ def IsLatePiece {Q α : Type} (P : Program Q α) (n μ : ℕ) (q : Q) (ρ : Occ)
 
 open Classical in
 /-- def-pieces, the literal charge of the cost: "plus `1` if `J = {j}` for an edge `j` of `q` that leads to a letter". -/
-@[kb "cstarpaper-def-pieces" (part := "Comments1102.literal charge")]
+-- kb tag retired 2026-11-09 (cstar 44b0700: def-pieces cost = literals and equations; Relock1109.literalCount): @[kb "cstarpaper-def-pieces" (part := "Comments1102.literal charge")]
 noncomputable def literalCharge {Q α : Type} (P : Program Q α) (q : Q) (J : Set ℕ) : ℕ :=
   if ∃ (j : ℕ) (a : α), J = {j} ∧ (P.δ q)[j]? = some (.inr a) then 1 else 0
 
@@ -78,7 +78,7 @@ noncomputable def literalCharge {Q α : Type} (P : Program Q α) (q : Q) (J : Se
 if `J = {j}` for an edge `j` of `q` that leads to a letter." The equations lem-conversion gives for `J` are the sets
 `E(q, ρ, J, j', q')` over the edges `j'` of `q` to a vertex that `J` meets (`UpperConv.IsConvIndex`), counted with
 multiplicity (`U12a.idxCost`); `pcs` are the pieces and `E` the equation sets of lem-conversion (`UpperBound.ConvOutput`). -/
-@[kb "cstarpaper-def-pieces" (part := "Comments1102.cost of a piece")]
+-- kb tag retired 2026-11-09 (cstar 44b0700: def-pieces cost = literals and equations; Relock1109.pieceCostText): @[kb "cstarpaper-def-pieces" (part := "Comments1102.cost of a piece")]
 noncomputable def pieceCost {Q α : Type} (P : Program Q α) (n : ℕ) (pcs : Q → Occ → Set (Set ℕ))
     (E : Q → Occ → Set ℕ → ℕ → Q → Finset (CopyingInterleaving.ArithInterval × CopyingInterleaving.ArithInterval)) (q : Q) (ρ : Occ) (J : Set ℕ) :
     ℕ :=
