@@ -35,6 +35,22 @@ In `Covers` the index ranges over t < |α|, where `def-ars` says t < min(|α|, |
 when |α| = |α'| (`WordRev.covers_iff_coversText`, where `WordRev.CoversText` is the text's predicate), and `IsARS`
 requires |α| = |α'| of every equation, so ARSs, ARC and every result about them are the text's.
 
+Further departures of the statements locked on 2026-11-10 (appendix and §5; rows of the table below):
+* *Pool words.* In the text a pool word is infinite; in Lean (`Appx1110.Slot`: `SlotWord`, `Outcome`, `bitOf`, `word`) it has a finite
+  bit horizon `R`, with `R` above every coordinate a layout reads, so the pointers and the read bits have exactly the text's
+  uniform distribution (`lem-copy`, `lem-target`, `prop-scheme`, `thm-relay`, `thm-sc-main` and their steps).
+* *O and Θ.* The asymptotic statements (`thm-relay`, `thm-sc-main`, `relay_params`) say that explicit constants exist, uniform in `k`,
+  and give the bounds with them.
+* *`thm-sc-main`.* Its Lean proof goes through the earlier statement `prop-relay-bound` (retired tag, still in the repository) and
+  the revised chain, not through the text's route; the statement is the text's, for the placement fixed in `thm-relay` (`GoodPlacement`).
+* *`st-split-edges`.* The total cost `piecesCost` is the sum of the three classes (early, late least, late other), each with
+  finitely many indices; the text's single sum is the same quantity.
+* *`s-lem-structure-step`.* The Lean chain has the text's links, `c_h ≤ B E H (s_0 − s_h) < B E W² = B M/8 ≤ B s_(H−1)/8`
+  (the first link is `≤`, as in the text); the paper's premise `E(h'+1) − 1/2 < E H` is used for the `≤`, so Lean's form is equivalent to the text's.
+* *Superseded tags.* Declarations of earlier forms of a statement (`Relock1109`, `C1Final`, `C1Sent`, `Method`, …) keep their
+  `kb` tags next to the new `Appx1110` ones, so a label can list several declarations; the new one is the text's form, the older
+  ones remain as proved facts the new proofs use.
+
 Arithmetic repetition systems (`def-interval`, `def-ars`):
 
 ```lean
