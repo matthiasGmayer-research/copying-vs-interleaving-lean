@@ -53,8 +53,8 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("0cba39621e58") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
-  375 modules · 737 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
+  #text(size: 10pt)[Lean repository revision #raw("d803d79b7a77") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  376 modules · 739 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
 #block(inset: (x: 1cm))[#set text(size: 9.5pt)
@@ -73,10 +73,10 @@ Section 1.3 of the paper (Formal Verification) states:
 
 #block(inset: (left: 1.2em), stroke: (left: 1pt + luma(180)))[Every numbered definition, statement and proof step of this paper's own development is formalised and proved in
 Lean 4 #raw("lean4") with Mathlib #raw("mathlib"), using only the standard axioms of
-Lean. The exception is the comparisons in #raw("rem-measures") that rest on cited results. Of the cited results, only
+Lean. The exceptions are the comparisons in #raw("rem-measures") that rest on cited results, and #raw("rem-regime"). Of the cited results, only
 Kosoy's $ARC <= sZLC$, #raw("lem-occ") and two Chebyshev bounds in Mathlib are formalised; formal deductions that use another
 cited comparison take it as a hypothesis.
-The README of the Lean repository #raw("copying-interleaving-lean") gives the declarations of each numbered block and proof step.]
+The README of the Lean repository #raw("copying-interleaving-lean") gives the declarations of each numbered block and proof step, and the differences in form between the formal statements and the text, such as explicit constants in place of $O$-notation.]
 
 The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-cut"), #raw("lem-early"), ...), not by their numbers, which change while the paper is revised. The Lean source tags each declaration with the label of the block it formalises (#raw("@[kb \"cstarpaper-<label>\"]")), and each tag records how the formal statement departs from the text.
 
@@ -95,6 +95,14 @@ The following cited results are formalised: Kosoy's ARC ≤ sZLC (Prop. 4.9 of K
 
 The following declarations are copied from this revision of the repository, without their documentation comments, their tags and their proofs (#raw("python3 tools/listings.py") extracts them; #raw("--check README.md") compares). The comments that name a namespace are ours; the definitions are in the namespace #raw("CopyingInterleaving") unless such a comment says otherwise. The module #raw("CopyingInterleaving.Paper.Prelim") names the definitions of the paper's preliminaries (#raw("sec-prelim")) by abbreviations of them. The formal statements depart from the text as follows: words are lists, #raw("x <+: y") says that #raw("x") is a prefix of #raw("y"), a vertex set is any type required to be finite, and the alphabet is any type with an element, finite in #raw("cor_cstar"). Some names keep earlier terms: an #raw("ArithInterval") is an arithmetic progression (#raw("def-interval")), a #raw("SlotGraph") is the map δ whose pairs (q, j) are the edges of a program, and #raw("SlotGraph.Edge q q'") says that some edge of #raw("q") leads to #raw("q'"). In Lean names and part labels, _slot_ means edge and _canonical interval_ means lowest interval. In #raw("Covers") the index ranges over t \< |α|, where #raw("def-ars") says t \< min(|α|, |α'|); the two predicates agree when |α| = |α'| (#raw("WordRev.covers_iff_coversText"), where #raw("WordRev.CoversText") is the text's predicate), and #raw("IsARS") requires |α| = |α'| of every equation, so ARSs, ARC and every result about them are the text's.
 
+Further departures of the statements locked on 2026-11-10 (appendix and §5; rows of the table below):
+
+- _Pool words._ In the text a pool word is infinite; in Lean (#raw("Appx1110.Slot"): #raw("SlotWord"), #raw("Outcome"), #raw("bitOf"), #raw("word")) it has a finite bit horizon #raw("R"), with #raw("R") above every coordinate a layout reads, so the pointers and the read bits have exactly the text's uniform distribution (#raw("lem-copy"), #raw("lem-target"), #raw("prop-scheme"), #raw("thm-relay"), #raw("thm-sc-main") and their steps).
+- _O and Θ._ The asymptotic statements (#raw("thm-relay"), #raw("thm-sc-main"), #raw("relay_params")) say that explicit constants exist, uniform in #raw("k"), and give the bounds with them.
+- _#raw("thm-sc-main")._ Its Lean proof goes through the earlier statement #raw("prop-relay-bound") (retired tag, still in the repository) and the revised chain, not through the text's route; the statement is the text's, for the placement fixed in #raw("thm-relay") (#raw("GoodPlacement")).
+- _#raw("st-split-edges")._ The total cost #raw("piecesCost") is the sum of the three classes (early, late least, late other), each with finitely many indices; the text's single sum is the same quantity.
+- _#raw("s-lem-structure-step")._ The Lean chain has the text's links, #raw("c_h ≤ B E H (s_0 − s_h) < B E W² = B M/8 ≤ B s_(H−1)/8") (the first link is #raw("≤"), as in the text); the paper's premise #raw("E(h'+1) − 1/2 < E H") is used for the #raw("≤"), so Lean's form is equivalent to the text's.
+- _Superseded tags._ Declarations of earlier forms of a statement (#raw("Relock1109"), #raw("C1Final"), #raw("C1Sent"), #raw("Method"), …) keep their #raw("kb") tags next to the new #raw("Appx1110") ones, so a label can list several declarations; the new one is the text's form, the older ones remain as proved facts the new proofs use.
 Arithmetic repetition systems (#raw("def-interval"), #raw("def-ars")):
 
 ```lean
@@ -274,7 +282,7 @@ Each numbered definition, statement and proof step of the paper's own developmen
 #raw("st-lower-delta"): #raw("Appx1110.StepsC.step_lower_delta") \
 #raw("st-lower-ell"): #raw("Appx1110.StepsC.step_lower_ell") \
 #raw("st-lower-loss"): #raw("Appx1110.StepsC.step_lower_loss")],
-  [#raw("rem-regime")], [#raw("Relock1109.rem_regime_upper")], [the uniform statement, the k → ∞ form and the asymptotic form are not formalised yet (pending, sorry, not exported)],
+  [#raw("rem-regime")], [#raw("Relock1109.rem_regime_upper"), #raw("Appx1110.Regime.rem_regime_full"), #raw("Appx1110.Regime.rem_regime_o1")], [the o(1) is explicit: #raw("rem_regime_full") gives one constant #raw("c") with #raw("n^(1/2 − c/k) ≤ ZLC(z) ≤ n^(1/2 + c/k)") for the words #raw("z") of thm-lower (the selection of #raw("k"), #raw("L") of its proof) and #raw("k ≥ K") for all large #raw("n")\; #raw("rem_regime_o1") is the #raw("n^(1/2 ± δ)") form; #raw("C_col = X^(2k+O(1))") is #raw("ccol_bounds") (not tagged)],
   [#raw("cor-cstar")], [#raw("CopyingInterleaving.Statements.AdmissibleO"), #raw("CopyingInterleaving.Statements.AdmissibleOAlpha"), #raw("CopyingInterleaving.Statements.cor_cstar"), #raw("CopyingInterleaving.Statements.cor_cstar_fixed_alphabet"), #raw("Intro.cor_cstar_i"), #raw("Intro.cor_cstar_ii"), #raw("IntroRev.cor_cstar"), #raw("CorDirect.cor_cstar")], [],
   [#raw("cor-szlc")], [#raw("CoverageRev.no_polylog_szlc_zlc"), #raw("CorDirect.cor_szlc")], [],
   [#raw("prop-reverse")], [#raw("ReverseZ.prop_reverse_second"), #raw("Relock1111.prop_reverse_a"), #raw("Relock1111.prop_reverse")], [],
@@ -421,7 +429,7 @@ Dependency routes (#raw("python3 tools/deps.py README.md") runs #raw("lake env l
 
 The formalisation uses Lean 4 at the toolchain #raw("leanprover/lean4:v4.33.0-rc1") (#raw("lean-toolchain")) and Mathlib at the tag #raw("v4.33.0-rc1") (commit #raw("79d0395"), pinned in #raw("lake-manifest.json")). #raw("lake exe cache get && lake build") builds the formalisation. Then #raw("lake env lean Check.lean") prints the statements (#raw("#check")) and the axioms on which the main declarations depend; they are among #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound"). This repository is exported from the author's research project (#raw("export.sh")); the export renames the research project's root namespace #raw("SP") to #raw("CopyingInterleaving") and its #raw("CstarText") to #raw("Paper") (the recorded map is #raw("rename_map.py"), applied by #raw("export.sh")); the revision-history modules keep their names. To build: #raw("git clone git@github.com:matthiasGmayer-research/copying-vs-interleaving-lean.git"), then the commands above (the Lake package is #raw("copying-vs-interleaving-lean"), the library #raw("CopyingInterleaving")).
 
-The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 375 modules.
+The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 376 modules.
 
 == The audit file Check.lean
 
@@ -439,6 +447,8 @@ set_option format.width 1000
 #check @CopyingInterleaving.Paper.Appx1110.Relay.thm_relay  -- thm-relay (large spread sets)
 #check @CopyingInterleaving.Paper.Appx1110.Relay.thm_sc_main  -- thm-sc-main (relay words, explicit constants)
 #check @CopyingInterleaving.Paper.Appx1110.Relay.st_sc_fail  -- st-sc-fail (failure 408 n^(−6), joint law)
+#check @CopyingInterleaving.Paper.Appx1110.Regime.rem_regime_full  -- rem-regime (n^(1/2 ± c/k), the words of thm-lower, k → ∞)
+#check @CopyingInterleaving.Paper.Appx1110.Regime.rem_regime_o1  -- rem-regime (n^(1/2 ± δ))
 #check @CopyingInterleaving.Paper.U12a.thm_upper  -- thm-upper: ARC(x) ≤ 2 n^(1/4) ZLC(x)
 #check @CopyingInterleaving.Paper.U12a.thm_scale  -- thm-scale: ARC(x) ≤ 2^(5/4) N^(1/4) m
 #check @CopyingInterleaving.Paper.U12a.lem_split_cases  -- lem-split (two cases)
@@ -515,12 +525,14 @@ set_option format.width 1000
 #print axioms CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.prop_scheme
 #print axioms CopyingInterleaving.Paper.Appx1110.Relay.thm_relay
 #print axioms CopyingInterleaving.Paper.Appx1110.Relay.thm_sc_main
+#print axioms CopyingInterleaving.Paper.Appx1110.Regime.rem_regime_full
+#print axioms CopyingInterleaving.Paper.Appx1110.Regime.rem_regime_o1
 #print axioms CopyingInterleaving.Paper.Appx1110.Relay.st_sc_fail
 ```
 
 == Its output
 
-All 40 declarations audited depend only on #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound")
+All 42 declarations audited depend only on #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound")
 (the output of #raw("lake env lean Check.lean") at this revision; build.py checks it).
 
 ```text
@@ -616,6 +628,64 @@ CopyingInterleaving.Paper.Appx1110.Relay.st_sc_fail : ∀ (k L : ℕ),
         4 * ↑(CopyingInterleaving.Paper.C1Structure.n k L) ^ (-7) +
             Real.exp 6 * ↑(CopyingInterleaving.Paper.C1Structure.n k L) ^ (-6) ≤
           408 * ↑(CopyingInterleaving.Paper.C1Structure.n k L) ^ (-6)
+CopyingInterleaving.Paper.Appx1110.Regime.rem_regime_full : ∃ c,
+  0 < c ∧
+    ∀ (K : ℕ),
+      ∃ n₀,
+        ∀ (n : ℕ),
+          n₀ ≤ n →
+            ∃ k L σ pb,
+              IsGreatest
+                  {k' | 2 ≤ k' ∧ CopyingInterleaving.Paper.C1Lower.N k' (CopyingInterleaving.Paper.C1Params.Lk k') ≤ n}
+                  k ∧
+                IsLeast
+                    {L' | CopyingInterleaving.Paper.C1Params.Lk k ≤ L' ∧ n ≤ CopyingInterleaving.Paper.C1Lower.N k L'}
+                    L ∧
+                  (CopyingInterleaving.Paper.C1Gadgets.paper k L).IsGeometry σ ∧
+                    n ≤ (CopyingInterleaving.Paper.C1Structure.x k L σ pb).length ∧
+                      ↑n ^ (1 / 4) *
+                              2 ^
+                                (-(2.76 *
+                                    √(CopyingInterleaving.log2 ↑n *
+                                        CopyingInterleaving.log2 (CopyingInterleaving.log2 ↑n)))) *
+                            ↑(CopyingInterleaving.ZLC
+                                (List.take n (CopyingInterleaving.Paper.C1Structure.x k L σ pb))) ≤
+                          ↑(CopyingInterleaving.ARC (List.take n (CopyingInterleaving.Paper.C1Structure.x k L σ pb))) ∧
+                        K ≤ k ∧
+                          CopyingInterleaving.Paper.C1Params.X k L ^ (4 * k + 3) ≤ n ∧
+                            n ≤ CopyingInterleaving.Paper.C1Lower.N k L ∧
+                              CopyingInterleaving.Paper.C1Lower.N k L ≤
+                                  CopyingInterleaving.Paper.C1Params.X k L ^ (4 * k + 6) ∧
+                                ↑n ^ (1 / 2 - c / ↑k) ≤
+                                    ↑(CopyingInterleaving.ZLC
+                                        (List.take n (CopyingInterleaving.Paper.C1Structure.x k L σ pb))) ∧
+                                  ↑(CopyingInterleaving.ZLC
+                                        (List.take n (CopyingInterleaving.Paper.C1Structure.x k L σ pb))) ≤
+                                    ↑n ^ (1 / 2 + c / ↑k)
+CopyingInterleaving.Paper.Appx1110.Regime.rem_regime_o1 : ∀ (δ : ℝ),
+  0 < δ →
+    ∃ n₀,
+      ∀ (n : ℕ),
+        n₀ ≤ n →
+          ∃ k L σ pb,
+            IsGreatest
+                {k' | 2 ≤ k' ∧ CopyingInterleaving.Paper.C1Lower.N k' (CopyingInterleaving.Paper.C1Params.Lk k') ≤ n}
+                k ∧
+              IsLeast {L' | CopyingInterleaving.Paper.C1Params.Lk k ≤ L' ∧ n ≤ CopyingInterleaving.Paper.C1Lower.N k L'}
+                  L ∧
+                (CopyingInterleaving.Paper.C1Gadgets.paper k L).IsGeometry σ ∧
+                  n ≤ (CopyingInterleaving.Paper.C1Structure.x k L σ pb).length ∧
+                    ↑n ^ (1 / 4) *
+                            2 ^
+                              (-(2.76 *
+                                  √(CopyingInterleaving.log2 ↑n *
+                                      CopyingInterleaving.log2 (CopyingInterleaving.log2 ↑n)))) *
+                          ↑(CopyingInterleaving.ZLC (List.take n (CopyingInterleaving.Paper.C1Structure.x k L σ pb))) ≤
+                        ↑(CopyingInterleaving.ARC (List.take n (CopyingInterleaving.Paper.C1Structure.x k L σ pb))) ∧
+                      ↑n ^ (1 / 2 - δ) ≤
+                          ↑(CopyingInterleaving.ZLC (List.take n (CopyingInterleaving.Paper.C1Structure.x k L σ pb))) ∧
+                        ↑(CopyingInterleaving.ZLC (List.take n (CopyingInterleaving.Paper.C1Structure.x k L σ pb))) ≤
+                          ↑n ^ (1 / 2 + δ)
 @CopyingInterleaving.Paper.U12a.thm_upper : ∀ {α : Type} [inst : Nonempty α] (x : List α),
   1 ≤ x.length → ↑(CopyingInterleaving.ARC x) ≤ 2 * ↑x.length ^ (1 / 4) * ↑(CopyingInterleaving.ZLC x)
 @CopyingInterleaving.Paper.U12a.thm_scale : ∀ {Q α : Type} (P : CopyingInterleaving.Program Q α),
@@ -966,5 +1036,7 @@ CopyingInterleaving.Paper.Sentences.cor_szlc_text : ∀ a < 1 / 4,
  Quot.sound]
 'CopyingInterleaving.Paper.Appx1110.Relay.thm_relay' depends on axioms: [propext, Classical.choice, Quot.sound]
 'CopyingInterleaving.Paper.Appx1110.Relay.thm_sc_main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.Appx1110.Regime.rem_regime_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.Appx1110.Regime.rem_regime_o1' depends on axioms: [propext, Classical.choice, Quot.sound]
 'CopyingInterleaving.Paper.Appx1110.Relay.st_sc_fail' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
