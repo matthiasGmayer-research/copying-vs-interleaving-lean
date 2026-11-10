@@ -53,8 +53,8 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("5ff1bf19f8ba") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
-  360 modules · 658 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
+  #text(size: 10pt)[Lean repository revision #raw("6ec74aedd136") (with uncommitted changes: DRAFT) · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  375 modules · 737 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
 #block(inset: (x: 1cm))[#set text(size: 9.5pt)
@@ -82,9 +82,9 @@ The paper is cited by the *labels* of its blocks (#raw("thm-upper"), #raw("lem-c
 
 *Status.* Every numbered definition, statement and proof step of the paper's own development, apart from the comparisons in #raw("rem-measures") that rest on cited results, has a sorry-free Lean declaration (axioms #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")): the upper bound in its version U12a (#raw("CopyingInterleaving.Paper.U12a"), constant 2), the lower bound in its version C1/I1 (prime types, parameters of (k, L) for all integers k ≥ 2 and L ≥ 512 k log₂(k + 2): #raw("CopyingInterleaving.Paper.C1Params") … #raw("C1Lower"), #raw("C1Coverage"), #raw("C1Sent")), and #raw("prop-scheme"), the critical-set bound, with the bound of #raw("lem-random") (#raw("CopyingInterleaving.Paper.MethodRev.prop_scheme")). Sentences of the text outside the numbered blocks that state a fact are tagged as well (sentence anchors, #raw("@[kb \"cstarpaper-s-…\"]")); these tags locate the declarations and claim nothing beyond the statement above. The formalisations of earlier versions are kept in the repository (see "Earlier versions" below); their superseded statements no longer carry the paper's tags.
 
-In this revision, the table of @sec-map has a row for each of the paper's 69 numbered blocks, with the
-declarations of their 34 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper"), #raw("tab-relay") (conventions and
-notation stated in those sections); 132 further tags anchor sentences of the paper's text.
+In this revision, the table of @sec-map has a row for each of the paper's 73 numbered blocks, with the
+declarations of their 72 proof steps, and rows for #raw("app-upper-conv"), #raw("sec-prelim"), #raw("sec-upper"), #raw("tab-relay") (conventions and
+notation stated in those sections); 131 further tags anchor sentences of the paper's text.
 
 == Cited results
 
@@ -270,11 +270,14 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("thm-upper")], [#raw("U12a.thm_upper")], [],
   [#raw("thm-lower")], [#raw("C1Lower.lossFactor"), #raw("C1Lower.thm_lower")], [#raw("st-lower-prefix"): #raw("C1Lower.step_lower_prefix") \
 #raw("st-lower-lengths"): #raw("C1Lower.step_lower_lengths") \
-#raw("st-lower-assemble"): #raw("C1Lower.step_lower_assemble")],
+#raw("st-lower-assemble"): #raw("C1Lower.step_lower_assemble") \
+#raw("st-lower-delta"): #raw("Appx1110.StepsC.step_lower_delta") \
+#raw("st-lower-ell"): #raw("Appx1110.StepsC.step_lower_ell") \
+#raw("st-lower-loss"): #raw("Appx1110.StepsC.step_lower_loss")],
   [#raw("rem-regime")], [#raw("Relock1109.rem_regime_upper")], [the uniform statement, the k → ∞ form and the asymptotic form are not formalised yet (pending, sorry, not exported)],
   [#raw("cor-cstar")], [#raw("CopyingInterleaving.Statements.AdmissibleO"), #raw("CopyingInterleaving.Statements.AdmissibleOAlpha"), #raw("CopyingInterleaving.Statements.cor_cstar"), #raw("CopyingInterleaving.Statements.cor_cstar_fixed_alphabet"), #raw("Intro.cor_cstar_i"), #raw("Intro.cor_cstar_ii"), #raw("IntroRev.cor_cstar"), #raw("CorDirect.cor_cstar")], [],
   [#raw("cor-szlc")], [#raw("CoverageRev.no_polylog_szlc_zlc"), #raw("CorDirect.cor_szlc")], [],
-  [#raw("prop-reverse")], [#raw("CopyingInterleaving.ReverseUpper.zlc_le_arc"), #raw("Reverse.prop_reverse_i"), #raw("ReverseZ.prop_reverse_second"), #raw("ReverseZ.prop_reverse")], [],
+  [#raw("prop-reverse")], [#raw("ReverseZ.prop_reverse_second"), #raw("Relock1111.prop_reverse_a"), #raw("Relock1111.prop_reverse")], [],
   [#raw("sec-prelim"), conventions], [#raw("Prelim.log2"), #raw("Prelim.slice")], [],
   [#raw("def-interval")], [#raw("Prelim.ArithInterval"), #raw("Prelim.readAt"), #raw("Prelim.readLen"), #raw("Prelim.def_interval_prefix"), #raw("Prelim.def_interval_read"), #raw("CoverageRev.interval_step_determined")], [],
   [#raw("def-ars")], [#raw("Prelim.Covers"), #raw("Prelim.IsARS"), #raw("Prelim.ARC"), #raw("Prelim.literals"), #raw("Prelim.ars_determines"), #raw("Prelim.arc_le_length"), #raw("WordRev.CoversText"), #raw("WordRev.covers_iff_coversText")], [],
@@ -290,36 +293,46 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("def-canonical")], [#raw("UpperConv.firstPos"), #raw("UpperConv.IsLowest"), #raw("UpperConv.canonInterval"), #raw("UpperConv.vq"), #raw("UpperConv.def_canonical_first"), #raw("UpperConv.def_canonical_unique"), #raw("UpperConv.def_canonical_interval"), #raw("UpperConv.def_canonical_mono"), #raw("UpperConv.def_canonical_partition"), #raw("UpperConv.ex_canonical_firstPos"), #raw("UpperConv.ex_canonical_intervals"), #raw("U12a.reach")], [],
   [#raw("def-pair")], [#raw("UpperConv.U"), #raw("UpperConv.chi"), #raw("UpperConv.compSet"), #raw("UpperConv.def_pair_chi")], [],
   [#raw("lem-conversion")], [#raw("UpperConv.IsInitialSeg"), #raw("UpperConv.IsPieces"), #raw("UpperConv.litSet"), #raw("UpperConv.lowLetterSlots"), #raw("UpperConv.IsConvIndex"), #raw("UpperConv.lem_conversion_singleton"), #raw("CoverageRev2.strict_conversion"), #raw("CoverageRev4.conv_lit_val"), #raw("Relock1109.pieceLits"), #raw("Relock1109.lem_conversion_list")], [#raw("st-conv-lit"): #raw("UpperConv.step_conv_lit") \
-#raw("st-conv-eq"): #raw("UpperConv.step_conv_eq"), #raw("CoverageRev2.strict_conv_eq") \
+#raw("st-conv-eq"): #raw("UpperConv.step_conv_eq"), #raw("CoverageRev2.strict_conv_eq"), #raw("Appx1110.StepsA.st_conv_eq") \
 #raw("st-conv-cov"): #raw("UpperConv.step_conv_cov")],
   [#raw("def-least")], [#raw("UpperConv.Precedes"), #raw("UpperConv.leastOcc"), #raw("UpperConv.IsLeastPath"), #raw("UpperConv.def_least_spec"), #raw("CoverageRev.occ_finite"), #raw("Comments1102.mTree"), #raw("UpperConv.mT"), #raw("UpperConv.mSigma"), #raw("UpperConv.treeSlots")], [],
   [#raw("def-exit")], [#raw("U12a.IsCutEdgeTo"), #raw("U12a.zetaE"), #raw("Comments1102.IsExitEdge"), #raw("Comments1102.edgeReach"), #raw("UpperConv.IsCutDecomp")], [],
-  [#raw("lem-least")], [#raw("UpperConv.lem_least_b_prefix"), #raw("UpperConv.lem_least_b_tree"), #raw("UpperConv.lem_least_b_treepath"), #raw("RefereeRev.lem_least_a_rev"), #raw("Comments1102.mTree_eq_mT")], [],
+  [#raw("lem-least")], [#raw("UpperConv.lem_least_b_prefix"), #raw("UpperConv.lem_least_b_tree"), #raw("UpperConv.lem_least_b_treepath"), #raw("RefereeRev.lem_least_a_rev"), #raw("Comments1102.mTree_eq_mT")], [#raw("st-least-prefix"): #raw("Appx1110.StepsA.st_least_prefix") \
+#raw("st-least-tree"): #raw("Appx1110.StepsA.st_least_tree") \
+#raw("st-least-path"): #raw("Appx1110.StepsA.st_least_path")],
   [#raw("lem-cut")], [#raw("U12a.lem_cut"), #raw("Comments1102.lem_cut")], [],
   [#raw("lem-reach")], [#raw("U12a.lem_reach")], [],
   [#raw("lem-split")], [#raw("Relock1109.lem_split_single")], [#raw("st-split-literals"): none of its own, the step is part of the proof of U12a.lem\_split\_cases, from which Relock1103K.lem\_split\_max (retired tag) and Relock1109.lem\_split\_single follow \
-#raw("st-split-edges"): none of its own, as before \
-#raw("st-split-groups"): none of its own, as before (steps of the paper's proof since cstar d181469; the earlier steps st-split-early, st-split-least, st-split-other are the blocks lem-early, lem-late-least, lem-late-other below)],
-  [#raw("lem-split-small")], [#raw("Relock1109.lem_split_small")], [],
+#raw("st-split-edges"): #raw("Appx1110.StepsA.st_split_edges") \
+#raw("st-split-groups"): #raw("Appx1110.StepsA.st_split_groups")\; the earlier steps st-split-early, st-split-least, st-split-other are the blocks lem-early, lem-late-least, lem-late-other below)],
+  [#raw("lem-split-small")], [#raw("Relock1111.lem_split_small")], [],
   [#raw("def-pieces")], [#raw("Comments1102.IsEarlyPiece"), #raw("Comments1102.IsLatePiece"), #raw("Comments1102.earlyCost"), #raw("Comments1102.lateLeastCost"), #raw("Comments1102.lateCost"), #raw("Comments1102.isSplitPieces_iff"), #raw("Comments1102.literalCharge_late"), #raw("Comments1102.charged_early_ncard"), #raw("Relock1109.literalCount"), #raw("Relock1109.pieceCostText"), #raw("Relock1109.pieceCostText_eq")], [],
-  [#raw("lem-early")], [#raw("Comments1102.lem_early")], [],
+  [#raw("lem-early")], [#raw("Comments1102.lem_early")], [#raw("st-early-one"): #raw("Appx1110.StepsA.st_early_one") \
+#raw("st-early-free"): #raw("Appx1110.StepsA.st_early_free")],
   [#raw("lem-late-least")], [#raw("Relock1103K.lem_late_least_noK")], [],
-  [#raw("lem-late-other")], [#raw("Comments1102.lem_late_other")], [],
-  [#raw("def-forward")], [#raw("Method.ForwardEq"), #raw("Method.targets"), #raw("Method.FwdHolds"), #raw("Method.rem_forward")], [],
-  [#raw("def-labelled")], [#raw("Method.Labelled"), #raw("Method.Labelled.Valid"), #raw("Method.Labelled.Outcome"), #raw("Method.Labelled.Prob"), #raw("Method.Labelled.bit"), #raw("Method.Labelled.word"), #raw("Method.Labelled.Carries"), #raw("Method.Labelled.IsFirstPosition"), #raw("Method.ex_labelled_valid"), #raw("Method.ex_labelled_word"), #raw("Method.ex_labelled_first"), #raw("Method.ex_labelled_repeat")], [],
+  [#raw("lem-late-other")], [#raw("Comments1102.lem_late_other")], [#raw("st-other-split"): #raw("Appx1110.StepsA.st_other_split") \
+#raw("st-other-low"): #raw("Appx1110.StepsA.st_other_low") \
+#raw("st-other-high"): #raw("Appx1110.StepsA.st_other_high")],
+  [#raw("def-forward")], [#raw("Method.ForwardEq"), #raw("Method.targets"), #raw("Method.FwdHolds"), #raw("Method.rem_forward"), #raw("Appx1110.Slot.IsFwdEq"), #raw("Appx1110.Slot.def_forward_iff")], [],
+  [#raw("def-labelled")], [#raw("Method.Labelled"), #raw("Method.Labelled.Valid"), #raw("Method.Labelled.Outcome"), #raw("Method.Labelled.Prob"), #raw("Method.Labelled.bit"), #raw("Method.Labelled.word"), #raw("Method.Labelled.Carries"), #raw("Method.Labelled.IsFirstPosition"), #raw("Method.ex_labelled_valid"), #raw("Method.ex_labelled_word"), #raw("Method.ex_labelled_first"), #raw("Method.ex_labelled_repeat"), #raw("Appx1110.Slot.SlotWord"), #raw("Appx1110.Slot.SlotWord.Outcome"), #raw("Appx1110.Slot.SlotWord.Prob"), #raw("Appx1110.Slot.SlotWord.newSlots"), #raw("Appx1110.Slot.SlotWord.word")], [],
   [#raw("def-req")], [#raw("Method.Labelled.firstPos"), #raw("Method.Labelled.prec"), #raw("Method.Labelled.Requirement"), #raw("Method.Labelled.Requirement.Valid"), #raw("Method.Labelled.Requirement.Holds"), #raw("CoverageRev.ex_requirement")], [],
   [#raw("lem-random")], [#raw("Method.lem_random")], [#raw("st-rand-claim"): #raw("Method.step_lem_random_1") \
 #raw("st-rand-cond"): #raw("Method.step_lem_random_2") \
 #raw("st-rand-union"): #raw("Method.step_lem_random_3_bad"), #raw("Method.step_lem_random_3_exp")],
-  [#raw("prop-scheme")], [#raw("MethodRev.prop_scheme")], [#raw("st-scheme-cand"): #raw("Method.step_prop_scheme_1_count"), #raw("Method.step_prop_scheme_1_prob") \
-#raw("st-scheme-event"): #raw("Method.step_prop_scheme_2_event") \
+  [#raw("prop-scheme")], [#raw("MethodRev.prop_scheme"), #raw("Appx1110.Slot.SlotWord.prop_scheme")], [#raw("st-scheme-cand"): #raw("Method.step_prop_scheme_1_count"), #raw("Method.step_prop_scheme_1_prob"), #raw("Appx1110.Slot.SlotWord.st_scheme_cand"), #raw("Appx1110.Slot.schemeCands"), #raw("Appx1110.Slot.schemeCands_card") \
+#raw("st-scheme-event"): #raw("Method.step_prop_scheme_2_event"), #raw("Appx1110.Slot.SlotWord.st_scheme_event") \
 #raw("st-scheme-bound"): #raw("Method.step_prop_scheme_3")],
   [#raw("tab-relay")], [#raw("Final1102.relayQ"), #raw("Final1102.tab_relay"), #raw("Final1102.relay_length_theta"), #raw("Final1102.relay_length_power"), #raw("Final1102.tab_relay_Lk"), #raw("C1Coverage.why_quarter_relay")], [],
-  [#raw("thm-sc")], [#raw("C1Final.jointProb"), #raw("C1Final.SCChain"), #raw("C1Referee.thm_sc_rev"), #raw("Relock1109.thm_sc_chain")], [],
+  [#raw("thm-sc")], [#raw("C1Final.jointProb"), #raw("C1Final.SCChain"), #raw("C1Referee.thm_sc_rev"), #raw("Relock1109.thm_sc_chain")], [#raw("st-sc-given"): #raw("Appx1110.Relay.st_sc_given") \
+#raw("st-sc-fail"): #raw("Appx1110.Relay.st_sc_fail") \
+#raw("st-sc-chain"): #raw("Appx1110.Relay.st_sc_chain")],
   [#raw("ex-zlp-cont")], [#raw("UpperConv.exX"), #raw("UpperConv.exEq1"), #raw("UpperConv.exEq2"), #raw("UpperConv.exEq3"), #raw("UpperConv.exL"), #raw("UpperConv.exΦ"), #raw("UpperConv.ex_cont_params"), #raw("UpperConv.ex_cont_least"), #raw("Relock1103K.ex_cont_tree_noK"), #raw("UpperConv.ex_cont_literals"), #raw("UpperConv.ex_cont_eq_root"), #raw("UpperConv.ex_cont_eq_s0"), #raw("UpperConv.ex_cont_eq_s1"), #raw("UpperConv.ex_cont_least_c_needed"), #raw("UpperConv.ex_cont_ars"), #raw("U12a.ex_cont_cut_u12a"), #raw("CoverageRev4.ex_root_slot0")], [],
   [#raw("rem-constant")], [#raw("CopyingInterleaving.Statements.rem_constant"), #raw("ReadRev.rem_constant_all")], [],
   [#raw("rem-arity")], [#raw("Relock1109.rem_arity_nonroot"), #raw("Relock1109.rem_arity_nonroot_two")], [],
-  [#raw("lem-forward")], [#raw("Method.lem_forward"), #raw("Sentences.lem_forward_sentences")], [],
+  [#raw("lem-forward")], [#raw("Relock1111.lem_forward")], [#raw("st-fwd-int"): #raw("Appx1110.StepsB.st_fwd_int") \
+#raw("st-fwd-read"): #raw("Appx1110.StepsB.st_fwd_read") \
+#raw("st-fwd-restr"): #raw("Appx1110.StepsB.st_fwd_restr") \
+#raw("st-fwd-cov"): #raw("Appx1110.StepsB.st_fwd_cov")],
   [#raw("def-params")], [#raw("C1Params.Lk"), #raw("C1Params.X"), #raw("C1Params.B"), #raw("C1Params.W"), #raw("C1Params.u"), #raw("C1Params.e"), #raw("C1Params.M"), #raw("C1Params.g"), #raw("C1Params.Λ"), #raw("C1Params.H"), #raw("C1Params.primesP"), #raw("C1Params.IsType"), #raw("C1Params.IsGood"), #raw("C1Final.step_params_basic")], [],
   [#raw("lem-slopes")], [#raw("C1Params.goodIn"), #raw("C1Params.lem_slopes")], [#raw("st-slopes-types"): #raw("C1Params.step_slopes_types") \
 #raw("st-slopes-mult"): #raw("C1Params.step_slopes_mult") \
@@ -328,39 +341,57 @@ Each numbered definition, statement and proof step of the paper's own developmen
   [#raw("def-free")], [#raw("SCGadgets.Parents"), #raw("SCGadgets.arity"), #raw("SCGadgets.Parents.verts"), #raw("SCGadgets.Parents.realChildren"), #raw("SCGadgets.Parents.parentsOf"), #raw("SCGadgets.Parents.R"), #raw("SCGadgets.Parents.anc"), #raw("SCGadgets.Parents.Geometry"), #raw("SCGadgets.Parents.IsGeometry"), #raw("SCGadgets.Parents.π"), #raw("SCGadgets.Parents.jd"), #raw("SCGadgets.Parents.geomProb"), #raw("SCGadgets.Parents.ζ"), #raw("SCGadgets.Parents.graph"), #raw("SCGadgets.Parents.IsFreeLevelsOf"), #raw("C1Gadgets.paper"), #raw("C1Gadgets.verts_eq")], [],
   [#raw("def-shifts")], [#raw("SCGadgets.IsShiftGadget"), #raw("SCGadgets.ShiftGadgetFresh"), #raw("SCGadgets.shiftG"), #raw("SCGadgets.def_shifts_count"), #raw("SCGadgets.def_shifts_example")], [],
   [#raw("def-slots")], [#raw("C1Structure.c"), #raw("C1Structure.Γ"), #raw("C1Structure.η"), #raw("C1Structure.q"), #raw("C1Structure.def_sc_eta")], [],
-  [#raw("lem-slots")], [#raw("C1Structure.step_struct_b_distinct"), #raw("C1Structure.lem_structure_a_c"), #raw("C1Structure.lem_structure_a_cbound"), #raw("C1Structure.lem_structure_b_q"), #raw("C1Slots.lem_slots"), #raw("C1Slots.lem_slots_b"), #raw("C1Structure.lem_structure_b")], [],
+  [#raw("lem-slots")], [#raw("C1Structure.step_struct_b_distinct"), #raw("C1Structure.lem_structure_a_c"), #raw("C1Structure.lem_structure_a_cbound"), #raw("C1Structure.lem_structure_b_q"), #raw("C1Slots.lem_slots"), #raw("C1Slots.lem_slots_b"), #raw("C1Structure.lem_structure_b")], [#raw("st-slots-nat"): #raw("Appx1110.StepsB.st_slots_nat") \
+#raw("st-slots-grows"): #raw("Appx1110.StepsB.st_slots_grows") \
+#raw("st-slots-distinct"): #raw("Appx1110.StepsB.st_slots_distinct") \
+#raw("st-slots-shift"): #raw("Appx1110.StepsB.st_slots_shift")],
   [#raw("def-sc")], [#raw("C1Structure.Dict"), #raw("C1Structure.n"), #raw("C1Structure.J"), #raw("C1Structure.PtrBits"), #raw("C1Structure.IsVertex"), #raw("C1Structure.IsZeroWord"), #raw("C1Structure.U"), #raw("C1Structure.V"), #raw("C1Structure.G"), #raw("C1Structure.parentChild"), #raw("C1Structure.rawδ"), #raw("C1Structure.pre"), #raw("C1Structure.Pk"), #raw("C1Structure.x"), #raw("C1Structure.def_sc_closed"), #raw("C1Structure.def_sc_zero"), #raw("C1Structure.def_sc_free_levels"), #raw("C1Slots.def_sc_slot")], [],
   [#raw("def-raw")], [#raw("C1Structure.Cell"), #raw("C1Structure.RC"), #raw("C1Structure.pos"), #raw("C1Structure.cellOf"), #raw("C1Structure.timeOf"), #raw("C1Cores.step_pi_lt_R"), #raw("Relock1109.def_raw_carries")], [],
   [#raw("def-critical")], [#raw("C1Cores.IsCoreCell"), #raw("C1Cores.point"), #raw("C1Cores.pointRC"), #raw("C1Cores.Sprime"), #raw("C1Cores.IsInnerCell"), #raw("C1Cores.S"), #raw("C1Cores.def_critical_subset"), #raw("C1Cores.def_critical_point"), #raw("C1Cores.Sprime_finite"), #raw("C1Cores.S_finite"), #raw("C1Cores.point_injective")], [],
-  [#raw("lem-structure")], [#raw("C1Structure.label"), #raw("C1Structure.LW"), #raw("C1Structure.ReadThroughZero"), #raw("C1Structure.ReadThroughCol"), #raw("C1Structure.lem_structure_a_pre"), #raw("C1Structure.two_le_R"), #raw("C1Structure.lem_structure_a"), #raw("C1Structure.lem_structure_c_lengths_low"), #raw("C1Structure.lem_structure_shifts_pre"), #raw("C1Structure.lem_structure_c_lengths_high"), #raw("C1Structure.lem_structure_c_read"), #raw("C1Structure.lem_structure_c"), #raw("C1Structure.lem_structure_labelled")], [#raw("st-struct-length"): #raw("C1Structure.step_struct_c1") \
+  [#raw("lem-structure")], [#raw("C1Structure.label"), #raw("C1Structure.LW"), #raw("C1Structure.ReadThroughZero"), #raw("C1Structure.ReadThroughCol"), #raw("C1Structure.lem_structure_a_pre"), #raw("C1Structure.two_le_R"), #raw("C1Structure.lem_structure_a"), #raw("C1Structure.lem_structure_c_lengths_low"), #raw("C1Structure.lem_structure_shifts_pre"), #raw("C1Structure.lem_structure_c_lengths_high"), #raw("C1Structure.lem_structure_c_read"), #raw("C1Structure.lem_structure_c"), #raw("C1Structure.lem_structure_labelled"), #raw("Appx1110.Relay.lem_structure_slot")], [#raw("st-struct-length"): #raw("C1Structure.step_struct_c1") \
 #raw("st-struct-decode"): #raw("C1StructureRev.step_struct_c2_rev") \
 #raw("st-struct-unique"): #raw("C1Structure.step_struct_c3_unique")],
-  [#raw("lem-cores")], [#raw("C1Cores.lem_cores_a_cols"), #raw("C1Cores.lem_cores_a_point"), #raw("C1Cores.lem_cores_a"), #raw("C1Cores.lem_cores_b"), #raw("C1Cores.lem_cores_b_chain")], [],
+  [#raw("lem-cores")], [#raw("C1Cores.lem_cores_a_cols"), #raw("C1Cores.lem_cores_a_point"), #raw("C1Cores.lem_cores_a"), #raw("C1Cores.lem_cores_b"), #raw("C1Cores.lem_cores_b_chain"), #raw("Appx1110.StepsB.lem_cores_comparison")], [],
   [#raw("lem-sc-final")], [#raw("C1Final.Ccol"), #raw("C1Final.colEdges"), #raw("C1Final.lem_sc_final_b_theta"), #raw("C1Final.lem_sc_final_a"), #raw("C1Referee.lem_sc_final_b_rev"), #raw("Comments1102.lem_sc_final_a")], [],
-  [#raw("def-spread")], [#raw("Comments1102.IsSpread")], [],
+  [#raw("def-spread")], [#raw("Comments1102.IsSpread"), #raw("Appx1110.Slot.IsSpread")], [],
   [#raw("prop-relay-bound")], [#raw("Comments1102.prop_relay_bound")], [],
   [#raw("lem-ap")], [#raw("C1Final.HasCells"), #raw("C1Final.APGood"), #raw("C1Final.lem_ap"), #raw("C1Coverage.lem_ap_raw"), #raw("Comments1102.lem_ap")], [#raw("st-ap-large"): #raw("C1Final.step_ap_large_ybar"), #raw("C1Final.step_ap_large_reduce"), #raw("C1Final.step_ap_large") \
 #raw("st-ap-small"): #raw("C1Final.step_ap_small_pigeon"), #raw("C1Final.step_ap_small_residue"), #raw("C1Final.step_ap_small")],
   [#raw("def-descent")], [#raw("CoverageRev2.FollowsRule"), #raw("CoverageRev2.descent"), #raw("CoverageRev2.descent_spec")], [],
   [#raw("lem-free")], [#raw("SCGadgets.Parents.numEdges"), #raw("SCGadgets.Parents.ReadsThrough"), #raw("C1Gadgets.lem_free"), #raw("Comments1102.lem_free")], [],
-  [#raw("lem-shifts")], [#raw("SCGadgets.lem_shifts"), #raw("CoverageRev3.shift_paths"), #raw("Comments1102.shift_paths_unrestricted")], [],
+  [#raw("lem-shifts")], [#raw("SCGadgets.lem_shifts"), #raw("CoverageRev3.shift_paths"), #raw("Comments1102.shift_paths_unrestricted")], [#raw("st-shifts-path"): #raw("Appx1110.StepsB.st_shifts_path") \
+#raw("st-shifts-words"): #raw("Appx1110.StepsB.st_shifts_words") \
+#raw("st-shifts-ind"): #raw("Appx1110.StepsB.st_shifts_ind")],
   [#raw("rem-long")], [#raw("C1Cores.colk"), #raw("C1Cores.OccThrough"), #raw("C1Cores.step_long_tree"), #raw("C1Cores.step_long_slot"), #raw("C1Cores.step_long_below"), #raw("C1Cores.step_long_count"), #raw("C1Cores.step_long_formula"), #raw("C1Cores.rem_long_occ"), #raw("C1Cores.rem_long_lowest"), #raw("C1Cores.rem_long_canon"), #raw("C1Cores.rem_long_sync")], [],
   [#raw("lem-u")], [#raw("C1LemU.hits"), #raw("C1LemU.Nhit"), #raw("C1LemU.geomExp"), #raw("C1LemU.lem_u"), #raw("Comments1102.lem_u")], [#raw("st-u-hit"): #raw("C1LemU.step_1") \
 #raw("st-u-moment"): #raw("C1LemU.step_2_recursion"), #raw("C1LemU.step_2") \
 #raw("st-u-root"): #raw("C1LemU.step_3")],
-  [#raw("lem-params")], [#raw("C1Params.SP_"), #raw("C1Params.lem_params")], [],
+  [#raw("lem-params")], [#raw("C1Params.SP_"), #raw("C1Params.lem_params")], [#raw("st-params-cheb"): #raw("Appx1110.StepsC.step_params_cheb") \
+#raw("st-params-count"): #raw("Appx1110.StepsC.step_params_count") \
+#raw("st-params-gap"): #raw("Appx1110.StepsC.step_params_gap") \
+#raw("st-params-sum"): #raw("Appx1110.StepsC.step_params_sum")],
   [#raw("def-section")], [#raw("Reverse.sec"), #raw("Reverse.Comparable")], [],
-  [#raw("lem-rev-upper")], [#raw("Reverse.lem_rev_upper")], [#raw("st-revup-arc"): #raw("Reverse.step_lem_rev_upper_1") \
+  [#raw("lem-rev-upper")], [#raw("Relock1111.lem_rev_upper")], [#raw("st-revup-arc"): #raw("Reverse.step_lem_rev_upper_1") \
 #raw("st-revup-cases"): #raw("Simplify1103.step_revup_cases") \
 #raw("st-revup-final"): #raw("Simplify1103.step_revup_final")],
   [#raw("def-rev-words")], [#raw("ReverseZ.Nm"), #raw("ReverseZ.zm"), #raw("ReverseZ.mOf"), #raw("ReverseZ.xn"), #raw("ReverseZ.s_def_rev_words_unique"), #raw("ReverseZ.def_rev_words_length"), #raw("ReverseZ.s_def_rev_words_blocks"), #raw("Reverse.xm"), #raw("Reverse.T"), #raw("ReverseZ.blockStart")], [],
-  [#raw("lem-rev-arc")], [#raw("ReverseZ.lem_rev_arc")], [],
+  [#raw("lem-rev-arc")], [#raw("ReverseZ.lem_rev_arc")], [#raw("st-arc-size"): #raw("Appx1110.StepsC.step_arc_size") \
+#raw("st-arc-hold"): #raw("Appx1110.StepsC.step_arc_hold") \
+#raw("st-arc-cover"): #raw("Appx1110.StepsC.step_arc_cover")],
   [#raw("lem-sections")], [#raw("ReverseZ.lem_sections"), #raw("Comments1102.lem_sections")], [#raw("st-sec-first"): #raw("ReverseZ.step_lem_sections_first") \
-#raw("st-sec-pair"): #raw("ReverseZ.step_lem_sections_pair") \
+#raw("st-sec-pair"): #raw("ReverseZ.step_lem_sections_pair"), #raw("Appx1110.StepsC.step_sec_pair") \
 #raw("st-sec-congr"): #raw("ReverseZ.step_lem_sections_congr")],
-  [#raw("lem-rev-zlc")], [#raw("ReverseZ.lem_rev_zlc")], [#raw("st-rev-one"): none of its own, its claim is the fact on which Simplify1103.s\_lem\_rev\_zlc\_rev stands (tagged with the sentence anchor s-lem-rev-zlc-rev) \
-#raw("st-rev-leaves"): none of its own, as before],
+  [#raw("lem-rev-zlc")], [#raw("ReverseZ.lem_rev_zlc")], [#raw("st-rev-one"): #raw("Appx1110.StepsC.step_rev_one") \
+#raw("st-rev-leaves"): #raw("Appx1110.StepsC.step_rev_leaves")],
   [#raw("rem-measures")], [#raw("RemMeasures.CNFGrammar"), #raw("RemMeasures.CNFGrammar.Derives"), #raw("RemMeasures.zmGrammar"), #raw("RemMeasures.rem_measures_grammar"), #raw("RemMeasures.rem_measures_grammar_exists"), #raw("RemMeasures.rem_measures_zlc"), #raw("RemMeasures.rem_measures_lzc_every"), #raw("Comments1102.GeneratesExactly"), #raw("Comments1102.grammarSize"), #raw("Comments1102.SubpolyBound"), #raw("Comments1102.grammarSize_le_rules"), #raw("Comments1102.grammarSize_attained"), #raw("Comments1102.rem_measures_a"), #raw("Comments1102.rem_measures_b"), #raw("Comments1102.rem_measures_c"), #raw("Final1102.rem_measures_a_nonempty"), #raw("Final1102.rem_measures_b_nonempty"), #raw("Final1102.rem_measures_c_nonempty"), #raw("Final1102.rem_measures_c_measures_nonempty")], [],
+  [#raw("lem-copy")], [#raw("Appx1110.Slot.SlotWord.copyNu"), #raw("Appx1110.Slot.SlotWord.copyOmega"), #raw("Appx1110.Slot.SlotWord.isolated"), #raw("Appx1110.Slot.SlotWord.lem_copy")], [#raw("st-copy-cond"): #raw("Appx1110.Slot.SlotWord.st_copy_cond") \
+#raw("st-copy-ptr"): #raw("Appx1110.Slot.SlotWord.st_copy_ptr") \
+#raw("st-copy-prod"): #raw("Appx1110.Slot.SlotWord.st_copy_prod")],
+  [#raw("lem-target")], [#raw("Appx1110.Slot.lem_target")], [],
+  [#raw("thm-relay")], [#raw("Appx1110.Relay.thm_relay")], [#raw("st-relay-spread"): #raw("Appx1110.Relay.st_relay_spread") \
+#raw("st-relay-size"): #raw("Appx1110.Relay.st_relay_size") \
+#raw("st-relay-zlc"): #raw("Appx1110.Relay.st_relay_zlc")],
+  [#raw("thm-sc-main")], [#raw("Appx1110.Relay.thm_sc_main")], [],
 )
 
 == Earlier versions
@@ -390,17 +421,25 @@ Dependency routes (#raw("python3 tools/deps.py README.md") runs #raw("lake env l
 
 The formalisation uses Lean 4 at the toolchain #raw("leanprover/lean4:v4.33.0-rc1") (#raw("lean-toolchain")) and Mathlib at the tag #raw("v4.33.0-rc1") (commit #raw("79d0395"), pinned in #raw("lake-manifest.json")). #raw("lake exe cache get && lake build") builds the formalisation. Then #raw("lake env lean Check.lean") prints the statements (#raw("#check")) and the axioms on which the main declarations depend; they are among #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound"). This repository is exported from the author's research project (#raw("export.sh")); the export renames the research project's root namespace #raw("SP") to #raw("CopyingInterleaving") and its #raw("CstarText") to #raw("Paper") (the recorded map is #raw("rename_map.py"), applied by #raw("export.sh")); the revision-history modules keep their names. To build: #raw("git clone git@github.com:matthiasGmayer-research/copying-vs-interleaving-lean.git"), then the commands above (the Lake package is #raw("copying-vs-interleaving-lean"), the library #raw("CopyingInterleaving")).
 
-The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 360 modules.
+The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; the build has 375 modules.
 
 == The audit file Check.lean
 
 ```lean
 import CopyingInterleaving
+set_option format.width 1000
 -- The paper's main declarations (labels of the paper, not numbers): their statements (#check) and their axioms
+
 -- (#print axioms; expected: propext, Classical.choice, Quot.sound). Run: `lake env lean Check.lean` (after `lake build`).
 -- The exact source text of the declarations listed in README.md ("The main statements in Lean"): `python3 tools/listings.py`.
 
 -- The current version (upper bound U12a, lower bound C1/I1):
+#check @CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.lem_copy  -- lem-copy (Appendix re-lock 2026-11-10: slot words, pool size u^2)
+#check @CopyingInterleaving.Paper.Appx1110.Slot.lem_target  -- lem-target (the target count)
+#check @CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.prop_scheme  -- prop-scheme (slot-word form: 1 − exp(6) n^4 2^(−u))
+#check @CopyingInterleaving.Paper.Appx1110.Relay.thm_relay  -- thm-relay (large spread sets)
+#check @CopyingInterleaving.Paper.Appx1110.Relay.thm_sc_main  -- thm-sc-main (relay words, explicit constants)
+#check @CopyingInterleaving.Paper.Appx1110.Relay.st_sc_fail  -- st-sc-fail (failure 408 n^(−6), joint law)
 #check @CopyingInterleaving.Paper.U12a.thm_upper  -- thm-upper: ARC(x) ≤ 2 n^(1/4) ZLC(x)
 #check @CopyingInterleaving.Paper.U12a.thm_scale  -- thm-scale: ARC(x) ≤ 2^(5/4) N^(1/4) m
 #check @CopyingInterleaving.Paper.U12a.lem_split_cases  -- lem-split (two cases)
@@ -472,14 +511,112 @@ import CopyingInterleaving
 #print axioms CopyingInterleaving.Paper.SCFinal.thm_lower_conf
 #print axioms CopyingInterleaving.Statements.thm_lower
 #print axioms CopyingInterleaving.Paper.Sentences.cor_szlc_text
+#print axioms CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.lem_copy
+#print axioms CopyingInterleaving.Paper.Appx1110.Slot.lem_target
+#print axioms CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.prop_scheme
+#print axioms CopyingInterleaving.Paper.Appx1110.Relay.thm_relay
+#print axioms CopyingInterleaving.Paper.Appx1110.Relay.thm_sc_main
+#print axioms CopyingInterleaving.Paper.Appx1110.Relay.st_sc_fail
 ```
 
 == Its output
 
-All 34 declarations audited depend only on #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound")
+All 40 declarations audited depend only on #raw("propext"), #raw("Classical.choice") and #raw("Quot.sound")
 (the output of #raw("lake env lean Check.lean") at this revision; build.py checks it).
 
 ```text
+CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.lem_copy : ∀ (W : CopyingInterleaving.Paper.Appx1110.Slot.SlotWord)
+  {u : ℕ},
+  2 ≤ u →
+    W.D = u ^ 2 →
+      ∀ (i j : Fin u → ℕ),
+        (∀ (l : Fin u), j l < i l) →
+          (∀ (l : Fin u), i l < W.n) →
+            (W.newSlots (Set.range i)).card = u →
+              (W.Prob fun o => ∀ (l : Fin u), (W.word o)[j l]? = (W.word o)[i l]?) ≤ Real.exp 6 * 2 ^ (-↑u)
+@CopyingInterleaving.Paper.Appx1110.Slot.lem_target : ∀ {α : Type} (x : List α),
+  ∀ S ⊆ {i | i < x.length},
+    ∀ (h : ℕ),
+      1 ≤ h →
+        (∀ (A B : CopyingInterleaving.ArithInterval),
+            CopyingInterleaving.Paper.Appx1110.Slot.IsFwdEq x A B →
+              (CopyingInterleaving.Paper.Method.targets B ∩ S).ncard ≤ h) →
+          ↑S.ncard / ↑h ≤ ↑(CopyingInterleaving.ARC x)
+CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.prop_scheme : ∀ (W : CopyingInterleaving.Paper.Appx1110.Slot.SlotWord)
+  {u : ℕ},
+  2 ≤ u →
+    W.D = u ^ 2 →
+      ∀ S ⊆ {i | i < W.n},
+        CopyingInterleaving.Paper.Appx1110.Slot.IsSpread W u S →
+          1 - Real.exp 6 * ↑W.n ^ 4 * 2 ^ (-↑u) ≤
+            W.Prob fun o =>
+              ∀ (A B : CopyingInterleaving.ArithInterval),
+                CopyingInterleaving.Paper.Appx1110.Slot.IsFwdEq (W.word o) A B →
+                  (CopyingInterleaving.Paper.Method.targets B ∩ S).ncard < u ^ 2
+CopyingInterleaving.Paper.Appx1110.Relay.thm_relay : ∃ C c₁ c₂ Cu,
+  0 < C ∧
+    0 < c₁ ∧
+      0 < c₂ ∧
+        0 < Cu ∧
+          ∀ (k : ℕ) (hk : 2 ≤ k),
+            (1 - 4 * ↑(CopyingInterleaving.Paper.C1Structure.n k (CopyingInterleaving.Paper.C1Params.Lk k)) ^ (-7) ≤
+                (CopyingInterleaving.Paper.C1Gadgets.paper k (CopyingInterleaving.Paper.C1Params.Lk k)).geomProb
+                  fun σ =>
+                  CopyingInterleaving.Paper.Comments1102.IsSpread
+                    (CopyingInterleaving.Paper.C1Structure.LW k (CopyingInterleaving.Paper.C1Params.Lk k) σ)
+                    (CopyingInterleaving.Paper.C1Params.u k (CopyingInterleaving.Paper.C1Params.Lk k))
+                    (CopyingInterleaving.Paper.C1Cores.S k (CopyingInterleaving.Paper.C1Params.Lk k) σ)
+                    (CopyingInterleaving.Paper.C1Cores.Sprime k (CopyingInterleaving.Paper.C1Params.Lk k) σ)) ∧
+              (∃ σ,
+                  CopyingInterleaving.Paper.Appx1110.Relay.GoodPlacement k (CopyingInterleaving.Paper.C1Params.Lk k)
+                    σ) ∧
+                ∀
+                  (σ :
+                    (CopyingInterleaving.Paper.C1Gadgets.paper k (CopyingInterleaving.Paper.C1Params.Lk k)).Geometry),
+                  CopyingInterleaving.Paper.Appx1110.Relay.GoodPlacement k (CopyingInterleaving.Paper.C1Params.Lk k) σ →
+                    let W :=
+                      CopyingInterleaving.Paper.Appx1110.Relay.slotX k (CopyingInterleaving.Paper.C1Params.Lk k) ⋯ σ;
+                    have n := CopyingInterleaving.Paper.C1Structure.n k (CopyingInterleaving.Paper.C1Params.Lk k);
+                    have u := CopyingInterleaving.Paper.C1Params.u k (CopyingInterleaving.Paper.C1Params.Lk k);
+                    (∀ (pb : W.Outcome),
+                        W.word pb =
+                          CopyingInterleaving.Paper.C1Structure.x k (CopyingInterleaving.Paper.C1Params.Lk k) σ pb) ∧
+                      W.n = n ∧
+                        W.D = u ^ 2 ∧
+                          (5 * CopyingInterleaving.log2 ↑n ≤ ↑u ∧
+                              ↑u ≤ Cu * CopyingInterleaving.log2 ↑n ∧
+                                c₁ * ↑k ^ 2 * CopyingInterleaving.log2 ↑k ≤ CopyingInterleaving.log2 ↑n ∧
+                                  CopyingInterleaving.log2 ↑n ≤ c₂ * ↑k ^ 2 * CopyingInterleaving.log2 ↑k) ∧
+                            (∃ Sp,
+                                (∀ p ∈ Sp, p < n) ∧
+                                  CopyingInterleaving.Paper.Appx1110.Slot.IsSpread W u Sp ∧
+                                    ↑n ^ (1 / 4 - C / ↑k) * ↑(Fintype.card W.Omega) ≤ ↑Sp.ncard) ∧
+                              ∀ (pb : W.Outcome), CopyingInterleaving.ZLC (W.word pb) ≤ 2 * Fintype.card W.Omega
+CopyingInterleaving.Paper.Appx1110.Relay.thm_sc_main : ∃ C Cp,
+  0 < C ∧
+    0 < Cp ∧
+      ∀ (k : ℕ) (hk : 2 ≤ k)
+        (σ : (CopyingInterleaving.Paper.C1Gadgets.paper k (CopyingInterleaving.Paper.C1Params.Lk k)).Geometry),
+        CopyingInterleaving.Paper.Appx1110.Relay.GoodPlacement k (CopyingInterleaving.Paper.C1Params.Lk k) σ →
+          have W := CopyingInterleaving.Paper.Appx1110.Relay.slotX k (CopyingInterleaving.Paper.C1Params.Lk k) ⋯ σ;
+          have n := CopyingInterleaving.Paper.C1Structure.n k (CopyingInterleaving.Paper.C1Params.Lk k);
+          1 - Cp / ↑n ≤
+            W.Prob fun pb =>
+              ↑n ^ (1 / 4 - C / ↑k) * ↑(CopyingInterleaving.ZLC (W.word pb)) ≤ ↑(CopyingInterleaving.ARC (W.word pb))
+CopyingInterleaving.Paper.Appx1110.Relay.st_sc_fail : ∀ (k L : ℕ),
+  2 ≤ k →
+    512 * ↑k * CopyingInterleaving.log2 (↑k + 2) ≤ ↑L →
+      (1 -
+            (4 * ↑(CopyingInterleaving.Paper.C1Structure.n k L) ^ (-7) +
+              Real.exp 6 * ↑(CopyingInterleaving.Paper.C1Structure.n k L) ^ (-6)) ≤
+          CopyingInterleaving.Paper.C1Final.jointProb k L fun σ pb =>
+            CopyingInterleaving.Paper.Appx1110.Relay.EventE k L σ pb ∧
+              ↑(CopyingInterleaving.Paper.C1Cores.S k L σ).ncard /
+                  (↑(CopyingInterleaving.Paper.C1Params.u k L) ^ 2 - 1) ≤
+                ↑(CopyingInterleaving.ARC (CopyingInterleaving.Paper.C1Structure.x k L σ pb))) ∧
+        4 * ↑(CopyingInterleaving.Paper.C1Structure.n k L) ^ (-7) +
+            Real.exp 6 * ↑(CopyingInterleaving.Paper.C1Structure.n k L) ^ (-6) ≤
+          408 * ↑(CopyingInterleaving.Paper.C1Structure.n k L) ^ (-6)
 @CopyingInterleaving.Paper.U12a.thm_upper : ∀ {α : Type} [inst : Nonempty α] (x : List α),
   1 ≤ x.length → ↑(CopyingInterleaving.ARC x) ≤ 2 * ↑x.length ^ (1 / 4) * ↑(CopyingInterleaving.ZLC x)
 @CopyingInterleaving.Paper.U12a.thm_scale : ∀ {Q α : Type} (P : CopyingInterleaving.Program Q α),
@@ -823,4 +960,12 @@ CopyingInterleaving.Paper.Sentences.cor_szlc_text : ∀ a < 1 / 4,
 'CopyingInterleaving.Paper.SCFinal.thm_lower_conf' depends on axioms: [propext, Classical.choice, Quot.sound]
 'CopyingInterleaving.Statements.thm_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
 'CopyingInterleaving.Paper.Sentences.cor_szlc_text' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.lem_copy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.Appx1110.Slot.lem_target' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.prop_scheme' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CopyingInterleaving.Paper.Appx1110.Relay.thm_relay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.Appx1110.Relay.thm_sc_main' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CopyingInterleaving.Paper.Appx1110.Relay.st_sc_fail' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```

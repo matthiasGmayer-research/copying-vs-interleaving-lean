@@ -1,9 +1,16 @@
 import CopyingInterleaving
+set_option format.width 1000
 -- The paper's main declarations (labels of the paper, not numbers): their statements (#check) and their axioms
 -- (#print axioms; expected: propext, Classical.choice, Quot.sound). Run: `lake env lean Check.lean` (after `lake build`).
 -- The exact source text of the declarations listed in README.md ("The main statements in Lean"): `python3 tools/listings.py`.
 
 -- The current version (upper bound U12a, lower bound C1/I1):
+#check @CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.lem_copy  -- lem-copy (Appendix re-lock 2026-11-10: slot words, pool size u^2)
+#check @CopyingInterleaving.Paper.Appx1110.Slot.lem_target  -- lem-target (the target count)
+#check @CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.prop_scheme  -- prop-scheme (slot-word form: 1 − exp(6) n^4 2^(−u))
+#check @CopyingInterleaving.Paper.Appx1110.Relay.thm_relay  -- thm-relay (large spread sets)
+#check @CopyingInterleaving.Paper.Appx1110.Relay.thm_sc_main  -- thm-sc-main (relay words, explicit constants)
+#check @CopyingInterleaving.Paper.Appx1110.Relay.st_sc_fail  -- st-sc-fail (failure 408 n^(−6), joint law)
 #check @CopyingInterleaving.Paper.U12a.thm_upper  -- thm-upper: ARC(x) ≤ 2 n^(1/4) ZLC(x)
 #check @CopyingInterleaving.Paper.U12a.thm_scale  -- thm-scale: ARC(x) ≤ 2^(5/4) N^(1/4) m
 #check @CopyingInterleaving.Paper.U12a.lem_split_cases  -- lem-split (two cases)
@@ -75,3 +82,9 @@ import CopyingInterleaving
 #print axioms CopyingInterleaving.Paper.SCFinal.thm_lower_conf
 #print axioms CopyingInterleaving.Statements.thm_lower
 #print axioms CopyingInterleaving.Paper.Sentences.cor_szlc_text
+#print axioms CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.lem_copy
+#print axioms CopyingInterleaving.Paper.Appx1110.Slot.lem_target
+#print axioms CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.prop_scheme
+#print axioms CopyingInterleaving.Paper.Appx1110.Relay.thm_relay
+#print axioms CopyingInterleaving.Paper.Appx1110.Relay.thm_sc_main
+#print axioms CopyingInterleaving.Paper.Appx1110.Relay.st_sc_fail
