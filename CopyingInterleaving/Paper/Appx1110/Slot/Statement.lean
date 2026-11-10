@@ -142,8 +142,8 @@ theorem finsetBelow_lt {n : ℕ} {S : Set ℕ} : ∀ p ∈ finsetBelow n S, p < 
   simp only [finsetBelow, Finset.mem_filter, Finset.mem_range] at hp
   exact hp.1
 
-/-- Proof of **prop-scheme** (main.typ @ 99418e9), the candidates: "For `p ∈ S` and `τ' ∈ [n] ∖ {0}`, let `t_*` be the
-least `t` with `|{s ≤ t : p + τ' s ∈ S}| = u²`, if any. For `σ ∈ [n]` and `τ ∈ [n] ∖ {0}`, the pair of the progressions
+/-- Proof of **prop-scheme** (main.typ @ 38f9aa5), the candidates: "For `p ∈ S` and `τ' ∈ [n] ∖ {0}` such that `|{s : p + τ' s ∈ S}| ≥ u²`,
+let `t_*` be the least `t` with `|{s ≤ t : p + τ' s ∈ S}| = u²`. For `σ ∈ [n]` and `τ ∈ [n] ∖ {0}`, the pair of the progressions
 `α(t) := σ + τ t` and `α'(t) := p + τ' t` (`t ≤ t_*`) is a _candidate_ if `∀ t ≤ t_*: α(t) < α'(t)`; it _holds_ if
 `∀ t ≤ t_*: x[α(t)] = x[α'(t)]`." The earlier `Method.candidates` (for the length `n` and `S ⊆ [n]`; through the
 auxiliary labelled word `Wid n`, which only supplies `n`): `t_* = ℓ` is given as the index with `p + τ' ℓ ∈ S` and
@@ -179,9 +179,9 @@ namespace SlotWord
 variable (W : SlotWord)
 
 /-- Proof of prop-scheme, Step 1, the bound for one candidate: "Fix a candidate. Its target set
-`A := α'([t_* + 1]) ⊆ [n]` is an arithmetic progression with `|A ∩ S| = u²`, so `|Ω_new(A)| ≥ u` as `S` is spread. A
-fixed rule picks `t_0, …, t_(u−1) ≤ t_*` such that `i_l := α'(t_l)` shows a bit of a slot `ω_l` first, with distinct
-`ω_l`; … `|Ω_new({i_0, …, i_(u−1)})| = u`. With `j_l := α(t_l) < i_l`, lem-copy gives
+`A := α'([t_* + 1]) ⊆ [n]` is an arithmetic progression with `|A ∩ S| = u²` (by the choice of `t_*`), so `|Ω_new(A)| ≥ u`
+as `S` is spread. Let `ω_0, …, ω_(u−1)` be the `u` least slots of `Ω_new(A)` (in a fixed order of `Ω`) and `t_l ≤ t_*` the
+least `t` such that `α'(t)` shows a bit of `ω_l` first. Then `i_l := α'(t_l)` shows a bit of `ω_l` first, and … `|Ω_new({i_0, …, i_(u−1)})| = u`. With `j_l := α(t_l) < i_l`, lem-copy gives
 `Pr[the candidate holds] ≤ Pr[∀ l ∈ [u]: x[j_l] = x[i_l]] ≤ exp(6) 2^(−u)`." -/
 theorem cand_prob {u : ℕ} (hu : 2 ≤ u) (hD : W.D = u ^ 2) (S : Set ℕ) (hS : S ⊆ {i : ℕ | i < W.n})
     (hsp : IsSpread W u S) (A B : ArithInterval) (hAB : (A, B) ∈ schemeCands W.n S u) :
