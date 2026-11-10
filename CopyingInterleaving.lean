@@ -14,6 +14,7 @@ import CopyingInterleaving.SCParams
 import CopyingInterleaving.SCProgram
 import CopyingInterleaving.SCStructure
 import CopyingInterleaving.SCThm
+import CopyingInterleaving.Paper.Appx1110.Regime.Statement
 import CopyingInterleaving.Paper.Appx1110.Relay.Statement
 import CopyingInterleaving.Paper.Appx1110.Slot.Bridge
 import CopyingInterleaving.Paper.Appx1110.Slot.Copy

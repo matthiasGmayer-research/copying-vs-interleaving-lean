@@ -11,6 +11,8 @@ set_option format.width 1000
 #check @CopyingInterleaving.Paper.Appx1110.Relay.thm_relay  -- thm-relay (large spread sets)
 #check @CopyingInterleaving.Paper.Appx1110.Relay.thm_sc_main  -- thm-sc-main (relay words, explicit constants)
 #check @CopyingInterleaving.Paper.Appx1110.Relay.st_sc_fail  -- st-sc-fail (failure 408 n^(−6), joint law)
+#check @CopyingInterleaving.Paper.Appx1110.Regime.rem_regime_full  -- rem-regime (n^(1/2 ± c/k), the words of thm-lower, k → ∞)
+#check @CopyingInterleaving.Paper.Appx1110.Regime.rem_regime_o1  -- rem-regime (n^(1/2 ± δ))
 #check @CopyingInterleaving.Paper.U12a.thm_upper  -- thm-upper: ARC(x) ≤ 2 n^(1/4) ZLC(x)
 #check @CopyingInterleaving.Paper.U12a.thm_scale  -- thm-scale: ARC(x) ≤ 2^(5/4) N^(1/4) m
 #check @CopyingInterleaving.Paper.U12a.lem_split_cases  -- lem-split (two cases)
@@ -87,4 +89,6 @@ set_option format.width 1000
 #print axioms CopyingInterleaving.Paper.Appx1110.Slot.SlotWord.prop_scheme
 #print axioms CopyingInterleaving.Paper.Appx1110.Relay.thm_relay
 #print axioms CopyingInterleaving.Paper.Appx1110.Relay.thm_sc_main
+#print axioms CopyingInterleaving.Paper.Appx1110.Regime.rem_regime_full
+#print axioms CopyingInterleaving.Paper.Appx1110.Regime.rem_regime_o1
 #print axioms CopyingInterleaving.Paper.Appx1110.Relay.st_sc_fail

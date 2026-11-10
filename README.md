@@ -254,7 +254,7 @@ the step (`st-struct-decode`'s `C1StructureRev.step_struct_c2_rev` has the hypot
 |---|---|---|
 | `thm-upper` | `U12a.thm_upper` |  |
 | `thm-lower` | `C1Lower.lossFactor`, `C1Lower.thm_lower` | `st-lower-prefix`: `C1Lower.step_lower_prefix`; `st-lower-lengths`: `C1Lower.step_lower_lengths`; `st-lower-assemble`: `C1Lower.step_lower_assemble`; `st-lower-delta`: `Appx1110.StepsC.step_lower_delta`; `st-lower-ell`: `Appx1110.StepsC.step_lower_ell`; `st-lower-loss`: `Appx1110.StepsC.step_lower_loss` |
-| `rem-regime` | `Relock1109.rem_regime_upper` | the uniform statement, the k → ∞ form and the asymptotic form are not formalised yet (pending, sorry, not exported) |
+| `rem-regime` | `Relock1109.rem_regime_upper`, `Appx1110.Regime.rem_regime_full`, `Appx1110.Regime.rem_regime_o1` | the o(1) is explicit: `rem_regime_full` gives one constant `c` with `n^(1/2 − c/k) ≤ ZLC(z) ≤ n^(1/2 + c/k)` for the words `z` of thm-lower (the selection of `k`, `L` of its proof) and `k ≥ K` for all large `n`; `rem_regime_o1` is the `n^(1/2 ± δ)` form; `C_col = X^(2k+O(1))` is `ccol_bounds` (not tagged) |
 | `cor-cstar` | `CopyingInterleaving.Statements.AdmissibleO`, `CopyingInterleaving.Statements.AdmissibleOAlpha`, `CopyingInterleaving.Statements.cor_cstar`, `CopyingInterleaving.Statements.cor_cstar_fixed_alphabet`, `Intro.cor_cstar_i`, `Intro.cor_cstar_ii`, `IntroRev.cor_cstar`, `CorDirect.cor_cstar` |  |
 | `cor-szlc` | `CoverageRev.no_polylog_szlc_zlc`, `CorDirect.cor_szlc` |  |
 | `prop-reverse` | `ReverseZ.prop_reverse_second`, `Relock1111.prop_reverse_a`, `Relock1111.prop_reverse` |  |

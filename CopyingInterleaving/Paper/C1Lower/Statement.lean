@@ -18,7 +18,7 @@ private def EqOK (k L : ℕ) (σ : (C1Gadgets.paper k L).Geometry) (pb : C1Struc
     CopyingInterleaving.ForwardEqHolds (C1Structure.x k L σ pb) A B →
     {i : ℕ | i ∈ C1Cores.S k L σ ∧ i ∈ CopyingInterleaving.targetSet B}.ncard < C1Params.u k L ^ 2
 
-private theorem exists_eqOK (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * CopyingInterleaving.log2 ((k : ℝ) + 2) ≤ L) :
+theorem exists_eqOK (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * CopyingInterleaving.log2 ((k : ℝ) + 2) ≤ L) :
     ∃ (σ : (C1Gadgets.paper k L).Geometry) (pb : C1Structure.PtrBits k L),
       (C1Gadgets.paper k L).IsGeometry σ ∧ EqOK k L σ pb := by
   open C1Final C1Structure C1Cores in
@@ -147,7 +147,7 @@ private theorem A2_pos_last (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * C
     (C1Params.def_slopes_a k L hk hL hl hl.isLt) (hΨ hl).1
   exact lt_of_le_of_lt hle hlt
 
-private theorem point_lt_bound (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * CopyingInterleaving.log2 ((k : ℝ) + 2) ≤ L)
+theorem point_lt_bound (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * CopyingInterleaving.log2 ((k : ℝ) + 2) ≤ L)
     (σ : (C1Gadgets.paper k L).Geometry) (hσ : (C1Gadgets.paper k L).IsGeometry σ)
     (h : Fin (C1Gadgets.paper k L).H) (ω : C1Structure.Cell k L) (hω : C1Cores.IsCoreCell k L ω) :
     C1Cores.point k L σ h ω <
@@ -224,7 +224,7 @@ private theorem A3_scheme_count_filter_le {α : Type} (x : List α) (S : Finset 
 
 /-- The counting step: `|S| ≤ (k - 1) ARC(x)` if every holding forward equation in `[|x|]` has
 fewer than `k` positions of `S ⊆ [|x|]` in its target set. -/
-private theorem A3_scheme_count_card_le {α : Type} (x : List α) (S : Finset ℕ)
+theorem A3_scheme_count_card_le {α : Type} (x : List α) (S : Finset ℕ)
     (hS : ∀ i ∈ S, i < x.length) (k : ℕ) (hk : 2 ≤ k)
     (h : ∀ A B : CopyingInterleaving.ArithInterval, CopyingInterleaving.IsForwardEq x.length A B → CopyingInterleaving.ForwardEqHolds x A B →
       {i : ℕ | i ∈ S ∧ i ∈ CopyingInterleaving.targetSet B}.ncard < k) :
