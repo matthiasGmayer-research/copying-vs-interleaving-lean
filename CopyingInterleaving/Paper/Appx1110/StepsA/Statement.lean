@@ -487,10 +487,10 @@ theorem cut_ne_root {Q α : Type} (P : Program Q α) (hP : IsZLP P) {w : Q} {j :
   intro hz
   exact (hP.2.2.2 z).2 hz w (List.mem_of_getElem? h.1)
 
-/-- **st-other-low** (proof of lem-late-other, main.typ @ 99418e9): "If `R_ρ < μ d_q`, then `C(ρ) = 0`." For an
+/-- **st-other-low** (proof of lem-late-other, main.typ @ 99418e9): "If `R_ρ < μ d_q`, then `C_late(ρ) = 0`." For an
 occurrence `ρ ∈ occ_q` of a vertex `q` of the ZLP `P`, `x ⊑ val(P)` with `n = |x| ≥ 1`, an integer `μ ≥ 1`, the pieces
 of lem-split (`IsSplitPieces`: early singletons below `μ d_q`, one late piece) and any output `L, Φ, E` of
-lem-conversion for them; `C(ρ) = lateCost` (def-pieces), `R_ρ = reach`. The low half of `Comments1102.lem_late_other`. -/
+lem-conversion for them; `C_late(ρ) = lateCost` (def-pieces), `R_ρ = reach`. The low half of `Comments1102.lem_late_other`. -/
 @[kb "cstarpaper-st-other-low" (part := "Appx1110")]
 theorem st_other_low {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
     (hn : 1 ≤ x.length) (μ : ℕ) (hμ : 1 ≤ μ) (pcs : Q → Occ → Set (Set ℕ)) (hpcs : IsSplitPieces P x.length μ pcs)
@@ -501,7 +501,7 @@ theorem st_other_low {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List �
     lateCost P x.length μ pcs E q ρ = 0 :=
   (lem_late_other P hP x hx hn μ hμ pcs hpcs L Φ E hc q ρ hρ).1 hR
 
-/-- **st-other-high** (proof of lem-late-other, main.typ @ 99418e9): "If `R_ρ ≥ μ d_q`, then `C(ρ) ≤ 4 (R_ρ/μ − 1)`."
+/-- **st-other-high** (proof of lem-late-other, main.typ @ 99418e9): "If `R_ρ ≥ μ d_q`, then `C_late(ρ) ≤ 4 (R_ρ/μ − 1)`."
 Same setting as `st_other_low`; the bound in `ℝ`. The high half of `Comments1102.lem_late_other`. -/
 @[kb "cstarpaper-st-other-high" (part := "Appx1110")]
 theorem st_other_high {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)
@@ -553,9 +553,9 @@ theorem cutEdges_card {Q α : Type} (P : Program Q α) (hP : IsZLP P) (Ec : Fins
     exact ⟨(w, j, z), (hEc _).2 ⟨hz, ht⟩, rfl, rfl⟩
 
 /-- **st-split-edges** (proof of lem-split, main.typ @ 99418e9): "The pieces cost at most
-`μ m_Σ + 2 m_𝒯 + Σ_{e ∈ ℰ} (μ + 2 + C(ζ_e))`, and for `e ∈ ℰ`, `C(ζ_e) = 0` if `R_e < 2μ`, and `C(ζ_e) ≤ 4 (R_e/μ − 1)`
+`μ m_Σ + 2 m_𝒯 + Σ_{e ∈ ℰ} (μ + 2 + C_late(ζ_e))`, and for `e ∈ ℰ`, `C_late(ζ_e) = 0` if `R_e < 2μ`, and `C_late(ζ_e) ≤ 4 (R_e/μ − 1)`
 otherwise." `ℰ` = the edges `e = (w, j) ∉ 𝒯` that lead to a vertex, given as the finite set `Ec` of triples `(w, j, z)`
-with `δ(w)[j] = z` (`IsCutEdgeTo`; `z` is determined by `e`); `C(ζ_e) = lateCost` at `z`, `R_e = reach z ζ_e`;
+with `δ(w)[j] = z` (`IsCutEdgeTo`; `z` is determined by `e`); `C_late(ζ_e) = lateCost` at `z`, `R_e = reach z ζ_e`;
 `m_𝒯 = mTree` (tree edges), `m_Σ = mSigma`. Setting of lem-split: `P` a ZLP, `x ⊑ val(P)`, `n = |x| ≥ 1`, integer
 `μ ≥ 1`, the pieces `IsSplitPieces` and any output of lem-conversion. The total cost `piecesCost` (early + late least +
 late other), with finitely many indices with equations in each of the three parts (so no `finsum` junk value). -/
@@ -635,7 +635,7 @@ theorem st_split_edges {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List
       linarith
 
 /-- **st-split-groups** (proof of lem-split, main.typ @ 99418e9): "Let `z` be a vertex with `k := |ℰ_z| ≥ 1`. Then
-`2 + Σ_{e ∈ ℰ_z} (μ + 2 + C(ζ_e)) ≤ λ (1 + k)`." Here `ℰ_z = {e ∈ ℰ : e leads to z, R_e ≥ 2μ}` is the finite set `Ez`
+`2 + Σ_{e ∈ ℰ_z} (μ + 2 + C_late(ζ_e)) ≤ λ (1 + k)`." Here `ℰ_z = {e ∈ ℰ : e leads to z, R_e ≥ 2μ}` is the finite set `Ez`
 of edges `(w, j) ∉ 𝒯` with `δ(w)[j] = z` and `R_e = reach z ζ_e ≥ 2μ`; the hypotheses of lem-split: an integer
 `μ ≥ 1`, a real `λ ≥ μ + 2` with `N ≤ μ² λ (λ − μ)/4` (`N = scaleN P n`); `P` a ZLP, `x ⊑ val(P)`, `n = |x| ≥ 1`, the
 pieces `IsSplitPieces`, any output of lem-conversion. From `lem_late_other`, `cnt_group_reach` (lem-reach on the
@@ -663,7 +663,7 @@ theorem st_split_groups {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : Lis
     have := ((hEz e).1 he).2
     simp only [hRdef]
     exact_mod_cast this
-  -- per edge: `C(ζ_e) ≤ 4 (R_e/μ − 1)`
+  -- per edge: `C_late(ζ_e) ≤ 4 (R_e/μ − 1)`
   have hC : ∀ e ∈ Ez, (lateCost P x.length μ pcs E z (zetaE P e.1 e.2) : ℝ) ≤ 4 * (R e / μ - 1) := by
     intro e he
     have hcut := ((hEz e).1 he).1
@@ -744,12 +744,12 @@ theorem occVia_path_unique {Q α : Type} (P : Program Q α) (hP : IsZLP P) {q : 
     (h : OccVia P q ρ js) (h' : OccVia P q ρ js') : js = js' :=
   ((CopyingInterleaving.Paper.Prelim.lem_occ_bij P hP q).2 ρ ⟨js, h⟩).unique h h'
 
-/-- **st-other-split** (proof of lem-late-other, main.typ @ 99418e9): "`C(ρ) = c + Σ_j C(ρ_j)`, and `d_q R_(ρ_j) ≤ R_ρ`
+/-- **st-other-split** (proof of lem-late-other, main.typ @ 99418e9): "`C_late(ρ) = c + Σ_j C_late(ρ_j)`, and `d_q R_(ρ_j) ≤ R_ρ`
 for each such `j`" — `c` the cost of the late piece of `ρ` (`0` if none; `ownLateCost`), the sums over the edges `j` of
 `q` that lead to a vertex, given as the finite set `Cq` of pairs `(j, z)` with `δ(q)[j] = z`; `ρ_j = chi P q ρ j` the
 child occurrence (def-occ), `C = lateCost` (def-pieces), `R = reach`. Setting of lem-late-other: `P` a ZLP,
 `x ⊑ val(P)`, `n = |x| ≥ 1`, integer `μ ≥ 1`, the pieces `IsSplitPieces`, any output of lem-conversion, `ρ ∈ occ_q`;
-the `finsum` defining `C(ρ)` has finitely many non-zero terms (first conjunct). New proof (disjoint decomposition of the
+the `finsum` defining `C_late(ρ)` has finitely many non-zero terms (first conjunct). New proof (disjoint decomposition of the
 descendants by their first edge after `ρ`, root paths unique by lem-occ; the bound is `U12a.oth_reach_child`). -/
 @[kb "cstarpaper-st-other-split" (part := "Appx1110")]
 theorem st_other_split {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)

@@ -468,7 +468,7 @@ theorem lem_late_least {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List
   exact hle
 
 /-- **lem-late-other** (main.typ @ a925e4a, block ending line 2646): "Let `ρ` be an occurrence of a vertex `q`. Then
-`C(ρ) = 0` if `R_ρ < μ d_q`, and `C(ρ) ≤ 4 (R_ρ/μ − 1)` otherwise." — `C(ρ) = lateCost` (def-pieces; the descendants
+`C_late(ρ) = 0` if `R_ρ < μ d_q`, and `C_late(ρ) ≤ 4 (R_ρ/μ − 1)` otherwise." — `C_late(ρ) = lateCost` (def-pieces; the descendants
 are `U12a.BuiltFrom`, `ρ` included), `R_ρ = U12a.reach` (def-canonical). From `U12a.step_split_other`. -/
 @[kb "cstarpaper-lem-late-other" (part := "Comments1102")]
 theorem lem_late_other {Q α : Type} (P : Program Q α) (hP : IsZLP P) (x : List α) (hx : x <+: val P)

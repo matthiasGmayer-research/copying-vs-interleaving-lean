@@ -101,10 +101,10 @@ noncomputable def lateLeastCost {Q α : Type} (P : Program Q α) (n μ : ℕ) (p
     (E : Q → Occ → Set ℕ → ℕ → Q → Finset (CopyingInterleaving.ArithInterval × CopyingInterleaving.ArithInterval)) : ℕ :=
   idxCost E (idxOf P n pcs (fun q ρ J => (∀ t ∈ J, μ * P.arity q ≤ t) ∧ ρ = leastOcc P q))
 
-/-- def-pieces: "For an occurrence `ρ`, `C(ρ)` is the total cost of the late pieces of the descendants of `ρ`" — the
+/-- def-pieces: "For an occurrence `ρ`, `C_late(ρ)` is the total cost of the late pieces of the descendants of `ρ`" — the
 equations of the late pieces of the occurrences `η` of vertices `q'` that are descendants of `ρ` (`U12a.BuiltFrom`,
 `ρ` included); late pieces carry no literal charge (`literalCharge_late`). -/
-@[kb "cstarpaper-def-pieces" (part := "Comments1102.C(ρ)")]
+@[kb "cstarpaper-def-pieces" (part := "Comments1102.C_late(ρ)")]
 noncomputable def lateCost {Q α : Type} (P : Program Q α) (n μ : ℕ) (pcs : Q → Occ → Set (Set ℕ))
     (E : Q → Occ → Set ℕ → ℕ → Q → Finset (CopyingInterleaving.ArithInterval × CopyingInterleaving.ArithInterval)) (q : Q) (ρ : Occ) : ℕ :=
   idxCost E (idxOf P n pcs (fun q' η J => BuiltFrom P q' η q ρ ∧ ∀ t ∈ J, μ * P.arity q' ≤ t))
