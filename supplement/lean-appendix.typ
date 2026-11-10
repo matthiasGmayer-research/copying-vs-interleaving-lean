@@ -53,7 +53,7 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("d803d79b7a77") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  #text(size: 10pt)[Lean repository revision #raw("e8f03fcba35c") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
   376 modules · 739 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
@@ -73,7 +73,7 @@ Section 1.3 of the paper (Formal Verification) states:
 
 #block(inset: (left: 1.2em), stroke: (left: 1pt + luma(180)))[Every numbered definition, statement and proof step of this paper's own development is formalised and proved in
 Lean 4 #raw("lean4") with Mathlib #raw("mathlib"), using only the standard axioms of
-Lean. The exceptions are the comparisons in #raw("rem-measures") that rest on cited results, and #raw("rem-regime"). Of the cited results, only
+Lean. The exceptions are the comparisons in #raw("rem-measures") that rest on cited results. Of the cited results, only
 Kosoy's $ARC <= sZLC$, #raw("lem-occ") and two Chebyshev bounds in Mathlib are formalised; formal deductions that use another
 cited comparison take it as a hypothesis.
 The README of the Lean repository #raw("copying-interleaving-lean") gives the declarations of each numbered block and proof step, and the differences in form between the formal statements and the text, such as explicit constants in place of $O$-notation.]
