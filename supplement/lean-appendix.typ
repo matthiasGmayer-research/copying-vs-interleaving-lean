@@ -53,7 +53,7 @@
   #v(0.4cm)
   #text(size: 12pt)[Matthias G. Mayer]
   #v(1.2cm)
-  #text(size: 10pt)[Lean repository revision #raw("6ec74aedd136") (with uncommitted changes: DRAFT) · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
+  #text(size: 10pt)[Lean repository revision #raw("0cba39621e58") · Lean #raw("v4.33.0-rc1") · Mathlib #raw("79d0395") \
   375 modules · 737 declarations tagged with labels of the paper · axioms: #raw("propext"), #raw("Classical.choice"), #raw("Quot.sound")]
 ]
 #v(1.2cm)
@@ -429,7 +429,6 @@ The full Mathlib commit is #raw("79d0395a1825a6264ad5d269e35e60537518955e")\; th
 import CopyingInterleaving
 set_option format.width 1000
 -- The paper's main declarations (labels of the paper, not numbers): their statements (#check) and their axioms
-
 -- (#print axioms; expected: propext, Classical.choice, Quot.sound). Run: `lake env lean Check.lean` (after `lake build`).
 -- The exact source text of the declarations listed in README.md ("The main statements in Lean"): `python3 tools/listings.py`.
 
