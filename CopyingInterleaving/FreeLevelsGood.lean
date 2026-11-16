@@ -100,7 +100,7 @@ theorem card_divisors_le (δ : ℝ) (hδ : 0 < δ) :
   calc ∏ p ∈ n.primeFactors, ((n.factorization p : ℝ) + 1)
       ≤ ∏ p ∈ n.primeFactors,
           ((if (p : ℝ) ^ δ < 2 then K0 else 1) * ((p : ℝ) ^ (n.factorization p)) ^ δ) := by
-        apply Finset.prod_le_prod (fun p _ => by positivity)
+        apply Finset.prod_le_prod₀ (fun p _ => by positivity)
         intro p hp
         exact succ_le_factor δ hδ p _ (Nat.prime_of_mem_primeFactors hp).two_le
     _ = (∏ p ∈ n.primeFactors, (if (p : ℝ) ^ δ < 2 then K0 else 1)) *

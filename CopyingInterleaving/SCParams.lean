@@ -397,7 +397,7 @@ end DataLemmas
 
 /-- The good integers of the window form a finite set. -/
 theorem window_finite (k X μ W' : ℕ) :
-    (setOf fun z => μ ≤ z ∧ z < μ + W' ∧ IsGood k X z).Finite :=
+    (Set.ofPred fun z => μ ≤ z ∧ z < μ + W' ∧ IsGood k X z).Finite :=
   (Set.finite_Iio (μ + W')).subset fun _ hz => hz.2.1
 
 /-- `goodCount` as the card of the finite set of good integers of the window. -/
@@ -438,12 +438,12 @@ theorem Ψ_bounds (FL : FreeLevels) (hFL : FL.Valid) (h : Fin FL.H) :
   constructor
   · calc FL.X ^ FL.k = ∏ _i ∈ Finset.Icc 1 FL.k, FL.X := by simp
       _ ≤ ∏ i ∈ Finset.Icc 1 FL.k, FL.type h i := by
-        apply Finset.prod_le_prod (fun _ _ => Nat.zero_le _)
+        apply Finset.prod_le_prod₀ (fun _ _ => Nat.zero_le _)
         intro i hi
         rw [Finset.mem_Icc] at hi
         exact (htype h i hi.1 hi.2).1
   · calc ∏ i ∈ Finset.Icc 1 FL.k, FL.type h i < ∏ _i ∈ Finset.Icc 1 FL.k, 2 * FL.X := by
-          apply Finset.prod_lt_prod_of_nonempty
+          apply Finset.prod_lt_prod_of_nonempty₀
           · intro i hi
             rw [Finset.mem_Icc] at hi
             have := (htype h i hi.1 hi.2).1

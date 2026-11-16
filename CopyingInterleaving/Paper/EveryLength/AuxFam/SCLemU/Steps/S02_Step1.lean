@@ -1433,7 +1433,7 @@ theorem step_1 (D : Parents) (hD : D.Facts) (ξ : Fin D.H → Option (ℕ × (Fi
           Finset.prod_congr rfl fun y hy =>
             hmarg y (hYin y hy) (C y) (hCsub y) s (hinj y hy) (hrng y hy)
       _ ≤ ∏ y ∈ Y, (((arityN D y : ℝ) - u)⁻¹) ^ (C y).card :=
-          Finset.prod_le_prod (fun y _ => by positivity)
+          Finset.prod_le_prod₀ (fun y _ => by positivity)
             (fun y hy => hfall _ _ u (hjC y) (hua y hy))
       _ = ∏ y ∈ Y, ∏ v ∈ C y, w D u v := Finset.prod_congr rfl fun y hy => (hw_eq y hy).symm
       _ = ∏ v ∈ Vset D T, w D u v :=

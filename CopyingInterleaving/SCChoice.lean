@@ -291,7 +291,7 @@ lemma card_le_of_multiples {ι : Type*} (T : Finset ι) (s : ι → ℕ) (hinj :
 
 /-- The window `[μ, μ + W)` has finitely many good integers. -/
 lemma window_finite (k X μ W : ℕ) :
-    (setOf fun z => μ ≤ z ∧ z < μ + W ∧ IsGood k X z).Finite :=
+    (Set.ofPred fun z => μ ≤ z ∧ z < μ + W ∧ IsGood k X z).Finite :=
   (Set.finite_Ico μ (μ + W)).subset fun _ hz => ⟨hz.1, hz.2.1⟩
 
 /-- The slopes are good integers of the window. -/
@@ -300,17 +300,17 @@ lemma slope_good (k X μ W : ℕ) (h : Fin (goodCount k X μ W)) :
       IsGood k X (slope k X μ W (goodCount k X μ W) h) := by
   have hf := window_finite k X μ W
   have hcard : goodCount k X μ W = hf.toFinset.card := Set.ncard_eq_toFinset_card _ hf
-  have := h.2
-  exact Nat.nth_mem_of_lt_card hf (by omega)
+  have := h.isLt
+  exact Nat.nth_mem_of_lt_card hf (by have := h.isLt; omega)
 
 /-- Distinct parents have distinct slopes. -/
 lemma slope_inj (k X μ W : ℕ) {h h' : Fin (goodCount k X μ W)}
     (e : slope k X μ W (goodCount k X μ W) h = slope k X μ W (goodCount k X μ W) h') : h = h' := by
   have hf := window_finite k X μ W
   have hcard : goodCount k X μ W = hf.toFinset.card := Set.ncard_eq_toFinset_card _ hf
-  have h1 := h.2
-  have h2 := h'.2
-  have := Nat.nth_injOn hf (Set.mem_Iio.2 (by omega)) (Set.mem_Iio.2 (by omega)) e
+  have h1 := h.isLt
+  have h2 := h'.isLt
+  have := Nat.nth_injOn hf (Set.mem_Iio.2 (by rw [← hcard]; omega)) (Set.mem_Iio.2 (by rw [← hcard]; omega)) e
   ext
   omega
 

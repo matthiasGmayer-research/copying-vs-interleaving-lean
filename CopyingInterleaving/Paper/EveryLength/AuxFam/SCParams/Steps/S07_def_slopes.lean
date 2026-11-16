@@ -183,7 +183,7 @@ theorem step_def_slopes_psistar (k : ℕ) (hk : 2 ≤ k)
   obtain ⟨_, _, hα, _⟩ := hT
   unfold Ψ
   calc ∏ i, typeOf k h i ≤ ∏ _i : Fin k, (2 * X k) :=
-        Finset.prod_le_prod (fun i _ => Nat.zero_le _) (fun i _ => (hα i).2.le)
+        Finset.prod_le_prod₀ (fun i _ => Nat.zero_le _) (fun i _ => (hα i).2.le)
     _ = (2 * X k) ^ k := by simp
 
 /-- main.typ 943, remark after def-slopes: "As the `s_h` are distinct integers, `Δ_h ≥ 1` and

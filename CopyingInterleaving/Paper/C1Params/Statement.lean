@@ -646,7 +646,7 @@ theorem lem_slopes (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * CopyingInt
     intro f hf
     have hle : ∏ i, (f i : ℝ) ≤ D := by
       calc ∏ i, (f i : ℝ) ≤ ∏ _i : Fin k, 4 * x := by
-            apply prod_le_prod (fun i _ => (hfpos f hf i).le)
+            apply prod_le_prod₀ (fun i _ => (hfpos f hf i).le)
             intro i _
             have := (mem_Ico.1 (mem_filter.1 (hfP f hf i)).1).2
             rw [hx]; exact_mod_cast this.le
@@ -913,12 +913,12 @@ private lemma dsl_psi_bounds (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * 
   have hne : (Finset.univ : Finset (Fin k)).Nonempty := ⟨⟨0, by omega⟩, Finset.mem_univ _⟩
   constructor
   · unfold Ψ
-    have := Finset.prod_lt_prod_of_nonempty (s := Finset.univ) (f := fun _ => X k L)
+    have := Finset.prod_lt_prod_of_nonempty₀ (s := Finset.univ) (f := fun _ => X k L)
       (g := typeOf k L h) (fun i _ => hXpos)
       (fun i _ => (dsl_mem_primesP (by omega) (hty i)).2.2) hne
     simpa [Finset.prod_const, Finset.card_univ] using this
   · unfold Ψ
-    have := Finset.prod_lt_prod_of_nonempty (s := Finset.univ) (f := typeOf k L h)
+    have := Finset.prod_lt_prod_of_nonempty₀ (s := Finset.univ) (f := typeOf k L h)
       (g := fun _ => 4 * X k L)
       (fun i _ => lt_of_lt_of_le hXpos (dsl_mem_primesP (by omega) (hty i)).1)
       (fun i _ => (dsl_mem_primesP (by omega) (hty i)).2.1) hne

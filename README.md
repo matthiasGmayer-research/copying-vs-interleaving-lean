@@ -223,11 +223,47 @@ theorem prop_reverse :
 <!-- app-lean-map -->
 ## Versions and build
 
-The formalisation uses Lean 4 at the toolchain `leanprover/lean4:v4.33.0-rc1` (`lean-toolchain`) and Mathlib at the
-tag `v4.33.0-rc1` (commit `79d0395`, pinned in `lake-manifest.json`). `lake exe cache get && lake build` builds the
+The formalisation uses Lean 4 at the toolchain `leanprover/lean4:v4.35.0` (`lean-toolchain`) and Mathlib at the
+tag `v4.35.0` (commit `56a0058`, pinned in `lake-manifest.json`). `lake exe cache get && lake build` builds the
 formalisation. Then `lake env lean Check.lean` prints the statements (`#check`) and the axioms on which the main
 declarations depend; they are among `propext`, `Classical.choice` and `Quot.sound`. This repository is exported from
 the author's research project (`export.sh`); the export renames the research project's root namespace `SP` to `CopyingInterleaving` and its `CstarText` to `Paper` (the recorded map is `rename_map.py`, applied by `export.sh`); the revision-history modules keep their names. To build: `git clone git@github.com:matthiasGmayer-research/copying-vs-interleaving-lean.git`, then the commands above (the Lake package is `copying-vs-interleaving-lean`, the library `CopyingInterleaving`).
+
+## How this is verified
+
+Checks on the final build, with Lean `v4.35.0` (a release that contains the kernel soundness fixes of 4.32.2 and 4.34) and
+Mathlib `v4.35.0`. A reader who trusts Lean's kernel (or any one of the independent checkers below), Mathlib and the
+toolchain needs to read only the statements in `assurance/Challenge.lean`.
+
+1. `lake build` (9424 jobs, no `sorry`, no `native_decide`, no custom axiom, no `unsafe`/`implemented_by`/`extern`:
+   `grep` over all 379 `.lean` files) and `lake env lean Check.lean`: `#check` of every main statement and `#print axioms`
+   of all audited declarations; each depends only on `propext`, `Classical.choice`, `Quot.sound`. The output is identical
+   to the one at the earlier toolchain `v4.33.0-rc1` (statements unchanged; tag `cpm2027-r1-v4.33` is that state).
+2. `lake env leanchecker --fresh CopyingInterleaving`: replays every constant of the import closure (Lean core, Mathlib, all
+   376 modules) into an empty environment through the kernel, so that `#print axioms` is not the only line of defence.
+3. Comparator (core `lake comparator` of Lean 4.35, with the same checks): `assurance/Challenge.lean` states the 14
+   main results with `sorry` over a copy of the definitions they use; `assurance/Solution.lean` restates them and proves
+   them with the repository's declarations. `lake comparator --config assurance/comparator.json` verifies that every constant
+   the statements use (transitively, definitions included) is identical in challenge and solution, that the proofs use only
+   the three standard axioms, and then replays the solution in the Lean kernel and the independent checkers
+   (`--paranoid`: `leanchecker-paranoid`, lean4lean, nanoda, con-leche, con-ron). Run it so: build and export both modules
+   (`lake env leanexport Challenge -- <theorem names> <kernel constants>`, see `assurance/README.md`), then
+   `lake comparator --config comparator.json --challenge-from-export … --solution-from-export …`; the kernels can also be run
+   directly on the export with `assurance/run-kernels.sh`. (Our server forbids the `bwrap` sandbox of `lake comparator`
+   from starting, so the solution export was produced by an ordinary build of our own code and the statement comparison ran
+   without sandboxing the kernels; the kernels were run directly on the export.)
+4. Negative controls: a challenge with a changed statement (constant 2 → 1 in `thm_upper`) and a challenge with a changed
+   definition (`ARC` counting one more) are both rejected by the comparison.
+
+Results at this revision:
+
+| check (Lean `v4.35.0`, Mathlib `v4.35.0`) | result |
+|---|---|
+| `lake build` from a fresh clone (own `.lake/packages`) | 9424 jobs, no errors; 24 files needed small repairs (renamed or generalised Mathlib lemmas `Finset.prod_le_prod₀` etc., `setOf` → `Set.ofPred`) |
+| `lake env lean Check.lean` | output identical to the one at `v4.33.0-rc1`; all declarations on `propext`, `Classical.choice`, `Quot.sound` |
+| `lake env leanchecker --fresh CopyingInterleaving` | accepted (whole import closure, 18 min, 9 GB) |
+| `lake comparator` statement comparison (14 theorems) | accepted; changed statement and changed definition rejected |
+| kernels on the export of the solution (35781 declarations) | Lean, Lean paranoid, lean4lean, nanoda (bundled), nanoda 0.4.32, con-leche, con-ron: all accept |
 
 ## The correspondence
 

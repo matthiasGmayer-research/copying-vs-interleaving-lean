@@ -1,0 +1,24 @@
+# Comparator harness for the cstar formalisation (see README.md). A separate Lake package so that the
+# repository's own files stay unchanged: it depends on the parent package by path and reuses its
+# package directory (Mathlib etc.), so nothing is fetched or rebuilt.
+name = "cstarAssurance"
+version = "0.1.0"
+packagesDir = "../.lake/packages"
+
+# The parent's options, so that the trusted definitions elaborate exactly as in the parent.
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+autoImplicit = false
+weak.linter.mathlibStandardSet = false
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "copying-vs-interleaving-lean"
+path = ".."
+
+[[lean_lib]]
+name = "Challenge"
+
+[[lean_lib]]
+name = "Solution"

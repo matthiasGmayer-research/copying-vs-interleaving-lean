@@ -109,7 +109,7 @@ private lemma ls1_prodT_le (k : ℕ) (α : Fin k → ℕ) (hα : α ∈ tupleBox
     prodT α ≤ 2 ^ k * X k ^ k := by
   unfold prodT
   have h1 : ∏ i, α i ≤ ∏ _i : Fin k, (2 * X k) := by
-    apply Finset.prod_le_prod (fun i _ => Nat.zero_le _)
+    apply Finset.prod_le_prod₀ (fun i _ => Nat.zero_le _)
     intro i _
     exact ((ls1_mem_tupleBox k α).mp hα i).2.le
   have h2 : ∏ _i : Fin k, (2 * X k) = 2 ^ k * X k ^ k := by

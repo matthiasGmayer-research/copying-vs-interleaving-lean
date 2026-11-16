@@ -989,7 +989,7 @@ theorem s_lem_slopes_claim (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * Co
     have hDpos : 0 < ∏ p ∈ T, p := prod_pos fun p hp => (mem_filter.mp (hTP hp)).2.pos
     have hDr : (0 : ℝ) < (∏ p ∈ T, p : ℕ) := by exact_mod_cast hDpos
     have hDlt : (∏ p ∈ T, p : ℕ) < (4 * X k L) ^ k := by
-      calc _ < ∏ _p ∈ T, 4 * X k L := prod_lt_prod_of_nonempty
+      calc _ < ∏ _p ∈ T, 4 * X k L := prod_lt_prod_of_nonempty₀
             (fun p hp => (mem_filter.mp (hTP hp)).2.pos)
             (fun p hp => (mem_Ico.mp (mem_filter.mp (hTP hp)).1).2)
             (card_pos.mp (by omega))

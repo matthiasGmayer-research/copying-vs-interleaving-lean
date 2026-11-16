@@ -648,7 +648,7 @@ theorem step_final_a_parents (k L : ℕ) (hk : 2 ≤ k) (hL : 512 * (k : ℝ) * 
       unfold C1Params.Ψ
       calc C1Params.X k L ^ k = ∏ _i : Fin k, C1Params.X k L := by simp
         _ ≤ ∏ i, C1Params.typeOf k L h i :=
-          Finset.prod_le_prod (fun _ _ => Nat.zero_le _) (fun i _ => hXα i)
+          Finset.prod_le_prod₀ (fun _ _ => Nat.zero_le _) (fun i _ => hXα i)
     have hsa' : C1Params.a k L h * C1Params.X k L ^ k ≤ C1Params.s k L h := by
       rw [hsa h hh]
       calc C1Params.a k L h * C1Params.X k L ^ k ≤ C1Params.a k L h * C1Params.Ψ k L h :=

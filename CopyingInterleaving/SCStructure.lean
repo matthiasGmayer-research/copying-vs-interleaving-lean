@@ -15,7 +15,7 @@ open CopyingInterleaving
 theorem slope_mono (k X μ W H : ℕ) (hH : H = goodCount k X μ W) (h : ℕ) (hh : h < H) :
     slope k X μ W H (H - 1) ≤ slope k X μ W H h := by
   unfold slope
-  have hf : (setOf fun z => μ ≤ z ∧ z < μ + W ∧ IsGood k X z).Finite :=
+  have hf : (Set.ofPred fun z => μ ≤ z ∧ z < μ + W ∧ IsGood k X z).Finite :=
     (Set.finite_Iio (μ + W)).subset (fun z hz => hz.2.1)
   have hcard : hf.toFinset.card = H := by
     rw [hH, goodCount, Set.ncard_eq_toFinset_card _ hf]

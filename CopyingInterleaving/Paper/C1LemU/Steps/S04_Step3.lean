@@ -35,7 +35,7 @@ private lemma step3_exp_two_thirds_lt_two : Real.exp (2 / 3) < 2 := by
 private lemma step3_prod_le_exp {ι : Type*} (s : Finset ι) (x : ι → ℝ) (hx : ∀ i ∈ s, 0 ≤ x i) :
     ∏ i ∈ s, (1 + x i) ≤ Real.exp (∑ i ∈ s, x i) := by
   rw [Real.exp_sum]
-  exact Finset.prod_le_prod (fun i hi => by linarith [hx i hi])
+  exact Finset.prod_le_prod₀ (fun i hi => by linarith [hx i hi])
     (fun i _ => by linarith [Real.add_one_le_exp (x i)])
 
 /-- `1 ≤ ∏ (1 + x c)` for nonnegative `x`. -/
@@ -43,7 +43,7 @@ private lemma step3_one_le_prod {ι : Type*} (s : Finset ι) (x : ι → ℝ) (h
     1 ≤ ∏ i ∈ s, (1 + x i) := by
   calc (1 : ℝ) = ∏ _i ∈ s, (1 : ℝ) := by simp
     _ ≤ ∏ i ∈ s, (1 + x i) :=
-      Finset.prod_le_prod (fun _ _ => zero_le_one) (fun i hi => by linarith [hx i hi])
+      Finset.prod_le_prod₀ (fun _ _ => zero_le_one) (fun i hi => by linarith [hx i hi])
 
 /-- main.typ 1241, lem-u, step 3 (the claim): "`f_root(2) ≤ exp(4/3)`". -/
 @[kb "cstarpaper-st-u-root" (deviation := "the recursion for f_v and lem-free (a) arity facts enter as hypotheses hrec, hfreeA, harity")]

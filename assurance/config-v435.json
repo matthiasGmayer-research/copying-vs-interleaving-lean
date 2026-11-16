@@ -1,0 +1,33 @@
+{
+    "challenge_module": "Challenge",
+    "solution_module": "Solution",
+    "theorem_names": [
+        "CstarChallenge.thm_upper",
+        "CstarChallenge.thm_scale",
+        "CstarChallenge.thm_lower",
+        "CstarChallenge.cor_cstar",
+        "CstarChallenge.cor_szlc",
+        "CstarChallenge.prop_reverse",
+        "CstarChallenge.kosoy_arc_le_szlc",
+        "CstarChallenge.s_why_quarter_length",
+        "CstarChallenge.rem_constant_all",
+        "CstarChallenge.s_conventions_strict",
+        "CstarChallenge.rem_arity",
+        "CstarChallenge.sanity_arc_pos",
+        "CstarChallenge.sanity_two_le_zlc",
+        "CstarChallenge.sanity_zlc_attained"
+    ],
+    "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+    ],
+    "external_kernels": {
+        "nanoda-0.4.32": [
+            "/home/matthias/tools/nanoda_lib/target/release/nanoda_bin"
+        ],
+        "nanoda-0.4.17": [
+            "/home/matthias/.elan/toolchains/leanprover--lean4---v4.35.0/bin/nanoda_bin"
+        ]
+    }
+}

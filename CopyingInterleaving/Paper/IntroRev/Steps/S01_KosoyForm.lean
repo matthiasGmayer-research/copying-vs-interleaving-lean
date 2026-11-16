@@ -7,7 +7,7 @@ import CopyingInterleaving.Statements.Statement
 `c = 1/3` and `C = 2∛2 + 2`."
 
 Kosoy's bound (main.typ:136–139, [kosoy-ssp2, Prop. 4.7]) is `ARC(x) ≤ 2(∛(2n) + 1) ZLC(x)`. It is NOT proved in
-this Lean project (`CopyingInterleaving.Setting.thm_kosoy_cuberoot` is a sorry and is not used); the claim of the sentence is the
+this Lean project; the claim of the sentence is the
 implication, so Kosoy's bound is a hypothesis of the main theorem `kosoy_form` (Statement.lean). The only step is
 the numerical comparison of the two factors (the `@source` annotation of the sentence:
 "2(cbrt(2n) + 1) <= (2 cbrt 2 + 2) n^(1/3) for n >= 1").

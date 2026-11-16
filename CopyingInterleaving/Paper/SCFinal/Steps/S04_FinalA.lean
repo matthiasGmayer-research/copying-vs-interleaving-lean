@@ -646,7 +646,7 @@ theorem step_final_a_parents (k : ℕ) (hk : 2 ≤ k) (hdiv : 8 ∣ SCParams.B k
       unfold SCParams.Ψ
       calc SCParams.X k ^ k = ∏ _i : Fin k, SCParams.X k := by simp
         _ ≤ ∏ i, SCParams.typeOf k h i :=
-          Finset.prod_le_prod (fun _ _ => Nat.zero_le _) (fun i _ => (hXα i).1)
+          Finset.prod_le_prod₀ (fun _ _ => Nat.zero_le _) (fun i _ => (hXα i).1)
     have hsa' : SCParams.a k h * SCParams.X k ^ k ≤ SCParams.s k h := by
       rw [hsa h hh]
       calc SCParams.a k h * SCParams.X k ^ k ≤ SCParams.a k h * SCParams.Ψ k h :=
